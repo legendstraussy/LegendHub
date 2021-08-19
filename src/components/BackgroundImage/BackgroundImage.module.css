@@ -1,0 +1,7 @@
+.image {
+  background-image: url('../../../public/background.png');
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
