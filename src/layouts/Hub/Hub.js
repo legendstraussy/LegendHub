@@ -27,7 +27,7 @@ const useStyles = makeStyles({
     color: '#fff',
     padding: '.4em 1.75em',
   }
-});
+}, { name: "MuiExample_Component" });
 
 const HubButton = props => {
   const classes = useStyles();
