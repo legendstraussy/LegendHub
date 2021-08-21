@@ -1,11 +1,29 @@
-import styles from './BackgroundImage.module.css';
+import { PropTypes } from 'prop-types';
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles({
+  root: {
+    backgroundImage: 'url(\'/background.png\')',
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    display: 'flex',
+    flexDirection: 'column',
+    flex: 1,
+  },
+}, { name: 'Mui_Styles_BackgroundImage' });
 
 const BackgroundImage = ({ children }) => {
+  const classes = useStyles();
+
   return (
-    <div className={styles.image}>
+    <div className={classes.root}>
       { children }
     </div>
-  )
-}
+  );
+};
 
-export default BackgroundImage
+BackgroundImage.propTypes = {
+  children: PropTypes.node.isRequired,
+};
+
+export default BackgroundImage;

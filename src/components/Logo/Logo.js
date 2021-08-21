@@ -1,13 +1,23 @@
 import Image from 'next/image';
-import styles from './Logo.module.css';
+import { makeStyles } from '@material-ui/styles';
 import logo from '../../../public/logo.png';
 
-const Logo = props => {
+const useStyles = makeStyles({
+  root: {
+    position: 'relative',
+    top: '40px',
+    display: 'block',
+  },
+}, { name: 'Mui_Styles_Logo' });
+
+const Logo = () => {
+  const classes = useStyles();
+
   return (
-    <div className={styles.logo}>
+    <div className={classes.root}>
       <Image src={logo} alt="" />
     </div>
-  )
-}
+  );
+};
 
 export default Logo;
