@@ -1,4 +1,4 @@
-import Hub from "layouts/Hub/Hub";
+import Hub from "components/Hub";
 
 const Main = () => {
   return (
