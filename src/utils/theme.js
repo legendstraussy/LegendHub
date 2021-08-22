@@ -25,6 +25,9 @@ const theme = createTheme({
           fontStyle: 'italic',
           color: '#219AFF',
         },
+        '&.Mui-focusVisible': {
+          backgroundColor: 'rgba(86, 86, 86, .5)',
+        },
         '&.Mui-selected:hover': {
           fontStyle: 'italic',
           color: '#219AFF',

@@ -56,7 +56,7 @@ const CharacterSelect = () => {
       >
         <MenuItem value="Deacon">Deacon</MenuItem>
         <MenuItem value="Galactus">Galactus</MenuItem>
-        <MenuItem value="McLeod">Testeroniopio</MenuItem>
+        <MenuItem value="Testeroniopio">Testeroniopio</MenuItem>
       </Select>
       <Divider orientation="vertical" className={classes.divider} />
     </>
