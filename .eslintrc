@@ -9,6 +9,7 @@
     },
   },
   "rules": {
+    "react/jsx-props-no-spreading": "off",
     "arrow-parens": "off",
     "linebreak-style": ["error", "windows"],    
     "react/react-in-jsx-scope": "off",

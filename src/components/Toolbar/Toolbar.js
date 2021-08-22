@@ -18,22 +18,22 @@ const Toolbar = () => {
   return (
     <div className={classes.root}>
       <div className={classes.buttonLayout}>
-        <HubButton label="New" type="primary" />
+        <HubButton label="New" type="primary" onClick={() => {}} />
       </div>
       <div className={classes.buttonLayout}>
-        <HubButton label="Undo" type="default" />
+        <HubButton label="Undo" type="default" onClick={() => {}} />
       </div>
       <div className={classes.buttonLayout}>
-        <HubButton label="Import" type="default" />
+        <HubButton label="Import" type="default" onClick={() => {}} />
       </div>
       <div className={classes.buttonLayout}>
-        <HubButton label="Export" type="default" />
+        <HubButton label="Export" type="default" onClick={() => {}} />
       </div>
       <div className={classes.buttonLayout}>
-        <HubButton label="Clear" type="default" />
+        <HubButton label="Clear" type="default" onClick={() => {}} />
       </div>
       <div className={classes.buttonLayout}>
-        <HubButton label="Delete" type="warning" />
+        <HubButton label="Delete" type="warning" onClick={() => {}} />
       </div>
       <HubVersion />
     </div>
