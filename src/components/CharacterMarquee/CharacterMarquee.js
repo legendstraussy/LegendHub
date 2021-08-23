@@ -54,8 +54,9 @@ const useStyles = makeStyles({
     padding: '.5em',
     display: 'flex',
     alignItems: 'center',
+    justifyContent: 'space-between',
     flex: 1,
-    backgroundColor: 'rgba(0, 0, 0, .75)',
+    backgroundColor: 'rgba(0, 0, 0, .7)',
     borderRadius: '5px',
   },
 }, { name: 'Mui_Styles_CharacterMarquee' });

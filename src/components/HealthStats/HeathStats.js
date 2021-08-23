@@ -6,7 +6,7 @@ const useStyles = makeStyles({
     display: 'flex',
     fontFamily: 'inherit',
     fontSize: '8pt',
-    // fontWeight: 700,
+    fontWeight: 600,
   },
   stat: {
     margin: '0 .5em',

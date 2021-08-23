@@ -1,5 +1,6 @@
 import Toolbar from 'components/Toolbar/Toolbar';
 import CharacterMarquee from 'components/CharacterMarquee/CharacterMarquee';
+import EquipmentList from 'components/EquipmentList/EquipmentList';
 import { makeStyles } from '@material-ui/styles';
 
 const useStyles = makeStyles({
@@ -54,7 +55,9 @@ const MainContainer = () => {
             <div className={classes.marquee}>
               <CharacterMarquee />
             </div>
-            <div className={classes.main}>main</div>
+            <div className={classes.main}>
+              <EquipmentList />
+            </div>
           </div>
           <div className={classes.right}>
             <div className={classes.details}>details</div>
