@@ -1,5 +1,13 @@
 import { DataGrid } from '@material-ui/data-grid';
+import Image from 'next/image';
 import { makeStyles } from '@material-ui/styles';
+import strIcon from '../../../public/str.png';
+import minIcon from '../../../public/min.png';
+import dexIcon from '../../../public/dex.png';
+import conIcon from '../../../public/const.png';
+import perIcon from '../../../public/per.png';
+import spiIcon from '../../../public/spi.png';
+import transitions from '@material-ui/core/styles/transitions';
 
 const useStyles = makeStyles({
   root: {
@@ -7,10 +15,29 @@ const useStyles = makeStyles({
     border: 'unset',
     position: 'relative',
     outline: 'none !important',
+    '& [data-field=str], & [data-field=min], & [data-field=dex], & [data-field=con], & [data-field=per], & [data-field=spi]': {
+      width: '32px !important',
+      minWidth: 'unset !important',
+      maxWidth: 'unset !important',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
     '& .MuiDataGrid-columnSeparator': {
       display: 'none',
     },
+    '& .MuiDataGrid-row, & .MuiDataGrid-renderingZone': {
+      width: 'unset !important',
+    },
+    '& .MuiDataGrid-row': {
+      borderBottom: '1px solid rgba(214, 214, 214, .25)',
+      height: '40px',
+      minHeight: 'unset !important',
+      display: 'flex',
+      alignItems: 'center',
+    },
     '& .MuiDataGrid-cell': {
+      borderBottom: 'unset',
       outline: 'none',
     },
     '& .MuiDataGrid-window': {
@@ -24,6 +51,7 @@ const useStyles = makeStyles({
       minHeight: 'unset !important',
       lineHeight: 'unset !important',
       overflow: 'unset !important',
+      borderBottom: 'unset',
     },
     '& .MuiDataGrid-columnHeaderWrapper': {
       height: '30px',
@@ -47,8 +75,6 @@ const useStyles = makeStyles({
       padding: 0,
     },
     '& .MuiDataGrid-columnHeader': {
-      width: '40px',
-      color: '#fff',
       fontFamily: 'inherit',
       fontSize: '8pt',
       fontWeight: 600,
@@ -60,34 +86,43 @@ const useStyles = makeStyles({
         bottom: -15,
         top: -20,
         display: 'flex',
-        minWidth: 'unset !important',
-        width: 'unset !important',
         alignItems: 'center',
         justifyContent: 'center',
         background: '#222',
+        '& img:first-child': {
+          display: 'none !important',
+        },
       },
     },
   },
   headerLeftTab: {
+    marginLeft: -10,
+    paddingLeft: 10,
     borderRadius: '5px 0 0 0',
   },
   headerRightTab: {
+    marginRight: -10,
+    paddingRight: 10,
     borderRadius: '0 5px 0 0',
+  },
+  icon: {
+    position: 'unset !important',
+    display: 'flex !important',
+    width: '32px !important',
+    height: 'unset !important',
+    minWidth: 'unset !important',
+    maxWidth: 'unset !important',
+    minHeight: 'unset !important',
+    maxHeight: 'unset !important',
   },
 }, { name: 'Mui_Styles_EquipmentList' });
 
 const rows = [
   {
-    id: 1001, slot: 'finger 1', item: 'a polished hessonite garnet ring', con: 5,
+    id: 1001, slot: 'finger 1', item: 'a polished hessonite garnet ring', min: 5,
   },
   {
-    id: 2, aa: 23, bb: 3, cc: 1, dd: 8, ee: 'test 2', ff: 2, gg: 23, hh: 12,
-  },
-  {
-    id: 3, aa: 19, bb: 3, cc: 1, dd: 8, ee: 'test 3', ff: 2, gg: 5, hh: 12,
-  },
-  {
-    id: 4, aa: 5, bb: 3, cc: 1, dd: 8, ee: 'test 4', ff: 2, gg: 14, hh: 12,
+    id: 1002, slot: 'finger 1', item: 'a cool con ring', con: 5,
   },
 ];
 
@@ -98,102 +133,79 @@ const EquipmentList = () => {
       field: 'slot',
       headerName: 'slot',
       sortable: false,
+      width: 75,
     },
     {
       field: 'item',
       headerName: 'item',
       sortable: false,
+      width: 260,
     },
     {
       field: 'str',
       headerName: (
         <div>
-          <span className={classes.headerLeftTab}>str</span>
+          <span className={classes.headerLeftTab}>
+            <Image src={strIcon} alt="" width="25" height="25" className={classes.icon} />
+          </span>
         </div>
       ),
-      width: 25,
       sortable: false,
     },
     {
       field: 'min',
       headerName: (
         <div>
-          <span>min</span>
+          <span>
+            <Image src={minIcon} alt="" width="25" height="25" className={classes.icon} />
+          </span>
         </div>
       ),
-      width: 25,
       sortable: false,
     },
     {
       field: 'dex',
       headerName: (
         <div>
-          <span>dex</span>
+          <span className={classes.headerRightTab}>
+            <Image src={dexIcon} alt="" width="25" height="25" className={classes.icon} />
+          </span>
         </div>
       ),
-      width: 25,
-      showFilters: false,
       sortable: false,
     },
     {
       field: 'con',
       headerName: (
         <div>
-          <span>con</span>
+          <span className={classes.headerRightTab}>
+            <Image src={conIcon} alt="" width="25" height="25" className={classes.icon} />
+          </span>
         </div>
       ),
-      width: 25,
-      showFilters: false,
+      sortable: true,
     },
     {
       field: 'per',
       headerName: (
         <div>
-          <span>per</span>
+          <span className={classes.headerRightTab}>
+            <Image src={perIcon} alt="" width="25" height="25" className={classes.icon} />
+          </span>
         </div>
       ),
-      width: 25,
-      showFilters: false,
+      sortable: false,
     },
     {
       field: 'spi',
       headerName: (
         <div>
-          <span className={classes.headerRightTab}>spi</span>
+          <span className={classes.headerRightTab}>
+            <Image src={spiIcon} alt="" width="25" height="25" className={classes.icon} />
+          </span>
         </div>
       ),
-      width: 25,
-    },
-    {
-      field: 'ee',
-      headerName: 'normal',
-    },
-    {
-      field: 'ff',
-      headerName: (
-        <div>
-          <span className={classes.headerLeftTab}>ff</span>
-        </div>
-      ),
-      width: 25,
-    },
-    {
-      field: 'gg',
-      headerName: (
-        <div>
-          <span>gg</span>
-        </div>
-      ),
-      width: 25,
-    },
-    {
-      field: 'hh',
-      headerName: (
-        <div>
-          <span className={classes.headerRightTab}>hh</span>
-        </div>
-      ),
-      width: 25,
+      sortable: false,
     },
   ];
 
