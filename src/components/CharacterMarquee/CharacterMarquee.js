@@ -57,6 +57,7 @@ const useStyles = makeStyles({
     flex: 1,
     backgroundColor: 'rgba(0, 0, 0, .7)',
     borderRadius: '5px',
+    cursor: 'default',
   },
 }, { name: 'Mui_Styles_CharacterMarquee' });
 

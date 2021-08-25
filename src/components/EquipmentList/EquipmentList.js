@@ -21,12 +21,43 @@ const useStyles = makeStyles({
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
+      cursor: 'default',
+    },
+    '& [data-field=ac]': {
+      width: '45px !important',
+      minWidth: 'unset !important',
+      maxWidth: 'unset !important',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      cursor: 'default',
+      '& .MuiDataGrid-columnHeaderTitleContainer': {
+        padding: 'unset !important',
+        justifyContent: 'center',
+      },
+    },
+    '& [data-field=align]': {
+      width: '33px !important',
+      minWidth: 'unset !important',
+      maxWidth: 'unset !important',
+      padding: 'unset !important',
+      cursor: 'default',
+      '& .MuiDataGrid-columnHeaderTitleContainer': {
+        justifyContent: 'center',
+      },
+    },
+    '& [data-field=rent]': {
+      width: '55px !important',
+      minWidth: 'unset !important',
+      maxWidth: 'unset !important',
+      padding: 'unset !important',
+      cursor: 'default',
+      '& .MuiDataGrid-columnHeaderTitleContainer': {
+        justifyContent: 'center',
+      },
     },
     '& .MuiDataGrid-columnSeparator': {
       display: 'none',
-    },
-    '& .MuiDataGrid-row, & .MuiDataGrid-renderingZone': {
-      width: 'unset !important',
     },
     '& .MuiDataGrid-row': {
       borderBottom: '1px solid rgba(214, 214, 214, .25)',
@@ -34,6 +65,7 @@ const useStyles = makeStyles({
       minHeight: 'unset !important',
       display: 'flex',
       alignItems: 'center',
+      cursor: 'default',
     },
     '& .MuiDataGrid-cell': {
       borderBottom: 'unset',
@@ -41,7 +73,7 @@ const useStyles = makeStyles({
     },
     '& .MuiDataGrid-window': {
       backgroundColor: 'rgba(0, 0, 0, .7)',
-      top: '30px !important',
+      top: '31px !important',
     },
     '& .MuiDataGrid-columnsContainer': {
       color: '#fff',
@@ -53,10 +85,11 @@ const useStyles = makeStyles({
       borderBottom: 'unset',
     },
     '& .MuiDataGrid-columnHeaderWrapper': {
-      height: '30px',
+      height: '31px',
       backgroundColor: 'rgba(0, 0, 0, .5)',
       overflow: 'unset !important',
       borderRadius: '5px 5px 0 0',
+      cursor: 'default',
     },
     '& .MuiDataGrid-iconButtonContainer': {
       padding: 0,
@@ -82,8 +115,8 @@ const useStyles = makeStyles({
         position: 'absolute',
         right: 0,
         left: 0,
-        bottom: -15,
-        top: -20,
+        bottom: -16,
+        top: -22,
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
@@ -107,7 +140,7 @@ const useStyles = makeStyles({
   icon: {
     position: 'unset !important',
     display: 'flex !important',
-    width: '32px !important',
+    width: '28px !important',
     height: 'unset !important',
     minWidth: 'unset !important',
     maxWidth: 'unset !important',
@@ -166,7 +199,7 @@ const EquipmentList = () => {
       field: 'dex',
       headerName: (
         <div>
-          <span className={classes.headerRightTab}>
+          <span>
             <Image src={dexIcon} alt="" width="25" height="25" className={classes.icon} />
           </span>
         </div>
@@ -177,7 +210,7 @@ const EquipmentList = () => {
       field: 'con',
       headerName: (
         <div>
-          <span className={classes.headerRightTab}>
+          <span>
             <Image src={conIcon} alt="" width="25" height="25" className={classes.icon} />
           </span>
         </div>
@@ -188,7 +221,7 @@ const EquipmentList = () => {
       field: 'per',
       headerName: (
         <div>
-          <span className={classes.headerRightTab}>
+          <span>
             <Image src={perIcon} alt="" width="25" height="25" className={classes.icon} />
           </span>
         </div>
@@ -204,6 +237,21 @@ const EquipmentList = () => {
           </span>
         </div>
       ),
+      sortable: false,
+    },
+    {
+      field: 'ac',
+      headerName: 'ac',
+      sortable: false,
+    },
+    {
+      field: 'align',
+      headerName: 'align',
+      sortable: false,
+    },
+    {
+      field: 'rent',
+      headerName: 'rent',
       sortable: false,
     },
   ];
