@@ -7,7 +7,6 @@ import dexIcon from '../../../public/dex.png';
 import conIcon from '../../../public/const.png';
 import perIcon from '../../../public/per.png';
 import spiIcon from '../../../public/spi.png';
-import transitions from '@material-ui/core/styles/transitions';
 
 const useStyles = makeStyles({
   root: {
