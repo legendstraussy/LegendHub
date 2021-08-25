@@ -41,6 +41,9 @@ const useStyles = makeStyles({
       minWidth: 'unset !important',
       maxWidth: 'unset !important',
       padding: 'unset !important',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
       cursor: 'default',
       '& .MuiDataGrid-columnHeaderTitleContainer': {
         justifyContent: 'center',
@@ -51,15 +54,31 @@ const useStyles = makeStyles({
       minWidth: 'unset !important',
       maxWidth: 'unset !important',
       padding: 'unset !important',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
       cursor: 'default',
       '& .MuiDataGrid-columnHeaderTitleContainer': {
         justifyContent: 'center',
+      },
+    },
+    '& .MuiDataGrid-renderingZone': {
+      '& [data-field=slot]': {
+        fontSize: '10pt',
+        fontWeight: '100',
+        textTransform: 'capitalize',
+        fontStyle: 'italic',
+        fontFamily: 'Open Sans',
+      },
+      '& [data-field=item]': {
+        color: '#219AFF',
       },
     },
     '& .MuiDataGrid-columnSeparator': {
       display: 'none',
     },
     '& .MuiDataGrid-row': {
+      fontSize: '10pt',
       borderBottom: '1px solid rgba(214, 214, 214, .25)',
       height: '40px',
       minHeight: 'unset !important',
@@ -151,10 +170,19 @@ const useStyles = makeStyles({
 
 const rows = [
   {
-    id: 1001, slot: 'finger 1', item: 'a polished hessonite garnet ring', min: 5,
+    id: 1001, slot: 'finger ₁', item: 'a polished hessonite garnet ring', min: 5, align: 'GN',
   },
   {
-    id: 1002, slot: 'finger 1', item: 'a cool con ring', con: 5,
+    id: 1002, slot: 'finger ₂', item: 'a cool con ring', con: 5, ac: -7, rent: 1200,
+  },
+  {
+    id: 1003, slot: 'neck ₁', item: 'a cool con ring', con: 5, ac: -7, rent: 1200,
+  },
+  {
+    id: 1004, slot: 'neck ₂', item: 'a cool con ring', con: 5, ac: -7, rent: 1200,
+  },
+  {
+    id: 1005, slot: 'body', item: 'a cool con ring', con: 5, ac: -7, rent: 1200,
   },
 ];
 
@@ -215,7 +243,7 @@ const EquipmentList = () => {
           </span>
         </div>
       ),
-      sortable: true,
+      sortable: false,
     },
     {
       field: 'per',
