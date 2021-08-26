@@ -26,13 +26,13 @@ const genericStats = {
 const meleeStats = {
   hitroll: -22,
   damroll: -32,
-  mitigation: 3,
-  parry: 0,
-  damcap: 0,
+  mitigation: 32,
+  parry: 10,
+  damcap: 20,
 };
 
 const rangeStats = {
-  accuracy: 0,
+  accuracy: 10,
 };
 
 const spellStats = {
@@ -40,12 +40,12 @@ const spellStats = {
   spellDam: 85,
   spellRedux: 47,
   concentration: 30,
-  spellFail: 0,
+  spellFail: 10,
 };
 
 const regenStats = {
-  hpRegen: 5,
-  mvRegen: 3,
+  hpRegen: 20,
+  mvRegen: 30,
   maRegen: 30,
 };
 

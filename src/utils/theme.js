@@ -19,7 +19,7 @@ const theme = createTheme({
       root: {
         color: '#fff',
         fontFamily: 'inherit',
-        fontSize: '10pt',
+        fontSize: '16px',
         cursor: 'default',
         '&.Mui-selected': {
           fontStyle: 'italic',

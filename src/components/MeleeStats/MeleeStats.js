@@ -5,12 +5,12 @@ const useStyles = makeStyles({
   root: {
     display: 'flex',
     fontFamily: 'inherit',
-    fontWeight: 600,
+    fontWeight: 'bold',
     padding: '0 .3em',
   },
   stat: {
     color: '#DE2E2E',
-    fontSize: '10pt',
+    fontSize: '16px',
     width: '32px',
     display: 'flex',
     alignItems: 'center',

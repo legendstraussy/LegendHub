@@ -7,7 +7,7 @@ const useStyles = makeStyles({
     color: '#219AFF',
     maxWidth: '130px',
     fontFamily: 'inherit',
-    fontSize: '10pt',
+    fontSize: '16px',
     width: '130px',
     '& .MuiSelect-select': {
       cursor: 'default',

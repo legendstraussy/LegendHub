@@ -29,7 +29,7 @@ const useStyles = makeStyles({
     minWidth: '20%',
   },
   marquee: {
-    height: '35px',
+    height: '42px',
     margin: '.4em',
     display: 'flex',
   },

@@ -5,11 +5,11 @@ const useStyles = makeStyles({
   root: {
     display: 'flex',
     fontFamily: 'inherit',
-    fontWeight: 600,
+    fontWeight: 'bold',
   },
   stat: {
     color: '#A57BF1',
-    fontSize: '10pt',
+    fontSize: '16px',
     margin: '0 .5em',
   },
 }, { name: 'Mui_Styles_SpellStats' });

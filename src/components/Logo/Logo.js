@@ -8,6 +8,12 @@ const useStyles = makeStyles({
     top: '40px',
     display: 'block',
   },
+  logo: {
+    width: '145px !important',
+    height: '145px !important',
+    maxWidth: 'unset !important',
+    maxHeight: 'unset !important',
+  },
 }, { name: 'Mui_Styles_Logo' });
 
 const Logo = () => {
@@ -15,7 +21,7 @@ const Logo = () => {
 
   return (
     <div className={classes.root}>
-      <Image src={logo} alt="" />
+      <Image src={logo} alt="" className={classes.logo} />
     </div>
   );
 };
