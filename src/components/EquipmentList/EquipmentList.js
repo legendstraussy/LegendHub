@@ -7,6 +7,9 @@ import dexIcon from '../../../public/dex.png';
 import conIcon from '../../../public/const.png';
 import perIcon from '../../../public/per.png';
 import spiIcon from '../../../public/spi.png';
+import swordSlashIcon from '../../../public/sword-slash.png';
+import mitIcon from '../../../public/mitigation.png';
+import spellBookIcon from '../../../public/spell-book.png';
 
 const useStyles = makeStyles({
   root: {
@@ -14,7 +17,7 @@ const useStyles = makeStyles({
     border: 'unset',
     position: 'relative',
     outline: 'none !important',
-    '& [data-field=str], & [data-field=min], & [data-field=dex], & [data-field=con], & [data-field=per], & [data-field=spi]': {
+    '& [data-field=str], & [data-field=min], & [data-field=dex], & [data-field=con], & [data-field=per], & [data-field=spi], & [data-field=damroll], & [data-field=hitroll], & [data-field=mitigation], & [data-field=spellCrit], & [data-field=spellDam], & [data-field=spellRedux], & [data-field=concentration]': {
       width: '32px !important',
       minWidth: 'unset !important',
       maxWidth: 'unset !important',
@@ -54,6 +57,7 @@ const useStyles = makeStyles({
       minWidth: 'unset !important',
       maxWidth: 'unset !important',
       padding: 'unset !important',
+      margin: '0 2px !important',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
@@ -61,6 +65,9 @@ const useStyles = makeStyles({
       '& .MuiDataGrid-columnHeaderTitleContainer': {
         justifyContent: 'center',
       },
+    },
+    '& .MuiDataGrid-dataContainer': {
+      minWidth: 'unset !important',
     },
     '& .MuiDataGrid-renderingZone': {
       '& [data-field=slot]': {
@@ -104,6 +111,7 @@ const useStyles = makeStyles({
       borderBottom: 'unset',
     },
     '& .MuiDataGrid-columnHeaderWrapper': {
+      minWidth: 'unset !important',
       height: '31px',
       backgroundColor: 'rgba(0, 0, 0, .5)',
       overflow: 'unset !important',
@@ -147,13 +155,13 @@ const useStyles = makeStyles({
     },
   },
   headerLeftTab: {
-    marginLeft: -10,
-    paddingLeft: 10,
+    marginLeft: -5,
+    paddingLeft: 5,
     borderRadius: '5px 0 0 0',
   },
   headerRightTab: {
-    marginRight: -10,
-    paddingRight: 10,
+    marginRight: -5,
+    paddingRight: 5,
     borderRadius: '0 5px 0 0',
   },
   icon: {
@@ -166,20 +174,29 @@ const useStyles = makeStyles({
     minHeight: 'unset !important',
     maxHeight: 'unset !important',
   },
+  iconLabel: {
+    height: '10px',
+    backgroundColor: 'rgba(0, 0, 0, .0) !important',
+    position: 'absolute !important',
+    top: '0px !important',
+    left: '0px !important',
+    fontSize: '8px',
+    textTransform: 'uppercase',
+  },
 }, { name: 'Mui_Styles_EquipmentList' });
 
 const rows = [
   {
-    id: 1001, slot: 'finger ₁', item: 'a polished hessonite garnet ring', min: 5, align: 'GN',
+    id: 1001, slot: 'finger', item: 'a polished hessonite garnet ring', min: 5, align: 'GN',
   },
   {
-    id: 1002, slot: 'finger ₂', item: 'a cool con ring', con: 5, ac: -7, rent: 1200,
+    id: 1002, slot: 'finger', item: 'a cool con ring', con: 5, ac: -7, rent: 1200,
   },
   {
-    id: 1003, slot: 'neck ₁', item: 'a cool con ring', con: 5, ac: -7, rent: 1200,
+    id: 1003, slot: 'neck', item: 'a cool con ring', con: 5, ac: -7, rent: 1200, damroll: 2, hitroll: 1,
   },
   {
-    id: 1004, slot: 'neck ₂', item: 'a cool con ring', con: 5, ac: -7, rent: 1200,
+    id: 1004, slot: 'neck', item: 'a cool con ring', con: 5, ac: -7, rent: 12000, mitigation: 3,
   },
   {
     id: 1005, slot: 'body', item: 'a cool con ring', con: 5, ac: -7, rent: 1200,
@@ -281,6 +298,90 @@ const EquipmentList = () => {
       field: 'rent',
       headerName: 'rent',
       sortable: false,
+    },
+    {
+      field: 'damroll',
+      headerName: (
+        <div>
+          <span className={classes.headerLeftTab}>
+            <Image src={swordSlashIcon} alt="" width="25" height="25" className={classes.icon} />
+          </span>
+          <span className={classes.iconLabel}>dam</span>
+        </div>
+      ),
+      sortable: false,
+    },
+    {
+      field: 'hitroll',
+      headerName: (
+        <div>
+          <span>
+            <Image src={swordSlashIcon} alt="" width="25" height="25" className={classes.icon} />
+          </span>
+          <span className={classes.iconLabel}>hit</span>
+        </div>
+      ),
+      sortable: false,
+    },
+    {
+      field: 'mitigation',
+      headerName: (
+        <div>
+          <span className={classes.headerRightTab}>
+            <Image src={mitIcon} alt="" width="25" height="25" className={classes.icon} />
+          </span>
+          <span className={classes.iconLabel}>mit</span>
+        </div>
+      ),
+      sortable: true,
+    },
+    {
+      field: 'spellDam',
+      headerName: (
+        <div>
+          <span className={classes.headerLeftTab}>
+            <Image src={spellBookIcon} alt="" width="25" height="25" className={classes.icon} />
+          </span>
+          <span className={classes.iconLabel}>dam</span>
+        </div>
+      ),
+      sortable: false,
+    },
+    {
+      field: 'spellCrit',
+      headerName: (
+        <div>
+          <span>
+            <Image src={spellBookIcon} alt="" width="25" height="25" className={classes.icon} />
+          </span>
+          <span className={classes.iconLabel}>crit</span>
+        </div>
+      ),
+      sortable: false,
+    },
+    {
+      field: 'spellRedux',
+      headerName: (
+        <div>
+          <span>
+            <Image src={spellBookIcon} alt="" width="25" height="25" className={classes.icon} />
+          </span>
+          <span className={classes.iconLabel}>redux</span>
+        </div>
+      ),
+      sortable: false,
+    },
+    {
+      field: 'concentration',
+      headerName: (
+        <div>
+          <span className={classes.headerRightTab}>
+            <Image src={spellBookIcon} alt="" width="25" height="25" className={classes.icon} />
+          </span>
+          <span className={classes.iconLabel}>conc.</span>
+        </div>
+      ),
+      sortable: true,
     },
   ];
 

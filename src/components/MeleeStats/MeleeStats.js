@@ -6,11 +6,15 @@ const useStyles = makeStyles({
     display: 'flex',
     fontFamily: 'inherit',
     fontWeight: 600,
+    padding: '0 .3em',
   },
   stat: {
     color: '#DE2E2E',
     fontSize: '10pt',
-    margin: '0 .5em',
+    width: '32px',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 }, { name: 'Mui_Styles_MeleeStats' });
 
