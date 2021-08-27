@@ -16,19 +16,39 @@ const useStyles = makeStyles({
     color: '#fff',
     border: 'unset',
     position: 'relative',
+    width: '100% !important',
     outline: 'none !important',
+    top: '-6px',
     '& [data-field=str], & [data-field=min], & [data-field=dex], & [data-field=con], & [data-field=per], & [data-field=spi], & [data-field=damroll], & [data-field=hitroll], & [data-field=mitigation], & [data-field=spellCrit], & [data-field=spellDam], & [data-field=spellRedux], & [data-field=concentration]': {
-      width: '32px !important',
-      minWidth: 'unset !important',
-      maxWidth: 'unset !important',
+      width: '42px !important',
+      minWidth: '40px !important',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
       cursor: 'default',
+      fontWeight: 600,
+    },
+    '& [data-field=str]': {
+      color: '#DE2E2E',
+    },
+    '& [data-field=min]': {
+      color: '#A57BF1',
+    },
+    '& [data-field=dex]': {
+      color: '#2E94FA',
+    },
+    '& [data-field=con]': {
+      color: '#FFD874',
+    },
+    '& [data-field=per]': {
+      color: '#31DBB9',
+    },
+    '& [data-field=spi]': {
+      color: '#71DE71',
     },
     '& [data-field=ac]': {
       width: '45px !important',
-      minWidth: 'unset !important',
+      minWidth: '45px !important',
       maxWidth: 'unset !important',
       display: 'flex',
       alignItems: 'center',
@@ -41,7 +61,7 @@ const useStyles = makeStyles({
     },
     '& [data-field=align]': {
       width: '33px !important',
-      minWidth: 'unset !important',
+      minWidth: '33px !important',
       maxWidth: 'unset !important',
       padding: 'unset !important',
       display: 'flex',
@@ -54,7 +74,7 @@ const useStyles = makeStyles({
     },
     '& [data-field=rent]': {
       width: '55px !important',
-      minWidth: 'unset !important',
+      minWidth: '55px !important',
       maxWidth: 'unset !important',
       padding: 'unset !important',
       margin: '0 2px !important',
@@ -67,9 +87,9 @@ const useStyles = makeStyles({
       },
     },
     '& .MuiDataGrid-dataContainer': {
-      minWidth: 'unset !important',
     },
     '& .MuiDataGrid-renderingZone': {
+      width: 'unset !important',
       '& [data-field=slot]': {
         fontSize: '10pt',
         fontWeight: '100',
@@ -81,6 +101,12 @@ const useStyles = makeStyles({
         color: '#219AFF',
       },
     },
+    '& .MuiDataGrid-main': {
+      position: 'unset !important',
+    },
+    '& .MuiTablePagination-root': {
+      display: 'none',
+    },
     '& .MuiDataGrid-columnSeparator': {
       display: 'none',
     },
@@ -88,6 +114,7 @@ const useStyles = makeStyles({
       fontSize: '10pt',
       borderBottom: '1px solid rgba(214, 214, 214, .25)',
       height: '40px',
+      width: '100%',
       minHeight: 'unset !important',
       display: 'flex',
       alignItems: 'center',
@@ -99,24 +126,25 @@ const useStyles = makeStyles({
     },
     '& .MuiDataGrid-window': {
       backgroundColor: 'rgba(0, 0, 0, .7)',
-      top: '31px !important',
+      top: '38px !important',
     },
     '& .MuiDataGrid-columnsContainer': {
+      height: '44px',
       color: '#fff',
       display: 'flex',
       justifyContent: 'center',
       minHeight: 'unset !important',
       lineHeight: 'unset !important',
-      overflow: 'unset !important',
+      overflow: 'hidden !important',
       borderBottom: 'unset',
     },
     '& .MuiDataGrid-columnHeaderWrapper': {
-      minWidth: 'unset !important',
-      height: '31px',
+      height: '32px',
       backgroundColor: 'rgba(0, 0, 0, .5)',
       overflow: 'unset !important',
-      borderRadius: '5px 5px 0 0',
       cursor: 'default',
+      borderRadius: '5px 5px 0 0',
+      display: 'flex',
     },
     '& .MuiDataGrid-iconButtonContainer': {
       padding: 0,
@@ -132,6 +160,9 @@ const useStyles = makeStyles({
     },
     '& .MuiDataGrid-columnHeaderTitleContainer': {
       padding: 0,
+    },
+    '& .MuiDataGrid-footerContainer': {
+      display: 'none',
     },
     '& .MuiDataGrid-columnHeader': {
       fontFamily: 'inherit',
@@ -187,10 +218,10 @@ const useStyles = makeStyles({
 
 const rows = [
   {
-    id: 1001, slot: 'finger', item: 'a polished hessonite garnet ring', min: 5, align: 'GN',
+    id: 1001, slot: 'finger', item: 'a polished hessonite garnet ring', min: -15, align: 'GN',
   },
   {
-    id: 1002, slot: 'finger', item: 'a cool con ring', con: 5, ac: -7, rent: 1200,
+    id: 1002, slot: 'finger', item: 'a cool con ring', con: 5, ac: -7, rent: 1200, str: 10,
   },
   {
     id: 1003, slot: 'neck', item: 'a cool con ring', con: 5, ac: -7, rent: 1200, damroll: 2, hitroll: 1,
@@ -199,7 +230,7 @@ const rows = [
     id: 1004, slot: 'neck', item: 'a cool con ring', con: 5, ac: -7, rent: 12000, mitigation: 3,
   },
   {
-    id: 1005, slot: 'body', item: 'a cool con ring', con: 5, ac: -7, rent: 1200,
+    id: 1005, slot: 'body', item: 'a cool con ring', con: 5, ac: -7, rent: 1200, spellCrit: 23,
   },
 ];
 
@@ -215,7 +246,7 @@ const EquipmentList = () => {
     {
       field: 'item',
       headerName: 'item',
-      sortable: false,
+      sortable: true,
       width: 260,
     },
     {
@@ -223,11 +254,12 @@ const EquipmentList = () => {
       headerName: (
         <div>
           <span className={classes.headerLeftTab}>
-            <Image src={strIcon} alt="" width="25" height="25" className={classes.icon} />
+            <Image src={strIcon} alt="" className={classes.icon} />
           </span>
         </div>
       ),
       sortable: false,
+      width: 50,
     },
     {
       field: 'min',
@@ -239,6 +271,7 @@ const EquipmentList = () => {
         </div>
       ),
       sortable: false,
+      width: 38,
     },
     {
       field: 'dex',
@@ -250,6 +283,7 @@ const EquipmentList = () => {
         </div>
       ),
       sortable: false,
+      width: 38,
     },
     {
       field: 'con',
@@ -261,6 +295,7 @@ const EquipmentList = () => {
         </div>
       ),
       sortable: false,
+      width: 38,
     },
     {
       field: 'per',
@@ -272,6 +307,7 @@ const EquipmentList = () => {
         </div>
       ),
       sortable: false,
+      width: 38,
     },
     {
       field: 'spi',
@@ -283,6 +319,7 @@ const EquipmentList = () => {
         </div>
       ),
       sortable: false,
+      width: 38,
     },
     {
       field: 'ac',
@@ -310,6 +347,7 @@ const EquipmentList = () => {
         </div>
       ),
       sortable: false,
+      width: 38,
     },
     {
       field: 'hitroll',
@@ -322,6 +360,7 @@ const EquipmentList = () => {
         </div>
       ),
       sortable: false,
+      width: 38,
     },
     {
       field: 'mitigation',
@@ -334,6 +373,7 @@ const EquipmentList = () => {
         </div>
       ),
       sortable: true,
+      width: 38,
     },
     {
       field: 'spellDam',
@@ -346,6 +386,7 @@ const EquipmentList = () => {
         </div>
       ),
       sortable: false,
+      width: 38,
     },
     {
       field: 'spellCrit',
@@ -358,6 +399,7 @@ const EquipmentList = () => {
         </div>
       ),
       sortable: false,
+      width: 38,
     },
     {
       field: 'spellRedux',
@@ -370,6 +412,7 @@ const EquipmentList = () => {
         </div>
       ),
       sortable: false,
+      width: 38,
     },
     {
       field: 'concentration',
@@ -382,17 +425,17 @@ const EquipmentList = () => {
         </div>
       ),
       sortable: true,
+      width: 38,
     },
   ];
 
   return (
-    <div style={{ height: 400, width: '100%' }}>
-      <DataGrid
-        className={classes.root}
-        rows={rows}
-        columns={columns}
-      />
-    </div>
+    <DataGrid
+      className={classes.root}
+      rows={rows}
+      columns={columns}
+      autoHeight
+    />
   );
 };
 
