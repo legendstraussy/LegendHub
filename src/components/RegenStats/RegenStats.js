@@ -6,21 +6,19 @@ const useStyles = makeStyles({
     display: 'flex',
     fontFamily: 'inherit',
     fontWeight: 600,
+    fontSize: '14px',
   },
   hp: {
     color: '#FFD874',
-    fontSize: '10pt',
-    margin: '0 .5em',
+    margin: '0 .6em',
   },
   mv: {
     color: '#2E94FA',
-    fontSize: '10pt',
-    margin: '0 .5em',
+    margin: '0 .6em',
   },
   ma: {
     color: '#A57BF1',
-    fontSize: '10pt',
-    margin: '0 .5em',
+    margin: '0 .6em',
   },
 }, { name: 'Mui_Styles_RegenStats' });
 

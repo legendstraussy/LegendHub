@@ -5,21 +5,21 @@ const useStyles = makeStyles({
   root: {
     display: 'flex',
     fontFamily: 'inherit',
-    fontSize: '8pt',
-    fontWeight: 700,
   },
   stat: {
-    margin: '0 .75em',
+    margin: '0 .45em',
     display: 'flex',
     alignItems: 'baseline',
   },
   label: {
     textTransform: 'uppercase',
     margin: '0 .7em 0 0',
+    fontSize: '10px',
+    fontWeight: '600',
   },
   value: {
     color: '#00FF00',
-    fontSize: '10pt',
+    fontSize: '14px',
   },
 }, { name: 'Mui_Styles_HealthStat' });
 

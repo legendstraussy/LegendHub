@@ -1,5 +1,5 @@
 import CharacterSelect from 'components/CharacterSelect/CharacterSelect';
-import HeathStats from 'components/HealthStats/HeathStats';
+import HeathStats from 'components/HealthStats/HealthStats';
 import BaseStats from 'components/BaseStats/BaseStats';
 import GenericStats from 'components/GenericStats/GenericStats';
 import MeleeStats from 'components/MeleeStats/MeleeStats';
@@ -32,7 +32,7 @@ const meleeStats = {
 };
 
 const rangeStats = {
-  accuracy: 0,
+  accuracy: 55,
 };
 
 const spellStats = {
@@ -44,8 +44,8 @@ const spellStats = {
 };
 
 const regenStats = {
-  hpRegen: 5,
-  mvRegen: 3,
+  hpRegen: 30,
+  mvRegen: 30,
   maRegen: 30,
 };
 
@@ -71,8 +71,8 @@ const CharacterMarquee = () => {
       <BaseStats stats={baseStats} />
       <GenericStats stats={genericStats} />
       <MeleeStats stats={meleeStats} />
-      <SpellStats stats={spellStats} />
       <RangeStats stats={rangeStats} />
+      <SpellStats stats={spellStats} />
       <RegenStats stats={regenStats} />
     </div>
   );

@@ -9,8 +9,8 @@ const useStyles = makeStyles({
   },
   stat: {
     color: '#A57BF1',
-    fontSize: '10pt',
-    margin: '0 .5em',
+    fontSize: '14px',
+    margin: '0 .55em',
   },
 }, { name: 'Mui_Styles_SpellStats' });
 
@@ -21,7 +21,6 @@ const SpellStats = props => {
       spellDam,
       spellRedux,
       concentration,
-      // spellFail,
     },
   } = props;
   const classes = useStyles();
@@ -32,7 +31,6 @@ const SpellStats = props => {
       <span className={classes.stat}>{spellDam}</span>
       <span className={classes.stat}>{spellRedux}</span>
       <span className={classes.stat}>{concentration}</span>
-      {/* <span className={classes.stat}>{spellFail}</span> */}
     </div>
   );
 };

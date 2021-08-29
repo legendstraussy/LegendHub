@@ -6,11 +6,11 @@ const useStyles = makeStyles({
     display: 'flex',
     fontFamily: 'inherit',
     fontWeight: 600,
-    padding: '0 .3em',
+    // margin: '0 .25em',
   },
   stat: {
     color: '#DE2E2E',
-    fontSize: '10pt',
+    fontSize: '14px',
     width: '32px',
     display: 'flex',
     alignItems: 'center',

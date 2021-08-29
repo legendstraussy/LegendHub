@@ -5,10 +5,10 @@ import { makeStyles } from '@material-ui/styles';
 const useStyles = makeStyles({
   root: {
     color: '#219AFF',
-    maxWidth: '130px',
+    maxWidth: '200px',
     fontFamily: 'inherit',
-    fontSize: '10pt',
-    width: '130px',
+    fontSize: '14px',
+    width: '120px',
     '& .MuiSelect-select': {
       cursor: 'default',
     },

@@ -9,8 +9,8 @@ const useStyles = makeStyles({
   },
   stat: {
     color: '#31DBB9',
-    fontSize: '10pt',
-    margin: '0 .5em',
+    fontSize: '14px',
+    margin: '0 .6em',
   },
 }, { name: 'Mui_Styles_RangeStats' });
 

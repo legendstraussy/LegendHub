@@ -4,7 +4,7 @@ import { makeStyles } from '@material-ui/styles';
 
 const useStyles = makeStyles({
   root: {
-    margin: '1em 1em 1em 8em',
+    margin: '.75em 1em 1.5em 7.5em',
     display: 'flex',
   },
   buttonLayout: {

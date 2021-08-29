@@ -4,18 +4,19 @@ const useStyles = makeStyles({
   root: {
     display: 'flex',
     flex: 1,
-    alignItems: 'center',
+    alignItems: 'baseline',
     justifyContent: 'flex-end',
+    marginTop: '-5px',
   },
   label: {
     fontFamily: 'inherit',
-    fontSize: 18,
+    fontSize: '17px',
     fontWeight: 'bold',
     textTransform: 'uppercase',
   },
   version: {
     fontFamily: 'inherit',
-    fontSize: 18,
+    fontSize: '14px',
     fontWeight: 'unset',
   },
 }, { name: 'Mui_Styles_HubVersion' });

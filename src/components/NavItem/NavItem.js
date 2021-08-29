@@ -4,8 +4,9 @@ import { makeStyles } from '@material-ui/styles';
 const useStyles = makeStyles({
   root: {
     padding: '0 .75em',
-    fontSize: '10pt',
-    textTransform: 'uppercase',
+    fontSize: '13px',
+    fontWeight: '100',
+    // textTransform: 'uppercase',
     cursor: 'default',
   },
 }, { name: 'Mui_Styles_NavItem' });
