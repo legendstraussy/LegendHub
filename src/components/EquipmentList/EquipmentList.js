@@ -45,22 +45,22 @@ const useStyles = makeStyles({
       left: 6,
     },
     '& [data-field=str]': {
-      color: '#DE2E2E',
+      // color: '#DE2E2E',
     },
     '& [data-field=min]': {
-      color: '#A57BF1',
+      // color: '#A57BF1',
     },
     '& [data-field=dex]': {
-      color: '#2E94FA',
+      // color: '#2E94FA',
     },
     '& [data-field=con]': {
-      color: '#FFD874',
+      // color: '#FFD874',
     },
     '& [data-field=per]': {
-      color: '#31DBB9',
+      // color: '#31DBB9',
     },
     '& [data-field=spi]': {
-      color: '#71DE71',
+      // color: '#71DE71',
     },
     '& [data-field=ac], & [data-field=align], & [data-field=rent]': {
       minWidth: '42px !important',
@@ -74,6 +74,9 @@ const useStyles = makeStyles({
         justifyContent: 'center',
       },
     },
+    '& [data-field=rent]': {
+      marginRight: -6,
+    },
     '& .MuiDataGrid-main': {
       position: 'unset !important',
     },
@@ -85,10 +88,9 @@ const useStyles = makeStyles({
     },
     '& .MuiDataGrid-row': {
       fontSize: '12px',
-      borderBottom: '1px solid rgba(214, 214, 214, .25)',
-      height: '36px',
-      minHeight: 'unset !important',
-      display: 'flex',
+      borderBottom: '1px solid rgba(45, 40, 40, .75)',
+      display: 'flex !important',
+      flex: '1 !important',
       alignItems: 'center',
       cursor: 'default',
       '& [data-field=slot]': {
@@ -104,23 +106,34 @@ const useStyles = makeStyles({
         fontSize: '14px',
         color: '#219AFF',
       },
+      '& [data-field=str]': {
+        borderLeft: '1px solid rgba(64, 51, 51, .75)',
+      },
+      '& [data-field=str], & [data-field=min], & [data-field=dex], & [data-field=con], & [data-field=per], & [data-field=spi], & [data-field=ac], & [data-field=align], & [data-field=rent], & [data-field=damroll], & [data-field=hitroll], & [data-field=mitigation], & [data-field=accuracy], & [data-field=spellDam], & [data-field=spellCrit], & [data-field=spellRedux], & [data-field=concentration], & [data-field=hpRegen], & [data-field=mvRegen], & [data-field=maRegen]': {
+        borderRight: '1px solid rgba(64, 51, 51, .75)',
+      },
     },
     '& .MuiDataGrid-cell': {
       borderBottom: 'unset',
       outline: 'none',
     },
     '& .MuiDataGrid-window': {
+      overflowX: 'hidden !important',
       backgroundColor: 'rgba(0, 0, 0, .7)',
       top: '38px !important',
     },
+    '& .MuiDataGrid-dataContainer': {
+      transform: 'unset !important',
+    },
     '& .MuiDataGrid-columnsContainer': {
-      height: '49px',
-      color: '#fff',
+      // height: '49px',
+      // color: '#fff',
       display: 'flex',
       justifyContent: 'center',
-      minHeight: 'unset !important',
-      lineHeight: 'unset !important',
-      overflow: 'hidden !important',
+      marginTop: -3,
+      // minHeight: 'unset !important',
+      // lineHeight: 'unset !important',
+      // overflow: 'hidden !important',
       borderBottom: 'unset',
     },
     '& .MuiDataGrid-columnHeaderWrapper': {
@@ -129,12 +142,12 @@ const useStyles = makeStyles({
       overflow: 'unset !important',
       cursor: 'default',
       borderRadius: '5px 5px 0 0',
-      display: 'flex',
+      // display: 'flex',
       '& [data-field=slot], & [data-field=item], & [data-field=ac], & [data-field=align], & [data-field=rent]': {
-        fontSize: '10px',
-        textTransform: 'uppercase',
-        cursor: 'default',
-        padding: '6px 4px',
+        // fontSize: '10px',
+        // textTransform: 'uppercase',
+        // cursor: 'default',
+        // padding: '6px 4px',
       },
     },
     '& .MuiDataGrid-iconButtonContainer': {
@@ -205,6 +218,57 @@ const rows = [
   {
     id: 1005, slot: 'body', item: 'all-stats test plate mail', con: 100, str: 100, dex: 100, per: 100, min: 100, spi: 100, ac: -22, rent: 1200, damroll: 100, hitroll: 100, mitigation: 100, accuracy: 100, spellDam: 100, spellCrit: 100, spellRedux: 100, concentration: 100, hpRegen: 100, mvRegen: 100, maRegen: 100, align: 'GNE',
   },
+  {
+    id: 1006, slot: 'head', item: 'a cool con ring', con: 5, ac: -7, rent: 12000, mitigation: 3,
+  },
+  {
+    id: 1007, slot: 'face', item: 'a cool con ring', con: 5, ac: -7, rent: 12000, mitigation: 3,
+  },
+  {
+    id: 1008, slot: 'legs', item: 'a cool con ring', con: 5, ac: -7, rent: 12000, mitigation: 3,
+  },
+  {
+    id: 1009, slot: 'feet', item: 'a cool con ring', con: 5, ac: -7, rent: 12000, mitigation: 3,
+  },
+  {
+    id: 1010, slot: 'hands', item: 'a cool con ring', con: 5, ac: -7, rent: 12000, mitigation: 3,
+  },
+  {
+    id: 1011, slot: 'arms', item: 'a cool con ring', con: 5, ac: -7, rent: 12000, mitigation: 3,
+  },
+  {
+    id: 1012, slot: 'about', item: 'a cool con ring', con: 5, ac: -7, rent: 12000, mitigation: 3,
+  },
+  {
+    id: 1013, slot: 'waist', item: 'a cool con ring', con: 5, ac: -7, rent: 12000, mitigation: 3,
+  },
+  {
+    id: 1014, slot: 'wrist', item: 'a cool con ring', con: 5, ac: -7, rent: 12000, mitigation: 3,
+  },
+  {
+    id: 1015, slot: 'wrist', item: 'a cool con ring', con: 5, ac: -7, rent: 12000, mitigation: 3,
+  },
+  {
+    id: 1016, slot: 'wield', item: 'a cool con ring', con: 5, ac: -7, rent: 12000, mitigation: 3,
+  },
+  {
+    id: 1017, slot: 'hold', item: 'a cool con ring', con: 5, ac: -7, rent: 12000, mitigation: 3,
+  },
+  {
+    id: 1018, slot: 'hold', item: 'a cool con ring', con: 5, ac: -7, rent: 12000, mitigation: 3,
+  },
+  {
+    id: 1019, slot: 'hold', item: 'a cool con ring', con: 5, ac: -7, rent: 12000, mitigation: 3,
+  },
+  {
+    id: 1020, slot: 'ear', item: 'a cool con ring', con: 5, ac: -7, rent: 12000, mitigation: 3,
+  },
+  {
+    id: 1021, slot: 'ear', item: 'a cool con ring', con: 5, ac: -7, rent: 12000, mitigation: 3,
+  },
+  {
+    id: 1022, slot: 'arm', item: 'a cool con ring', con: 5, ac: -7, rent: 12000, mitigation: 3,
+  },
 ];
 
 const EquipmentList = () => {
@@ -229,6 +293,7 @@ const EquipmentList = () => {
           <span className={classes.headerLeftTab}>
             <Image src={strIcon} alt="" className={classes.icon} />
           </span>
+          <span className={classes.iconLabel}>str</span>
         </div>
       ),
       sortable: false,
@@ -242,6 +307,7 @@ const EquipmentList = () => {
           <span>
             <Image src={minIcon} alt="" className={classes.icon} />
           </span>
+          <span className={classes.iconLabel}>min</span>
         </div>
       ),
       sortable: false,
@@ -255,6 +321,7 @@ const EquipmentList = () => {
           <span>
             <Image src={dexIcon} alt="" className={classes.icon} />
           </span>
+          <span className={classes.iconLabel}>dex</span>
         </div>
       ),
       sortable: false,
@@ -268,6 +335,7 @@ const EquipmentList = () => {
           <span>
             <Image src={conIcon} alt="" className={classes.icon} />
           </span>
+          <span className={classes.iconLabel}>con</span>
         </div>
       ),
       sortable: false,
@@ -281,6 +349,7 @@ const EquipmentList = () => {
           <span>
             <Image src={perIcon} alt="" className={classes.icon} />
           </span>
+          <span className={classes.iconLabel}>per</span>
         </div>
       ),
       sortable: false,
@@ -294,6 +363,7 @@ const EquipmentList = () => {
           <span className={classes.headerRightTab}>
             <Image src={spiIcon} alt="" className={classes.icon} />
           </span>
+          <span className={classes.iconLabel}>spi</span>
         </div>
       ),
       sortable: false,
@@ -478,12 +548,22 @@ const EquipmentList = () => {
   ];
 
   return (
-    <DataGrid
-      className={classes.root}
-      rows={rows}
-      columns={columns}
-      autoHeight
-    />
+    <div style={{ height: '100%', width: '100%' }}>
+      <div style={{ display: 'flex', height: '100%' }}>
+        <div style={{ flexGrow: 1 }}>
+          <DataGrid
+            className={classes.root}
+            rows={rows}
+            columns={columns}
+            hideFooter
+            hideFooterPagination
+            hideFooterRowCount
+            hideFooterSelectedRowCount
+            rowHeight={36}
+          />
+        </div>
+      </div>
+    </div>
   );
 };
 

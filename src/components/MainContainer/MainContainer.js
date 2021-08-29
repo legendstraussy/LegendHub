@@ -17,11 +17,10 @@ const useStyles = makeStyles({
   container: {
     display: 'flex',
     flex: 1,
+    overflow: 'hidden',
   },
   left: {
     flex: 3.9,
-    maxWidth: '83%',
-    height: '35px',
     margin: '.2em .35em .2em .2em',
     display: 'flex',
     flexDirection: 'column',
