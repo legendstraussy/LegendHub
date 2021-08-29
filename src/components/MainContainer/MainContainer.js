@@ -29,7 +29,7 @@ const useStyles = makeStyles({
     display: 'flex',
     flex: 1,
     flexDirection: 'column',
-    minWidth: '20%',
+    minWidth: '22%',
     margin: '.2em .2em .2em .35em',
     borderRadius: 5,
   },

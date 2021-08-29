@@ -102,10 +102,10 @@ const useStyles = makeStyles({
         fontSize: '14px',
         color: '#219AFF',
       },
-      '& [data-field=str]': {
+      '& [data-field=str], & [data-field=damroll]': {
         borderLeft: '1px solid rgba(64, 51, 51, .75)',
       },
-      '& [data-field=str], & [data-field=min], & [data-field=dex], & [data-field=con], & [data-field=per], & [data-field=spi], & [data-field=ac], & [data-field=align], & [data-field=rent], & [data-field=damroll], & [data-field=hitroll], & [data-field=mitigation], & [data-field=accuracy], & [data-field=spellDam], & [data-field=spellCrit], & [data-field=spellRedux], & [data-field=concentration], & [data-field=hpRegen], & [data-field=mvRegen], & [data-field=maRegen]': {
+      '& [data-field=str], & [data-field=min], & [data-field=dex], & [data-field=con], & [data-field=per], & [data-field=spi], & [data-field=ac], & [data-field=align], & [data-field=damroll], & [data-field=hitroll], & [data-field=mitigation], & [data-field=accuracy], & [data-field=spellDam], & [data-field=spellCrit], & [data-field=spellRedux], & [data-field=concentration], & [data-field=hpRegen], & [data-field=mvRegen], & [data-field=maRegen]': {
         borderRight: '1px solid rgba(64, 51, 51, .75)',
       },
     },
@@ -133,12 +133,21 @@ const useStyles = makeStyles({
       overflow: 'unset !important',
       cursor: 'default',
       borderRadius: '5px 5px 0 0',
-      '& [data-field=slot], & [data-field=item], & [data-field=ac], & [data-field=align], & [data-field=rent]': {
+      '& [data-field=slot], & [data-field=item], & [data-field=ac], & [data-field=align]': {
         fontSize: '10px',
         textTransform: 'uppercase',
         cursor: 'default',
         padding: '6px 4px',
       },
+    },
+    '& [data-field=rent]': {
+      fontSize: '10px',
+      textTransform: 'uppercase',
+      cursor: 'default',
+      position: 'relative',
+      top: 0,
+      left: 3,
+      height: 26,
     },
     '& .MuiDataGrid-iconButtonContainer': {
       padding: 0,
@@ -549,6 +558,8 @@ const EquipmentList = () => {
             hideFooterPagination
             hideFooterRowCount
             hideFooterSelectedRowCount
+            disableColumnSelector
+            disableSelectionOnClick
             rowHeight={36}
           />
         </div>
