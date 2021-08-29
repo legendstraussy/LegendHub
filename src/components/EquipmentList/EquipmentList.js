@@ -32,7 +32,6 @@ const useStyles = makeStyles({
     width: '100% !important',
     outline: 'none !important',
     fontFamily: 'open sans',
-    top: '-6px',
     '& [data-field=str], & [data-field=min], & [data-field=dex], & [data-field=con], & [data-field=per], & [data-field=spi], & [data-field=damroll], & [data-field=hitroll], & [data-field=mitigation], & [data-field=spellCrit], & [data-field=spellDam], & [data-field=spellRedux], & [data-field=concentration], & [data-field=accuracy], & [data-field=hpRegen], & [data-field=mvRegen], & [data-field=maRegen]': {
       minWidth: '32px !important',
       display: 'flex',
@@ -123,14 +122,9 @@ const useStyles = makeStyles({
       transform: 'unset !important',
     },
     '& .MuiDataGrid-columnsContainer': {
-      // height: '49px',
-      // color: '#fff',
       display: 'flex',
       justifyContent: 'center',
       marginTop: -3,
-      // minHeight: 'unset !important',
-      // lineHeight: 'unset !important',
-      // overflow: 'hidden !important',
       borderBottom: 'unset',
     },
     '& .MuiDataGrid-columnHeaderWrapper': {

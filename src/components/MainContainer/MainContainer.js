@@ -39,7 +39,7 @@ const useStyles = makeStyles({
     display: 'flex',
   },
   main: {
-    margin: '.2em 0 0 0',
+    margin: '0 0 0 0',
     flex: 1,
   },
   details: {
