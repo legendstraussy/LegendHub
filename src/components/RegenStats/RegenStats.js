@@ -4,21 +4,24 @@ import { makeStyles } from '@material-ui/styles';
 const useStyles = makeStyles({
   root: {
     display: 'flex',
+    justifyContent: 'center',
     fontFamily: 'inherit',
     fontWeight: 600,
+  },
+  stat: {
+    display: 'flex',
+    justifyContent: 'center',
     fontSize: '14px',
+    width: 32,
   },
   hp: {
     color: '#FFD874',
-    margin: '0 .6em',
   },
   mv: {
     color: '#2E94FA',
-    margin: '0 .6em',
   },
   ma: {
     color: '#A57BF1',
-    margin: '0 .6em',
   },
 }, { name: 'Mui_Styles_RegenStats' });
 
@@ -34,9 +37,9 @@ const RegenStats = props => {
 
   return (
     <div className={classes.root}>
-      <span className={classes.hp}>{hpRegen}</span>
-      <span className={classes.mv}>{mvRegen}</span>
-      <span className={classes.ma}>{maRegen}</span>
+      <span className={`${classes.stat} ${classes.hp}`}>{hpRegen}</span>
+      <span className={`${classes.stat} ${classes.mv}`}>{mvRegen}</span>
+      <span className={`${classes.stat} ${classes.ma}`}>{maRegen}</span>
     </div>
   );
 };

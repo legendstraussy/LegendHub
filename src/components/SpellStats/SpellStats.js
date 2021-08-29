@@ -4,13 +4,16 @@ import { makeStyles } from '@material-ui/styles';
 const useStyles = makeStyles({
   root: {
     display: 'flex',
+    justifyContent: 'center',
     fontFamily: 'inherit',
     fontWeight: 600,
   },
   stat: {
     color: '#A57BF1',
+    display: 'flex',
+    justifyContent: 'center',
     fontSize: '14px',
-    margin: '0 .55em',
+    width: 32,
   },
 }, { name: 'Mui_Styles_SpellStats' });
 

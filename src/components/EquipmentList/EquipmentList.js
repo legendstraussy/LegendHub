@@ -40,6 +40,9 @@ const useStyles = makeStyles({
       justifyContent: 'center',
       cursor: 'default',
       fontWeight: 600,
+      position: 'relative',
+      right: -6,
+      left: 6,
     },
     '& [data-field=str]': {
       color: '#DE2E2E',
@@ -319,7 +322,7 @@ const EquipmentList = () => {
       field: 'rent',
       headerName: 'rent',
       sortable: false,
-      width: 55,
+      width: 30,
       minWidth: 30,
     },
     {

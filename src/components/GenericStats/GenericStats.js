@@ -7,14 +7,22 @@ const useStyles = makeStyles({
     justifyContent: 'center',
     fontFamily: 'inherit',
     fontWeight: 600,
-    width: 130,
   },
   stat: {
     color: '#FFF',
     display: 'flex',
     justifyContent: 'center',
     fontSize: '14px',
-    margin: '0 .4em',
+    width: 40,
+  },
+  ac: {
+    width: 32,
+  },
+  align: {
+    width: 50,
+  },
+  rent: {
+    width: 38,
   },
 }, { name: 'Mui_Styles_GenericStats' });
 
@@ -30,9 +38,9 @@ const GenericStats = props => {
 
   return (
     <div className={classes.root}>
-      <span className={classes.stat}>{ac}</span>
-      <span className={classes.stat}>{align}</span>
-      <span className={classes.stat}>{rent}</span>
+      <span className={`${classes.stat} ${classes.ac}`}>{ac}</span>
+      <span className={`${classes.stat} ${classes.align}`}>{align}</span>
+      <span className={`${classes.stat} ${classes.rent}`}>{rent}</span>
     </div>
   );
 };
