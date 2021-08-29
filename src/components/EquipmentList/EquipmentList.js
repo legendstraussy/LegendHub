@@ -39,28 +39,28 @@ const useStyles = makeStyles({
       alignItems: 'center',
       justifyContent: 'center',
       cursor: 'default',
-      fontWeight: 600,
+      fontWeight: 400,
       position: 'relative',
       right: -6,
       left: 6,
     },
     '& [data-field=str]': {
-      // color: '#DE2E2E',
+      color: '#DE2E2E',
     },
     '& [data-field=min]': {
-      // color: '#A57BF1',
+      color: '#A57BF1',
     },
     '& [data-field=dex]': {
-      // color: '#2E94FA',
+      color: '#2E94FA',
     },
     '& [data-field=con]': {
-      // color: '#FFD874',
+      color: '#FFD874',
     },
     '& [data-field=per]': {
-      // color: '#31DBB9',
+      color: '#31DBB9',
     },
     '& [data-field=spi]': {
-      // color: '#71DE71',
+      color: '#71DE71',
     },
     '& [data-field=ac], & [data-field=align], & [data-field=rent]': {
       minWidth: '42px !important',
@@ -73,9 +73,6 @@ const useStyles = makeStyles({
       '& .MuiDataGrid-columnHeaderTitleContainer': {
         justifyContent: 'center',
       },
-    },
-    '& [data-field=rent]': {
-      marginRight: -6,
     },
     '& .MuiDataGrid-main': {
       position: 'unset !important',
@@ -142,12 +139,11 @@ const useStyles = makeStyles({
       overflow: 'unset !important',
       cursor: 'default',
       borderRadius: '5px 5px 0 0',
-      // display: 'flex',
       '& [data-field=slot], & [data-field=item], & [data-field=ac], & [data-field=align], & [data-field=rent]': {
-        // fontSize: '10px',
-        // textTransform: 'uppercase',
-        // cursor: 'default',
-        // padding: '6px 4px',
+        fontSize: '10px',
+        textTransform: 'uppercase',
+        cursor: 'default',
+        padding: '6px 4px',
       },
     },
     '& .MuiDataGrid-iconButtonContainer': {
