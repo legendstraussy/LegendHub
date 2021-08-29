@@ -134,7 +134,7 @@ const useStyles = makeStyles({
         fontSize: '10px',
         textTransform: 'uppercase',
         cursor: 'default',
-        padding: '6px 0',
+        padding: '6px 4px',
       },
     },
     '& .MuiDataGrid-iconButtonContainer': {
@@ -174,13 +174,9 @@ const useStyles = makeStyles({
     },
   },
   headerLeftTab: {
-    // marginLeft: 4,
-    // paddingLeft: 5,
     borderTopLeftRadius: '5px',
   },
   headerRightTab: {
-    // marginRight: 4,
-    // paddingRight: 5,
     borderTopRightRadius: '5px',
   },
   iconLabel: {
