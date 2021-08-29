@@ -538,8 +538,8 @@ const EquipmentList = () => {
   ];
 
   return (
-    <div style={{ height: '100%', width: '100%' }}>
-      <div style={{ display: 'flex', height: '100%' }}>
+    <div style={{ height: '100%' }}>
+      <div style={{ display: 'flex', height: '100%', minWidth: '1016px' }}>
         <div style={{ flexGrow: 1 }}>
           <DataGrid
             className={classes.root}
