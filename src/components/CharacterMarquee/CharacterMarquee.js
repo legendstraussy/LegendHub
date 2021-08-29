@@ -27,12 +27,10 @@ const meleeStats = {
   hitroll: -22,
   damroll: -32,
   mitigation: 3,
-  parry: 0,
-  damcap: 0,
 };
 
 const rangeStats = {
-  accuracy: 55,
+  accuracy: 0,
 };
 
 const spellStats = {
@@ -40,12 +38,11 @@ const spellStats = {
   spellDam: 85,
   spellRedux: 47,
   concentration: 30,
-  spellFail: 0,
 };
 
 const regenStats = {
-  hpRegen: 30,
-  mvRegen: 30,
+  hpRegen: 5,
+  mvRegen: 2,
   maRegen: 30,
 };
 

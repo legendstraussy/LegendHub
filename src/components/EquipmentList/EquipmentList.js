@@ -203,7 +203,7 @@ const rows = [
     id: 1004, slot: 'neck', item: 'a cool con ring', con: 5, ac: -7, rent: 12000, mitigation: 3,
   },
   {
-    id: 1005, slot: 'body', item: 'all-stats test plate mail', con: 100, str: 100, dex: 100, per: 100, min: 100, spi: 100, ac: -7, rent: 1200, damroll: 100, hitroll: 100, mitigation: 100, accuracy: 100, spellDam: 100, spellCrit: 100, spellRedux: 100, concentration: 100, hpRegen: 100, mvRegen: 100, maRegen: 100,
+    id: 1005, slot: 'body', item: 'all-stats test plate mail', con: 100, str: 100, dex: 100, per: 100, min: 100, spi: 100, ac: -22, rent: 1200, damroll: 100, hitroll: 100, mitigation: 100, accuracy: 100, spellDam: 100, spellCrit: 100, spellRedux: 100, concentration: 100, hpRegen: 100, mvRegen: 100, maRegen: 100, align: 'GNE',
   },
 ];
 

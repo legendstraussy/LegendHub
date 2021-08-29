@@ -12,7 +12,7 @@ const useStyles = makeStyles({
     display: 'flex',
     justifyContent: 'center',
     fontSize: '14px',
-    width: 32,
+    width: 33,
   },
   hp: {
     color: '#FFD874',

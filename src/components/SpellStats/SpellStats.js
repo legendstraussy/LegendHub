@@ -13,7 +13,7 @@ const useStyles = makeStyles({
     display: 'flex',
     justifyContent: 'center',
     fontSize: '14px',
-    width: 32,
+    width: 31.5,
   },
 }, { name: 'Mui_Styles_SpellStats' });
 
