@@ -17,11 +17,11 @@ import maRegenIcon from '../../../public/maRegen.png';
 
 const useStyles = makeStyles({
   icon: {
-    position: 'relative !important',
+    position: 'unset !important',
+    paddingBottom: '2px !important',
     display: 'flex !important',
-    top: '-2px !important',
     width: '100% !important',
-    height: 'unset !important',
+    height: '100% !important',
     minWidth: 'unset !important',
     maxWidth: 'unset !important',
     minHeight: 'unset !important',
