@@ -4,13 +4,16 @@ import { makeStyles } from '@material-ui/styles';
 const useStyles = makeStyles({
   root: {
     display: 'flex',
+    justifyContent: 'center',
     fontFamily: 'inherit',
     fontWeight: 'bold',
   },
   stat: {
     color: '#A57BF1',
-    fontSize: '16px',
-    margin: '0 .5em',
+    display: 'flex',
+    justifyContent: 'center',
+    fontSize: '14px',
+    width: 31.5,
   },
 }, { name: 'Mui_Styles_SpellStats' });
 
@@ -21,7 +24,6 @@ const SpellStats = props => {
       spellDam,
       spellRedux,
       concentration,
-      // spellFail,
     },
   } = props;
   const classes = useStyles();
@@ -32,7 +34,6 @@ const SpellStats = props => {
       <span className={classes.stat}>{spellDam}</span>
       <span className={classes.stat}>{spellRedux}</span>
       <span className={classes.stat}>{concentration}</span>
-      {/* <span className={classes.stat}>{spellFail}</span> */}
     </div>
   );
 };

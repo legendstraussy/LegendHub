@@ -1,5 +1,5 @@
 import CharacterSelect from 'components/CharacterSelect/CharacterSelect';
-import HeathStats from 'components/HealthStats/HeathStats';
+import HeathStats from 'components/HealthStats/HealthStats';
 import BaseStats from 'components/BaseStats/BaseStats';
 import GenericStats from 'components/GenericStats/GenericStats';
 import MeleeStats from 'components/MeleeStats/MeleeStats';
@@ -26,9 +26,7 @@ const genericStats = {
 const meleeStats = {
   hitroll: -22,
   damroll: -32,
-  mitigation: 32,
-  parry: 10,
-  damcap: 20,
+  mitigation: 3,
 };
 
 const rangeStats = {
@@ -40,12 +38,11 @@ const spellStats = {
   spellDam: 85,
   spellRedux: 47,
   concentration: 30,
-  spellFail: 10,
 };
 
 const regenStats = {
-  hpRegen: 20,
-  mvRegen: 30,
+  hpRegen: 5,
+  mvRegen: 2,
   maRegen: 30,
 };
 
@@ -71,8 +68,8 @@ const CharacterMarquee = () => {
       <BaseStats stats={baseStats} />
       <GenericStats stats={genericStats} />
       <MeleeStats stats={meleeStats} />
-      <SpellStats stats={spellStats} />
       <RangeStats stats={rangeStats} />
+      <SpellStats stats={spellStats} />
       <RegenStats stats={regenStats} />
     </div>
   );

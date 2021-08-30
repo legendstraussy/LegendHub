@@ -4,23 +4,22 @@ import { makeStyles } from '@material-ui/styles';
 const useStyles = makeStyles({
   root: {
     display: 'flex',
-    fontFamily: 'open sans',
+    fontFamily: 'inherit',
   },
   stat: {
-    margin: '0 .75em',
+    margin: '0 .45em',
     display: 'flex',
     alignItems: 'baseline',
   },
   label: {
     textTransform: 'uppercase',
     margin: '0 .7em 0 0',
-    fontSize: '12px',
-    fontWeight: 800,
+    fontSize: '10px',
+    fontWeight: '600',
   },
   value: {
     color: '#00FF00',
-    fontSize: '16px',
-    fontWeight: 'bold',
+    fontSize: '14px',
   },
 }, { name: 'Mui_Styles_HealthStat' });
 

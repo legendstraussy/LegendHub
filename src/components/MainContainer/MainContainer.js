@@ -5,8 +5,8 @@ import { makeStyles } from '@material-ui/styles';
 
 const useStyles = makeStyles({
   root: {
-    margin: '.8em',
-    padding: '.4em',
+    margin: '.75em',
+    padding: '.55em',
     backgroundColor: 'rgba(27, 13, 24, .5)',
     display: 'flex',
     flexDirection: 'column',
@@ -17,28 +17,33 @@ const useStyles = makeStyles({
   container: {
     display: 'flex',
     flex: 1,
+    overflow: 'hidden',
   },
   left: {
-    flex: 5,
+    flex: 3.9,
+    margin: '.2em .35em .2em .2em',
     display: 'flex',
     flexDirection: 'column',
   },
   right: {
     display: 'flex',
+    flex: 1,
     flexDirection: 'column',
-    minWidth: '20%',
+    minWidth: '22%',
+    margin: '.2em .2em .2em .35em',
+    borderRadius: 5,
   },
   marquee: {
-    height: '42px',
-    margin: '.4em',
+    height: '36px',
+    margin: '0 0 .2em 0',
     display: 'flex',
   },
   main: {
-    margin: '.4em',
+    margin: '0 0 0 0',
     flex: 1,
   },
   details: {
-    margin: '.4em',
+    margin: '.25em .5em',
     flex: 1,
   },
 }, { name: 'Mui_Styles_MainContainer' });

@@ -4,13 +4,16 @@ import { makeStyles } from '@material-ui/styles';
 const useStyles = makeStyles({
   root: {
     display: 'flex',
+    justifyContent: 'center',
     fontFamily: 'inherit',
     fontWeight: 'bold',
   },
   stat: {
     color: '#31DBB9',
-    fontSize: '16px',
-    margin: '0 .5em',
+    display: 'flex',
+    justifyContent: 'center',
+    fontSize: '14px',
+    width: 32,
   },
 }, { name: 'Mui_Styles_RangeStats' });
 

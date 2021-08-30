@@ -4,17 +4,17 @@ import { makeStyles } from '@material-ui/styles';
 const useStyles = makeStyles({
   root: {
     display: 'flex',
+    justifyContent: 'center',
     fontFamily: 'inherit',
-    fontWeight: 'bold',
-    padding: '0 .3em',
+    fontWeight: 600,
+    marginLeft: 7,
   },
   stat: {
     color: '#DE2E2E',
-    fontSize: '16px',
-    width: '32px',
     display: 'flex',
-    alignItems: 'center',
     justifyContent: 'center',
+    fontSize: '14px',
+    width: 32,
   },
 }, { name: 'Mui_Styles_MeleeStats' });
 
@@ -24,8 +24,6 @@ const MeleeStats = props => {
       hitroll,
       damroll,
       mitigation,
-      // parry,
-      // damcap,
     },
   } = props;
   const classes = useStyles();
@@ -35,8 +33,6 @@ const MeleeStats = props => {
       <span className={classes.stat}>{hitroll}</span>
       <span className={classes.stat}>{damroll}</span>
       <span className={classes.stat}>{mitigation}</span>
-      {/* <span className={classes.stat}>{parry}</span>
-      <span className={classes.stat}>{damcap}</span> */}
     </div>
   );
 };

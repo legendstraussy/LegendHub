@@ -1,11 +1,21 @@
-import HealthStat from 'components/HealthStat/HeathStat';
+import HealthStat from 'components/HealthStat/HealthStat';
 import { makeStyles } from '@material-ui/styles';
 
 const useStyles = makeStyles({
   root: {
     display: 'flex',
     fontFamily: 'inherit',
-    lineHeight: '.5',
+    fontWeight: 600,
+  },
+  stat: {
+    display: 'flex',
+  },
+  label: {
+    textTransform: 'uppercase',
+    margin: '0 .75em',
+  },
+  value: {
+    color: '#00FF00',
   },
 }, { name: 'Mui_Styles_HealthStats' });
 

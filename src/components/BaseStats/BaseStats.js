@@ -5,57 +5,33 @@ const useStyles = makeStyles({
   root: {
     display: 'flex',
     fontFamily: 'inherit',
-    fontSize: '12px',
-    fontWeight: 'bold',
-    // width: '192px',
+    fontWeight: 600,
+    marginLeft: '.4em',
+  },
+  stat: {
+    fontSize: '14px',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: 32,
   },
   str: {
     color: '#DE2E2E',
-    display: 'flex',
-    justifyContent: 'center',
-    fontSize: '16px',
-    width: '32px',
-    margin: '0 .25em',
   },
   min: {
     color: '#A57BF1',
-    display: 'flex',
-    justifyContent: 'center',
-    fontSize: '16px',
-    width: '32px',
-    margin: '0 .25em',
   },
   dex: {
     color: '#2E94FA',
-    display: 'flex',
-    justifyContent: 'center',
-    fontSize: '16px',
-    width: '32px',
-    margin: '0 .25em',
   },
   con: {
     color: '#FFD874',
-    display: 'flex',
-    justifyContent: 'center',
-    fontSize: '16px',
-    width: '32px',
-    margin: '0 .25em',
   },
   per: {
     color: '#31DBB9',
-    display: 'flex',
-    justifyContent: 'center',
-    fontSize: '16px',
-    width: '32px',
-    margin: '0 .25em',
   },
   spi: {
     color: '#71DE71',
-    display: 'flex',
-    justifyContent: 'center',
-    fontSize: '16px',
-    width: '32px',
-    margin: '0 .25em',
   },
 }, { name: 'Mui_Styles_BaseStats' });
 
@@ -74,12 +50,12 @@ const BaseStats = props => {
 
   return (
     <div className={classes.root}>
-      <span className={classes.str}>{str}</span>
-      <span className={classes.min}>{min}</span>
-      <span className={classes.dex}>{dex}</span>
-      <span className={classes.con}>{con}</span>
-      <span className={classes.per}>{per}</span>
-      <span className={classes.spi}>{spi}</span>
+      <span className={`${classes.stat} ${classes.str}`}>{str}</span>
+      <span className={`${classes.stat} ${classes.min}`}>{min}</span>
+      <span className={`${classes.stat} ${classes.dex}`}>{dex}</span>
+      <span className={`${classes.stat} ${classes.con}`}>{con}</span>
+      <span className={`${classes.stat} ${classes.per}`}>{per}</span>
+      <span className={`${classes.stat} ${classes.spi}`}>{spi}</span>
     </div>
   );
 };

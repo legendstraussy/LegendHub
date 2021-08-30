@@ -4,13 +4,24 @@ import { makeStyles } from '@material-ui/styles';
 const useStyles = makeStyles({
   root: {
     display: 'flex',
+    justifyContent: 'center',
     fontFamily: 'inherit',
     fontWeight: 'bold',
   },
   stat: {
     color: '#FFF',
-    fontSize: '16px',
-    margin: '0 .5em',
+    display: 'flex',
+    justifyContent: 'center',
+    fontSize: '14px',
+  },
+  ac: {
+    width: 34,
+  },
+  align: {
+    width: 55,
+  },
+  rent: {
+    width: 30,
   },
 }, { name: 'Mui_Styles_GenericStats' });
 
@@ -26,9 +37,9 @@ const GenericStats = props => {
 
   return (
     <div className={classes.root}>
-      <span className={classes.stat}>{ac}</span>
-      <span className={classes.stat}>{align}</span>
-      <span className={classes.stat}>{rent}</span>
+      <span className={`${classes.stat} ${classes.ac}`}>{ac}</span>
+      <span className={`${classes.stat} ${classes.align}`}>{align}</span>
+      <span className={`${classes.stat} ${classes.rent}`}>{rent}</span>
     </div>
   );
 };
