@@ -13,16 +13,15 @@ const useStyles = makeStyles({
     display: 'flex',
     justifyContent: 'center',
     fontSize: '14px',
-    width: 40,
   },
   ac: {
-    width: 32,
+    width: 34,
   },
   align: {
-    width: 50,
+    width: 55,
   },
   rent: {
-    width: 38,
+    width: 30,
   },
 }, { name: 'Mui_Styles_GenericStats' });
 

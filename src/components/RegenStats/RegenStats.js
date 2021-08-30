@@ -12,16 +12,18 @@ const useStyles = makeStyles({
     display: 'flex',
     justifyContent: 'center',
     fontSize: '14px',
-    width: 33,
   },
   hp: {
     color: '#FFD874',
+    width: 34,
   },
   mv: {
     color: '#2E94FA',
+    width: 32,
   },
   ma: {
     color: '#A57BF1',
+    width: 34,
   },
 }, { name: 'Mui_Styles_RegenStats' });
 

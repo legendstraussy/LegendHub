@@ -17,8 +17,9 @@ import maRegenIcon from '../../../public/maRegen.png';
 
 const useStyles = makeStyles({
   icon: {
-    position: 'unset !important',
+    position: 'relative !important',
     display: 'flex !important',
+    top: '-2px !important',
     width: '100% !important',
     height: 'unset !important',
     minWidth: 'unset !important',
@@ -72,6 +73,8 @@ const useStyles = makeStyles({
       '& .MuiDataGrid-columnHeaderTitleContainer': {
         justifyContent: 'center',
       },
+      position: 'relative',
+      left: 4,
     },
     '& .MuiDataGrid-main': {
       position: 'unset !important',
@@ -95,12 +98,16 @@ const useStyles = makeStyles({
         textTransform: 'capitalize',
         fontStyle: 'italic',
         fontFamily: 'Open Sans',
+        position: 'relative',
+        left: 4,
       },
       '& [data-field=item]': {
         fontFamily: 'Open Sans',
         fontWeight: '100',
         fontSize: '14px',
         color: '#219AFF',
+        position: 'relative',
+        left: 4,
       },
       '& [data-field=str], & [data-field=damroll]': {
         borderLeft: '1px solid rgba(64, 51, 51, .75)',
@@ -111,7 +118,7 @@ const useStyles = makeStyles({
     },
     '& .MuiDataGrid-cell': {
       borderBottom: 'unset',
-      outline: 'none',
+      outline: 'none !important',
     },
     '& .MuiDataGrid-window': {
       overflowX: 'hidden !important',
@@ -130,6 +137,7 @@ const useStyles = makeStyles({
     '& .MuiDataGrid-columnHeaderWrapper': {
       height: '26px',
       backgroundColor: 'rgba(0, 0, 0, .5)',
+      position: 'relative',
       overflow: 'unset !important',
       cursor: 'default',
       borderRadius: '5px 5px 0 0',
@@ -138,16 +146,13 @@ const useStyles = makeStyles({
         textTransform: 'uppercase',
         cursor: 'default',
         padding: '6px 4px',
+        height: '26px',
+        left: 4,
       },
     },
     '& [data-field=rent]': {
-      fontSize: '10px',
-      textTransform: 'uppercase',
-      cursor: 'default',
-      position: 'relative',
-      top: 0,
-      left: 3,
-      height: 26,
+      left: 4,
+      height: '26px',
     },
     '& .MuiDataGrid-iconButtonContainer': {
       padding: 0,
@@ -386,7 +391,7 @@ const EquipmentList = () => {
     {
       field: 'rent',
       headerName: 'rent',
-      sortable: false,
+      sortable: true,
       width: 30,
       minWidth: 30,
     },
