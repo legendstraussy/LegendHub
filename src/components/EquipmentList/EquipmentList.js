@@ -178,7 +178,7 @@ const useStyles = makeStyles({
         position: 'absolute',
         right: 0,
         left: 0,
-        bottom: -13,
+        bottom: -7,
         top: -20,
         display: 'flex',
         alignItems: 'center',
