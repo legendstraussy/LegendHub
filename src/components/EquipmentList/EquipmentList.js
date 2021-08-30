@@ -93,7 +93,7 @@ const useStyles = makeStyles({
       alignItems: 'center',
       cursor: 'default',
       '& [data-field=slot]': {
-        fontSize: '12px',
+        fontSize: '14px',
         fontWeight: '100',
         textTransform: 'capitalize',
         fontStyle: 'italic',
