@@ -1,6 +1,7 @@
 import Toolbar from 'components/Toolbar/Toolbar';
 import CharacterMarquee from 'components/CharacterMarquee/CharacterMarquee';
 import EquipmentList from 'components/EquipmentList/EquipmentList';
+import DetailsTabs from 'components/DetailsTabs/DetailsTabs';
 import { makeStyles } from '@material-ui/styles';
 
 const useStyles = makeStyles({
@@ -29,7 +30,7 @@ const useStyles = makeStyles({
     display: 'flex',
     flex: 1,
     flexDirection: 'column',
-    minWidth: '22%',
+    minWidth: '195px',
     margin: '.2em .2em .2em .35em',
     borderRadius: 5,
   },
@@ -65,7 +66,7 @@ const MainContainer = () => {
             </div>
           </div>
           <div className={classes.right}>
-            <div className={classes.details}>details</div>
+            <DetailsTabs />
           </div>
         </div>
       </div>
