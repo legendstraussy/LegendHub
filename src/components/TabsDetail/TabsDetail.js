@@ -4,6 +4,7 @@ const useStyles = makeStyles({
   root: {
     display: 'flex',
     flex: 1,
+    background: 'rgba(0, 0, 0, .7)',
   },
 }, { name: 'Mui_Styles_TabsDetail' });
 

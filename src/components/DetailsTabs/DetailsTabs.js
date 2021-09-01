@@ -1,22 +1,20 @@
 import { useState } from 'react';
 import Tabs from 'components/Tabs/Tabs';
 import { makeStyles } from '@material-ui/styles';
+import characterDetailsIcon from '../../../public/totem-head.png';
+import itemDetailsIcon from '../../../public/swords-emblem.png';
 
 const useStyles = makeStyles({
   root: {
     position: 'relative',
-    top: 0,
-    marginTop: 10,
     display: 'flex',
     flex: 1,
-    backgroundColor: 'rgba(0, 0, 0, .5)',
-    borderRadius: '5px 5px 0 0',
   },
 }, { name: 'Mui_Styles_DetailsTabs' });
 
 const tabs = [
-  { name: 'tab A', component: <div>tab A!</div> },
-  { name: 'tab B', component: <div>tab B!</div> },
+  { name: 'character', icon: characterDetailsIcon, component: <div>tab A!</div> },
+  { name: 'item', icon: itemDetailsIcon, component: <div>tab B!</div> },
 ];
 
 const DetailsTabs = () => {
