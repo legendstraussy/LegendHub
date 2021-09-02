@@ -13,7 +13,7 @@ const useStyles = makeStyles({
     marginTop: '-10px',
     height: '35px',
     display: 'flex',
-    justifyContent: 'space-around',
+    justifyContent: 'flex-start',
   },
   backTab: {
     position: 'relative',
