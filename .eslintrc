@@ -9,6 +9,8 @@
     },
   },
   "rules": {
+    "no-confusing-arrow": "off",
+    "jsx-a11y/click-events-have-key-events": "off",
     "react/jsx-props-no-spreading": "off",
     "arrow-parens": "off",
     "linebreak-style": ["error", "windows"],    
