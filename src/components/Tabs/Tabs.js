@@ -7,6 +7,7 @@ const useStyles = makeStyles({
     display: 'flex',
     flexDirection: 'column',
     flex: 1,
+    overflow: 'hidden',
   },
   tabsHeader: {
     position: 'relative',
