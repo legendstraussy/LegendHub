@@ -1,6 +1,16 @@
 import { createTheme } from '@material-ui/core/styles';
 
 const theme = createTheme({
+  palette: {
+    stats: {
+      str: '#DE2E2E',
+      min: '#A57BF1',
+      dex: '#6699CC',
+      con: '#FFD874',
+      per: '#31DBB9',
+      spi: '#71DE71',
+    },
+  },
   overrides: {
     MuiPaper: {
       root: {

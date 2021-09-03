@@ -1,16 +1,13 @@
-// import Image from 'next/image';
+import CharStats from 'components/CharStats/CharStats';
+import CharQuestModifiers from 'components/CharElectiveModifiers/CharQuestModifiers';
+import CharElectiveModifiers from 'components/CharQuestModifiers/CharElectiveModifiers';
 import { makeStyles } from '@material-ui/styles';
 
 const useStyles = makeStyles({
   root: {
     display: 'flex',
     flex: 1,
-    overflow: 'hidden',
-  },
-  container: {
-    display: 'flex',
-    flex: 1,
-    overflow: 'auto',
+    flexDirection: 'column',
   },
 }, { name: 'Mui_Styles_CharacterDetails' });
 
@@ -19,9 +16,9 @@ const CharacterDetails = () => {
 
   return (
     <div className={classes.root}>
-      <div className={classes.container}>
-        
-      </div>
+      <CharStats />
+      <CharQuestModifiers />
+      <CharElectiveModifiers />
     </div>
   );
 };
