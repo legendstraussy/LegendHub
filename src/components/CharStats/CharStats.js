@@ -8,7 +8,6 @@ const useStyles = makeStyles({
   root: {
     display: 'flex',
     flexDirection: 'column',
-    flex: 1,
     '& section': {
       margin: '0 0 1em 0',
     },

@@ -7,17 +7,18 @@ const useStyles = makeStyles({
     alignItems: 'baseline',
     justifyContent: 'flex-end',
     marginTop: '-5px',
+    fontFamily: 'Titillium Web',
   },
   label: {
     fontFamily: 'inherit',
     fontSize: '17px',
-    fontWeight: 'bold',
+    fontWeight: 600,
     textTransform: 'uppercase',
   },
   version: {
     fontFamily: 'inherit',
     fontSize: '14px',
-    fontWeight: 'unset',
+    fontWeight: 300,
   },
 }, { name: 'Mui_Styles_HubVersion' });
 

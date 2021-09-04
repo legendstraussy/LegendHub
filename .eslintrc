@@ -9,6 +9,7 @@
     },
   },
   "rules": {
+    "react/no-array-index-key": "off",
     "react/destructuring-assignment": "off",
     "react/require-default-props": "off",
     "no-confusing-arrow": "off",

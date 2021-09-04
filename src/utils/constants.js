@@ -27,6 +27,21 @@ export const stats = {
   },
 };
 
+export const modifiers = {
+  potion: {
+    color: theme.palette.stats.spi,
+  },
+  spell: {
+    color: theme.palette.stats.min,
+  },
+  skill: {
+    color: theme.palette.stats.con,
+  },
+  ability: {
+    color: theme.palette.stats.dex,
+  },
+};
+
 export const fiveThreeQuests = [
   {
     name: 'bear',
