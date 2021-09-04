@@ -11,7 +11,7 @@ const useStyles = makeStyles({
     background: '#222222',
     border: '1px solid rgba(105, 85, 85, .75)',
     borderRadius: '5px',
-    padding: '2px',
+    padding: '.5px',
     '&:active': {
       background: 'rgba(46, 40, 40, 0.25)',
     },
@@ -28,11 +28,11 @@ const useStyles = makeStyles({
 }, { name: 'Mui_Styles_IconButton' });
 
 const IconButton = props => {
-  const { icon } = props;
+  const { icon, onClick } = props;
   const classes = useStyles();
 
   return (
-    <div className={classes.root}>
+    <div role="button" tabIndex={0} className={classes.root} onClick={onClick}>
       <Image src={icon} alt="" className={classes.icon} />
     </div>
   );

@@ -30,7 +30,8 @@ const useStyles = makeStyles({
   },
 }, { name: 'Mui_Styles_CharStats' });
 
-const CharStats = () => {
+const CharStats = props => {
+  const { onFinalClick } = props;
   const classes = useStyles();
 
   return (
@@ -40,7 +41,7 @@ const CharStats = () => {
           <div className={classes.label}>stats</div>
           <div className={classes.toolbar}>
             <div className={classes.tool}>
-              <IconButton icon={finalStatsIcon} />
+              <IconButton onClick={onFinalClick} icon={finalStatsIcon} />
             </div>
             <div className={classes.tool}>
               <IconButton icon={printStatsIcon} />
