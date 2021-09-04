@@ -1,6 +1,6 @@
 import CharStats from 'components/CharStats/CharStats';
-import CharQuestModifiers from 'components/CharElectiveModifiers/CharQuestModifiers';
-import CharElectiveModifiers from 'components/CharQuestModifiers/CharElectiveModifiers';
+import CharQuestModifiers from 'components/CharQuestModifiers/CharQuestModifiers';
+import CharElectiveModifiers from 'components/CharElectiveModifiers/CharElectiveModifiers';
 import { makeStyles } from '@material-ui/styles';
 
 const useStyles = makeStyles({
