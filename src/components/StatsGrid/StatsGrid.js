@@ -108,7 +108,7 @@ const StatsGrid = () => {
       </Grid>
       {stats.map(stat => (
         <Grid key={stat.name} container className={classes.grid}>
-          <Grid item xs={2} className={classes.label}>{stat.name}</Grid>
+          <Grid item xs={2} className={classes.label} /*style={{ color: theme.palette.stats[stat.name] }}*/ >{stat.name}</Grid>
           <Grid item xs={2} className={classes.label}>
             <StatInput stat={stat.raw} />
           </Grid>

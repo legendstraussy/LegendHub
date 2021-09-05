@@ -19,7 +19,8 @@ const useStyles = makeStyles({
   },
   label: {
     color: '#FFD874',
-    fontSize: '12px',
+    fontSize: '14px',
+    fontWeight: 600,
     textTransform: 'uppercase',
   },
   toolbar: {
@@ -41,10 +42,10 @@ const CharStats = props => {
           <div className={classes.label}>stats</div>
           <div className={classes.toolbar}>
             <div className={classes.tool}>
-              <IconButton onClick={onFinalClick} icon={finalStatsIcon} />
+              <IconButton icon={printStatsIcon} />
             </div>
             <div className={classes.tool}>
-              <IconButton icon={printStatsIcon} />
+              <IconButton onClick={onFinalClick} icon={finalStatsIcon} />
             </div>
           </div>
         </header>

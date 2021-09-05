@@ -27,17 +27,21 @@ const useStyles = makeStyles({
 }, { name: 'Mui_Styles_HubChip' });
 
 const HubChip = props => {
-  const { label = 'new chip', onDelete } = props;
+  const { label = 'new chip', onDelete, readOnly = false } = props;
   const classes = useStyles(props);
 
   return (
     <Chip
-      className={classes.root}
       avatar={(
-        <Avatar onClick={onDelete} className={classes.avatar}>
-          <Remove className={classes.icon} />
-        </Avatar>
+        <>
+          {!readOnly 
+          ? <Avatar onClick={onDelete} className={classes.avatar}>
+              <Remove className={classes.icon} />
+            </Avatar>
+          : null }
+        </>
       )}
+      className={classes.root}
       label={label}
       variant="outlined"
     />
@@ -47,6 +51,7 @@ const HubChip = props => {
 HubChip.propTypes = {
   label: PropTypes.string,
   onDelete: PropTypes.func.isRequired,
+  readOnly: PropTypes.bool,
 };
 
 export default HubChip;

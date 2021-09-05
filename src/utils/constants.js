@@ -40,6 +40,15 @@ export const modifiers = {
   ability: {
     color: theme.palette.stats.dex,
   },
+  resistance: {
+    color: theme.palette.stats.dex,
+  },
+  immunity: {
+    color: theme.palette.stats.con,
+  },
+  susceptibility: {
+    color: theme.palette.stats.str,
+  }
 };
 
 export const fiveThreeQuests = [

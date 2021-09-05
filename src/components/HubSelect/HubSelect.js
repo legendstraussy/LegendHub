@@ -15,6 +15,10 @@ const useStyles = makeStyles({
     borderRadius: '5px',
     padding: '0 10px',
     '& .MuiSelect-select': {
+      position: 'relative',
+      left: '-10px',
+      paddingLeft: '10px',
+      marginRight: '-20px',
       cursor: 'default',
     },
     '&:before, &:after': {

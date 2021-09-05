@@ -20,7 +20,8 @@ const useStyles = makeStyles({
   },
   label: {
     color: '#FFD874',
-    fontSize: '12px',
+    fontSize: '14px',
+    fontWeight: 600,
     textTransform: 'uppercase',
   },
   field: {

@@ -23,11 +23,12 @@ const useStyles = makeStyles({
   label: {
     color: '#FFD874',
     fontSize: '14px',
+    fontWeight: 600,
     textTransform: 'uppercase',
   },
   toolbar: {
     display: 'flex',
-    justifyContent: 'space-between',
+    justifyContent: 'flex-start',
   },
   tool: {
     margin: '0 .5em',
