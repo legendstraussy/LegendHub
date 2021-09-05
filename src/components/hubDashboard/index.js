@@ -1,6 +1,3 @@
-import Toolbar from 'components/toolbar';
-import HubBackground from 'components/background';
-import NavBar from 'components/hubNavbar/hubNavBar';
 import CharacterMarquee from 'components/characterMarquee';
 import EquipmentList from 'components/equipmentList';
 import DetailsTabs from 'components/characterDetails';
@@ -43,23 +40,19 @@ const MainContainer = () => {
   const classes = useStyles();
 
   return (
-    <HubBackground>
-      <NavBar />
-      <Toolbar />
-      <div className={classes.root}>
-        <div className={classes.left}>
-          <div>
-            <CharacterMarquee />
-          </div>
-          <div className={classes.main}>
-            <EquipmentList />
-          </div>
+    <div className={classes.root}>
+      <div className={classes.left}>
+        <div>
+          <CharacterMarquee />
         </div>
-        <div className={classes.right}>
-          <DetailsTabs />
+        <div className={classes.main}>
+          <EquipmentList />
         </div>
       </div>
-    </HubBackground>
+      <div className={classes.right}>
+        <DetailsTabs />
+      </div>
+    </div>
   );
 };
 

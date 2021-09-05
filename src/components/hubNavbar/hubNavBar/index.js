@@ -1,6 +1,6 @@
 import { makeStyles } from '@material-ui/styles';
 import HubLogo from 'components/common/hubLogo';
-import NavItem from 'components/hubNavbar/hubNavItem';
+import NavLink from '../hubNavLink';
 
 const useStyles = makeStyles({
   root: {
@@ -19,8 +19,8 @@ const NavBar = () => {
   return (
     <nav className={classes.root}>
       <HubLogo />
-      <NavItem label="Builder" />
-      <NavItem label="Items" />
+      <NavLink label="builder" link="/" />
+      <NavLink label="items" link="/items" />
     </nav>
   );
 };
