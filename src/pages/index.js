@@ -1,9 +1,9 @@
-import Hub from 'components/Hub/Hub';
+import Dashboard from 'components/hubDashboard';
 
-const Main = () => (
+const Hub = () => (
   <div style={{ display: 'flex', flexDirection: 'column', flex: 1 }}>
-    <Hub />
+    <Dashboard />
   </div>
 );
 
-export default Main;
+export default Hub;
