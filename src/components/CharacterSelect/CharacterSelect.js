@@ -22,6 +22,7 @@ const useStyles = makeStyles({
   },
   divider: {
     backgroundColor: 'rgba(105, 85, 85, .75)',
+    marginRight: '.5em',
   },
 }, { name: 'Mui_Styles_Select' });
 

@@ -100,6 +100,7 @@ const useStyles = makeStyles({
         fontFamily: 'Open Sans',
         position: 'relative',
         left: 4,
+        padding: '0 6px',
       },
       '& [data-field=item]': {
         fontFamily: 'Open Sans',
@@ -108,6 +109,7 @@ const useStyles = makeStyles({
         color: '#219AFF',
         position: 'relative',
         left: 4,
+        padding: '0 6px',
       },
       '& [data-field=str], & [data-field=damroll]': {
         borderLeft: '1px solid rgba(64, 51, 51, .75)',
@@ -145,7 +147,7 @@ const useStyles = makeStyles({
         fontSize: '10px',
         textTransform: 'uppercase',
         cursor: 'default',
-        padding: '6px 4px',
+        padding: '6px 0px',
         height: '26px',
         left: 4,
       },
@@ -272,6 +274,12 @@ const rows = [
   },
   {
     id: 1022, slot: 'arm', item: 'a cool con ring', con: 5, ac: -7, rent: 12000, mitigation: 3,
+  },
+  {
+    id: 1023, slot: 'amulet', item: 'a cool con ring', con: 5, ac: -7, rent: 12000, mitigation: 3,
+  },
+  {
+    id: 1024, slot: 'aux', item: 'a cool con ring', con: 5, ac: -7, rent: 12000, mitigation: 3,
   },
 ];
 

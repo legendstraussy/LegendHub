@@ -48,6 +48,8 @@ const regenStats = {
 
 const useStyles = makeStyles({
   root: {
+    height: '36px',
+    margin: '0 0 .2em 0',
     padding: '.5em',
     display: 'flex',
     alignItems: 'center',

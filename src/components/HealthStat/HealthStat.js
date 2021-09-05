@@ -7,14 +7,14 @@ const useStyles = makeStyles({
     fontFamily: 'inherit',
   },
   stat: {
-    margin: '0 .45em',
+    marginRight: '.75em',
     display: 'flex',
     alignItems: 'baseline',
   },
   label: {
     textTransform: 'uppercase',
     margin: '0 .7em 0 0',
-    fontSize: '10px',
+    fontSize: props => props.labelSize ? props.labelSize : '10px',
     fontWeight: '600',
   },
   value: {
@@ -25,7 +25,7 @@ const useStyles = makeStyles({
 
 const HealthStat = props => {
   const { label, stat } = props;
-  const classes = useStyles();
+  const classes = useStyles(props);
 
   return (
     <div className={classes.stat}>

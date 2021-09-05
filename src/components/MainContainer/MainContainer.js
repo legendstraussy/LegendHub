@@ -10,42 +10,30 @@ const useStyles = makeStyles({
     padding: '.55em',
     backgroundColor: 'rgba(27, 13, 24, .5)',
     display: 'flex',
-    flexDirection: 'column',
     flex: 1,
     color: '#fff',
-    boxShadow: 'rgb(0 0 0 / 20%) 0px 2px 1px -1px, rgb(0 0 0 / 14%) 0px 1px 1px 0px, rgb(0 0 0 / 12%) 0px 1px 3px 0px',
-  },
-  container: {
-    display: 'flex',
-    flex: 1,
     overflow: 'hidden',
+    boxShadow: 'rgb(0 0 0 / 20%) 0px 2px 1px -1px, rgb(0 0 0 / 14%) 0px 1px 1px 0px, rgb(0 0 0 / 12%) 0px 1px 3px 0px',
   },
   left: {
     flex: 3.9,
     margin: '.2em .35em .2em .2em',
     display: 'flex',
     flexDirection: 'column',
+    boxShadow: 'rgb(0 0 0 / 20%) 0px 2px 1px -1px, rgb(0 0 0 / 14%) 0px 1px 1px 0px, rgb(0 0 0 / 12%) 0px 1px 3px 0px',
   },
   right: {
     display: 'flex',
     flex: 1,
     flexDirection: 'column',
-    minWidth: '195px',
     margin: '.2em .2em .2em .35em',
-    borderRadius: 5,
-  },
-  marquee: {
-    height: '36px',
-    margin: '0 0 .2em 0',
-    display: 'flex',
+    overflow: 'hidden',
+    boxShadow: 'rgb(0 0 0 / 20%) 0px 2px 1px -1px, rgb(0 0 0 / 14%) 0px 1px 1px 0px, rgb(0 0 0 / 12%) 0px 1px 3px 0px',
   },
   main: {
     margin: '0 0 0 0',
     flex: 1,
-  },
-  details: {
-    margin: '.25em .5em',
-    flex: 1,
+    boxShadow: 'rgb(0 0 0 / 20%) 0px 2px 1px -1px, rgb(0 0 0 / 14%) 0px 1px 1px 0px, rgb(0 0 0 / 12%) 0px 1px 3px 0px',
   },
 }, { name: 'Mui_Styles_MainContainer' });
 
@@ -56,18 +44,16 @@ const MainContainer = () => {
     <>
       <Toolbar />
       <div className={classes.root}>
-        <div className={classes.container}>
-          <div className={classes.left}>
-            <div className={classes.marquee}>
-              <CharacterMarquee />
-            </div>
-            <div className={classes.main}>
-              <EquipmentList />
-            </div>
+        <div className={classes.left}>
+          <div>
+            <CharacterMarquee />
           </div>
-          <div className={classes.right}>
-            <DetailsTabs />
+          <div className={classes.main}>
+            <EquipmentList />
           </div>
+        </div>
+        <div className={classes.right}>
+          <DetailsTabs />
         </div>
       </div>
     </>

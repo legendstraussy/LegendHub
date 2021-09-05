@@ -14,9 +14,9 @@ const useStyles = makeStyles({
     '&.warning': {
       backgroundColor: '#DE2E2E',
     },
-    fontFamily: 'inherit',
-    fontSize: '10px',
-    fontWeight: 'bolder',
+    fontFamily: 'Titillium Web',
+    fontSize: '12px',
+    fontWeight: 500,
     color: '#fff',
     padding: '.6em 2em',
     boxShadow: 'rgb(0 0 0 / 20%) 0px 2px 1px -1px, rgb(0 0 0 / 14%) 0px 1px 1px 0px, rgb(0 0 0 / 12%) 0px 1px 3px 0px',

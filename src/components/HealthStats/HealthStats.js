@@ -10,23 +10,17 @@ const useStyles = makeStyles({
   stat: {
     display: 'flex',
   },
-  label: {
-    textTransform: 'uppercase',
-    margin: '0 .75em',
-  },
-  value: {
-    color: '#00FF00',
-  },
 }, { name: 'Mui_Styles_HealthStats' });
 
-const HealthStats = () => {
+const HealthStats = props => {
+  const { labelSize } = props;
   const classes = useStyles();
 
   return (
     <div className={classes.root}>
-      <HealthStat label="hp" stat={750} />
-      <HealthStat label="mv" stat={827} />
-      <HealthStat label="ma" stat={342} />
+      <HealthStat label="hp" labelSize={labelSize} stat={750} />
+      <HealthStat label="mv" labelSize={labelSize} stat={827} />
+      <HealthStat label="ma" labelSize={labelSize} stat={342} />
     </div>
   );
 };
