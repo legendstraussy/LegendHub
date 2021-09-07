@@ -24,15 +24,17 @@ import maRegenIcon from '../../../public/maRegen.png';
 
 const useStyles = makeStyles({
   root: {
-    height: 'calc(100% - 10px)',
     marginTop: 10,
     background: 'rgba(0, 0, 0, .5)',
     borderRadius: '5px 5px 0 0',
   },
   table: {
     // height: rows => rows?.length < 15 ? 'inherit' : 'unset',
+    // background: 'rgba(0, 0, 0, .5)',
   },
   thead: {
+    position: 'sticky',
+    top: 0,
     // background: 'rgba(0, 0, 0, .5)',
     fontFamily: 'Open Sans',
     '& .MuiTableCell-head': {
@@ -47,7 +49,7 @@ const useStyles = makeStyles({
     },
   },
   tbody: {
-    // background: 'rgba(0, 0, 0, .5)',
+    background: 'rgba(0, 0, 0, .5)',
     '& .MuiTableRow-root': {
       height: '36px !important',
     },
@@ -64,6 +66,29 @@ const useStyles = makeStyles({
 
 const items = [
   { id: 1001, slot: 'finger', name: 'a polished hessonite garnet ring', rent: 1895, con: 5, ac: -7, mv: -40, spellCrit: 2, spellDam: 2 },
+  { id: 1002, slot: 'arm', name: 'white shield of the Holy', rent: 1900, min: 2, dex: 3, ac: -17, mvRegen: 10 },
+  { id: 1002, slot: 'arm', name: 'white shield of the Holy', rent: 1900, min: 2, dex: 3, ac: -17, mvRegen: 10 },
+  { id: 1002, slot: 'arm', name: 'white shield of the Holy', rent: 1900, min: 2, dex: 3, ac: -17, mvRegen: 10 },
+  { id: 1002, slot: 'arm', name: 'white shield of the Holy', rent: 1900, min: 2, dex: 3, ac: -17, mvRegen: 10 },
+  { id: 1002, slot: 'arm', name: 'white shield of the Holy', rent: 1900, min: 2, dex: 3, ac: -17, mvRegen: 10 },
+  { id: 1002, slot: 'arm', name: 'white shield of the Holy', rent: 1900, min: 2, dex: 3, ac: -17, mvRegen: 10 },
+  { id: 1002, slot: 'arm', name: 'white shield of the Holy', rent: 1900, min: 2, dex: 3, ac: -17, mvRegen: 10 },
+  { id: 1002, slot: 'arm', name: 'white shield of the Holy', rent: 1900, min: 2, dex: 3, ac: -17, mvRegen: 10 },
+  { id: 1002, slot: 'arm', name: 'white shield of the Holy', rent: 1900, min: 2, dex: 3, ac: -17, mvRegen: 10 },
+  { id: 1002, slot: 'arm', name: 'white shield of the Holy', rent: 1900, min: 2, dex: 3, ac: -17, mvRegen: 10 },
+  { id: 1002, slot: 'arm', name: 'white shield of the Holy', rent: 1900, min: 2, dex: 3, ac: -17, mvRegen: 10 },
+  { id: 1002, slot: 'arm', name: 'white shield of the Holy', rent: 1900, min: 2, dex: 3, ac: -17, mvRegen: 10 },
+  { id: 1002, slot: 'arm', name: 'white shield of the Holy', rent: 1900, min: 2, dex: 3, ac: -17, mvRegen: 10 },
+  { id: 1002, slot: 'arm', name: 'white shield of the Holy', rent: 1900, min: 2, dex: 3, ac: -17, mvRegen: 10 },
+  { id: 1002, slot: 'arm', name: 'white shield of the Holy', rent: 1900, min: 2, dex: 3, ac: -17, mvRegen: 10 },
+  { id: 1002, slot: 'arm', name: 'white shield of the Holy', rent: 1900, min: 2, dex: 3, ac: -17, mvRegen: 10 },
+  { id: 1002, slot: 'arm', name: 'white shield of the Holy', rent: 1900, min: 2, dex: 3, ac: -17, mvRegen: 10 },
+  { id: 1002, slot: 'arm', name: 'white shield of the Holy', rent: 1900, min: 2, dex: 3, ac: -17, mvRegen: 10 },
+  { id: 1002, slot: 'arm', name: 'white shield of the Holy', rent: 1900, min: 2, dex: 3, ac: -17, mvRegen: 10 },
+  { id: 1002, slot: 'arm', name: 'white shield of the Holy', rent: 1900, min: 2, dex: 3, ac: -17, mvRegen: 10 },
+  { id: 1002, slot: 'arm', name: 'white shield of the Holy', rent: 1900, min: 2, dex: 3, ac: -17, mvRegen: 10 },
+  { id: 1002, slot: 'arm', name: 'white shield of the Holy', rent: 1900, min: 2, dex: 3, ac: -17, mvRegen: 10 },
+  { id: 1002, slot: 'arm', name: 'white shield of the Holy', rent: 1900, min: 2, dex: 3, ac: -17, mvRegen: 10 },
   { id: 1002, slot: 'arm', name: 'white shield of the Holy', rent: 1900, min: 2, dex: 3, ac: -17, mvRegen: 10 }
 ]
 
