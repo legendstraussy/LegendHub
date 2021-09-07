@@ -14,7 +14,7 @@ const useStyles = makeStyles({
     display: 'flex',
     width: 18,
     height: 18,
-    boxShadow: 'inset 0 0 0 1px rgba(16,22,26,.2), inset 0 -1px 0 rgba(16,22,26,.1)',
+    // boxShadow: 'inset 0 0 0 1px rgba(16,22,26,.2), inset 0 -1px 0 rgba(16,22,26,.1)',
     backgroundColor: '#222',
     border: '1px solid rgba(105, 85, 85, .75)',
     'input:hover ~ &': {
