@@ -1,4 +1,4 @@
-import { DataGrid } from '@material-ui/data-grid';
+import { DataGrid } from '@mui/x-data-grid';
 import Image from 'next/image';
 import { makeStyles } from '@material-ui/styles';
 import strIcon from '../../../public/winged-sword.png';
@@ -208,83 +208,82 @@ const useStyles = makeStyles({
   },
 }, { name: 'Mui_Styles_EquipmentList' });
 
-const rows = [
-  {
-    id: 1001, slot: 'finger', item: 'a polished hessonite garnet ring', min: -15, align: 'GN',
-  },
-  {
-    id: 1002, slot: 'finger', item: 'a cool con ring', con: 5, ac: -7, rent: 1200, str: 10,
-  },
-  {
-    id: 1003, slot: 'neck', item: 'a cool con ring', con: 5, ac: -7, rent: 1200, damroll: 2, hitroll: 1,
-  },
-  {
-    id: 1004, slot: 'neck', item: 'a cool con ring', con: 5, ac: -7, rent: 12000, mitigation: 3,
-  },
-  {
-    id: 1005, slot: 'body', item: 'all-stats test plate mail', con: 100, str: 100, dex: 100, per: 100, min: 100, spi: 100, ac: -22, rent: 1200, damroll: 100, hitroll: 100, mitigation: 100, accuracy: 100, spellDam: 100, spellCrit: 100, spellRedux: 100, concentration: 100, hpRegen: 100, mvRegen: 100, maRegen: 100, align: 'GNE',
-  },
-  {
-    id: 1006, slot: 'head', item: 'a cool con ring', con: 5, ac: -7, rent: 12000, mitigation: 3,
-  },
-  {
-    id: 1007, slot: 'face', item: 'a cool con ring', con: 5, ac: -7, rent: 12000, mitigation: 3,
-  },
-  {
-    id: 1008, slot: 'legs', item: 'a cool con ring', con: 5, ac: -7, rent: 12000, mitigation: 3,
-  },
-  {
-    id: 1009, slot: 'feet', item: 'a cool con ring', con: 5, ac: -7, rent: 12000, mitigation: 3,
-  },
-  {
-    id: 1010, slot: 'hands', item: 'a cool con ring', con: 5, ac: -7, rent: 12000, mitigation: 3,
-  },
-  {
-    id: 1011, slot: 'arms', item: 'a cool con ring', con: 5, ac: -7, rent: 12000, mitigation: 3,
-  },
-  {
-    id: 1012, slot: 'about', item: 'a cool con ring', con: 5, ac: -7, rent: 12000, mitigation: 3,
-  },
-  {
-    id: 1013, slot: 'waist', item: 'a cool con ring', con: 5, ac: -7, rent: 12000, mitigation: 3,
-  },
-  {
-    id: 1014, slot: 'wrist', item: 'a cool con ring', con: 5, ac: -7, rent: 12000, mitigation: 3,
-  },
-  {
-    id: 1015, slot: 'wrist', item: 'a cool con ring', con: 5, ac: -7, rent: 12000, mitigation: 3,
-  },
-  {
-    id: 1016, slot: 'wield', item: 'a cool con ring', con: 5, ac: -7, rent: 12000, mitigation: 3,
-  },
-  {
-    id: 1017, slot: 'hold', item: 'a cool con ring', con: 5, ac: -7, rent: 12000, mitigation: 3,
-  },
-  {
-    id: 1018, slot: 'hold', item: 'a cool con ring', con: 5, ac: -7, rent: 12000, mitigation: 3,
-  },
-  {
-    id: 1019, slot: 'hold', item: 'a cool con ring', con: 5, ac: -7, rent: 12000, mitigation: 3,
-  },
-  {
-    id: 1020, slot: 'ear', item: 'a cool con ring', con: 5, ac: -7, rent: 12000, mitigation: 3,
-  },
-  {
-    id: 1021, slot: 'ear', item: 'a cool con ring', con: 5, ac: -7, rent: 12000, mitigation: 3,
-  },
-  {
-    id: 1022, slot: 'arm', item: 'a cool con ring', con: 5, ac: -7, rent: 12000, mitigation: 3,
-  },
-  {
-    id: 1023, slot: 'amulet', item: 'a cool con ring', con: 5, ac: -7, rent: 12000, mitigation: 3,
-  },
-  {
-    id: 1024, slot: 'aux', item: 'a cool con ring', con: 5, ac: -7, rent: 12000, mitigation: 3,
-  },
-];
-
 const EquipmentList = () => {
   const classes = useStyles();
+  const rows = [
+    {
+      id: 1001, slot: 'finger', item: 'a polished hessonite garnet ring', min: -15, align: 'GN',
+    },
+    {
+      id: 1002, slot: 'finger', item: 'a cool con ring', con: 5, ac: -7, rent: 1200, str: 10,
+    },
+    {
+      id: 1003, slot: 'neck', item: 'a cool con ring', con: 5, ac: -7, rent: 1200, damroll: 2, hitroll: 1,
+    },
+    {
+      id: 1004, slot: 'neck', item: 'a cool con ring', con: 5, ac: -7, rent: 12000, mitigation: 3,
+    },
+    {
+      id: 1005, slot: 'body', item: 'all-stats test plate mail', con: 100, str: 100, dex: 100, per: 100, min: 100, spi: 100, ac: -22, rent: 3422, damroll: 100, hitroll: 100, mitigation: 100, accuracy: 100, spellDam: 100, spellCrit: 100, spellRedux: 100, concentration: 100, hpRegen: 100, mvRegen: 100, maRegen: 100, align: 'GNE',
+    },
+    {
+      id: 1006, slot: 'head', item: 'a cool con ring', con: 5, ac: -7, rent: 12000, mitigation: 3,
+    },
+    {
+      id: 1007, slot: 'face', item: 'a cool con ring', con: 5, ac: -7, rent: 12000, mitigation: 3,
+    },
+    {
+      id: 1008, slot: 'legs', item: 'a cool con ring', con: 5, ac: -7, rent: 12000, mitigation: 3,
+    },
+    {
+      id: 1009, slot: 'feet', item: 'a cool con ring', con: 5, ac: -7, rent: 12000, mitigation: 3,
+    },
+    {
+      id: 1010, slot: 'hands', item: 'a cool con ring', con: 5, ac: -7, rent: 12000, mitigation: 3,
+    },
+    {
+      id: 1011, slot: 'arms', item: 'a cool con ring', con: 5, ac: -7, rent: 12000, mitigation: 3,
+    },
+    {
+      id: 1012, slot: 'about', item: 'a cool con ring', con: 5, ac: -7, rent: 12000, mitigation: 3,
+    },
+    {
+      id: 1013, slot: 'waist', item: 'a cool con ring', con: 5, ac: -7, rent: 12000, mitigation: 3,
+    },
+    {
+      id: 1014, slot: 'wrist', item: 'a cool con ring', con: 5, ac: -7, rent: 12000, mitigation: 3,
+    },
+    {
+      id: 1015, slot: 'wrist', item: 'a cool con ring', con: 5, ac: -7, rent: 12000, mitigation: 3,
+    },
+    {
+      id: 1016, slot: 'wield', item: 'a cool con ring', con: 5, ac: -7, rent: 12000, mitigation: 3,
+    },
+    {
+      id: 1017, slot: 'hold', item: 'a cool con ring', con: 5, ac: -7, rent: 12000, mitigation: 3,
+    },
+    {
+      id: 1018, slot: 'hold', item: 'a cool con ring', con: 5, ac: -7, rent: 12000, mitigation: 3,
+    },
+    {
+      id: 1019, slot: 'hold', item: 'a cool con ring', con: 5, ac: -7, rent: 12000, mitigation: 3,
+    },
+    {
+      id: 1020, slot: 'ear', item: 'a cool con ring', con: 5, ac: -7, rent: 12000, mitigation: 3,
+    },
+    {
+      id: 1021, slot: 'ear', item: 'a cool con ring', con: 5, ac: -7, rent: 12000, mitigation: 3,
+    },
+    {
+      id: 1022, slot: 'arm', item: 'a cool con ring', con: 5, ac: -7, rent: 12000, mitigation: 3,
+    },
+    {
+      id: 1023, slot: 'amulet', item: 'a cool con ring', con: 5, ac: -7, rent: 12000, mitigation: 3,
+    },
+    {
+      id: 1024, slot: 'aux', item: 'a cool con ring', con: 5, ac: -7, rent: 12000, mitigation: 3,
+    },
+  ];
   const columns = [
     {
       field: 'slot',
@@ -560,21 +559,19 @@ const EquipmentList = () => {
   ];
 
   return (
-    <div style={{ height: '100%' }}>
+     <div style={{ height: '100%' }}>
       <div style={{ display: 'flex', height: '100%', minWidth: '1016px' }}>
         <div style={{ flexGrow: 1 }}>
-          <DataGrid
-            className={classes.root}
-            rows={rows}
-            columns={columns}
-            hideFooter
-            hideFooterPagination
-            hideFooterRowCount
-            hideFooterSelectedRowCount
-            disableColumnSelector
-            disableSelectionOnClick
-            rowHeight={36}
-          />
+        <DataGrid
+          className={classes.root}
+          rows={rows}
+          columns={columns}
+          pageSize={23}
+          hideFooterRowCount
+          hideFooterSelectedRowCount
+          disableSelectionOnClick
+          rowHeight={36}
+        />
         </div>
       </div>
     </div>

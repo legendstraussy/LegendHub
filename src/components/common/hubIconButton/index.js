@@ -40,7 +40,7 @@ const IconButton = props => {
 };
 
 IconButton.propTypes = {
-  icon: PropTypes.string,
+  icon: PropTypes.node,
   onClick: PropTypes.func,
 };
 

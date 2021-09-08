@@ -13,6 +13,7 @@
     "@material-ui/data-grid": "^4.0.0-alpha.37",
     "@material-ui/icons": "^4.11.2",
     "@material-ui/styles": "^4.11.4",
+    "@mui/x-data-grid": "^4.0.0",
     "babel-preset-next": "^1.4.0",
     "next": "^11.1.2-canary.0",
     "prop-types": "^15.7.2",

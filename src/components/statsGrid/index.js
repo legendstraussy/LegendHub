@@ -96,7 +96,7 @@ const StatInput = ({ stat }) => {
 };
 
 StatInput.propTypes = {
-  stat: PropTypes.shape({}),
+  stat: PropTypes.number,
 };
 
 const StatsGrid = () => {
