@@ -283,6 +283,7 @@ const EquipmentList = () => {
     {
       id: 1024, slot: 'aux', item: 'a cool con ring', con: 5, ac: -7, rent: 12000, mitigation: 3,
     },
+    { id: 1111 }
   ];
   const columns = [
     {
@@ -558,6 +559,8 @@ const EquipmentList = () => {
     },
   ];
 
+
+  console.log('rows', rows.length)
   return (
      <div style={{ height: '100%' }}>
       <div style={{ display: 'flex', height: '100%', minWidth: '1016px' }}>
@@ -566,7 +569,7 @@ const EquipmentList = () => {
           className={classes.root}
           rows={rows}
           columns={columns}
-          pageSize={23}
+          pageSize={24}
           hideFooterRowCount
           hideFooterSelectedRowCount
           disableSelectionOnClick
