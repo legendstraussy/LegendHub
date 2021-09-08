@@ -1,3 +1,4 @@
+import { PropTypes } from 'prop-types';
 import Image from 'next/image';
 import { makeStyles } from '@material-ui/styles';
 
@@ -36,6 +37,11 @@ const IconButton = props => {
       <Image src={icon} alt="" className={classes.icon} />
     </div>
   );
+};
+
+IconButton.propTypes = {
+  icon: PropTypes.string,
+  onClick: PropTypes.func,
 };
 
 export default IconButton;

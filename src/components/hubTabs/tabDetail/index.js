@@ -1,3 +1,4 @@
+import { PropTypes } from 'prop-types';
 import { makeStyles } from '@material-ui/styles';
 
 const useStyles = makeStyles({
@@ -20,6 +21,13 @@ const TabsDetail = props => {
       {children}
     </div>
   );
+};
+
+TabsDetail.propTypes = {
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node,
+  ]),
 };
 
 export default TabsDetail;

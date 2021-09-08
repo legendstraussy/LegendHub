@@ -5,7 +5,7 @@ import DetailField from 'components/detail/detailField';
 import DetailHeader from 'components/detail/detailHeader';
 import { makeStyles } from '@material-ui/styles';
 import { modifiers } from 'utils/constants';
-import totemIcon from '/public/totem-head.png';
+import totemIcon from '../../../public/totem-head.png';
 
 const useStyles = makeStyles({
   root: {
@@ -159,7 +159,7 @@ const CharacterFinal = props => {
               <HubChip
                 bgColor={modifiers[elective?.type]?.color}
                 label={elective.name}
-                onDelete={() => console.log('removing', elective)}
+                onDelete={() => {}}
                 readOnly={elective.readOnly}
               />
             </div>
@@ -176,7 +176,7 @@ const CharacterFinal = props => {
               <HubChip
                 bgColor={modifiers[resistance?.type]?.color}
                 label={resistance.name}
-                onDelete={() => console.log('removing', resistance)}
+                onDelete={() => {}}
                 readOnly={resistance.readOnly}
               />
             </div>
@@ -193,7 +193,7 @@ const CharacterFinal = props => {
               <HubChip
                 bgColor={modifiers[immunity?.type]?.color}
                 label={immunity.name}
-                onDelete={() => console.log('removing', immunity)}
+                onDelete={() => {}}
                 readOnly={immunity.readOnly}
               />
             </div>
@@ -210,7 +210,7 @@ const CharacterFinal = props => {
               <HubChip
                 bgColor={modifiers[susceptibility?.type]?.color}
                 label={susceptibility.name}
-                onDelete={() => console.log('removing', susceptibility)}
+                onDelete={() => {}}
                 readOnly={susceptibility.readOnly}
               />
             </div>

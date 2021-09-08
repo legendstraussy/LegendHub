@@ -1,4 +1,6 @@
-import { useRouter } from 'next/router'
+import CharacterMarquee from 'components/characterMarquee';
+import EquipmentList from 'components/equipmentList';
+import DetailsTabs from 'components/characterDetails';
 import { makeStyles } from '@material-ui/styles';
 
 const useStyles = makeStyles({
@@ -32,24 +34,23 @@ const useStyles = makeStyles({
     flex: 1,
     boxShadow: 'rgb(0 0 0 / 20%) 0px 2px 1px -1px, rgb(0 0 0 / 14%) 0px 1px 1px 0px, rgb(0 0 0 / 12%) 0px 1px 3px 0px',
   },
-}, { name: 'Mui_Styles_ItemsSearch' });
+}, { name: 'Mui_Styles_Items' });
 
 const Items = () => {
   const classes = useStyles();
-  // const router = useRouter()
 
   return (
     <div className={classes.root}>
       <div className={classes.left}>
         <div>
-          Brian
+          <CharacterMarquee />
         </div>
         <div className={classes.main}>
-          Beze Bop
+          <EquipmentList />
         </div>
       </div>
       <div className={classes.right}>
-        Tricky Dick
+        <DetailsTabs />
       </div>
     </div>
   );

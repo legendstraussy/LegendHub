@@ -22,7 +22,7 @@ const NavLink = props => {
   return (
     <div className={classes.root}>
       <Link href={link}>
-        <a>{label}</a>
+        {label}
       </Link>
     </div>
   );

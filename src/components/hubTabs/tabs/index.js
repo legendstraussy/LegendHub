@@ -1,3 +1,4 @@
+import { PropTypes } from 'prop-types';
 import Tab from 'components/hubTabs/tab';
 import TabDetail from 'components/hubTabs/tabDetail';
 import { makeStyles } from '@material-ui/styles';
@@ -33,9 +34,9 @@ const Tabs = props => {
 
   return (
     <div className={classes.root}>
-      <div className={classes.backTab}></div>
+      <div className={classes.backTab} />
       <div className={classes.tabsHeader}>
-        {tabs.map(tab => (
+        {tabs?.map(tab => (
           <Tab
             key={tab.name}
             test={tab?.test}
@@ -46,10 +47,21 @@ const Tabs = props => {
         ))}
       </div>
       <TabDetail>
-        {activeTab.component}
+        {activeTab?.component}
       </TabDetail>
     </div>
   );
+};
+
+Tabs.propTypes = {
+  activeTab: PropTypes.shape({
+    name: PropTypes.string,
+    component: PropTypes.node,
+  }),
+  onTabClick: PropTypes.func,
+  tabs: PropTypes.arrayOf(
+    PropTypes.shape(),
+  ),
 };
 
 export default Tabs;

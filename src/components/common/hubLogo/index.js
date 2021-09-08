@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import { makeStyles } from '@material-ui/styles';
-import logo from '/public/logo.png';
+import logo from '../../../../public/logo.png';
 
 const useStyles = makeStyles({
   root: {

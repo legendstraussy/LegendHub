@@ -80,7 +80,7 @@ const CharElectiveModifiers = () => {
               <HubChip
                 bgColor={modifiers[elective?.type]?.color}
                 label={elective.name}
-                onDelete={() => console.log('removing', elective)}
+                onDelete={() => {}}
               />
             </div>
           ))}

@@ -2,8 +2,8 @@ import { useState } from 'react';
 import Tabs from 'components/hubTabs/tabs';
 import CharacterStats from 'components/characterStats';
 import { makeStyles } from '@material-ui/styles';
-import CharacterStatsIcon from '/public/totem-head.png';
-import itemDetailsIcon from '/public/swords-emblem.png';
+import CharacterStatsIcon from '../../../public/totem-head.png';
+import itemDetailsIcon from '../../../public/swords-emblem.png';
 
 const useStyles = makeStyles({
   root: {

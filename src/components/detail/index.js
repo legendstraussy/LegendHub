@@ -1,4 +1,7 @@
+import { PropTypes } from 'prop-types';
+import HubIconButton from 'components/common/hubIconButton';
 import { makeStyles } from '@material-ui/styles';
+import totemIcon from '../../../public/totem-head.png';
 
 const useStyles = makeStyles({
   root: {
@@ -74,7 +77,16 @@ const Overview = props => {
         {children}
       </section>
     </div>
-  )
-}
+  );
+};
+
+Overview.propTypes = {
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node,
+  ]),
+  onStatsClick: PropTypes.func,
+  title: PropTypes.string,
+};
 
 export default Overview;

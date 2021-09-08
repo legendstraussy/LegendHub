@@ -1,3 +1,4 @@
+import { PropTypes } from 'prop-types';
 import { makeStyles } from '@material-ui/styles';
 
 const useStyles = makeStyles({
@@ -14,8 +15,14 @@ const DetailFieldLabel = props => {
   const classes = useStyles();
 
   return (
-    <div className={classes.root}>{label}:</div>
-  )
-}
+    <div className={classes.root}>
+      {label}
+    </div>
+  );
+};
+
+DetailFieldLabel.propTypes = {
+  label: PropTypes.string,
+};
 
 export default DetailFieldLabel;

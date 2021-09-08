@@ -1,5 +1,6 @@
-import HealthStat from './healthStat/HealthStat';
+import { PropTypes } from 'prop-types';
 import { makeStyles } from '@material-ui/styles';
+import HealthStat from './healthStat/HealthStat';
 
 const useStyles = makeStyles({
   root: {
@@ -23,6 +24,10 @@ const HealthStats = props => {
       <HealthStat label="ma" labelSize={labelSize} stat={342} />
     </div>
   );
+};
+
+HealthStats.propTypes = {
+  labelSize: PropTypes.string,
 };
 
 export default HealthStats;

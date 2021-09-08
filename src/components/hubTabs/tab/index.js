@@ -1,3 +1,4 @@
+import { PropTypes } from 'prop-types';
 import Image from 'next/image';
 import { makeStyles } from '@material-ui/styles';
 
@@ -52,6 +53,14 @@ const TabsTab = props => {
       </div>
     </div>
   );
+};
+
+TabsTab.propTypes = {
+  onTabClick: PropTypes.func,
+  tab: PropTypes.shape({
+    icon: PropTypes.string,
+    name: PropTypes.string,
+  }),
 };
 
 export default TabsTab;

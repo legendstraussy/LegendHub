@@ -9,6 +9,7 @@
     },
   },
   "rules": {
+    "max-len": "off",
     "react/no-array-index-key": "off",
     "react/destructuring-assignment": "off",
     "react/require-default-props": "off",

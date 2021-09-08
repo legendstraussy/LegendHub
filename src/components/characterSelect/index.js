@@ -28,7 +28,7 @@ const CharacterSelect = () => {
 
   useEffect(() => {
     if (character) {
-      console.log('bingo', character);
+      // console.log('bingo', character);
     }
   }, [character]);
 
