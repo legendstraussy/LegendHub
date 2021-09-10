@@ -23,30 +23,26 @@ import hpRegenIcon from '/public/hpRegen.png';
 import mvRegenIcon from '/public/mvRegen.png';
 import maRegenIcon from '/public/maRegen.png';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   root: {
     marginTop: 10,
     background: 'rgba(0, 0, 0, .5)',
     borderRadius: '5px 5px 0 0',
   },
   table: {
-    // height: rows => rows?.length < 15 ? 'inherit' : 'unset',
-    // background: 'rgba(0, 0, 0, .5)',
+    fontFamily: 'open sans',
   },
   thead: {
     position: 'sticky',
     top: 0,
-    // background: 'rgba(0, 0, 0, .5)',
     fontFamily: 'Open Sans',
     '& .MuiTableCell-head': {
       color: '#fff',
       padding: '.25em 1em',
+      border: 'unset',
       whiteSpace: 'nowrap',
       fontSize: '10px',
       textTransform: 'uppercase',
-    },
-    '& cell': {
-      border: '1px solid red',
     },
   },
   tbody: {
@@ -59,11 +55,24 @@ const useStyles = makeStyles({
       padding: '0 10px',
       whiteSpace: 'nowrap',
     },
+    // body columns
+    '& [data-value=slot]': {
+      fontFamily: 'inherit',
+      fontSize: 14,
+      fontWeight: 100,
+      fontStyle: 'italic',
+      textTransform: 'capitalize',
+    },
+    '& [data-value=name]': {
+      color: theme.palette.link,
+      fontWeight: 100,
+    },
   },
   cell: {
-    fontFamily: 'open sans',
+    borderBottom: '1px solid rgba(45, 40, 40, .75)',
+    fontFamily: 'inherit',
   },
-}, { name: 'Mui_Styles_EquipmentList' });
+}), { name: 'Mui_Styles_EquipmentList' });
 
 const items = [
   {
@@ -186,7 +195,7 @@ const EquipmentList = () => {
         >
           <TableRow>
             {headers.map(header => (
-              <TableCell key={header.id} className={classes.cell}>
+              <TableCell key={header.id} data-value={header.id} className={classes.cell}>
                 {header.component || header.label}
               </TableCell>
             ))}
@@ -196,7 +205,7 @@ const EquipmentList = () => {
           {items.map(item => (
             <TableRow key={item.id}>
               {headers.map(header => (
-                <TableCell key={header.id} className={classes.cell}>
+                <TableCell key={header.id} data-value={header.id} className={classes.cell}>
                   {item[header.id]}
                 </TableCell>
               ))}

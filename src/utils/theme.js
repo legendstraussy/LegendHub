@@ -10,14 +10,7 @@ const theme = createTheme({
       per: '#31DBB9',
       spi: '#71DE71',
     },
-    // text: {
-    //   str: '#DE2E2E',
-    //   min: '#A57BF1',
-    //   dex: '#6699CC',
-    //   con: '#FFD874',
-    //   per: '#31DBB9',
-    //   spi: '#71DE71',
-    // },
+    link: '#219AFF',
   },
   overrides: {
     MuiPaper: {
