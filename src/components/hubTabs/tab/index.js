@@ -58,7 +58,7 @@ const TabsTab = props => {
 TabsTab.propTypes = {
   onTabClick: PropTypes.func,
   tab: PropTypes.shape({
-    icon: PropTypes.node,
+    icon: PropTypes.shape({}),
     name: PropTypes.string,
   }),
 };

@@ -9,8 +9,8 @@ const useStyles = makeStyles({
     display: 'block',
   },
   logo: {
-    width: '145px !important',
-    height: '145px !important',
+    width: '128px !important',
+    height: '128px !important',
     maxWidth: 'unset !important',
     maxHeight: 'unset !important',
   },
