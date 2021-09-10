@@ -1,4 +1,4 @@
-module.exports = {
+const settings = {
   generateEtags: true,
   future: {
     webpack5: false,
@@ -14,6 +14,8 @@ module.exports = {
           },
         ],
       },
-    ]
+    ];
   },
-}
+};
+
+export default settings;

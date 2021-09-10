@@ -1,4 +1,6 @@
 import { useRouter } from 'next/router'
+import HubLayout from 'layouts/hub';
+import CharacterMarquee from 'components/characterMarquee';
 import { makeStyles } from '@material-ui/styles';
 
 const useStyles = makeStyles({
@@ -39,19 +41,21 @@ const Items = () => {
   // const router = useRouter()
 
   return (
-    <div className={classes.root}>
-      <div className={classes.left}>
-        <div>
-          Brian
+    <HubLayout>
+      <div className={classes.root}>
+        <div className={classes.left}>
+          <div>
+            <CharacterMarquee />
+          </div>
+          <div className={classes.main}>
+            Beze Bop
+          </div>
         </div>
-        <div className={classes.main}>
-          Beze Bop
+        <div className={classes.right}>
+          Tricky Dick
         </div>
       </div>
-      <div className={classes.right}>
-        Tricky Dick
-      </div>
-    </div>
+    </HubLayout>
   );
 };
 

@@ -4,11 +4,12 @@
     "import/resolver": {
       "node": {
         "extensions": [".js", ".jsx"],
-        "moduleDirectory": ["node_modules", "src/"],
-        },
-    },
+        "moduleDirectory": ["node_modules", "src/"]
+        }
+    }
   },
   "rules": {
+    "import/no-absolute-path": "off",
     "react/no-array-index-key": "off",
     "react/destructuring-assignment": "off",
     "react/require-default-props": "off",

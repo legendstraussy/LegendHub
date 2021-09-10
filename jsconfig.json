@@ -2,10 +2,22 @@
   "compilerOptions": {
     "baseUrl": "./src",
     "paths": {
-      "public": ["../public/*"],
+      "public/*": ["../public/*"],
       "components/*": ["components/*"],
       "containers/*": ["containers/*"],
-      "utils/*": ["utils/*"],
-    }
-  }
+      "layouts/*": ["layouts/*"],
+      "utils/*": ["src/utils/*"],
+    },
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true, 
+  },  
+  "exclude": [
+    "node_modules",
+    "public",
+  ],
+  "include": [
+    "./src/",
+    "next.config.js"
+  ]
 }
