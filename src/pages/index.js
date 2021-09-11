@@ -30,6 +30,7 @@ const useStyles = makeStyles({
   },
   main: {
     display: 'flex',
+    flexDirection: 'column',
     margin: '0 0 0 0',
     overflow: 'hidden',
   },
