@@ -6,7 +6,6 @@ import { makeStyles } from '@material-ui/styles';
 
 const useStyles = makeStyles({
   root: {
-    maxWidth: 'calc(100vw - 24px)',
     margin: '.75em',
     padding: '.55em',
     backgroundColor: 'rgba(27, 13, 24, .5)',
@@ -20,8 +19,11 @@ const useStyles = makeStyles({
     margin: '.2em .35em .2em .2em',
     display: 'flex',
     flexDirection: 'column',
+    flex: 1,
   },
   right: {
+    minWidth: '20%',
+    maxWidth: '300px',
     display: 'flex',
     flex: 1,
     flexDirection: 'column',

@@ -5,9 +5,9 @@ const useStyles = makeStyles({
     display: 'flex',
     flex: 1,
     padding: '1em 0 1em 1em',
-    marginRight: -4,
     background: 'rgba(0, 0, 0, .7)',
     overflowY: 'scroll',
+    overflowX: 'hidden',
   },
 }, { name: 'Mui_Styles_TabsDetail' });
 

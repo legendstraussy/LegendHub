@@ -1,4 +1,3 @@
-
 import { useRef } from 'react';
 import {
   Table,
@@ -10,7 +9,6 @@ import {
 } from '@material-ui/core';
 import Image from 'next/image';
 import { makeStyles } from '@material-ui/styles';
-import theme from 'utils/theme';
 
 const useIconStyles = makeStyles((theme) => ({
   root: {
@@ -29,7 +27,7 @@ const useIconStyles = makeStyles((theme) => ({
       width: 32,
       height: 32,
       overflow: 'unset !important',
-    }
+    },
   },
   icon: {
     position: 'absolute',
@@ -48,16 +46,16 @@ const useIconStyles = makeStyles((theme) => ({
   label: {
     color: props => theme.palette.stats[props.label] || '#fff',
     position: 'relative',
-    top: 6,
+    top: 4,
     fontSize: '10px',
     textTransform: 'uppercase',
   },
-}), { name: 'Mui_Styles_IconHead'});
+}), { name: 'Mui_Styles_IconHead' });
 
 const IconHead = props => {
   const { icon, label } = props;
   const classes = useIconStyles(props);
-  
+
   return (
     <div className={classes.root}>
       <Image src={icon} alt="" width={32} height={32} layout="fixed" className={classes.icon} />
@@ -65,8 +63,8 @@ const IconHead = props => {
         {label}
       </div>
     </div>
-  )
-}
+  );
+};
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -146,7 +144,7 @@ const useStyles = makeStyles((theme) => ({
       flex: 1,
       alignItems: 'center',
       justifyContent: 'center',
-    }
+    },
   },
   cell: {
     fontFamily: 'inherit',
@@ -157,7 +155,7 @@ const useStyles = makeStyles((theme) => ({
 
 const items = [
   {
-    id: 1001, slot: 'finger', name: 'a polished hessonite garnet ring', str: 10, min: 20, rent: 1895, con: 5, ac: -7, mv: -40, spellCrit: 2, spellDam: 2, align: 'GNE'
+    id: 1001, slot: 'finger', name: 'a polished hessonite garnet ring', str: 10, min: 20, rent: 1895, con: 5, ac: -7, mv: -40, spellCrit: 2, spellDam: 2, align: 'GNE',
   },
   {
     id: 1002, slot: 'arm', name: 'crazy stat item', str: 100, con: 100, spi: 100, per: 100, rent: 55555, min: 100, dex: 100, ac: -17, mvRegen: 10, align: 'G', damroll: 55, hitroll: 1, mitigation: 0, accuracy: 100, spellDam: 100, spellCrit: 100, spellRedux: 100, concentration: 100, hpRegen: 100, mvRegen: 100, maRegen: 100,
@@ -237,29 +235,69 @@ const items = [
 ];
 
 const headers = [
-  { id: 'slot', label: 'slot', width: 65, align: 'flex-start' },
-  { id: 'name', label: 'item', width: 250, align: 'flex-start' },
-  { id: 'str', label: 'str', component: <IconHead leftEnd icon="/winged-sword.png" label="str" />, width: 40 },
-  { id: 'min', label: 'min', component: <IconHead icon="/spell-book.png" label="min" />, width: 40 },
-  { id: 'dex', label: 'dex', component: <IconHead icon="/high-five.png" label="dex" />, width: 40 },
-  { id: 'con', label: 'con', component: <IconHead icon="/heart-wings.png" label="con" />, width: 40 },
-  { id: 'per', label: 'per', component: <IconHead icon="/spyglass.png" label="per" />, width: 40 },
-  { id: 'spi', label: 'spi', component: <IconHead rightEnd icon="/vine-leaf.png" label="spi" />, width: 40 },
+  {
+    id: 'slot', label: 'slot', width: 65, align: 'flex-start',
+  },
+  {
+    id: 'name', label: 'item', width: 250, align: 'flex-start',
+  },
+  {
+    id: 'str', label: 'str', component: <IconHead leftEnd icon="/winged-sword.png" label="str" />, width: 40,
+  },
+  {
+    id: 'min', label: 'min', component: <IconHead icon="/spell-book.png" label="min" />, width: 40,
+  },
+  {
+    id: 'dex', label: 'dex', component: <IconHead icon="/high-five.png" label="dex" />, width: 40,
+  },
+  {
+    id: 'con', label: 'con', component: <IconHead icon="/heart-wings.png" label="con" />, width: 40,
+  },
+  {
+    id: 'per', label: 'per', component: <IconHead icon="/spyglass.png" label="per" />, width: 40,
+  },
+  {
+    id: 'spi', label: 'spi', component: <IconHead rightEnd icon="/vine-leaf.png" label="spi" />, width: 40,
+  },
   { id: 'ac', label: 'ac', width: 35 },
   { id: 'align', label: 'align', width: 55 },
   { id: 'rent', label: 'rent', width: 50 },
-  { id: 'damroll', label: 'damroll', component: <IconHead leftEnd icon="/sword-wound.png" label="dam" />, width: 40 },
-  { id: 'hitroll', label: 'hitroll', component: <IconHead  icon="/sword-wound.png" label="hit" />, width: 40 },
-  { id: 'mitigation', label: 'mitigation', component: <IconHead rightEnd icon="/shield-reflect.png" label="mit" />, width: 40 },
-  { id: 'accuracy', label: 'accuracy', component: <IconHead leftEnd rightEnd icon="/high-shot.png" label="acc" />, width: 40 },
-  { id: 'spellDam', label: 'spellDam', component: <IconHead leftEnd icon="/spell-book.png" label="dam" />, width: 40 },
-  { id: 'spellCrit', label: 'spellCrit', component: <IconHead icon="/spell-book.png" label="crit" />, width: 40 },
-  { id: 'spellRedux', label: 'spellRedux', component: <IconHead icon="/spell-book.png" label="rdux" />, width: 40 },
-  { id: 'concentration', label: 'concentration', component: <IconHead rightEnd icon="/spell-book.png" label="conc" />, width: 40 },
-  { id: 'hpRegen', label: 'hpRegen', component: <IconHead leftEnd icon="/hpRegen.png" label="hpr" />, width: 40 },
-  { id: 'mvRegen', label: 'mvRegen', component: <IconHead icon="/mvRegen.png" label="mvr" />, width: 40 },
-  { id: 'maRegen', label: 'maRegen', component: <IconHead rightEnd icon="/maRegen.png" label="mar" />, width: 40 },
-  { id: 'test', label: 'test', width: 120, align: 'flex-start' },
+  {
+    id: 'damroll', label: 'damroll', component: <IconHead leftEnd icon="/sword-wound.png" label="dam" />, width: 40,
+  },
+  {
+    id: 'hitroll', label: 'hitroll', component: <IconHead icon="/sword-wound.png" label="hit" />, width: 40,
+  },
+  {
+    id: 'mitigation', label: 'mitigation', component: <IconHead rightEnd icon="/shield-reflect.png" label="mit" />, width: 40,
+  },
+  {
+    id: 'accuracy', label: 'accuracy', component: <IconHead leftEnd rightEnd icon="/high-shot.png" label="acc" />, width: 40,
+  },
+  {
+    id: 'spellDam', label: 'spellDam', component: <IconHead leftEnd icon="/spell-book.png" label="dam" />, width: 40,
+  },
+  {
+    id: 'spellCrit', label: 'spellCrit', component: <IconHead icon="/spell-book.png" label="crit" />, width: 40,
+  },
+  {
+    id: 'spellRedux', label: 'spellRedux', component: <IconHead icon="/spell-book.png" label="rdux" />, width: 40,
+  },
+  {
+    id: 'concentration', label: 'concentration', component: <IconHead rightEnd icon="/spell-book.png" label="conc" />, width: 40,
+  },
+  {
+    id: 'hpRegen', label: 'hpRegen', component: <IconHead leftEnd icon="/hpRegen.png" label="hpr" />, width: 40,
+  },
+  {
+    id: 'mvRegen', label: 'mvRegen', component: <IconHead icon="/mvRegen.png" label="mvr" />, width: 40,
+  },
+  {
+    id: 'maRegen', label: 'maRegen', component: <IconHead rightEnd icon="/maRegen.png" label="mar" />, width: 40,
+  },
+  {
+    id: 'test', label: 'test', width: 120, align: 'flex-start',
+  },
 ];
 
 const EquipmentList = () => {
@@ -269,7 +307,7 @@ const EquipmentList = () => {
   const handleScroll = event => {
     const pos = event.target.scrollLeft;
     tableEl.current.style.left = `${-pos}px`;
-  }
+  };
 
   return (
     <>
@@ -277,11 +315,12 @@ const EquipmentList = () => {
         <div ref={tableEl} style={{ position: 'relative' }}>
           <Table style={{ width: 'max-content' }}>
             <TableHead
-              className={classes.thead}>
+              className={classes.thead}
+            >
               <TableRow>
                 {headers.map(header => (
                   <TableCell key={header.id} style={{ width: header?.width }} className={classes.cell}>
-                    {header.component || <div style={{ justifyContent: header.align || 'center'}} data-value={header.id}>{header.label}</div>}
+                    {header.component || <div style={{ justifyContent: header.align || 'center' }} data-value={header.id}>{header.label}</div>}
                   </TableCell>
                 ))}
               </TableRow>
