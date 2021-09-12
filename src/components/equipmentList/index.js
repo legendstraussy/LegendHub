@@ -77,6 +77,7 @@ const useStyles = makeStyles((theme) => ({
     marginTop: 20,
     background: 'rgba(0, 0, 0, .5)',
     borderRadius: '5px 5px 0 0',
+    borderBottom: '2px solid rgba(66, 60, 60, 0.75)',
   },
   container: {
     background: 'rgba(0, 0, 0, .75)',
@@ -259,7 +260,7 @@ const items = [
 
 const headers = [
   {
-    id: 'slot', label: 'slot', width: 65, align: 'flex-start',
+    id: 'slot', label: 'slot', width: 65, align: 'flex-start', hideBorder: true,
   },
   {
     id: 'name', label: 'item', width: 250, align: 'flex-start',
@@ -368,7 +369,7 @@ const EquipmentList = () => {
                 {headers.map(header => (
                   <TableCell
                     key={header.id}
-                    style={{ width: header?.width }}
+                    style={{ width: header?.width, borderRight: header.hideBorder ? 'unset' : '' }}
                     className={classes.cell}
                   >
                     <div data-value={header.id}>{item[header.id]}</div>
