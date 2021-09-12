@@ -11,6 +11,11 @@ const useStyles = makeStyles({
     cursor: 'default',
     '& a': {
       textTransform: 'capitalize',
+      '&:hover': {
+        cursor: 'default',
+        borderBottom: '2px solid rgba(255, 255, 255, .5)',
+        color: 'rgba(255, 255, 255, .8)',
+      },
     },
   },
 }, { name: 'Mui_Styles_NavLink' });
@@ -22,7 +27,7 @@ const NavLink = props => {
   return (
     <div className={classes.root}>
       <Link href={link}>
-        <a>{label}</a>
+        {label}
       </Link>
     </div>
   );
