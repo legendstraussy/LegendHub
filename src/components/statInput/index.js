@@ -34,10 +34,7 @@ const StatInput = props => {
 };
 
 StatInput.propTypes = {
-  stat: PropTypes.shape({
-    final: PropTypes.number,
-    name: PropTypes.string,
-  }),
+  stat: PropTypes.number,
 };
 
 export default StatInput;

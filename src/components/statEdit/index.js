@@ -2,8 +2,6 @@ import { PropTypes } from 'prop-types';
 import { makeStyles } from '@material-ui/styles';
 import HubIconButton from 'components/common/hubIconButton';
 import StatsGrid from 'components/statsGrid';
-import finalStatsIcon from '../../../public/scroll-quill.png';
-import printStatsIcon from '../../../public/tied-scroll.png';
 
 const useStyles = makeStyles({
   root: {
@@ -43,10 +41,10 @@ const CharStats = props => {
           <div className={classes.label}>stats</div>
           <div className={classes.toolbar}>
             <div className={classes.tool}>
-              <HubIconButton icon={printStatsIcon} />
+              <HubIconButton iconPath="/scroll-quill.png" />
             </div>
             <div className={classes.tool}>
-              <HubIconButton onClick={onFinalClick} icon={finalStatsIcon} />
+              <HubIconButton onClick={onFinalClick} iconPath="/tied-scroll.png" />
             </div>
           </div>
         </header>

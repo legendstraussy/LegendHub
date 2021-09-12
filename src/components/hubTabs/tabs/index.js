@@ -59,7 +59,9 @@ Tabs.propTypes = {
     name: PropTypes.string,
   }),
   onTabClick: PropTypes.func,
-  tabs: PropTypes.arrayOf({}),
+  tabs: PropTypes.arrayOf(
+    PropTypes.shape({}),
+  ),
 };
 
 export default Tabs;
