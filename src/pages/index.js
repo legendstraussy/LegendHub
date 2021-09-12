@@ -6,11 +6,10 @@ import { makeStyles } from '@material-ui/styles';
 
 const useStyles = makeStyles({
   root: {
-    margin: '.75em',
+    margin: '1.25em .75em .75em .75em',
     padding: '.55em',
     backgroundColor: 'rgba(27, 13, 24, .5)',
     display: 'flex',
-    flex: 1,
     color: '#fff',
     overflow: 'hidden',
   },
@@ -20,13 +19,13 @@ const useStyles = makeStyles({
     display: 'flex',
     flexDirection: 'column',
     flex: 1,
+    overflow: 'hidden',
   },
   right: {
-    minWidth: '20%',
-    maxWidth: '300px',
+    maxWidth: '20%',
+    minWidth: '300px',
     display: 'flex',
     flex: 1,
-    flexDirection: 'column',
     margin: '.2em .2em .2em .35em',
     overflow: 'hidden',
   },
@@ -45,7 +44,7 @@ const Builder = () => {
     <HubLayout>
       <div className={classes.root}>
         <div className={classes.left}>
-          <div>
+          <div style={{ display: 'flex' }}>
             <CharacterMarquee />
           </div>
           <div className={classes.main}>

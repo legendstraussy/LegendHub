@@ -6,7 +6,7 @@ const Hub = props => {
   const { children } = props;
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', flex: 1 }}>
+    <div style={{ display: 'flex', flexDirection: 'column', flex: 1, overflow: 'hidden' }}>
       <Background>
         <NavBar />
         <Toolbar />

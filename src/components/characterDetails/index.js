@@ -10,7 +10,6 @@ const useStyles = makeStyles({
     position: 'relative',
     display: 'flex',
     flex: 1,
-    overflow: 'hidden',
   },
 }, { name: 'Mui_Styles_DetailsTabs' });
 

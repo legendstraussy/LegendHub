@@ -305,8 +305,12 @@ const EquipmentList = () => {
   const tableEl = useRef(null);
 
   const handleScroll = event => {
+    const mar = document.querySelector('.Mui_Styles_CharacterMarquee-root');
     const pos = event.target.scrollLeft;
     tableEl.current.style.left = `${-pos}px`;
+    if (mar) {
+      mar.style.left = `${-pos}px`;
+    }
   };
 
   return (
