@@ -1,14 +1,77 @@
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
+import { PropTypes } from 'prop-types';
 import {
   Table,
   TableBody,
   TableCell,
   TableContainer,
   TableHead,
+  TablePagination,
   TableRow,
 } from '@material-ui/core';
-import IconHead from 'components/iconHead';
+import Image from 'next/image';
 import { makeStyles } from '@material-ui/styles';
+
+const useIconStyles = makeStyles((theme) => ({
+  root: {
+    width: 40,
+    position: 'absolute',
+    top: -15,
+    bottom: 0,
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    background: '#222',
+    borderTopLeftRadius: props => props.leftEnd ? '5px' : 'unset',
+    borderTopRightRadius: props => props.rightEnd ? '5px' : 'unset',
+    '& div:first-child': {
+      position: 'relative',
+      width: 32,
+      height: 32,
+      overflow: 'unset !important',
+    },
+  },
+  icon: {
+    position: 'absolute',
+    top: '15px !important',
+    left: 0,
+    bottom: 0,
+    right: 0,
+    padding: 0,
+    width: '32px !important',
+    height: '32px !important',
+    minWidth: 'unset !important',
+    minHeight: 'unset !important',
+    maxWidth: 'unset !important',
+    maxHeight: 'unset !important',
+  },
+  label: {
+    color: props => theme.palette.stats[props.label] || '#fff',
+    position: 'relative',
+    top: 4,
+    fontSize: '10px',
+    textTransform: 'uppercase',
+  },
+}), { name: 'Mui_Styles_IconHead' });
+
+const IconHead = props => {
+  const { iconPath, label } = props;
+  const classes = useIconStyles(props);
+
+  return (
+    <div className={classes.root}>
+      <Image src={iconPath} alt="" width={32} height={32} layout="fixed" className={classes.icon} />
+      <div className={classes.label}>
+        {label}
+      </div>
+    </div>
+  );
+};
+
+IconHead.propTypes = {
+  iconPath: PropTypes.string,
+  label: PropTypes.string,
+};
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -112,6 +175,9 @@ const useStyles = makeStyles((theme) => ({
     fontFamily: 'inherit',
     padding: 0,
     border: 'unset',
+  },
+  pagination: {
+    color: '#fff',
   },
 }), { name: 'Mui_Styles_EquipmentList' });
 
@@ -262,7 +328,13 @@ const headers = [
   },
 ];
 
-const EquipmentList = () => {
+const ItemList = () => {
+  const [order, setOrder] = useState('asc');
+  const [orderBy, setOrderBy] = useState('calories');
+  const [selected, setSelected] = useState([]);
+  const [page, setPage] = useState(0);
+  const [dense, setDense] = useState(false);
+  const [rowsPerPage, setRowsPerPage] = useState(5);
   const classes = useStyles(items);
   const tableEl = useRef(null);
 
@@ -317,9 +389,19 @@ const EquipmentList = () => {
             ))}
           </TableBody>
         </Table>
+        <TablePagination
+          className={classes.pagination}
+          rowsPerPageOptions={[5, 10, 25]}
+          component="div"
+          count={items.length}
+          rowsPerPage={5}
+          page={1}
+          onPageChange={() => {}}
+          onRowsPerPageChange={() => {}}
+        />
       </TableContainer>
     </>
   );
 };
 
-export default EquipmentList;
+export default ItemList;

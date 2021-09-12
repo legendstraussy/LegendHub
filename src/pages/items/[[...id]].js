@@ -1,5 +1,6 @@
 import HubLayout from 'layouts/hub';
 import CharacterMarquee from 'components/characterMarquee';
+import ItemList from 'components/itemList';
 import { makeStyles } from '@material-ui/styles';
 
 const useStyles = makeStyles({
@@ -8,28 +9,32 @@ const useStyles = makeStyles({
     padding: '.55em',
     backgroundColor: 'rgba(27, 13, 24, .5)',
     display: 'flex',
-    flex: 1,
     color: '#fff',
     overflow: 'hidden',
   },
   left: {
-    flex: 3.9,
+    maxWidth: '80%',
     margin: '.2em .35em .2em .2em',
     display: 'flex',
     flexDirection: 'column',
+    flex: 1,
+    overflow: 'hidden',
   },
   right: {
+    maxWidth: '20%',
+    minWidth: '300px',
     display: 'flex',
     flex: 1,
-    flexDirection: 'column',
     margin: '.2em .2em .2em .35em',
     overflow: 'hidden',
   },
   main: {
+    display: 'flex',
+    flexDirection: 'column',
     margin: '0 0 0 0',
-    flex: 1,
+    overflow: 'hidden',
   },
-}, { name: 'Mui_Styles_ItemsSearch' });
+}, { name: 'Mui_Styles_Items' });
 
 const Items = () => {
   const classes = useStyles();
@@ -38,11 +43,11 @@ const Items = () => {
     <HubLayout>
       <div className={classes.root}>
         <div className={classes.left}>
-          <div>
-            <CharacterMarquee />
+          <div style={{ display: 'flex' }}>
+            equipped item here
           </div>
           <div className={classes.main}>
-            Beze Bop
+            <ItemList />
           </div>
         </div>
         <div className={classes.right}>
