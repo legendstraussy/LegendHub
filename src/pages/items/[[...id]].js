@@ -1,4 +1,3 @@
-import { useRouter } from 'next/router'
 import HubLayout from 'layouts/hub';
 import CharacterMarquee from 'components/characterMarquee';
 import { makeStyles } from '@material-ui/styles';
@@ -12,14 +11,12 @@ const useStyles = makeStyles({
     flex: 1,
     color: '#fff',
     overflow: 'hidden',
-    // boxShadow: 'rgb(0 0 0 / 20%) 0px 2px 1px -1px, rgb(0 0 0 / 14%) 0px 1px 1px 0px, rgb(0 0 0 / 12%) 0px 1px 3px 0px',
   },
   left: {
     flex: 3.9,
     margin: '.2em .35em .2em .2em',
     display: 'flex',
     flexDirection: 'column',
-    // boxShadow: 'rgb(0 0 0 / 20%) 0px 2px 1px -1px, rgb(0 0 0 / 14%) 0px 1px 1px 0px, rgb(0 0 0 / 12%) 0px 1px 3px 0px',
   },
   right: {
     display: 'flex',
@@ -27,18 +24,15 @@ const useStyles = makeStyles({
     flexDirection: 'column',
     margin: '.2em .2em .2em .35em',
     overflow: 'hidden',
-    // boxShadow: 'rgb(0 0 0 / 20%) 0px 2px 1px -1px, rgb(0 0 0 / 14%) 0px 1px 1px 0px, rgb(0 0 0 / 12%) 0px 1px 3px 0px',
   },
   main: {
     margin: '0 0 0 0',
     flex: 1,
-    // boxShadow: 'rgb(0 0 0 / 20%) 0px 2px 1px -1px, rgb(0 0 0 / 14%) 0px 1px 1px 0px, rgb(0 0 0 / 12%) 0px 1px 3px 0px',
   },
 }, { name: 'Mui_Styles_ItemsSearch' });
 
 const Items = () => {
   const classes = useStyles();
-  // const router = useRouter()
 
   return (
     <HubLayout>

@@ -28,7 +28,7 @@ const CharacterSelect = () => {
 
   useEffect(() => {
     if (character) {
-      console.log('bingo', character);
+      // handle loading a new character
     }
   }, [character]);
 

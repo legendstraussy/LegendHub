@@ -34,11 +34,13 @@ const HubChip = props => {
     <Chip
       avatar={(
         <>
-          {!readOnly 
-          ? <Avatar onClick={onDelete} className={classes.avatar}>
-              <Remove className={classes.icon} />
-            </Avatar>
-          : null }
+          {!readOnly
+            ? (
+              <Avatar onClick={onDelete} className={classes.avatar}>
+                <Remove className={classes.icon} />
+              </Avatar>
+            )
+            : null }
         </>
       )}
       className={classes.root}

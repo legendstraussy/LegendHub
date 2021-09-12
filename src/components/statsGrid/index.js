@@ -1,6 +1,6 @@
-import { useState } from 'react';
 import { Grid } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
+import StatInput from 'components/statInput';
 import theme from 'utils/theme';
 
 const useStyles = makeStyles({
@@ -19,19 +19,6 @@ const useStyles = makeStyles({
   label: {
     display: 'flex',
     justifyContent: 'center',
-  },
-  input: {
-    width: 45,
-    height: 30,
-    fontFamily: 'Open Sans',
-    fontSize: '12px',
-    border: '1px solid rgba(105, 85, 85, .75)',
-    display: 'flex',
-    padding: '4px',
-    background: '#222222',
-    borderRadius: '5px',
-    color: '#fff',
-    outline: 'unset',
   },
 }, { name: 'Mui_Styles_StatsGrid' });
 
@@ -80,20 +67,6 @@ const stats = [
   },
 ];
 
-const StatInput = ({ stat }) => {
-  const [value, setValue] = useState(stat);
-  const classes = useStyles();
-
-  return (
-    <input
-      type="number"
-      value={value}
-      onChange={(event) => setValue(event.target.value)}
-      className={classes.input}
-    />
-  );
-};
-
 const StatsGrid = () => {
   const classes = useStyles();
 
@@ -108,7 +81,7 @@ const StatsGrid = () => {
       </Grid>
       {stats.map(stat => (
         <Grid key={stat.name} container className={classes.grid}>
-          <Grid item xs={2} className={classes.label} /*style={{ color: theme.palette.stats[stat.name] }}*/ >{stat.name}</Grid>
+          <Grid item xs={2} className={classes.label}>{stat.name}</Grid>
           <Grid item xs={2} className={classes.label}>
             <StatInput stat={stat.raw} />
           </Grid>

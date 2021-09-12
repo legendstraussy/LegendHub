@@ -2,10 +2,6 @@ import HubIconButton from 'components/common/hubIconButton';
 import HubChip from 'components/common/hubChip';
 import { makeStyles } from '@material-ui/styles';
 import { modifiers } from 'utils/constants';
-import potionIcon from '../../../public/fizzing-flask.png';
-import spellIcon from '../../../public/orb-wand.png';
-import skillIcon from '../../../public/star-formation.png';
-import abilityIcon from '../../../public/armor-punch.png';
 
 const useStyles = makeStyles({
   root: {
@@ -60,16 +56,16 @@ const CharElectiveModifiers = () => {
       <section>
         <div className={classes.toolbar}>
           <div className={classes.tool}>
-            <HubIconButton icon={potionIcon} />
+            <HubIconButton iconPath="/fizzing-flask.png" />
           </div>
           <div className={classes.tool}>
-            <HubIconButton icon={spellIcon} />
+            <HubIconButton iconPath="/orb-wand.png" />
           </div>
           <div className={classes.tool}>
-            <HubIconButton icon={skillIcon} />
+            <HubIconButton iconPath="/star-formation.png" />
           </div>
           <div className={classes.tool}>
-            <HubIconButton icon={abilityIcon} />
+            <HubIconButton iconPath="/armor-punch.png" />
           </div>
         </div>
       </section>
@@ -80,7 +76,7 @@ const CharElectiveModifiers = () => {
               <HubChip
                 bgColor={modifiers[elective?.type]?.color}
                 label={elective.name}
-                onDelete={() => console.log('removing', elective)}
+                onDelete={() => {}}
               />
             </div>
           ))}

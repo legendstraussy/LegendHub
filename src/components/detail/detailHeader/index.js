@@ -1,3 +1,4 @@
+import { PropTypes } from 'prop-types';
 import { makeStyles } from '@material-ui/styles';
 
 const useStyles = makeStyles({
@@ -20,21 +21,27 @@ const useStyles = makeStyles({
 }, { name: 'Mui_Styles_DetailHeader' });
 
 const DetailHeader = props => {
-  const { children, flex, title } = props;
+  const { children, title } = props;
   const classes = useStyles(props);
 
   return (
     <header className={classes.root}>
       <div className={classes.label}>{title}</div>
-      {children && 
+      {children
+        && (
         <div className={classes.toolbar}>
           <div className={classes.tool}>
             {children}
           </div>
         </div>
-      }
+        )}
     </header>
-  )
-}
+  );
+};
+
+DetailHeader.propTypes = {
+  children: PropTypes.node,
+  title: PropTypes.string,
+};
 
 export default DetailHeader;

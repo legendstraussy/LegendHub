@@ -1,6 +1,7 @@
+import { PropTypes } from 'prop-types';
+import { makeStyles } from '@material-ui/styles';
 import HubIconButton from 'components/common/hubIconButton';
 import StatsGrid from 'components/statsGrid';
-import { makeStyles } from '@material-ui/styles';
 import finalStatsIcon from '../../../public/scroll-quill.png';
 import printStatsIcon from '../../../public/tied-scroll.png';
 
@@ -55,6 +56,10 @@ const CharStats = props => {
       </section>
     </div>
   );
+};
+
+CharStats.propTypes = {
+  onFinalClick: PropTypes.func,
 };
 
 export default CharStats;

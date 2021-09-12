@@ -1,4 +1,5 @@
 import { useRef } from 'react';
+import { PropTypes } from 'prop-types';
 import {
   Table,
   TableBody,
@@ -64,6 +65,11 @@ const IconHead = props => {
       </div>
     </div>
   );
+};
+
+IconHead.propTypes = {
+  icon: PropTypes.string,
+  label: PropTypes.string,
 };
 
 const useStyles = makeStyles((theme) => ({
@@ -175,7 +181,7 @@ const items = [
     id: 1001, slot: 'finger', name: 'a polished hessonite garnet ring', str: 10, min: 20, rent: 1895, con: 5, ac: -7, mv: -40, spellCrit: 2, spellDam: 2, align: 'GNE',
   },
   {
-    id: 1002, slot: 'arm', name: 'crazy stat item', str: 100, con: 100, spi: 100, per: 100, rent: 55555, min: 100, dex: 100, ac: -17, mvRegen: 10, align: 'G', damroll: 55, hitroll: 1, mitigation: 0, accuracy: 100, spellDam: 100, spellCrit: 100, spellRedux: 100, concentration: 100, hpRegen: 100, mvRegen: 100, maRegen: 100,
+    id: 1002, slot: 'arm', name: 'crazy stat item', str: 100, con: 100, spi: 100, per: 100, rent: 55555, min: 100, dex: 100, ac: -17, align: 'G', damroll: 55, hitroll: 1, mitigation: 0, accuracy: 100, spellDam: 100, spellCrit: 100, spellRedux: 100, concentration: 100, hpRegen: 100, mvRegen: 100, maRegen: 100,
   },
   {
     id: 1003, slot: 'amulet', name: 'white shield of the Holy from a far away place', rent: 1900, min: 2, dex: 3, ac: -17, mvRegen: 10,
@@ -341,7 +347,11 @@ const EquipmentList = () => {
             >
               <TableRow>
                 {headers.map(header => (
-                  <TableCell key={header.id} style={{ width: header?.width }} className={classes.cell}>
+                  <TableCell
+                    key={header.id}
+                    style={{ width: header?.width }}
+                    className={classes.cell}
+                  >
                     {header.component || <div style={{ justifyContent: header.align || 'center' }} data-value={header.id}>{header.label}</div>}
                   </TableCell>
                 ))}
@@ -356,7 +366,11 @@ const EquipmentList = () => {
             {items.map(item => (
               <TableRow key={item.id}>
                 {headers.map(header => (
-                  <TableCell key={header.id} style={{ width: header?.width }} className={classes.cell}>
+                  <TableCell
+                    key={header.id}
+                    style={{ width: header?.width }}
+                    className={classes.cell}
+                  >
                     <div data-value={header.id}>{item[header.id]}</div>
                   </TableCell>
                 ))}

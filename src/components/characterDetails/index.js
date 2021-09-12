@@ -2,8 +2,6 @@ import { useState } from 'react';
 import Tabs from 'components/hubTabs/tabs';
 import CharacterStats from 'components/characterStats';
 import { makeStyles } from '@material-ui/styles';
-import CharacterStatsIcon from '/public/totem-head.png';
-import itemDetailsIcon from '/public/swords-emblem.png';
 
 const useStyles = makeStyles({
   root: {
@@ -14,8 +12,8 @@ const useStyles = makeStyles({
 }, { name: 'Mui_Styles_DetailsTabs' });
 
 const tabs = [
-  { name: 'character', icon: CharacterStatsIcon, component: <CharacterStats /> },
-  { name: 'item', icon: itemDetailsIcon, component: <div>tab B!</div> },
+  { name: 'character', iconPath: '/totem-head.png', component: <CharacterStats /> },
+  { name: 'item', iconPath: '/swords-emblem.png', component: <div>tab B!</div> },
 ];
 
 const CharacterDetails = () => {
