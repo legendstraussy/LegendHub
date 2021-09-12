@@ -12,8 +12,8 @@ const useStyles = makeStyles({
     color: '#31DBB9',
     display: 'flex',
     justifyContent: 'center',
-    fontSize: '14px',
-    width: 32,
+    fontSize: 14,
+    width: 40,
   },
 }, { name: 'Mui_Styles_RangeStats' });
 

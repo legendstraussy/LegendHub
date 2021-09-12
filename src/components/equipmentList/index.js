@@ -105,7 +105,6 @@ const useStyles = makeStyles((theme) => ({
     },
     '& .MuiTableCell-body': {
       color: '#fff',
-      padding: '10px 0',
       whiteSpace: 'nowrap',
       borderRight: '1px solid rgba(64, 51, 51, .75)',
     },
@@ -323,11 +322,12 @@ const EquipmentList = () => {
   const tableEl = useRef(null);
 
   const handleScroll = event => {
+    // eslint-disable-next-line no-undef
     const mar = document.querySelector('.Mui_Styles_CharacterMarquee-root');
     const pos = event.target.scrollLeft;
     tableEl.current.style.left = `${-pos}px`;
     if (mar) {
-      mar.style.left = `${-pos}px`;
+      mar.style.marginLeft = `${-pos}px`;
     }
   };
 

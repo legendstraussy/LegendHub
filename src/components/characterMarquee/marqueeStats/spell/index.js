@@ -12,8 +12,8 @@ const useStyles = makeStyles({
     color: '#A57BF1',
     display: 'flex',
     justifyContent: 'center',
-    fontSize: '14px',
-    width: 31.5,
+    fontSize: 14,
+    width: 40,
   },
 }, { name: 'Mui_Styles_SpellStats' });
 
