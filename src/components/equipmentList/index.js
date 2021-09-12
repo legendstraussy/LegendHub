@@ -1,583 +1,386 @@
-import { DataGrid } from '@mui/x-data-grid';
+import { useRef } from 'react';
+import { PropTypes } from 'prop-types';
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+} from '@material-ui/core';
 import Image from 'next/image';
 import { makeStyles } from '@material-ui/styles';
-import strIcon from '../../../public/winged-sword.png';
-import minIcon from '../../../public/triorb.png';
-import dexIcon from '../../../public/high-five.png';
-import conIcon from '../../../public/heart-wings.png';
-import perIcon from '../../../public/spyglass.png';
-import spiIcon from '../../../public/vine-leaf.png';
-import swordSlashIcon from '../../../public/sword-wound.png';
-import mitIcon from '../../../public/shield-reflect.png';
-import spellBookIcon from '../../../public/spell-book.png';
-import rangeIcon from '../../../public/high-shot.png';
-import hpRegenIcon from '../../../public/hpRegen.png';
-import mvRegenIcon from '../../../public/mvRegen.png';
-import maRegenIcon from '../../../public/maRegen.png';
 
-const useStyles = makeStyles({
+const useIconStyles = makeStyles((theme) => ({
+  root: {
+    width: 40,
+    position: 'absolute',
+    top: -15,
+    bottom: 0,
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    background: '#222',
+    borderTopLeftRadius: props => props.leftEnd ? '5px' : 'unset',
+    borderTopRightRadius: props => props.rightEnd ? '5px' : 'unset',
+    '& div:first-child': {
+      position: 'relative',
+      width: 32,
+      height: 32,
+      overflow: 'unset !important',
+    },
+  },
   icon: {
-    position: 'unset !important',
-    paddingBottom: '2px !important',
-    display: 'flex !important',
-    width: '100% !important',
-    height: '100% !important',
+    position: 'absolute',
+    top: '15px !important',
+    left: 0,
+    bottom: 0,
+    right: 0,
+    padding: 0,
+    width: '32px !important',
+    height: '32px !important',
     minWidth: 'unset !important',
-    maxWidth: 'unset !important',
     minHeight: 'unset !important',
+    maxWidth: 'unset !important',
     maxHeight: 'unset !important',
   },
-  root: {
-    color: '#fff',
-    border: 'unset',
-    width: '100% !important',
-    outline: 'none !important',
-    fontFamily: 'open sans',
-    '& [data-field=str], & [data-field=min], & [data-field=dex], & [data-field=con], & [data-field=per], & [data-field=spi], & [data-field=damroll], & [data-field=hitroll], & [data-field=mitigation], & [data-field=spellCrit], & [data-field=spellDam], & [data-field=spellRedux], & [data-field=concentration], & [data-field=accuracy], & [data-field=hpRegen], & [data-field=mvRegen], & [data-field=maRegen]': {
-      minWidth: '32px !important',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      cursor: 'default',
-      fontWeight: 400,
-      position: 'relative',
-      right: -6,
-      left: 6,
-    },
-    '& [data-field=str]': {
-      color: '#DE2E2E',
-    },
-    '& [data-field=min]': {
-      color: '#A57BF1',
-    },
-    '& [data-field=dex]': {
-      color: '#2E94FA',
-    },
-    '& [data-field=con]': {
-      color: '#FFD874',
-    },
-    '& [data-field=per]': {
-      color: '#31DBB9',
-    },
-    '& [data-field=spi]': {
-      color: '#71DE71',
-    },
-    '& [data-field=ac], & [data-field=align], & [data-field=rent]': {
-      minWidth: '42px !important',
-      maxWidth: 'unset !important',
-      padding: '6px 0 !important',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      cursor: 'default',
-      '& .MuiDataGrid-columnHeaderTitleContainer': {
-        justifyContent: 'center',
-      },
-      position: 'relative',
-      left: 4,
-    },
-    '& .MuiDataGrid-main': {
-      position: 'unset !important',
-    },
-    '& .MuiTablePagination-root': {
-      display: 'none',
-    },
-    '& .MuiDataGrid-columnSeparator': {
-      display: 'none',
-    },
-    '& .MuiDataGrid-row': {
-      fontSize: '12px',
-      borderBottom: '1px solid rgba(45, 40, 40, .75)',
-      display: 'flex !important',
-      flex: '1 !important',
-      alignItems: 'center',
-      cursor: 'default',
-      '& [data-field=slot]': {
-        fontSize: '14px',
-        fontWeight: '100',
-        textTransform: 'capitalize',
-        fontStyle: 'italic',
-        fontFamily: 'Open Sans',
-        position: 'relative',
-        left: 4,
-        padding: '0 6px',
-      },
-      '& [data-field=item]': {
-        fontFamily: 'Open Sans',
-        fontWeight: '100',
-        fontSize: '14px',
-        color: '#219AFF',
-        position: 'relative',
-        left: 4,
-        padding: '0 6px',
-      },
-      '& [data-field=str], & [data-field=damroll]': {
-        borderLeft: '1px solid rgba(64, 51, 51, .75)',
-      },
-      '& [data-field=str], & [data-field=min], & [data-field=dex], & [data-field=con], & [data-field=per], & [data-field=spi], & [data-field=ac], & [data-field=align], & [data-field=damroll], & [data-field=hitroll], & [data-field=mitigation], & [data-field=accuracy], & [data-field=spellDam], & [data-field=spellCrit], & [data-field=spellRedux], & [data-field=concentration], & [data-field=hpRegen], & [data-field=mvRegen], & [data-field=maRegen]': {
-        borderRight: '1px solid rgba(64, 51, 51, .75)',
-      },
-    },
-    '& .MuiDataGrid-cell': {
-      borderBottom: 'unset',
-      outline: 'none !important',
-    },
-    '& .MuiDataGrid-window': {
-      overflowX: 'hidden !important',
-      backgroundColor: 'rgba(0, 0, 0, .7)',
-      top: '38px !important',
-    },
-    '& .MuiDataGrid-dataContainer': {
-      transform: 'unset !important',
-    },
-    '& .MuiDataGrid-columnsContainer': {
-      display: 'flex',
-      justifyContent: 'center',
-      marginTop: -3,
-      borderBottom: 'unset',
-    },
-    '& .MuiDataGrid-columnHeaderWrapper': {
-      height: '26px',
-      backgroundColor: 'rgba(0, 0, 0, .5)',
-      position: 'relative',
-      overflow: 'unset !important',
-      cursor: 'default',
-      borderRadius: '5px 5px 0 0',
-      '& [data-field=slot], & [data-field=item], & [data-field=ac], & [data-field=align]': {
-        fontSize: '10px',
-        textTransform: 'uppercase',
-        cursor: 'default',
-        padding: '6px 0px',
-        height: '26px',
-        left: 4,
-      },
-    },
-    '& [data-field=rent]': {
-      left: 4,
-      height: '26px',
-    },
-    '& .MuiDataGrid-iconButtonContainer': {
-      padding: 0,
-    },
-    '& .MuiDataGrid-columnHeader:focus-within': {
-      outline: 'none',
-    },
-    '& .MuiDataGrid-sortIcon': {
-      display: 'none',
-    },
-    '& .MuiDataGrid-menuIcon, .MuiDataGrid-iconButtonContainer': {
-      display: 'none',
-    },
-    '& .MuiDataGrid-footerContainer': {
-      display: 'none',
-    },
-    '& .MuiDataGrid-columnHeader': {
-      fontFamily: 'inherit',
-      fontSize: '10px',
-      fontWeight: 600,
-      textTransform: 'uppercase',
-      '& span': {
-        position: 'absolute',
-        right: 0,
-        left: 0,
-        bottom: -7,
-        top: -20,
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        background: '#222',
-        '& img:first-child': {
-          display: 'none !important',
-        },
-      },
-    },
-  },
-  headerLeftTab: {
-    borderTopLeftRadius: '5px',
-  },
-  headerRightTab: {
-    borderTopRightRadius: '5px',
-  },
-  iconLabel: {
-    height: '10px',
-    position: 'absolute !important',
-    top: '3px !important',
-    left: '0px !important',
-    fontSize: '8px',
+  label: {
+    color: props => theme.palette.stats[props.label] || '#fff',
+    position: 'relative',
+    top: 4,
+    fontSize: '10px',
     textTransform: 'uppercase',
   },
-}, { name: 'Mui_Styles_EquipmentList' });
+}), { name: 'Mui_Styles_IconHead' });
 
-const EquipmentList = () => {
-  const classes = useStyles();
-  const rows = [
-    {
-      id: 1001, slot: 'finger', item: 'a polished hessonite garnet ring', min: -15, align: 'GN',
-    },
-    {
-      id: 1002, slot: 'finger', item: 'a cool con ring', con: 5, ac: -7, rent: 1200, str: 10,
-    },
-    {
-      id: 1003, slot: 'neck', item: 'a cool con ring', con: 5, ac: -7, rent: 1200, damroll: 2, hitroll: 1,
-    },
-    {
-      id: 1004, slot: 'neck', item: 'a cool con ring', con: 5, ac: -7, rent: 12000, mitigation: 3,
-    },
-    {
-      id: 1005, slot: 'body', item: 'all-stats test plate mail', con: 100, str: 100, dex: 100, per: 100, min: 100, spi: 100, ac: -22, rent: 3422, damroll: 100, hitroll: 100, mitigation: 100, accuracy: 100, spellDam: 100, spellCrit: 100, spellRedux: 100, concentration: 100, hpRegen: 100, mvRegen: 100, maRegen: 100, align: 'GNE',
-    },
-    {
-      id: 1006, slot: 'head', item: 'a cool con ring', con: 5, ac: -7, rent: 12000, mitigation: 3,
-    },
-    {
-      id: 1007, slot: 'face', item: 'a cool con ring', con: 5, ac: -7, rent: 12000, mitigation: 3,
-    },
-    {
-      id: 1008, slot: 'legs', item: 'a cool con ring', con: 5, ac: -7, rent: 12000, mitigation: 3,
-    },
-    {
-      id: 1009, slot: 'feet', item: 'a cool con ring', con: 5, ac: -7, rent: 12000, mitigation: 3,
-    },
-    {
-      id: 1010, slot: 'hands', item: 'a cool con ring', con: 5, ac: -7, rent: 12000, mitigation: 3,
-    },
-    {
-      id: 1011, slot: 'arms', item: 'a cool con ring', con: 5, ac: -7, rent: 12000, mitigation: 3,
-    },
-    {
-      id: 1012, slot: 'about', item: 'a cool con ring', con: 5, ac: -7, rent: 12000, mitigation: 3,
-    },
-    {
-      id: 1013, slot: 'waist', item: 'a cool con ring', con: 5, ac: -7, rent: 12000, mitigation: 3,
-    },
-    {
-      id: 1014, slot: 'wrist', item: 'a cool con ring', con: 5, ac: -7, rent: 12000, mitigation: 3,
-    },
-    {
-      id: 1015, slot: 'wrist', item: 'a cool con ring', con: 5, ac: -7, rent: 12000, mitigation: 3,
-    },
-    {
-      id: 1016, slot: 'wield', item: 'a cool con ring', con: 5, ac: -7, rent: 12000, mitigation: 3,
-    },
-    {
-      id: 1017, slot: 'hold', item: 'a cool con ring', con: 5, ac: -7, rent: 12000, mitigation: 3,
-    },
-    {
-      id: 1018, slot: 'hold', item: 'a cool con ring', con: 5, ac: -7, rent: 12000, mitigation: 3,
-    },
-    {
-      id: 1019, slot: 'hold', item: 'a cool con ring', con: 5, ac: -7, rent: 12000, mitigation: 3,
-    },
-    {
-      id: 1020, slot: 'ear', item: 'a cool con ring', con: 5, ac: -7, rent: 12000, mitigation: 3,
-    },
-    {
-      id: 1021, slot: 'ear', item: 'a cool con ring', con: 5, ac: -7, rent: 12000, mitigation: 3,
-    },
-    {
-      id: 1022, slot: 'arm', item: 'a cool con ring', con: 5, ac: -7, rent: 12000, mitigation: 3,
-    },
-    {
-      id: 1023, slot: 'amulet', item: 'a cool con ring', con: 5, ac: -7, rent: 12000, mitigation: 3,
-    },
-    {
-      id: 1024, slot: 'aux', item: 'a cool con ring', con: 5, ac: -7, rent: 12000, mitigation: 3,
-    },
-    { id: 1111 }
-  ];
-  const columns = [
-    {
-      field: 'slot',
-      headerName: 'slot',
-      sortable: false,
-      width: 60,
-    },
-    {
-      field: 'item',
-      headerName: 'item',
-      sortable: true,
-      width: 260,
-    },
-    {
-      field: 'str',
-      headerName: (
-        <div>
-          <span className={classes.headerLeftTab}>
-            <Image src={strIcon} alt="" className={classes.icon} />
-          </span>
-          <span className={classes.iconLabel}>str</span>
-        </div>
-      ),
-      sortable: false,
-      width: 30,
-      minWidth: 30,
-    },
-    {
-      field: 'min',
-      headerName: (
-        <div>
-          <span>
-            <Image src={minIcon} alt="" className={classes.icon} />
-          </span>
-          <span className={classes.iconLabel}>min</span>
-        </div>
-      ),
-      sortable: false,
-      width: 30,
-      minWidth: 30,
-    },
-    {
-      field: 'dex',
-      headerName: (
-        <div>
-          <span>
-            <Image src={dexIcon} alt="" className={classes.icon} />
-          </span>
-          <span className={classes.iconLabel}>dex</span>
-        </div>
-      ),
-      sortable: false,
-      width: 30,
-      minWidth: 30,
-    },
-    {
-      field: 'con',
-      headerName: (
-        <div>
-          <span>
-            <Image src={conIcon} alt="" className={classes.icon} />
-          </span>
-          <span className={classes.iconLabel}>con</span>
-        </div>
-      ),
-      sortable: false,
-      width: 30,
-      minWidth: 30,
-    },
-    {
-      field: 'per',
-      headerName: (
-        <div>
-          <span>
-            <Image src={perIcon} alt="" className={classes.icon} />
-          </span>
-          <span className={classes.iconLabel}>per</span>
-        </div>
-      ),
-      sortable: false,
-      width: 30,
-      minWidth: 30,
-    },
-    {
-      field: 'spi',
-      headerName: (
-        <div>
-          <span className={classes.headerRightTab}>
-            <Image src={spiIcon} alt="" className={classes.icon} />
-          </span>
-          <span className={classes.iconLabel}>spi</span>
-        </div>
-      ),
-      sortable: false,
-      width: 30,
-      minWidth: 30,
-    },
-    {
-      field: 'ac',
-      headerName: 'ac',
-      sortable: false,
-      width: 30,
-      minWidth: 30,
-    },
-    {
-      field: 'align',
-      headerName: 'align',
-      sortable: false,
-      width: 30,
-      minWidth: 30,
-    },
-    {
-      field: 'rent',
-      headerName: 'rent',
-      sortable: true,
-      width: 30,
-      minWidth: 30,
-    },
-    {
-      field: 'damroll',
-      headerName: (
-        <div>
-          <span className={classes.headerLeftTab}>
-            <Image src={swordSlashIcon} alt="" className={classes.icon} />
-          </span>
-          <span className={classes.iconLabel}>dam</span>
-        </div>
-      ),
-      sortable: false,
-      width: 30,
-      minWidth: 30,
-    },
-    {
-      field: 'hitroll',
-      headerName: (
-        <div>
-          <span className={classes.headerMiddleTab}>
-            <Image src={swordSlashIcon} alt="" className={classes.icon} />
-          </span>
-          <span className={classes.iconLabel}>hit</span>
-        </div>
-      ),
-      sortable: false,
-      width: 30,
-      minWidth: 30,
-    },
-    {
-      field: 'mitigation',
-      headerName: (
-        <div>
-          <span className={classes.headerRightTab}>
-            <Image src={mitIcon} alt="" className={classes.icon} />
-          </span>
-          <span className={classes.iconLabel}>mit</span>
-        </div>
-      ),
-      sortable: true,
-      width: 30,
-      minWidth: 30,
-    },
-    {
-      field: 'accuracy',
-      headerName: (
-        <div>
-          <span className={`${classes.headerLeftTab} ${classes.headerRightTab}`}>
-            <Image src={rangeIcon} alt="" className={classes.icon} />
-          </span>
-          <span className={classes.iconLabel}>accr.</span>
-        </div>
-      ),
-      sortable: true,
-      width: 30,
-      minWidth: 30,
-    },
-    {
-      field: 'spellDam',
-      headerName: (
-        <div>
-          <span className={classes.headerLeftTab}>
-            <Image src={spellBookIcon} alt="" className={classes.icon} />
-          </span>
-          <span className={classes.iconLabel}>dam</span>
-        </div>
-      ),
-      sortable: false,
-      width: 30,
-      minWidth: 30,
-    },
-    {
-      field: 'spellCrit',
-      headerName: (
-        <div>
-          <span>
-            <Image src={spellBookIcon} alt="" className={classes.icon} />
-          </span>
-          <span className={classes.iconLabel}>crit</span>
-        </div>
-      ),
-      sortable: false,
-      width: 30,
-      minWidth: 30,
-    },
-    {
-      field: 'spellRedux',
-      headerName: (
-        <div>
-          <span>
-            <Image src={spellBookIcon} alt="" className={classes.icon} />
-          </span>
-          <span className={classes.iconLabel}>rdux</span>
-        </div>
-      ),
-      sortable: false,
-      width: 30,
-      minWidth: 30,
-    },
-    {
-      field: 'concentration',
-      headerName: (
-        <div>
-          <span className={classes.headerRightTab}>
-            <Image src={spellBookIcon} alt="" className={classes.icon} />
-          </span>
-          <span className={classes.iconLabel}>conc.</span>
-        </div>
-      ),
-      sortable: true,
-      width: 30,
-      minWidth: 30,
-    },
-    {
-      field: 'hpRegen',
-      headerName: (
-        <div>
-          <span className={classes.headerLeftTab}>
-            <Image src={hpRegenIcon} alt="" className={classes.icon} />
-          </span>
-          <span className={classes.iconLabel}>hpr</span>
-        </div>
-      ),
-      sortable: true,
-      width: 30,
-      minWidth: 30,
-    },
-    {
-      field: 'mvRegen',
-      headerName: (
-        <div>
-          <span>
-            <Image src={mvRegenIcon} alt="" className={classes.icon} />
-          </span>
-          <span className={classes.iconLabel}>mvr</span>
-        </div>
-      ),
-      sortable: true,
-      width: 30,
-      minWidth: 30,
-    },
-    {
-      field: 'maRegen',
-      headerName: (
-        <div>
-          <span className={classes.headerRightTab}>
-            <Image src={maRegenIcon} alt="" className={classes.icon} />
-          </span>
-          <span className={classes.iconLabel}>mar</span>
-        </div>
-      ),
-      sortable: true,
-      width: 30,
-      minWidth: 30,
-    },
-  ];
+const IconHead = props => {
+  const { iconPath, label } = props;
+  const classes = useIconStyles(props);
 
-
-  console.log('rows', rows.length)
   return (
-     <div style={{ height: '100%' }}>
-      <div style={{ display: 'flex', height: '100%', minWidth: '1016px' }}>
-        <div style={{ flexGrow: 1 }}>
-        <DataGrid
-          className={classes.root}
-          rows={rows}
-          columns={columns}
-          pageSize={24}
-          hideFooterRowCount
-          hideFooterSelectedRowCount
-          disableSelectionOnClick
-          rowHeight={36}
-        />
-        </div>
+    <div className={classes.root}>
+      <Image src={iconPath} alt="" width={32} height={32} layout="fixed" className={classes.icon} />
+      <div className={classes.label}>
+        {label}
       </div>
     </div>
+  );
+};
+
+IconHead.propTypes = {
+  iconPath: PropTypes.string,
+  label: PropTypes.string,
+};
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    marginTop: 20,
+    background: 'rgba(0, 0, 0, .5)',
+    borderRadius: '5px 5px 0 0',
+    borderBottom: '2px solid rgba(66, 60, 60, 0.75)',
+  },
+  container: {
+    background: 'rgba(0, 0, 0, .75)',
+    overflow: 'auto !important',
+  },
+  table: {
+    width: 'max-content;',
+    fontFamily: 'open sans',
+  },
+  thead: {
+    position: 'sticky',
+    top: 0,
+    fontFamily: 'Open Sans',
+    fontSize: '10px',
+    whiteSpace: 'nowrap',
+    // header columns
+    '& [data-value=slot], & [data-value=name], & [data-value=str], & [data-value=min], & [data-value=dex], & [data-value=con], & [data-value=per], & [data-value=spi], & [data-value=ac], & [data-value=align], & [data-value=rent], & [data-value=damroll], & [data-value=hitroll], & [data-value=mitigation], & [data-value=test]': {
+      color: '#fff',
+      display: 'flex',
+      flex: 1,
+      justifyContent: 'center',
+      padding: '0 10px',
+      fontSize: 10,
+      textTransform: 'uppercase',
+      userSelect: 'none',
+    },
+  },
+  tbody: {
+    '& .MuiTableRow-root': {
+      height: '36px !important',
+      borderBottom: '1px solid rgba(45, 40, 40, .75)',
+    },
+    '& .MuiTableCell-body': {
+      color: '#fff',
+      whiteSpace: 'nowrap',
+      borderRight: '1px solid rgba(64, 51, 51, .75)',
+    },
+    // body columns
+    '& [data-value=slot],& [data-value=test]': {
+      display: 'flex',
+      flex: 1,
+      justifyContent: 'flex-start',
+      padding: '0 10px',
+      fontSize: 14,
+      fontWeight: 100,
+      fontStyle: 'italic',
+      textTransform: 'capitalize',
+    },
+    '& [data-value=name]': {
+      width: 'inherit',
+      padding: '0 10px',
+      color: theme.palette.link,
+      fontWeight: 100,
+      whiteSpace: 'nowrap',
+      overflow: 'hidden',
+      textOverflow: 'ellipsis',
+    },
+    '& [data-value=ac], & [data-value=align], & [data-value=rent]': {
+      display: 'flex',
+      flex: 1,
+      justifyContent: 'center',
+      fontSize: 14,
+      fontWeight: 100,
+      textTransform: 'capitalize',
+    },
+    '& [data-value=str], & [data-value=min], & [data-value=dex], & [data-value=con], & [data-value=per], & [data-value=spi], & [data-value=damroll], & [data-value=hitroll], & [data-value=mitigation], & [data-value=accuracy], & [data-value=spellDam], & [data-value=spellCrit], & [data-value=spellRedux], & [data-value=concentration], & [data-value=hpRegen], & [data-value=mvRegen], & [data-value=maRegen]': {
+      fontWeight: 100,
+      display: 'flex',
+      flexDirect: 'column',
+      flex: 1,
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+    '& [data-value=str]': {
+      color: theme.palette.stats.str,
+    },
+    '& [data-value=min]': {
+      color: theme.palette.stats.min,
+    },
+    '& [data-value=dex]': {
+      color: theme.palette.stats.dex,
+    },
+    '& [data-value=con]': {
+      color: theme.palette.stats.con,
+    },
+    '& [data-value=per]': {
+      color: theme.palette.stats.per,
+    },
+    '& [data-value=spi]': {
+      color: theme.palette.stats.spi,
+    },
+  },
+  cell: {
+    fontFamily: 'inherit',
+    padding: 0,
+    border: 'unset',
+  },
+}), { name: 'Mui_Styles_EquipmentList' });
+
+const items = [
+  {
+    id: 1001, slot: 'finger', name: 'a polished hessonite garnet ring', str: 10, min: 20, rent: 1895, con: 5, ac: -7, mv: -40, spellCrit: 2, spellDam: 2, align: 'GNE',
+  },
+  {
+    id: 1002, slot: 'arm', name: 'crazy stat item', str: 100, con: 100, spi: 100, per: 100, rent: 55555, min: 100, dex: 100, ac: -17, align: 'G', damroll: 55, hitroll: 1, mitigation: 0, accuracy: 100, spellDam: 100, spellCrit: 100, spellRedux: 100, concentration: 100, hpRegen: 100, mvRegen: 100, maRegen: 100,
+  },
+  {
+    id: 1003, slot: 'amulet', name: 'white shield of the Holy from a far away place', rent: 1900, min: 2, dex: 3, ac: -17, mvRegen: 10,
+  },
+  {
+    id: 1004, slot: 'arm', name: 'white shield of the Holy', rent: 1900, min: 2, dex: 3, ac: -17, mvRegen: 10,
+  },
+  {
+    id: 1005, slot: 'arm', name: 'white shield of the Holy', rent: 1900, min: 2, dex: 3, ac: -17, mvRegen: 10,
+  },
+  {
+    id: 1006, slot: 'arm', name: 'white shield of the Holy', rent: 1900, min: 2, dex: 3, ac: -17, mvRegen: 10,
+  },
+  {
+    id: 1007, slot: 'arm', name: 'white shield of the Holy', rent: 1900, min: 2, dex: 3, ac: -17, mvRegen: 10,
+  },
+  {
+    id: 1008, slot: 'arm', name: 'white shield of the Holy', rent: 1900, min: 2, dex: 3, ac: -17, mvRegen: 10,
+  },
+  {
+    id: 1009, slot: 'arm', name: 'white shield of the Holy', rent: 1900, min: 2, dex: 3, ac: -17, mvRegen: 10,
+  },
+  {
+    id: 1010, slot: 'arm', name: 'white shield of the Holy', rent: 1900, min: 2, dex: 3, ac: -17, mvRegen: 10,
+  },
+  {
+    id: 1011, slot: 'arm', name: 'white shield of the Holy', rent: 1900, min: 2, dex: 3, ac: -17, mvRegen: 10,
+  },
+  {
+    id: 1012, slot: 'arm', name: 'white shield of the Holy', rent: 1900, min: 2, dex: 3, ac: -17, mvRegen: 10,
+  },
+  {
+    id: 1013, slot: 'arm', name: 'white shield of the Holy', rent: 1900, min: 2, dex: 3, ac: -17, mvRegen: 10,
+  },
+  {
+    id: 1014, slot: 'arm', name: 'white shield of the Holy', rent: 1900, min: 2, dex: 3, ac: -17, mvRegen: 10,
+  },
+  {
+    id: 1015, slot: 'arm', name: 'white shield of the Holy', rent: 1900, min: 2, dex: 3, ac: -17, mvRegen: 10,
+  },
+  {
+    id: 1016, slot: 'arm', name: 'white shield of the Holy', rent: 1900, min: 2, dex: 3, ac: -17, mvRegen: 10,
+  },
+  {
+    id: 1017, slot: 'arm', name: 'white shield of the Holy', rent: 1900, min: 2, dex: 3, ac: -17, mvRegen: 10,
+  },
+  {
+    id: 1018, slot: 'arm', name: 'white shield of the Holy', rent: 1900, min: 2, dex: 3, ac: -17, mvRegen: 10,
+  },
+  {
+    id: 1019, slot: 'arm', name: 'white shield of the Holy', rent: 1900, min: 2, dex: 3, ac: -17, mvRegen: 10,
+  },
+  {
+    id: 1020, slot: 'arm', name: 'white shield of the Holy', rent: 1900, min: 2, dex: 3, ac: -17, mvRegen: 10,
+  },
+  {
+    id: 1021, slot: 'arm', name: 'white shield of the Holy', rent: 1900, min: 2, dex: 3, ac: -17, mvRegen: 10,
+  },
+  {
+    id: 1022, slot: 'arm', name: 'white shield of the Holy', rent: 1900, min: 2, dex: 3, ac: -17, mvRegen: 10,
+  },
+  {
+    id: 1023, slot: 'arm', name: 'white shield of the Holy', rent: 1900, min: 2, dex: 3, ac: -17, mvRegen: 10,
+  },
+  {
+    id: 1024, slot: 'arm', name: 'white shield of the Holy', rent: 1900, min: 2, dex: 3, ac: -17, mvRegen: 10,
+  },
+  {
+    id: 1025, slot: 'arm', name: 'white shield of the Holy', rent: 1900, min: 2, dex: 3, ac: -17, mvRegen: 10,
+  },
+  {
+    id: 1026, test: 123, slot: 'arm', name: 'white shield of the Holy', rent: 1900, min: 2, dex: 3, ac: -17, mvRegen: 10,
+  },
+];
+
+const headers = [
+  {
+    id: 'slot', label: 'slot', width: 65, align: 'flex-start', hideBorder: true,
+  },
+  {
+    id: 'name', label: 'item', width: 250, align: 'flex-start',
+  },
+  {
+    id: 'str', label: 'str', component: <IconHead leftEnd iconPath="/winged-sword.png" label="str" />, width: 40,
+  },
+  {
+    id: 'min', label: 'min', component: <IconHead iconPath="/spell-book.png" label="min" />, width: 40,
+  },
+  {
+    id: 'dex', label: 'dex', component: <IconHead iconPath="/high-five.png" label="dex" />, width: 40,
+  },
+  {
+    id: 'con', label: 'con', component: <IconHead iconPath="/heart-wings.png" label="con" />, width: 40,
+  },
+  {
+    id: 'per', label: 'per', component: <IconHead iconPath="/spyglass.png" label="per" />, width: 40,
+  },
+  {
+    id: 'spi', label: 'spi', component: <IconHead rightEnd iconPath="/vine-leaf.png" label="spi" />, width: 40,
+  },
+  { id: 'ac', label: 'ac', width: 35 },
+  { id: 'align', label: 'align', width: 55 },
+  { id: 'rent', label: 'rent', width: 50 },
+  {
+    id: 'damroll', label: 'damroll', component: <IconHead leftEnd iconPath="/sword-wound.png" label="dam" />, width: 40,
+  },
+  {
+    id: 'hitroll', label: 'hitroll', component: <IconHead iconPath="/sword-wound.png" label="hit" />, width: 40,
+  },
+  {
+    id: 'mitigation', label: 'mitigation', component: <IconHead rightEnd iconPath="/shield-reflect.png" label="mit" />, width: 40,
+  },
+  {
+    id: 'accuracy', label: 'accuracy', component: <IconHead leftEnd rightEnd iconPath="/high-shot.png" label="acc" />, width: 40,
+  },
+  {
+    id: 'spellDam', label: 'spellDam', component: <IconHead leftEnd iconPath="/spell-book.png" label="dam" />, width: 40,
+  },
+  {
+    id: 'spellCrit', label: 'spellCrit', component: <IconHead iconPath="/spell-book.png" label="crit" />, width: 40,
+  },
+  {
+    id: 'spellRedux', label: 'spellRedux', component: <IconHead iconPath="/spell-book.png" label="rdux" />, width: 40,
+  },
+  {
+    id: 'concentration', label: 'concentration', component: <IconHead rightEnd iconPath="/spell-book.png" label="conc" />, width: 40,
+  },
+  {
+    id: 'hpRegen', label: 'hpRegen', component: <IconHead leftEnd iconPath="/hpRegen.png" label="hpr" />, width: 40,
+  },
+  {
+    id: 'mvRegen', label: 'mvRegen', component: <IconHead iconPath="/mvRegen.png" label="mvr" />, width: 40,
+  },
+  {
+    id: 'maRegen', label: 'maRegen', component: <IconHead rightEnd iconPath="/maRegen.png" label="mar" />, width: 40,
+  },
+  {
+    id: 'test', label: 'test', width: 120, align: 'flex-start',
+  },
+];
+
+const EquipmentList = () => {
+  const classes = useStyles(items);
+  const tableEl = useRef(null);
+
+  const handleScroll = event => {
+    // eslint-disable-next-line no-undef
+    const mar = document.querySelector('.Mui_Styles_CharacterMarquee-root');
+    const pos = event.target.scrollLeft;
+    tableEl.current.style.left = `${-pos}px`;
+    if (mar) {
+      mar.style.marginLeft = `${-pos}px`;
+    }
+  };
+  
+  return (
+    <>
+      <div className={classes.root}>
+        <div ref={tableEl} style={{ position: 'relative' }}>
+          <Table style={{ width: 'max-content' }}>
+            <TableHead
+              className={classes.thead}
+            >
+              <TableRow>
+                {headers.map(header => (
+                  <TableCell
+                    key={header.id}
+                    style={{ width: header?.width }}
+                    className={classes.cell}
+                  >
+                    {header.component || <div style={{ justifyContent: header.align || 'center' }} data-value={header.id}>{header.label}</div>}
+                  </TableCell>
+                ))}
+              </TableRow>
+            </TableHead>
+          </Table>
+        </div>
+      </div>
+      <TableContainer className={classes.container} onScroll={handleScroll}>
+        <Table className={classes.table}>
+          <TableBody className={classes.tbody}>
+            {items.map(item => (
+              <TableRow key={item.id}>
+                {headers.map(header => (
+                  <TableCell
+                    key={header.id}
+                    style={{ width: header?.width, borderRight: header.hideBorder ? 'unset' : '' }}
+                    className={classes.cell}
+                  >
+                    <div data-value={header.id}>{item[header.id]}</div>
+                  </TableCell>
+                ))}
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
+    </>
   );
 };
 

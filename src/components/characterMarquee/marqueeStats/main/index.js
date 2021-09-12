@@ -6,14 +6,13 @@ const useStyles = makeStyles({
     display: 'flex',
     fontFamily: 'inherit',
     fontWeight: 600,
-    marginLeft: '.4em',
   },
   stat: {
     fontSize: '14px',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    width: 32,
+    width: 40,
   },
   str: {
     color: '#DE2E2E',

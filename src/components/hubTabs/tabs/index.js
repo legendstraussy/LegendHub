@@ -55,12 +55,12 @@ const Tabs = props => {
 
 Tabs.propTypes = {
   activeTab: PropTypes.shape({
-    name: PropTypes.string,
     component: PropTypes.node,
+    name: PropTypes.string,
   }),
   onTabClick: PropTypes.func,
   tabs: PropTypes.arrayOf(
-    PropTypes.shape(),
+    PropTypes.shape({}),
   ),
 };
 

@@ -7,7 +7,7 @@ const useStyles = makeStyles({
     fontFamily: 'inherit',
   },
   stat: {
-    marginRight: '.75em',
+    marginRight: '.65em',
     display: 'flex',
     alignItems: 'baseline',
   },
@@ -36,8 +36,8 @@ const HealthStat = props => {
 };
 
 HealthStat.propTypes = {
-  label: PropTypes.string.isRequired,
-  stat: PropTypes.number.isRequired,
+  label: PropTypes.string,
+  stat: PropTypes.number,
 };
 
 export default HealthStat;

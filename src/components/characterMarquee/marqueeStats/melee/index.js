@@ -7,14 +7,13 @@ const useStyles = makeStyles({
     justifyContent: 'center',
     fontFamily: 'inherit',
     fontWeight: 600,
-    marginLeft: 7,
   },
   stat: {
     color: '#DE2E2E',
     display: 'flex',
     justifyContent: 'center',
-    fontSize: '14px',
-    width: 32,
+    fontSize: 14,
+    width: 40,
   },
 }, { name: 'Mui_Styles_MeleeStats' });
 

@@ -4,8 +4,11 @@ import { makeStyles } from '@material-ui/styles';
 
 const useStyles = makeStyles({
   root: {
-    margin: '.75em 1em 1.5em 7.5em',
+    position: 'relative',
+    top: -5,
     display: 'flex',
+    padding: 0,
+    margin: '30px 13px 0px 125px',
   },
   buttonLayout: {
     margin: '0 .4em',

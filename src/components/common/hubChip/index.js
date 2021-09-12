@@ -39,7 +39,8 @@ const HubChip = props => {
               <Avatar onClick={onDelete} className={classes.avatar}>
                 <Remove className={classes.icon} />
               </Avatar>
-            ) : null }
+            )
+            : null }
         </>
       )}
       className={classes.root}

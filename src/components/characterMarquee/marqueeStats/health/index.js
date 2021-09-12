@@ -27,7 +27,7 @@ const HealthStats = props => {
 };
 
 HealthStats.propTypes = {
-  labelSize: PropTypes.string,
+  labelSize: PropTypes.number,
 };
 
 export default HealthStats;

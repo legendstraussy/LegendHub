@@ -5,7 +5,6 @@ import DetailField from 'components/detail/detailField';
 import DetailHeader from 'components/detail/detailHeader';
 import { makeStyles } from '@material-ui/styles';
 import { modifiers } from 'utils/constants';
-import totemIcon from '../../../public/totem-head.png';
 
 const useStyles = makeStyles({
   root: {
@@ -60,7 +59,7 @@ const CharacterFinal = props => {
     <div className={classes.root}>
       <section>
         <DetailHeader title="characer overview">
-          <HubIconButton onClick={onStatsClick} icon={totemIcon} />
+          <HubIconButton onClick={onStatsClick} iconPath="/totem-head.png" />
         </DetailHeader>
       </section>
       <section>

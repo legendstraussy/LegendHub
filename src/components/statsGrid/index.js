@@ -1,7 +1,6 @@
-import { useState } from 'react';
-import { PropTypes } from 'prop-types';
 import { Grid } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
+import StatInput from 'components/statInput';
 import theme from 'utils/theme';
 
 const useStyles = makeStyles({
@@ -20,19 +19,6 @@ const useStyles = makeStyles({
   label: {
     display: 'flex',
     justifyContent: 'center',
-  },
-  input: {
-    width: 45,
-    height: 30,
-    fontFamily: 'Open Sans',
-    fontSize: '12px',
-    border: '1px solid rgba(105, 85, 85, .75)',
-    display: 'flex',
-    padding: '4px',
-    background: '#222222',
-    borderRadius: '5px',
-    color: '#fff',
-    outline: 'unset',
   },
 }, { name: 'Mui_Styles_StatsGrid' });
 
@@ -80,24 +66,6 @@ const stats = [
     final: 43,
   },
 ];
-
-const StatInput = ({ stat }) => {
-  const [value, setValue] = useState(stat);
-  const classes = useStyles();
-
-  return (
-    <input
-      type="number"
-      value={value}
-      onChange={(event) => setValue(event.target.value)}
-      className={classes.input}
-    />
-  );
-};
-
-StatInput.propTypes = {
-  stat: PropTypes.number,
-};
 
 const StatsGrid = () => {
   const classes = useStyles();

@@ -17,6 +17,7 @@ const DetailFieldLabel = props => {
   return (
     <div className={classes.root}>
       {label}
+      :
     </div>
   );
 };

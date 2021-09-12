@@ -28,22 +28,19 @@ const DetailHeader = props => {
     <header className={classes.root}>
       <div className={classes.label}>{title}</div>
       {children
-      && (
+        && (
         <div className={classes.toolbar}>
           <div className={classes.tool}>
             {children}
           </div>
         </div>
-      )}
+        )}
     </header>
   );
 };
 
 DetailHeader.propTypes = {
-  children: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node,
-  ]),
+  children: PropTypes.node,
   title: PropTypes.string,
 };
 

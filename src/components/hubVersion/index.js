@@ -2,6 +2,8 @@ import { makeStyles } from '@material-ui/styles';
 
 const useStyles = makeStyles({
   root: {
+    position: 'relative',
+    top: -20,
     display: 'flex',
     flex: 1,
     alignItems: 'baseline',

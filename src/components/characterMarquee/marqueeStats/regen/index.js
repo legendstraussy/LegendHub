@@ -11,19 +11,19 @@ const useStyles = makeStyles({
   stat: {
     display: 'flex',
     justifyContent: 'center',
-    fontSize: '14px',
+    fontSize: 14,
   },
   hp: {
     color: '#FFD874',
-    width: 34,
+    width: 40,
   },
   mv: {
     color: '#2E94FA',
-    width: 32,
+    width: 40,
   },
   ma: {
     color: '#A57BF1',
-    width: 34,
+    width: 40,
   },
 }, { name: 'Mui_Styles_RegenStats' });
 
