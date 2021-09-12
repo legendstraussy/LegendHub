@@ -5,7 +5,7 @@ import { makeStyles } from '@material-ui/styles';
 
 const useStyles = makeStyles({
   root: {
-    margin: '.75em',
+    margin: '1.25em .75em .75em .75em',
     padding: '.55em',
     backgroundColor: 'rgba(27, 13, 24, .5)',
     display: 'flex',

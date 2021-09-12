@@ -7,7 +7,7 @@ const useStyles = makeStyles({
     fontFamily: 'inherit',
   },
   stat: {
-    marginRight: '.75em',
+    marginRight: '.65em',
     display: 'flex',
     alignItems: 'baseline',
   },

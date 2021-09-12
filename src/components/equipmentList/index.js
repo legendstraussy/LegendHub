@@ -145,6 +145,24 @@ const useStyles = makeStyles((theme) => ({
       alignItems: 'center',
       justifyContent: 'center',
     },
+    '& [data-value=str]': {
+      color: theme.palette.stats.str,
+    },
+    '& [data-value=min]': {
+      color: theme.palette.stats.min,
+    },
+    '& [data-value=dex]': {
+      color: theme.palette.stats.dex,
+    },
+    '& [data-value=con]': {
+      color: theme.palette.stats.con,
+    },
+    '& [data-value=per]': {
+      color: theme.palette.stats.per,
+    },
+    '& [data-value=spi]': {
+      color: theme.palette.stats.spi,
+    },
   },
   cell: {
     fontFamily: 'inherit',
