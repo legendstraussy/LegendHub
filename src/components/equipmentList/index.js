@@ -337,9 +337,7 @@ const EquipmentList = () => {
       mar.style.marginLeft = `${-pos}px`;
     }
   };
-
-
-  console.log('rows', rows.length)
+  
   return (
     <>
       <div className={classes.root}>
