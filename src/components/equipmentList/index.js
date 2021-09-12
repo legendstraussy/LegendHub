@@ -338,6 +338,8 @@ const EquipmentList = () => {
     }
   };
 
+
+  console.log('rows', rows.length)
   return (
     <>
       <div className={classes.root}>

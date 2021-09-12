@@ -36,7 +36,7 @@ const Tabs = props => {
     <div className={classes.root}>
       <div className={classes.backTab} />
       <div className={classes.tabsHeader}>
-        {tabs.map(tab => (
+        {tabs?.map(tab => (
           <Tab
             key={tab.name}
             test={tab?.test}
@@ -47,7 +47,7 @@ const Tabs = props => {
         ))}
       </div>
       <TabDetail>
-        {activeTab.component}
+        {activeTab?.component}
       </TabDetail>
     </div>
   );

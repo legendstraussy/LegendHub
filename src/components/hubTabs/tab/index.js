@@ -1,5 +1,5 @@
-import Image from 'next/image';
 import { PropTypes } from 'prop-types';
+import Image from 'next/image';
 import { makeStyles } from '@material-ui/styles';
 
 const useStyles = makeStyles({
