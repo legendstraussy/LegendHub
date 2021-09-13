@@ -1,5 +1,4 @@
 import { useRef, useState } from 'react';
-import { PropTypes } from 'prop-types';
 import {
   Table,
   TableBody,
@@ -9,69 +8,8 @@ import {
   TablePagination,
   TableRow,
 } from '@material-ui/core';
-import Image from 'next/image';
+import IconHead from 'components/iconHead';
 import { makeStyles } from '@material-ui/styles';
-
-const useIconStyles = makeStyles((theme) => ({
-  root: {
-    width: 40,
-    position: 'absolute',
-    top: -15,
-    bottom: 0,
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    background: '#222',
-    borderTopLeftRadius: props => props.leftEnd ? '5px' : 'unset',
-    borderTopRightRadius: props => props.rightEnd ? '5px' : 'unset',
-    '& div:first-child': {
-      position: 'relative',
-      width: 32,
-      height: 32,
-      overflow: 'unset !important',
-    },
-  },
-  icon: {
-    position: 'absolute',
-    top: '15px !important',
-    left: 0,
-    bottom: 0,
-    right: 0,
-    padding: 0,
-    width: '32px !important',
-    height: '32px !important',
-    minWidth: 'unset !important',
-    minHeight: 'unset !important',
-    maxWidth: 'unset !important',
-    maxHeight: 'unset !important',
-  },
-  label: {
-    color: props => theme.palette.stats[props.label] || '#fff',
-    position: 'relative',
-    top: 4,
-    fontSize: '10px',
-    textTransform: 'uppercase',
-  },
-}), { name: 'Mui_Styles_IconHead' });
-
-const IconHead = props => {
-  const { iconPath, label } = props;
-  const classes = useIconStyles(props);
-
-  return (
-    <div className={classes.root}>
-      <Image src={iconPath} alt="" width={32} height={32} layout="fixed" className={classes.icon} />
-      <div className={classes.label}>
-        {label}
-      </div>
-    </div>
-  );
-};
-
-IconHead.propTypes = {
-  iconPath: PropTypes.string,
-  label: PropTypes.string,
-};
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -177,9 +115,31 @@ const useStyles = makeStyles((theme) => ({
     border: 'unset',
   },
   pagination: {
+    position: 'sticky',
+    bottom: 0,
+    display: 'contents !important',
     color: '#fff',
+    '& .MuiToolbar-root': {
+      height: 36,
+      background: 'rgba(0, 0, 0, .5)',
+      textTransform: 'uppercase',
+    },
+    '& .MuiTablePagination-toolbar': {
+      minHeight: 'unset',
+    },
+    '& .MuiTablePagination-selectIcon': {
+      color: '#219AFF',
+    },
+    '& .MuiTablePagination-actions': {
+      '& .Mui-disabled': {
+        color: '#444 !important',
+      },
+      '& .MuiButtonBase-root ': {
+        color: '#219AFF',
+      },
+    },
   },
-}), { name: 'Mui_Styles_EquipmentList' });
+}), { name: 'Mui_Styles_ItemList' });
 
 const items = [
   {
@@ -389,17 +349,17 @@ const ItemList = () => {
             ))}
           </TableBody>
         </Table>
-        <TablePagination
-          className={classes.pagination}
-          rowsPerPageOptions={[5, 10, 25]}
-          component="div"
-          count={items.length}
-          rowsPerPage={5}
-          page={1}
-          onPageChange={() => {}}
-          onRowsPerPageChange={() => {}}
-        />
       </TableContainer>
+      <TablePagination
+        className={classes.pagination}
+        rowsPerPageOptions={[5, 10, 25]}
+        component="div"
+        count={items.length}
+        rowsPerPage={rowsPerPage}
+        page={page}
+        onPageChange={() => {}}
+        onRowsPerPageChange={() => {}}
+      />
     </>
   );
 };
