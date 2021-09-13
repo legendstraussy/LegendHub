@@ -10,6 +10,7 @@ import {
 } from '@material-ui/core';
 import IconHead from 'components/iconHead';
 import { makeStyles } from '@material-ui/styles';
+import items from 'data/dummy';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -19,6 +20,9 @@ const useStyles = makeStyles((theme) => ({
     borderBottom: '2px solid rgba(66, 60, 60, 0.75)',
   },
   container: {
+    display: 'flex',
+    flexDirection: 'column',
+    flex: 1,
     background: 'rgba(0, 0, 0, .75)',
     overflow: 'auto !important',
   },
@@ -126,6 +130,7 @@ const useStyles = makeStyles((theme) => ({
     },
     '& .MuiTablePagination-toolbar': {
       minHeight: 'unset',
+      borderRadius: '0 0 5px 5px',
     },
     '& .MuiTablePagination-selectIcon': {
       color: '#219AFF',
@@ -140,87 +145,6 @@ const useStyles = makeStyles((theme) => ({
     },
   },
 }), { name: 'Mui_Styles_ItemList' });
-
-const items = [
-  {
-    id: 1001, slot: 'finger', name: 'a polished hessonite garnet ring', str: 10, min: 20, rent: 1895, con: 5, ac: -7, mv: -40, spellCrit: 2, spellDam: 2, align: 'GNE',
-  },
-  {
-    id: 1002, slot: 'arm', name: 'crazy stat item', str: 100, con: 100, spi: 100, per: 100, rent: 55555, min: 100, dex: 100, ac: -17, align: 'G', damroll: 55, hitroll: 1, mitigation: 0, accuracy: 100, spellDam: 100, spellCrit: 100, spellRedux: 100, concentration: 100, hpRegen: 100, mvRegen: 100, maRegen: 100,
-  },
-  {
-    id: 1003, slot: 'amulet', name: 'white shield of the Holy from a far away place', rent: 1900, min: 2, dex: 3, ac: -17, mvRegen: 10,
-  },
-  {
-    id: 1004, slot: 'arm', name: 'white shield of the Holy', rent: 1900, min: 2, dex: 3, ac: -17, mvRegen: 10,
-  },
-  {
-    id: 1005, slot: 'arm', name: 'white shield of the Holy', rent: 1900, min: 2, dex: 3, ac: -17, mvRegen: 10,
-  },
-  {
-    id: 1006, slot: 'arm', name: 'white shield of the Holy', rent: 1900, min: 2, dex: 3, ac: -17, mvRegen: 10,
-  },
-  {
-    id: 1007, slot: 'arm', name: 'white shield of the Holy', rent: 1900, min: 2, dex: 3, ac: -17, mvRegen: 10,
-  },
-  {
-    id: 1008, slot: 'arm', name: 'white shield of the Holy', rent: 1900, min: 2, dex: 3, ac: -17, mvRegen: 10,
-  },
-  {
-    id: 1009, slot: 'arm', name: 'white shield of the Holy', rent: 1900, min: 2, dex: 3, ac: -17, mvRegen: 10,
-  },
-  {
-    id: 1010, slot: 'arm', name: 'white shield of the Holy', rent: 1900, min: 2, dex: 3, ac: -17, mvRegen: 10,
-  },
-  {
-    id: 1011, slot: 'arm', name: 'white shield of the Holy', rent: 1900, min: 2, dex: 3, ac: -17, mvRegen: 10,
-  },
-  {
-    id: 1012, slot: 'arm', name: 'white shield of the Holy', rent: 1900, min: 2, dex: 3, ac: -17, mvRegen: 10,
-  },
-  {
-    id: 1013, slot: 'arm', name: 'white shield of the Holy', rent: 1900, min: 2, dex: 3, ac: -17, mvRegen: 10,
-  },
-  {
-    id: 1014, slot: 'arm', name: 'white shield of the Holy', rent: 1900, min: 2, dex: 3, ac: -17, mvRegen: 10,
-  },
-  {
-    id: 1015, slot: 'arm', name: 'white shield of the Holy', rent: 1900, min: 2, dex: 3, ac: -17, mvRegen: 10,
-  },
-  {
-    id: 1016, slot: 'arm', name: 'white shield of the Holy', rent: 1900, min: 2, dex: 3, ac: -17, mvRegen: 10,
-  },
-  {
-    id: 1017, slot: 'arm', name: 'white shield of the Holy', rent: 1900, min: 2, dex: 3, ac: -17, mvRegen: 10,
-  },
-  {
-    id: 1018, slot: 'arm', name: 'white shield of the Holy', rent: 1900, min: 2, dex: 3, ac: -17, mvRegen: 10,
-  },
-  {
-    id: 1019, slot: 'arm', name: 'white shield of the Holy', rent: 1900, min: 2, dex: 3, ac: -17, mvRegen: 10,
-  },
-  {
-    id: 1020, slot: 'arm', name: 'white shield of the Holy', rent: 1900, min: 2, dex: 3, ac: -17, mvRegen: 10,
-  },
-  {
-    id: 1021, slot: 'arm', name: 'white shield of the Holy', rent: 1900, min: 2, dex: 3, ac: -17, mvRegen: 10,
-  },
-  {
-    id: 1022, slot: 'arm', name: 'white shield of the Holy', rent: 1900, min: 2, dex: 3, ac: -17, mvRegen: 10,
-  },
-  {
-    id: 1023, slot: 'arm', name: 'white shield of the Holy', rent: 1900, min: 2, dex: 3, ac: -17, mvRegen: 10,
-  },
-  {
-    id: 1024, slot: 'arm', name: 'white shield of the Holy', rent: 1900, min: 2, dex: 3, ac: -17, mvRegen: 10,
-  },
-  {
-    id: 1025, slot: 'arm', name: 'white shield of the Holy', rent: 1900, min: 2, dex: 3, ac: -17, mvRegen: 10,
-  },
-  {
-    id: 1026, test: 123, slot: 'arm', name: 'white shield of the Holy', rent: 1900, min: 2, dex: 3, ac: -17, mvRegen: 10,
-  },
-];
 
 const headers = [
   {
@@ -288,13 +212,11 @@ const headers = [
   },
 ];
 
-const ItemList = () => {
+const ItemList = props => {
   const [order, setOrder] = useState('asc');
   const [orderBy, setOrderBy] = useState('calories');
-  const [selected, setSelected] = useState([]);
   const [page, setPage] = useState(0);
-  const [dense, setDense] = useState(false);
-  const [rowsPerPage, setRowsPerPage] = useState(5);
+  const [rowsPerPage, setRowsPerPage] = useState(25);
   const classes = useStyles(items);
   const tableEl = useRef(null);
 
@@ -306,6 +228,15 @@ const ItemList = () => {
     if (mar) {
       mar.style.marginLeft = `${-pos}px`;
     }
+  };
+
+  const handleChangePage = (event, newPage) => {
+    setPage(newPage);
+  };
+
+  const handleChangeRowsPerPage = (event) => {
+    setRowsPerPage(parseInt(event.target.value, 10));
+    setPage(0);
   };
   
   return (
@@ -334,18 +265,21 @@ const ItemList = () => {
       <TableContainer className={classes.container} onScroll={handleScroll}>
         <Table className={classes.table}>
           <TableBody className={classes.tbody}>
-            {items.map(item => (
-              <TableRow key={item.id}>
-                {headers.map(header => (
-                  <TableCell
-                    key={header.id}
-                    style={{ width: header?.width, borderRight: header.hideBorder ? 'unset' : '' }}
-                    className={classes.cell}
-                  >
-                    <div data-value={header.id}>{item[header.id]}</div>
-                  </TableCell>
-                ))}
-              </TableRow>
+            {items
+              .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+              .map(item => (
+                <TableRow key={item.id}>
+                  {headers.map(header => (
+                    <TableCell
+                      key={header.id}
+                      onClick={props.setTest}
+                      style={{ width: header?.width, borderRight: header.hideBorder ? 'unset' : '' }}
+                      className={classes.cell}
+                    >
+                      <div data-value={header.id}>{item[header.id]}</div>
+                    </TableCell>
+                  ))}
+                </TableRow>
             ))}
           </TableBody>
         </Table>
@@ -357,8 +291,8 @@ const ItemList = () => {
         count={items.length}
         rowsPerPage={rowsPerPage}
         page={page}
-        onPageChange={() => {}}
-        onRowsPerPageChange={() => {}}
+        onPageChange={handleChangePage}
+        onRowsPerPageChange={handleChangeRowsPerPage}
       />
     </>
   );

@@ -1,5 +1,7 @@
+import { useState } from 'react';
 import CharacterMarquee from 'components/characterMarquee';
 import EquipmentList from 'components/equipmentList';
+import ItemList from 'components/itemList';
 import DetailsTabs from 'components/characterDetails';
 import HubLayout from 'layouts/hub';
 import { makeStyles } from '@material-ui/styles';
@@ -10,6 +12,7 @@ const useStyles = makeStyles({
     padding: '.55em',
     backgroundColor: 'rgba(27, 13, 24, .5)',
     display: 'flex',
+    flex: 1,
     color: '#fff',
     overflow: 'hidden',
   },
@@ -31,6 +34,7 @@ const useStyles = makeStyles({
   },
   main: {
     display: 'flex',
+    flex: 1,
     flexDirection: 'column',
     margin: '0 0 0 0',
     overflow: 'hidden',
@@ -39,16 +43,23 @@ const useStyles = makeStyles({
 
 const Builder = () => {
   const classes = useStyles();
+  const [test, setTest] = useState(false);
 
   return (
     <HubLayout>
       <div className={classes.root}>
         <div className={classes.left}>
           <div style={{ display: 'flex' }}>
-            <CharacterMarquee />
+            {test
+              ? <div>Selected Item here</div>
+              : <CharacterMarquee  />
+            }
           </div>
           <div className={classes.main}>
-            <EquipmentList />
+            {test
+              ? <ItemList setTest={() => setTest(false)} />
+              : <EquipmentList setTest={() => setTest(true)} />
+            }
           </div>
         </div>
         <div className={classes.right}>

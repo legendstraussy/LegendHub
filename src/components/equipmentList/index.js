@@ -262,7 +262,7 @@ const headers = [
   },
 ];
 
-const EquipmentList = () => {
+const EquipmentList = props => {
   const classes = useStyles(items);
   const tableEl = useRef(null);
 
@@ -307,6 +307,7 @@ const EquipmentList = () => {
                 {headers.map(header => (
                   <TableCell
                     key={header.id}
+                    onClick={props.setTest}
                     style={{ width: header?.width, borderRight: header.hideBorder ? 'unset' : '' }}
                     className={classes.cell}
                   >

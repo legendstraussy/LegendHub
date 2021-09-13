@@ -5,19 +5,20 @@ import { makeStyles } from '@material-ui/styles';
 
 const useStyles = makeStyles({
   root: {
+    display: 'flex',
+    flex: 1,
+    color: '#fff',
+    backgroundColor: 'rgba(27, 13, 24, .5)',
     margin: '1.25em .75em .75em .75em',
     padding: '.55em',
-    backgroundColor: 'rgba(27, 13, 24, .5)',
-    display: 'flex',
-    color: '#fff',
     overflow: 'hidden',
   },
   left: {
     maxWidth: '80%',
-    margin: '.2em .35em .2em .2em',
     display: 'flex',
     flexDirection: 'column',
     flex: 1,
+    margin: '.2em .35em .2em .2em',
     overflow: 'hidden',
   },
   right: {
@@ -30,6 +31,7 @@ const useStyles = makeStyles({
   },
   main: {
     display: 'flex',
+    flex: 1,
     flexDirection: 'column',
     margin: '0 0 0 0',
     overflow: 'hidden',
