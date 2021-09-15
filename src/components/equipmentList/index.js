@@ -20,6 +20,10 @@ const useStyles = makeStyles((theme) => ({
   container: {
     background: 'rgba(0, 0, 0, .75)',
     overflow: 'auto !important',
+    borderRadius: '0 0 5px 5px',
+    '&::-webkit-scrollbar-corner': {
+      borderRadius: '0 0 5px 0',
+    },
   },
   table: {
     width: 'max-content;',
@@ -72,6 +76,7 @@ const useStyles = makeStyles((theme) => ({
       whiteSpace: 'nowrap',
       overflow: 'hidden',
       textOverflow: 'ellipsis',
+      cursor: 'default',
     },
     '& [data-value=ac], & [data-value=align], & [data-value=rent]': {
       display: 'flex',
@@ -307,7 +312,7 @@ const EquipmentList = props => {
                 {headers.map(header => (
                   <TableCell
                     key={header.id}
-                    onClick={props.setTest}
+                    onClick={() => {}}
                     style={{ width: header?.width, borderRight: header.hideBorder ? 'unset' : '' }}
                     className={classes.cell}
                   >

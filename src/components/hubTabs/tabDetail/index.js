@@ -9,6 +9,7 @@ const useStyles = makeStyles({
     background: 'rgba(0, 0, 0, .7)',
     overflowY: 'scroll',
     overflowX: 'hidden',
+    borderRadius: '0 0 5px 5px',
   },
 }, { name: 'Mui_Styles_TabsDetail' });
 

@@ -14,6 +14,8 @@ const useStyles = makeStyles((theme) => ({
     background: '#222',
     borderTopLeftRadius: props => props.leftEnd ? '5px' : 'unset',
     borderTopRightRadius: props => props.rightEnd ? '5px' : 'unset',
+    userSelect: 'none',
+    cursor: 'default',
     '& div:first-child': {
       overflow: 'unset !important',
     },
@@ -42,7 +44,7 @@ const useStyles = makeStyles((theme) => ({
 }), { name: 'Mui_Styles_IconHead' });
 
 const IconHead = props => {
-  const { iconPath, label } = props;
+  const { iconPath, isSorting, label, order } = props;
   const classes = useStyles(props);
 
   return (
@@ -50,6 +52,12 @@ const IconHead = props => {
       <Image src={iconPath} alt="" width={32} height={32} layout="fixed" className={classes.icon} />
       <div className={classes.label}>
         {label}
+        {isSorting && order 
+          ? order === 'asc'
+            ? <span>a&#10225;</span>
+            : <span>d&#10224;</span>
+          : <span></span>
+        }
       </div>
     </div>
   );

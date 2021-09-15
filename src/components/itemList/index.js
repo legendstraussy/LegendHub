@@ -1,4 +1,5 @@
 import { useRef, useState } from 'react';
+import { useQuery } from 'react-query';
 import {
   Table,
   TableBody,
@@ -10,7 +11,7 @@ import {
 } from '@material-ui/core';
 import IconHead from 'components/iconHead';
 import { makeStyles } from '@material-ui/styles';
-import items from 'data/dummy';
+import fetchItems from 'data/actions';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -146,79 +147,81 @@ const useStyles = makeStyles((theme) => ({
   },
 }), { name: 'Mui_Styles_ItemList' });
 
-const headers = [
-  {
-    id: 'slot', label: 'slot', width: 65, align: 'flex-start', hideBorder: true,
-  },
-  {
-    id: 'name', label: 'item', width: 250, align: 'flex-start',
-  },
-  {
-    id: 'str', label: 'str', component: <IconHead leftEnd iconPath="/winged-sword.png" label="str" />, width: 40,
-  },
-  {
-    id: 'min', label: 'min', component: <IconHead iconPath="/spell-book.png" label="min" />, width: 40,
-  },
-  {
-    id: 'dex', label: 'dex', component: <IconHead iconPath="/high-five.png" label="dex" />, width: 40,
-  },
-  {
-    id: 'con', label: 'con', component: <IconHead iconPath="/heart-wings.png" label="con" />, width: 40,
-  },
-  {
-    id: 'per', label: 'per', component: <IconHead iconPath="/spyglass.png" label="per" />, width: 40,
-  },
-  {
-    id: 'spi', label: 'spi', component: <IconHead rightEnd iconPath="/vine-leaf.png" label="spi" />, width: 40,
-  },
-  { id: 'ac', label: 'ac', width: 35 },
-  { id: 'align', label: 'align', width: 55 },
-  { id: 'rent', label: 'rent', width: 50 },
-  {
-    id: 'damroll', label: 'damroll', component: <IconHead leftEnd iconPath="/sword-wound.png" label="dam" />, width: 40,
-  },
-  {
-    id: 'hitroll', label: 'hitroll', component: <IconHead iconPath="/sword-wound.png" label="hit" />, width: 40,
-  },
-  {
-    id: 'mitigation', label: 'mitigation', component: <IconHead rightEnd iconPath="/shield-reflect.png" label="mit" />, width: 40,
-  },
-  {
-    id: 'accuracy', label: 'accuracy', component: <IconHead leftEnd rightEnd iconPath="/high-shot.png" label="acc" />, width: 40,
-  },
-  {
-    id: 'spellDam', label: 'spellDam', component: <IconHead leftEnd iconPath="/spell-book.png" label="dam" />, width: 40,
-  },
-  {
-    id: 'spellCrit', label: 'spellCrit', component: <IconHead iconPath="/spell-book.png" label="crit" />, width: 40,
-  },
-  {
-    id: 'spellRedux', label: 'spellRedux', component: <IconHead iconPath="/spell-book.png" label="rdux" />, width: 40,
-  },
-  {
-    id: 'concentration', label: 'concentration', component: <IconHead rightEnd iconPath="/spell-book.png" label="conc" />, width: 40,
-  },
-  {
-    id: 'hpRegen', label: 'hpRegen', component: <IconHead leftEnd iconPath="/hpRegen.png" label="hpr" />, width: 40,
-  },
-  {
-    id: 'mvRegen', label: 'mvRegen', component: <IconHead iconPath="/mvRegen.png" label="mvr" />, width: 40,
-  },
-  {
-    id: 'maRegen', label: 'maRegen', component: <IconHead rightEnd iconPath="/maRegen.png" label="mar" />, width: 40,
-  },
-  {
-    id: 'test', label: 'test', width: 120, align: 'flex-start',
-  },
-];
-
 const ItemList = props => {
-  const [order, setOrder] = useState('asc');
-  const [orderBy, setOrderBy] = useState('calories');
+  const [order, setOrder] = useState(null);
+  const [orderBy, setOrderBy] = useState(null);
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(25);
-  const classes = useStyles(items);
+  const { isLoading, error, data} = useQuery(['items', page, rowsPerPage, order, orderBy],() => fetchItems({page, rowsPerPage, order, orderBy}), { keepPreviousData : true, initialData: { items: [], total: 0 }});
+  const { items, total } = data;
+  const classes = useStyles();
   const tableEl = useRef(null);
+
+  const headers = [
+    {
+      id: 'slot', label: 'slot', width: 65, align: 'flex-start', hideBorder: true,
+    },
+    {
+      id: 'name', label: 'item', width: 250, align: 'flex-start',
+    },
+    {
+      id: 'str', label: 'str', isIconHead: true, leftEnd: true, iconPath: '/winged-sword.png', width: 40,
+    },
+    {
+      id: 'min', label: 'min', isIconHead: true, iconPath: '/spell-book.png', width: 40,
+    },
+    {
+      id: 'dex', label: 'dex',  isIconHead: true, iconPath: '/high-five.png', width: 40,
+    },
+    {
+      id: 'con', label: 'con',  isIconHead: true, iconPath: '/heart-wings.png', width: 40,
+    },
+    {
+      id: 'per', label: 'per',  isIconHead: true, iconPath: '/spyglass.png', width: 40,
+    },
+    {
+      id: 'spi', label: 'spi', rightEnd: true, isIconHead: true, iconPath: '/vine-leaf.png', width: 40,
+    },
+    { id: 'ac', label: 'ac', width: 35 },
+    { id: 'align', label: 'align', width: 55 },
+    { id: 'rent', label: 'rent', width: 50 },
+    {
+      id: 'damroll', label: 'dam', leftEnd: true, isIconHead: true, iconPath: '/sword-wound.png', width: 40,
+    },
+    {
+      id: 'hitroll', label: 'hit', isIconHead: true, iconPath: '/sword-wound.png', width: 40,
+    },
+    {
+      id: 'mitigation', label: 'mit', rightEnd: true, isIconHead: true, iconPath: '/shield-reflect.png', width: 40,
+    },
+    {
+      id: 'accuracy', label: 'acc', leftEnd: true, rightEnd: true, isIconHead: true, iconPath: '/high-shot.png', width: 40,
+    },
+    {
+      id: 'spellDam', label: 'dam', leftEnd: true, isIconHead: true, iconPath: '/spell-book.png', width: 40,
+    },
+    {
+      id: 'spellCrit', label: 'crit', isIconHead: true, iconPath: '/spell-book.png', width: 40,
+    },
+    {
+      id: 'spellRedux', label: 'rdux', isIconHead: true, iconPath: '/spell-book.png', width: 40,
+    },
+    {
+      id: 'concentration', label: 'conc', rightEnd: true, isIconHead: true, iconPath: '/spell-book.png', width: 40,
+    },
+    {
+      id: 'hpRegen', label: 'hpr', leftEnd: true, isIconHead: true, iconPath: '/hpRegen.png', width: 40,
+    },
+    {
+      id: 'mvRegen', label: 'mvr', isIconHead: true, iconPath: '/mvRegen.png', width: 40,
+    },
+    {
+      id: 'maRegen', label: 'mar', rightEnd: true, isIconHead: true, iconPath: '/maRegen.png', width: 40,
+    },
+    {
+      id: 'test', label: 'test', width: 120, align: 'flex-start',
+    },
+  ];
 
   const handleScroll = event => {
     // eslint-disable-next-line no-undef
@@ -230,14 +233,31 @@ const ItemList = props => {
     }
   };
 
-  const handleChangePage = (event, newPage) => {
+  const handleChangePage = (_, newPage) => {
     setPage(newPage);
   };
 
-  const handleChangeRowsPerPage = (event) => {
+  const handleChangeRowsPerPage = event => {
     setRowsPerPage(parseInt(event.target.value, 10));
     setPage(0);
   };
+
+  const handleSortChange = header => {
+    const { id = '' } = header;
+    if (!orderBy || orderBy !== id) {
+      setOrderBy(id);
+      setOrder('asc');
+      return;
+    }
+    if (orderBy === id) {
+      if (order) {
+        setOrder(order === 'desc' ? null : 'desc');
+      } else {
+        setOrder('asc');
+      }
+      return;
+    }
+  }
   
   return (
     <>
@@ -253,8 +273,22 @@ const ItemList = props => {
                     key={header.id}
                     style={{ width: header?.width }}
                     className={classes.cell}
+                    onClick={() => handleSortChange(header)}
                   >
-                    {header.component || <div style={{ justifyContent: header.align || 'center' }} data-value={header.id}>{header.label}</div>}
+                    {header.isIconHead
+                      ? <IconHead
+                          leftEnd={header?.leftEnd}
+                          rightEnd={header?.rightEnd}
+                          iconPath={header?.iconPath}
+                          label={header?.label}
+                          isSorting={orderBy === header?.id}
+                          order={order} 
+                        />
+                      : <div 
+                          style={{ justifyContent: header.align || 'center' }}
+                          data-value={header.id}>{header.label}
+                        </div>
+                    }
                   </TableCell>
                 ))}
               </TableRow>
@@ -265,21 +299,19 @@ const ItemList = props => {
       <TableContainer className={classes.container} onScroll={handleScroll}>
         <Table className={classes.table}>
           <TableBody className={classes.tbody}>
-            {items
-              .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-              .map(item => (
-                <TableRow key={item.id}>
-                  {headers.map(header => (
-                    <TableCell
-                      key={header.id}
-                      onClick={props.setTest}
-                      style={{ width: header?.width, borderRight: header.hideBorder ? 'unset' : '' }}
-                      className={classes.cell}
-                    >
-                      <div data-value={header.id}>{item[header.id]}</div>
-                    </TableCell>
-                  ))}
-                </TableRow>
+            {items?.map(item => (
+              <TableRow key={item.id}>
+                {headers.map(header => (
+                  <TableCell
+                    key={header.id}
+                    onClick={props.setTest}
+                    style={{ width: header?.width, borderRight: header.hideBorder ? 'unset' : '' }}
+                    className={classes.cell}
+                  >
+                    <div data-value={header.id}>{item[header.id]}</div>
+                  </TableCell>
+                ))}
+              </TableRow>
             ))}
           </TableBody>
         </Table>
@@ -288,7 +320,7 @@ const ItemList = props => {
         className={classes.pagination}
         rowsPerPageOptions={[5, 10, 25]}
         component="div"
-        count={items.length}
+        count={total}
         rowsPerPage={rowsPerPage}
         page={page}
         onPageChange={handleChangePage}

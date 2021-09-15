@@ -1,7 +1,9 @@
+import { QueryClient, useQuery } from 'react-query'
+import { dehydrate } from 'react-query/hydration'
 import HubLayout from 'layouts/hub';
-import CharacterMarquee from 'components/characterMarquee';
 import ItemList from 'components/itemList';
 import { makeStyles } from '@material-ui/styles';
+import fetchItems from 'data/actions';
 
 const useStyles = makeStyles({
   root: {
@@ -38,7 +40,7 @@ const useStyles = makeStyles({
   },
 }, { name: 'Mui_Styles_Items' });
 
-const Items = () => {
+const Items = props => {
   const classes = useStyles();
 
   return (
