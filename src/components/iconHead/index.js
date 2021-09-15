@@ -54,8 +54,8 @@ const IconHead = props => {
         {label}
         {isSorting && order 
           ? order === 'asc'
-            ? <span>a&#10225;</span>
-            : <span>d&#10224;</span>
+            ? <span>&#10225;</span>
+            : <span>&#10224;</span>
           : <span></span>
         }
       </div>
