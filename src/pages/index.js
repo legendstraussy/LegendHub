@@ -10,6 +10,7 @@ const useStyles = makeStyles({
     padding: '.55em',
     backgroundColor: 'rgba(27, 13, 24, .5)',
     display: 'flex',
+    flex: 1,
     color: '#fff',
     overflow: 'hidden',
   },
@@ -31,9 +32,13 @@ const useStyles = makeStyles({
   },
   main: {
     display: 'flex',
+    flex: 1,
     flexDirection: 'column',
     margin: '0 0 0 0',
     overflow: 'hidden',
+  },
+  marquee: {
+    display: 'flex',
   },
 }, { name: 'Mui_Styles_Builder' });
 
@@ -44,7 +49,7 @@ const Builder = () => {
     <HubLayout>
       <div className={classes.root}>
         <div className={classes.left}>
-          <div style={{ display: 'flex' }}>
+          <div className={classes.marquee}>
             <CharacterMarquee />
           </div>
           <div className={classes.main}>

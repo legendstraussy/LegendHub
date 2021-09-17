@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import HubTable from 'components/common/HubTable';
 
-const EquipmentList = () => {
+const ItemList = () => {
   const [headers] = useState([
     {
       id: 'slot', label: 'slot', class: 'header', width: 65, align: 'right', hideBorder: true,
@@ -75,8 +75,8 @@ const EquipmentList = () => {
   ]);
 
   return (
-    <HubTable headers={headers} footer={false} />
+    <HubTable headers={headers} />
   );
 };
 
-export default EquipmentList;
+export default ItemList;
