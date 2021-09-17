@@ -12,19 +12,19 @@ const sort = (array, order, orderBy) => {
   return array;
 };
 
-const baseFilters = filters => item => {
-  return Object.keys(filters).every(key => item[key] === filters[key]);
-}
+const baseFilters = filters => item => Object.keys(filters).every(key => item[key] === filters[key]);
 
 export default function handler(req, res) {
-  const { page, limit, order, orderBy } = req.query
-  const parsedPage = parseInt(page);
-  const parsedLimit = parseInt(limit);
+  const {
+    page, limit, order, orderBy,
+  } = req.query;
+  const parsedPage = parseInt(page, 10);
+  const parsedLimit = parseInt(limit, 10);
   const filters = req.body;
   const getFiltered = baseFilters(filters);
   const filtered = itemsData.filter(getFiltered);
   const items = sort(filtered, order, orderBy)
-    .slice(parsedPage * parsedLimit, parsedPage * parsedLimit + parsedLimit)
+    .slice(parsedPage * parsedLimit, parsedPage * parsedLimit + parsedLimit);
 
   res.status(200).json({ items, total: filtered?.length });
 }

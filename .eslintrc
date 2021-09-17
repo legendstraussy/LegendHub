@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 {
   "extends": ["next", "next/core-web-vitals", "airbnb"],
   "settings": {
@@ -6,35 +5,11 @@
       "node": {
         "extensions": [".js", ".jsx"],
         "moduleDirectory": ["node_modules", "src/"]
-        }
+      }
     }
   },
   "rules": {
-    "import/no-absolute-path": "off",
-    "react/no-array-index-key": "off",
-    "react/destructuring-assignment": "off",
-    "react/require-default-props": "off",
-    "no-confusing-arrow": "off",
-    "jsx-a11y/click-events-have-key-events": "off",
-    "react/jsx-props-no-spreading": "off",
-    "arrow-parens": "off",
-    "linebreak-style": ["error", "windows"],    
-    "react/react-in-jsx-scope": "off",
-    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }]
-  }
-}
-=======
-{
-  "extends": ["next", "next/core-web-vitals", "airbnb"],
-  "settings": {
-    "import/resolver": {
-      "node": {
-        "extensions": [".js", ".jsx"],
-        "moduleDirectory": ["node_modules", "src/"],
-        },
-    },
-  },
-  "rules": {
+    "no-nested-ternary": "off",
     "max-len": "off",
     "react/no-array-index-key": "off",
     "react/destructuring-assignment": "off",
@@ -48,4 +23,3 @@
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }]
   }
 }
->>>>>>> origin/dev

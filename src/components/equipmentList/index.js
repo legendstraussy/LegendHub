@@ -2,7 +2,7 @@ import { useState } from 'react';
 import HubTable from 'components/common/HubTable';
 
 const EquipmentList = () => {
-  const [headers, setHeaders] = useState([
+  const [headers] = useState([
     {
       id: 'slot', label: 'slot', class: 'header', width: 65, align: 'right', hideBorder: true,
     },
@@ -27,9 +27,15 @@ const EquipmentList = () => {
     {
       id: 'spi', label: 'spi', rightEnd: true, class: 'icon', iconPath: '/vine-leaf.png', width: 40,
     },
-    { id: 'ac', label: 'ac', class: 'header', width: 35 },
-    { id: 'align', label: 'align', class: 'header', width: 55 },
-    { id: 'rent', label: 'rent', class: 'header', width: 50 },
+    {
+      id: 'ac', label: 'ac', class: 'header', width: 35,
+    },
+    {
+      id: 'align', label: 'align', class: 'header', width: 55,
+    },
+    {
+      id: 'rent', label: 'rent', class: 'header', width: 50,
+    },
     {
       id: 'damroll', label: 'dam', leftEnd: true, class: 'icon', iconPath: '/sword-wound.png', width: 40,
     },
@@ -67,7 +73,7 @@ const EquipmentList = () => {
       id: 'maRegen', label: 'mar', rightEnd: true, class: 'icon', iconPath: '/maRegen.png', width: 40,
     },
   ]);
-  
+
   return (
     <HubTable headers={headers} footer={false} />
   );

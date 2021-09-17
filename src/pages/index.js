@@ -38,7 +38,7 @@ const useStyles = makeStyles({
     overflow: 'hidden',
   },
   marquee: {
-    display: 'flex'
+    display: 'flex',
   },
 }, { name: 'Mui_Styles_Builder' });
 

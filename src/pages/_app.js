@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { QueryClient, QueryClientProvider, QueryCache} from 'react-query'
-import { Hydrate } from 'react-query/hydration'
+import { QueryClient, QueryClientProvider, QueryCache } from 'react-query';
+import { Hydrate } from 'react-query/hydration';
 import { ThemeProvider, StylesProvider } from '@material-ui/core/styles';
 import { PropTypes } from 'prop-types';
 import theme from '../utils/theme';

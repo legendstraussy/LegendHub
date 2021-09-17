@@ -47,22 +47,20 @@ const useStyles = makeStyles((theme) => ({
 }), { name: 'Mui_Styles_IconHead' });
 
 const IconHead = props => {
-  const { iconPath, isSorting, label, order, width } = props;
+  const {
+    iconPath, isSorting, label, order,
+  } = props;
   const classes = useStyles(props);
 
   return (
     <div className={classes.root}>
-      {iconPath &&
-        <Image src={iconPath} alt="" width={32} height={32} layout="fixed" className={classes.icon} />
-      }
+      {iconPath
+        && <Image src={iconPath} alt="" width={32} height={32} layout="fixed" className={classes.icon} />}
       <div className={classes.label}>
         {label}
-        {isSorting && order 
-          ? order === 'asc'
-            ? <span>&#10225;</span>
-            : <span>&#10224;</span>
-          : <span></span>
-        }
+        {isSorting && order
+          ? order === 'asc' ? <span>&#10225;</span> : <span>&#10224;</span>
+          : null}
       </div>
     </div>
   );
@@ -70,7 +68,9 @@ const IconHead = props => {
 
 IconHead.propTypes = {
   iconPath: PropTypes.string,
+  isSorting: PropTypes.bool,
   label: PropTypes.string,
+  order: PropTypes.string,
 };
 
 export default IconHead;
