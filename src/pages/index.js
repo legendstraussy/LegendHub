@@ -1,6 +1,8 @@
+import { useState } from 'react';
 import CharacterMarquee from 'components/characterMarquee';
+import CharacterStats from 'components/characterStats';
 import EquipmentList from 'components/equipmentList';
-import DetailsTabs from 'components/characterDetails';
+import DetailsTabs from 'components/detail/detailTabs';
 import HubLayout from 'layouts/hub';
 import { makeStyles } from '@material-ui/styles';
 
@@ -44,6 +46,10 @@ const useStyles = makeStyles({
 
 const Builder = () => {
   const classes = useStyles();
+  const [tabs] = useState([
+    { name: 'character', iconPath: '/totem-head.png', component: <CharacterStats /> },
+    { name: 'item', iconPath: '/swords-emblem.png', component: <div>tab B!</div> },
+  ]);
 
   return (
     <HubLayout>
@@ -57,7 +63,7 @@ const Builder = () => {
           </div>
         </div>
         <div className={classes.right}>
-          <DetailsTabs />
+          <DetailsTabs tabs={tabs} />
         </div>
       </div>
     </HubLayout>

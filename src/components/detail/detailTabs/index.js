@@ -1,6 +1,6 @@
 import { useState } from 'react';
+import { PropTypes } from 'prop-types';
 import Tabs from 'components/hubTabs/tabs';
-import CharacterStats from 'components/characterStats';
 import { makeStyles } from '@material-ui/styles';
 
 const useStyles = makeStyles({
@@ -11,12 +11,8 @@ const useStyles = makeStyles({
   },
 }, { name: 'Mui_Styles_DetailsTabs' });
 
-const tabs = [
-  { name: 'character', iconPath: '/totem-head.png', component: <CharacterStats /> },
-  { name: 'item', iconPath: '/swords-emblem.png', component: <div>tab B!</div> },
-];
-
-const CharacterDetails = () => {
+const DetailTabs = props => {
+  const { tabs = [] } = props;
   const [activeTab, setActiveTab] = useState(tabs[0]);
   const classes = useStyles();
 
@@ -29,4 +25,10 @@ const CharacterDetails = () => {
   );
 };
 
-export default CharacterDetails;
+DetailTabs.propTypes = {
+  tabs: PropTypes.arrayOf(
+    PropTypes.shape({}),
+  ),
+};
+
+export default DetailTabs;

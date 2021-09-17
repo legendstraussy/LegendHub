@@ -1,4 +1,6 @@
+import { useState } from 'react';
 import HubLayout from 'layouts/hub';
+import DetailsTabs from 'components/detail/detailTabs';
 import ItemList from 'components/itemList';
 import { makeStyles } from '@material-ui/styles';
 
@@ -39,6 +41,10 @@ const useStyles = makeStyles({
 
 const Items = () => {
   const classes = useStyles();
+  const [tabs] = useState([
+    { name: 'search', iconPath: '/magnifying-glass.png', component: <div>tab A</div> },
+    { name: 'item', iconPath: '/swords-emblem.png', component: <div>tab B!</div> },
+  ]);
 
   return (
     <HubLayout>
@@ -52,7 +58,7 @@ const Items = () => {
           </div>
         </div>
         <div className={classes.right}>
-          Tricky Dick
+          <DetailsTabs tabs={tabs} />
         </div>
       </div>
     </HubLayout>
