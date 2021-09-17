@@ -38,11 +38,8 @@ const useStyles = makeStyles((theme) => ({
     fontSize: '10px',
     whiteSpace: 'nowrap',
     // header columns
-    '& [data-value=slot], & [data-value=name], & [data-value=str], & [data-value=min], & [data-value=dex], & [data-value=con], & [data-value=per], & [data-value=spi], & [data-value=ac], & [data-value=align], & [data-value=rent], & [data-value=damroll], & [data-value=hitroll], & [data-value=mitigation], & [data-value=test]': {
+    '& .header': {
       color: '#fff',
-      display: 'flex',
-      flex: 1,
-      justifyContent: 'center',
       padding: '0 10px',
       fontSize: 10,
       textTransform: 'uppercase',
@@ -60,40 +57,24 @@ const useStyles = makeStyles((theme) => ({
       borderRight: '1px solid rgba(64, 51, 51, .75)',
     },
     // body columns
-    '& [data-value=slot],& [data-value=test]': {
-      display: 'flex',
-      flex: 1,
-      justifyContent: 'flex-start',
+    // '& .header': {
+    //   padding: '0 10px',
+    //   fontSize: 14,
+    //   fontWeight: 100,
+    //   textAlign: 'center',
+    // },
+    // '& .icon': {
+    //   textAlign: 'center',
+    // },
+    '& [data-value=slot], & [data-value=name]': { // TODO: move out to generic classes
       padding: '0 10px',
-      fontSize: 14,
-      fontWeight: 100,
-      fontStyle: 'italic',
-      textTransform: 'capitalize',
     },
-    '& [data-value=name]': {
-      width: 'inherit',
-      padding: '0 10px',
+    '& [data-value=name]': { // TODO: move out to generic classes
       color: theme.palette.link,
       fontWeight: 100,
       whiteSpace: 'nowrap',
       overflow: 'hidden',
       textOverflow: 'ellipsis',
-    },
-    '& [data-value=ac], & [data-value=align], & [data-value=rent]': {
-      display: 'flex',
-      flex: 1,
-      justifyContent: 'center',
-      fontSize: 14,
-      fontWeight: 100,
-      textTransform: 'capitalize',
-    },
-    '& [data-value=str], & [data-value=min], & [data-value=dex], & [data-value=con], & [data-value=per], & [data-value=spi], & [data-value=damroll], & [data-value=hitroll], & [data-value=mitigation], & [data-value=accuracy], & [data-value=spellDam], & [data-value=spellCrit], & [data-value=spellRedux], & [data-value=concentration], & [data-value=hpRegen], & [data-value=mvRegen], & [data-value=maRegen]': {
-      fontWeight: 100,
-      display: 'flex',
-      flexDirect: 'column',
-      flex: 1,
-      alignItems: 'center',
-      justifyContent: 'center',
     },
     '& [data-value=str]': {
       color: theme.palette.stats.str,
@@ -150,77 +131,87 @@ const useStyles = makeStyles((theme) => ({
 const ItemList = props => {
   const [order, setOrder] = useState(null);
   const [orderBy, setOrderBy] = useState(null);
+  const [filters, setFilters] = useState({});
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(25);
-  const { isLoading, error, data} = useQuery(['items', page, rowsPerPage, order, orderBy],() => fetchItems({page, rowsPerPage, order, orderBy}), { keepPreviousData : true, initialData: { items: [], total: 0 }});
+  const { isLoading, error, data} = useQuery(['items', page, rowsPerPage, order, orderBy, filters],() => fetchItems({page, rowsPerPage, order, orderBy, filters}), { keepPreviousData : true, initialData: { items: [], total: 0 }});
   const { items, total } = data;
   const classes = useStyles();
   const tableEl = useRef(null);
 
   const headers = [
     {
-      id: 'slot', label: 'slot', width: 65, align: 'flex-start', hideBorder: true,
+      id: 'slot', label: 'slot', class: 'header', width: 65, align: 'right', hideBorder: true,
     },
     {
-      id: 'name', label: 'item', width: 250, align: 'flex-start',
+      id: 'name', label: 'item', class: 'header', width: 250, align: 'left',
     },
     {
-      id: 'str', label: 'str', isIconHead: true, leftEnd: true, iconPath: '/winged-sword.png', width: 40,
+      id: 'str', label: 'str', class: 'icon', leftEnd: true, iconPath: '/winged-sword.png', width: 40,
     },
     {
-      id: 'min', label: 'min', isIconHead: true, iconPath: '/spell-book.png', width: 40,
+      id: 'min', label: 'min', class: 'icon', iconPath: '/spell-book.png', width: 40,
     },
     {
-      id: 'dex', label: 'dex',  isIconHead: true, iconPath: '/high-five.png', width: 40,
+      id: 'dex', label: 'dex', class: 'icon', iconPath: '/high-five.png', width: 40,
     },
     {
-      id: 'con', label: 'con',  isIconHead: true, iconPath: '/heart-wings.png', width: 40,
+      id: 'con', label: 'con', class: 'icon', iconPath: '/heart-wings.png', width: 40,
     },
     {
-      id: 'per', label: 'per',  isIconHead: true, iconPath: '/spyglass.png', width: 40,
+      id: 'per', label: 'per', class: 'icon', iconPath: '/spyglass.png', width: 40,
     },
     {
-      id: 'spi', label: 'spi', rightEnd: true, isIconHead: true, iconPath: '/vine-leaf.png', width: 40,
+      id: 'spi', label: 'spi', rightEnd: true, class: 'icon', iconPath: '/vine-leaf.png', width: 40,
     },
-    { id: 'ac', label: 'ac', width: 35 },
-    { id: 'align', label: 'align', width: 55 },
-    { id: 'rent', label: 'rent', width: 50 },
+    { id: 'ac', label: 'ac', class: 'header', width: 35 },
+    { id: 'align', label: 'align', class: 'header', width: 55 },
+    { id: 'rent', label: 'rent', class: 'header', width: 50 },
     {
-      id: 'damroll', label: 'dam', leftEnd: true, isIconHead: true, iconPath: '/sword-wound.png', width: 40,
-    },
-    {
-      id: 'hitroll', label: 'hit', isIconHead: true, iconPath: '/sword-wound.png', width: 40,
+      id: 'damroll', label: 'dam', leftEnd: true, class: 'icon', iconPath: '/sword-wound.png', width: 40,
     },
     {
-      id: 'mitigation', label: 'mit', rightEnd: true, isIconHead: true, iconPath: '/shield-reflect.png', width: 40,
+      id: 'hitroll', label: 'hit', class: 'icon', iconPath: '/sword-wound.png', width: 40,
     },
     {
-      id: 'accuracy', label: 'acc', leftEnd: true, rightEnd: true, isIconHead: true, iconPath: '/high-shot.png', width: 40,
+      id: 'mitigation', label: 'mit', rightEnd: true, class: 'icon', iconPath: '/shield-reflect.png', width: 40,
     },
     {
-      id: 'spellDam', label: 'dam', leftEnd: true, isIconHead: true, iconPath: '/spell-book.png', width: 40,
+      id: 'parry', label: 'parry', rightEnd: true, leftEnd: true, class: 'icon', iconPath: '/fencer.png', width: 40,
     },
     {
-      id: 'spellCrit', label: 'crit', isIconHead: true, iconPath: '/spell-book.png', width: 40,
+      id: 'accuracy', label: 'acc', leftEnd: true, rightEnd: true, class: 'icon', iconPath: '/high-shot.png', width: 40,
     },
     {
-      id: 'spellRedux', label: 'rdux', isIconHead: true, iconPath: '/spell-book.png', width: 40,
+      id: 'spellDam', label: 'dam', leftEnd: true, class: 'icon', iconPath: '/spell-book.png', width: 40,
     },
     {
-      id: 'concentration', label: 'conc', rightEnd: true, isIconHead: true, iconPath: '/spell-book.png', width: 40,
+      id: 'spellCrit', label: 'crit', class: 'icon', iconPath: '/spell-book.png', width: 40,
     },
     {
-      id: 'hpRegen', label: 'hpr', leftEnd: true, isIconHead: true, iconPath: '/hpRegen.png', width: 40,
+      id: 'spellRedux', label: 'rdux', class: 'icon', iconPath: '/spell-book.png', width: 40,
     },
     {
-      id: 'mvRegen', label: 'mvr', isIconHead: true, iconPath: '/mvRegen.png', width: 40,
+      id: 'concentration', label: 'conc', rightEnd: true, class: 'icon', iconPath: '/spell-book.png', width: 40,
     },
     {
-      id: 'maRegen', label: 'mar', rightEnd: true, isIconHead: true, iconPath: '/maRegen.png', width: 40,
+      id: 'hpRegen', label: 'hpr', leftEnd: true, class: 'icon', iconPath: '/hpRegen.png', width: 40,
     },
     {
-      id: 'test', label: 'test', width: 120, align: 'flex-start',
+      id: 'mvRegen', label: 'mvr', class: 'icon', iconPath: '/mvRegen.png', width: 40,
     },
+    {
+      id: 'maRegen', label: 'mar', rightEnd: true, class: 'icon', iconPath: '/maRegen.png', width: 40,
+    },
+    {
+      id: 'isHeroic', label: 'heroic', class: 'header', width: 100,
+    },
+    {
+      id: 'isLimited', label: 'limited', class: 'header', width: 100,
+    },
+    {
+      id: 'isUnique', label: 'unique', class: 'header', width: 100,
+    }
   ];
 
   const handleScroll = event => {
@@ -262,6 +253,7 @@ const ItemList = props => {
   return (
     <>
       <div className={classes.root}>
+        <div role="button" onClick={() => setFilters({...filters, isHeroic: !filters.isHeroic })}>test</div>
         <div ref={tableEl} style={{ position: 'relative' }}>
           <Table style={{ width: 'max-content' }}>
             <TableHead
@@ -271,11 +263,14 @@ const ItemList = props => {
                 {headers.map(header => (
                   <TableCell
                     key={header.id}
-                    style={{ width: header?.width }}
-                    className={classes.cell}
+                    style={{ 
+                      width: header?.width,
+                      textAlign: header?.align ? header?.align : 'center'
+                    }}
+                    className={`${classes.cell} ${header.class}`}
                     onClick={() => handleSortChange(header)}
                   >
-                    {header.isIconHead
+                    {header?.class === 'icon'
                       ? <IconHead
                           leftEnd={header?.leftEnd}
                           rightEnd={header?.rightEnd}
@@ -304,11 +299,19 @@ const ItemList = props => {
                 {headers.map(header => (
                   <TableCell
                     key={header.id}
-                    onClick={props.setTest}
-                    style={{ width: header?.width, borderRight: header.hideBorder ? 'unset' : '' }}
-                    className={classes.cell}
+                    style={{ 
+                      width: header?.width,
+                      borderRight: header.hideBorder ? 'unset' : '',
+                      textAlign: header?.align ? header?.align : 'center'
+                    }}
+                    className={`${classes.cell} ${header?.class}`}
                   >
-                    <div data-value={header.id}>{item[header.id]}</div>
+                    <div data-value={header.id}>
+                      {typeof item[header.id] === 'boolean' 
+                        ? item[header.id] ? 'true' : 'false'
+                        : item[header.id]
+                      }
+                    </div>
                   </TableCell>
                 ))}
               </TableRow>
