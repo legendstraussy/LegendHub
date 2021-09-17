@@ -4,7 +4,7 @@ import { makeStyles } from '@material-ui/styles';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    width: 40,
+    width: props => props?.width || 40,
     position: 'absolute',
     top: -15,
     bottom: 0,
@@ -35,6 +35,9 @@ const useStyles = makeStyles((theme) => ({
     maxHeight: 'unset !important',
   },
   label: {
+    display: 'flex',
+    flex: 1,
+    alignItems: 'flex-end',
     color: props => theme.palette.stats[props.label] || '#fff',
     position: 'relative',
     top: 4,
@@ -44,12 +47,14 @@ const useStyles = makeStyles((theme) => ({
 }), { name: 'Mui_Styles_IconHead' });
 
 const IconHead = props => {
-  const { iconPath, isSorting, label, order } = props;
+  const { iconPath, isSorting, label, order, width } = props;
   const classes = useStyles(props);
 
   return (
     <div className={classes.root}>
-      <Image src={iconPath} alt="" width={32} height={32} layout="fixed" className={classes.icon} />
+      {iconPath &&
+        <Image src={iconPath} alt="" width={32} height={32} layout="fixed" className={classes.icon} />
+      }
       <div className={classes.label}>
         {label}
         {isSorting && order 

@@ -37,6 +37,9 @@ const useStyles = makeStyles({
     margin: '0 0 0 0',
     overflow: 'hidden',
   },
+  marquee: {
+    display: 'flex'
+  },
 }, { name: 'Mui_Styles_Builder' });
 
 const Builder = () => {
@@ -46,7 +49,7 @@ const Builder = () => {
     <HubLayout>
       <div className={classes.root}>
         <div className={classes.left}>
-          <div style={{ display: 'flex' }}>
+          <div className={classes.marquee}>
             <CharacterMarquee />
           </div>
           <div className={classes.main}>
