@@ -181,7 +181,6 @@ const HubTable = props => {
   return (
     <div className={classes.root}>
       <div className={classes.headerContainer}>
-        <div role="button" onClick={() => setFilters({...filters, isHeroic: !filters.isHeroic })}>test</div>
         <div ref={tableEl} style={{ position: 'relative' }}>
           <Table style={{ width: 'max-content' }}>
             <TableHead

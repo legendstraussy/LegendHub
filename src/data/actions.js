@@ -2,11 +2,11 @@
 const fetchItems = async ({page = 0, rowsPerPage = 25, order = null, orderBy = null, filters}) => {
   // const response = await fetch(`http://localhost:3000/api/items?page=${page}&limit=${rowsPerPage}&orderBy=${orderBy}&order=${order}`);
   const response = await fetch(`http://localhost:3000/api/items?page=${page}&limit=${rowsPerPage}&orderBy=${orderBy}&order=${order}`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(filters),
+    method: 'GET',
+    // headers: {
+    //   'Content-Type': 'application/json',
+    // },
+    // body: JSON.stringify(filters),
   })
   const data = await response.json();
   return data;
