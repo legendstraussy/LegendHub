@@ -6,7 +6,7 @@ const useStyles = makeStyles({
     width: '100%',
     height: 35,
     fontFamily: 'Open Sans',
-    fontSize: '12px',
+    fontSize: '14px',
     border: '1px solid rgba(105, 85, 85, .75)',
     display: 'flex',
     padding: '4px 10px',

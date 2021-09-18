@@ -3,11 +3,25 @@ import HubInput from 'components/common/hubInput';
 import HubSelect from 'components/common/hubSelect';
 import HubChip from 'components/common/hubChip';
 import { makeStyles } from '@material-ui/styles';
-import filtersData from 'data/filters';
+import {
+  itemFilters,
+  slots,
+  weaponStats,
+  weaponTypes,
+} from 'data/constants';
 import getKeyArrayFromObject from 'utils/utilFns';
 
-const filterOptions = getKeyArrayFromObject(filtersData)
+const filterOptions = getKeyArrayFromObject(itemFilters)
   .map(filter => ({ name: filter?.name, value: filter?.name }));
+
+const slotOptions = getKeyArrayFromObject(slots)
+  .map(slot => ({ name: slot?.name, value: slot?.name }));
+
+const weaponStatOptions = getKeyArrayFromObject(weaponStats)
+  .map(stat => ({ name: stat?.name, value: stat?.name }));
+
+const weaponTypeOptions = getKeyArrayFromObject(weaponTypes)
+  .map(type => ({ name: type?.name, value: type?.name }));
 
 const useStyles = makeStyles({
   root: {
@@ -40,13 +54,15 @@ const useStyles = makeStyles({
 
 const ItemSearch = () => {
   const [search, setSearch] = useState('');
-  const [filters, setFilters] = useState(filtersData);
+  const [slot, setSlot] = useState('');
+  const [weaponStat, setWeaponStat] = useState('');
+  const [weaponType, setWeaponType] = useState('');
+  const [filters, setFilters] = useState(itemFilters);
   const classes = useStyles();
 
   useEffect(() => {
     const timer = setTimeout(() => {
       // set recoil state
-      console.log('adding filters', filters);
     }, 2000);
     return () => clearTimeout(timer);
   }, [filters]);
@@ -71,7 +87,50 @@ const ItemSearch = () => {
       </section>
       <section>
         <header>
-          <div className={classes.label}>filters</div>
+          <div className={classes.label}>slot</div>
+        </header>
+      </section>
+      <section>
+        <HubSelect
+          defaultText="Any slot"
+          onChange={setSlot}
+          options={slotOptions}
+          value={slot}
+        />
+      </section>
+      {slot === 'wield' && (
+        <>
+          <section>
+            <header>
+              <div className={classes.label}>weapon type</div>
+            </header>
+          </section>
+          <section>
+            <HubSelect
+              defaultText="Any weapon type"
+              onChange={setWeaponType}
+              options={weaponTypeOptions}
+              value={weaponType}
+            />
+          </section>
+          <section>
+            <header>
+              <div className={classes.label}>weapon stat</div>
+            </header>
+          </section>
+          <section>
+            <HubSelect
+              defaultText="Any weapon stat"
+              onChange={setWeaponStat}
+              options={weaponStatOptions}
+              value={weaponStat}
+            />
+          </section>
+        </>
+      )}
+      <section>
+        <header>
+          <div className={classes.label}>additional filters</div>
         </header>
       </section>
       <section>

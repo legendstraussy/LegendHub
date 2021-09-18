@@ -18,6 +18,12 @@ const theme = createTheme({
         backgroundColor: 'unset',
       },
     },
+    MuiMenu: {
+      paper: {
+        background: '#000',
+        maxHeight: 300,
+      },
+    },
     MuiList: {
       root: {
         cursor: 'default',
