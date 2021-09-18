@@ -3,6 +3,7 @@ import HubLayout from 'layouts/hub';
 import DetailsTabs from 'components/detail/detailTabs';
 import ItemList from 'components/itemList';
 import ItemSearch from 'components/itemSearch';
+import ItemDetails from 'components/itemDetails';
 import CharacterMarquee from 'components/characterMarquee';
 import { makeStyles } from '@material-ui/styles';
 
@@ -44,7 +45,7 @@ const useStyles = makeStyles({
 const Items = () => {
   const [tabs] = useState([
     { name: 'search', iconPath: '/magnifying-glass.png', component: <ItemSearch /> },
-    { name: 'item', iconPath: '/swords-emblem.png', component: <div>tab B!</div> },
+    { name: 'item', iconPath: '/swords-emblem.png', component: <ItemDetails /> },
   ]);
   const classes = useStyles();
 

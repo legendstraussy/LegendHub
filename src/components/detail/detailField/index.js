@@ -9,14 +9,14 @@ const useStyles = makeStyles({
     flex: 1,
     alignItems: 'baseline',
     justifyContent: 'space-between',
-    maxWidth: '50%',
+    maxWidth: props => props?.maxWidth ?? '50%',
     margin: '0 8px',
   },
 }, { name: 'Mui_Styles_DetailField' });
 
 const DetailField = props => {
   const { label, value } = props;
-  const classes = useStyles();
+  const classes = useStyles(props);
 
   return (
     <div className={classes.root}>

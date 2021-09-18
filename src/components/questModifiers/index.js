@@ -2,7 +2,7 @@ import { useState } from 'react';
 import HubSelect from 'components/common/hubSelect';
 import HubCheckbox from 'components/common/hubCheckbox';
 import { makeStyles } from '@material-ui/styles';
-import { stats, fiveThreeQuests } from 'utils/constants';
+import { stats, fiveThreeQuests } from 'data/constants';
 import getKeyArrayFromObject from 'utils/utilFns';
 
 const useStyles = makeStyles({

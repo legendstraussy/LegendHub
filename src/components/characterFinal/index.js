@@ -4,7 +4,7 @@ import HubIconButton from 'components/common/hubIconButton';
 import DetailField from 'components/detail/detailField';
 import DetailHeader from 'components/detail/detailHeader';
 import { makeStyles } from '@material-ui/styles';
-import { modifiers } from 'utils/constants';
+import { modifiers } from 'data/constants';
 
 const useStyles = makeStyles({
   root: {

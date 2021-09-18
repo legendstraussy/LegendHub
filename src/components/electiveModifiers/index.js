@@ -1,7 +1,7 @@
 import HubIconButton from 'components/common/hubIconButton';
 import HubChip from 'components/common/hubChip';
 import { makeStyles } from '@material-ui/styles';
-import { modifiers } from 'utils/constants';
+import { modifiers } from 'data/constants';
 
 const useStyles = makeStyles({
   root: {
