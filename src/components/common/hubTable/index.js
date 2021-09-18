@@ -30,6 +30,7 @@ const useStyles = makeStyles((theme) => ({
     borderBottom: '2px solid rgba(66, 60, 60, 0.75)',
   },
   bodyContainer: {
+    height: 2000,
     background: 'rgba(0, 0, 0, .75)',
     overflow: 'auto !important',
     borderRadius: '0 0 5px 5px',

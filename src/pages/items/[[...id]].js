@@ -1,5 +1,9 @@
+import { useState } from 'react';
 import HubLayout from 'layouts/hub';
+import DetailsTabs from 'components/detail/detailTabs';
 import ItemList from 'components/itemList';
+import ItemSearch from 'components/itemSearch';
+import CharacterMarquee from 'components/characterMarquee';
 import { makeStyles } from '@material-ui/styles';
 
 const useStyles = makeStyles({
@@ -38,6 +42,10 @@ const useStyles = makeStyles({
 }, { name: 'Mui_Styles_Items' });
 
 const Items = () => {
+  const [tabs] = useState([
+    { name: 'search', iconPath: '/magnifying-glass.png', component: <ItemSearch /> },
+    { name: 'item', iconPath: '/swords-emblem.png', component: <div>tab B!</div> },
+  ]);
   const classes = useStyles();
 
   return (
@@ -45,14 +53,14 @@ const Items = () => {
       <div className={classes.root}>
         <div className={classes.left}>
           <div style={{ display: 'flex' }}>
-            equipped item here
+            <CharacterMarquee />
           </div>
           <div className={classes.main}>
             <ItemList />
           </div>
         </div>
         <div className={classes.right}>
-          Tricky Dick
+          <DetailsTabs tabs={tabs} />
         </div>
       </div>
     </HubLayout>

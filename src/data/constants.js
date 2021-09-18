@@ -48,7 +48,7 @@ export const modifiers = {
   },
   susceptibility: {
     color: theme.palette.stats.str,
-  }
+  },
 };
 
 export const fiveThreeQuests = [
@@ -115,4 +115,45 @@ export const fiveThreeQuests = [
       { stat: stats.spi, delta: 3 },
     ],
   },
+];
+
+export const itemFilters = [
+  { name: 'heroic' },
+  { name: 'limited' },
+  { name: 'soulbound' },
+  { name: 'unique' },
+];
+
+export const slots = [
+  { name: 'light' },
+  { name: 'finger' },
+  { name: 'neck' },
+  { name: 'body' },
+  { name: 'head' },
+  { name: 'hands' },
+  { name: 'feet' },
+  { name: 'face' },
+  { name: 'arms' },
+  { name: 'legs' },
+  { name: 'about' },
+  { name: 'waist' },
+  { name: 'wrist' },
+  { name: 'wield' },
+  { name: 'hold' },
+  { name: 'ear' },
+  { name: 'arm' },
+  { name: 'amulet' },
+  { name: 'aux' },
+];
+
+export const weaponTypes = [
+  { name: 'bladed' },
+  { name: 'blunt' },
+  { name: 'piercing' },
+];
+
+export const weaponStats = [
+  { name: 'str' },
+  { name: 'dex' },
+  { name: 'con' },
 ];

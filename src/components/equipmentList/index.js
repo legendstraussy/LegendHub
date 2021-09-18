@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import HubTable from 'components/common/HubTable';
+import HubTable from 'components/common/hubTable';
 
 const EquipmentList = () => {
   const [headers] = useState([

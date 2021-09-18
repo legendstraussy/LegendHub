@@ -18,11 +18,17 @@ const theme = createTheme({
         backgroundColor: 'unset',
       },
     },
+    MuiMenu: {
+      paper: {
+        background: '#000',
+        maxHeight: 300,
+      },
+    },
     MuiList: {
       root: {
         cursor: 'default',
         marginTop: '2px',
-        backgroundColor: 'rgba(0, 0, 0, .75)',
+        backgroundColor: 'rgba(0, 0, 0, 1)',
         fontFamily: 'inherit',
       },
     },
