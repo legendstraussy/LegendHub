@@ -6,7 +6,7 @@ import { makeStyles } from '@material-ui/styles';
 const useStyles = makeStyles({
   root: {
     height: '25px !important',
-    color: 'rgba(0, 0, 0, .75);',
+    color: props => props.color ?? 'rgba(0, 0, 0, .75);',
     background: props => props.bgColor ?? '#444',
     fontFamily: 'Open Sans',
     fontSize: '12px',

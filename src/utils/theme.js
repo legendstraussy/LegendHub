@@ -22,7 +22,7 @@ const theme = createTheme({
       root: {
         cursor: 'default',
         marginTop: '2px',
-        backgroundColor: 'rgba(0, 0, 0, .75)',
+        backgroundColor: 'rgba(0, 0, 0, 1)',
         fontFamily: 'inherit',
       },
     },

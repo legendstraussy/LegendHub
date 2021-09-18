@@ -5,7 +5,7 @@ import { makeStyles } from '@material-ui/styles';
 const useStyles = makeStyles({
   root: {
     color: '#fff',
-    maxWidth: '200px',
+    width: '100%',
     height: 35,
     fontFamily: 'inherit',
     fontSize: '14px',
