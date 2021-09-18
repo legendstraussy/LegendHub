@@ -4,6 +4,7 @@ import HeathStats from 'components/characterMarquee/marqueeStats/health';
 import BaseStats from 'components/characterMarquee/marqueeStats/main';
 import GenericStats from 'components/characterMarquee/marqueeStats/general';
 import MeleeStats from 'components/characterMarquee/marqueeStats/melee';
+import ParryStat from 'components/characterMarquee/marqueeStats/parry';
 import SpellStats from 'components/characterMarquee/marqueeStats/spell';
 import RangeStats from 'components/characterMarquee/marqueeStats/range';
 import RegenStats from 'components/characterMarquee/marqueeStats/regen';
@@ -32,6 +33,10 @@ const meleeStats = {
 
 const rangeStats = {
   accuracy: 10,
+};
+
+const parryStat = {
+  parry: 3,
 };
 
 const spellStats = {
@@ -77,6 +82,7 @@ const CharacterMarquee = () => {
       <BaseStats stats={baseStats} />
       <GenericStats stats={genericStats} />
       <MeleeStats stats={meleeStats} />
+      <ParryStat stats={parryStat} />
       <RangeStats stats={rangeStats} />
       <SpellStats stats={spellStats} />
       <RegenStats stats={regenStats} />
