@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import CharacterMarquee from 'components/characterMarquee';
 import CharacterStats from 'components/characterStats';
+import ItemDetails from 'components/itemDetails';
 import EquipmentList from 'components/equipmentList';
 import DetailsTabs from 'components/detail/detailTabs';
 import HubLayout from 'layouts/hub';
@@ -48,7 +49,7 @@ const Builder = () => {
   const classes = useStyles();
   const [tabs] = useState([
     { name: 'character', iconPath: '/totem-head.png', component: <CharacterStats /> },
-    { name: 'item', iconPath: '/swords-emblem.png', component: <div>tab B!</div> },
+    { name: 'item', iconPath: '/swords-emblem.png', component: <ItemDetails /> },
   ]);
 
   return (

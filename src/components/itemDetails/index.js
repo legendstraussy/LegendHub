@@ -1,4 +1,4 @@
-import { PropTypes } from 'prop-types';
+// import { PropTypes } from 'prop-types';
 import DetailField from 'components/detail/detailField';
 import DetailHeader from 'components/detail/detailHeader';
 import { makeStyles } from '@material-ui/styles';
@@ -28,8 +28,8 @@ const useStyles = makeStyles({
   },
 }, { name: 'Mui_Styles_ItemDetails' });
 
-const ItemDetails = props => {
-  const { onStatsClick } = props;
+const ItemDetails = () => {
+  // const { onStatsClick } = props;
   const classes = useStyles();
 
   return (
@@ -117,8 +117,8 @@ const ItemDetails = props => {
   );
 };
 
-ItemDetails.propTypes = {
-  onStatsClick: PropTypes.func.isRequired,
-};
+// ItemDetails.propTypes = {
+//   onStatsClick: PropTypes.func,
+// };
 
 export default ItemDetails;
