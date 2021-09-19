@@ -10,7 +10,7 @@ const useStyles = makeStyles({
     alignItems: 'baseline',
     justifyContent: 'space-between',
     maxWidth: props => props?.maxWidth ?? '50%',
-    margin: '0 8px',
+    padding: '0 8px',
   },
 }, { name: 'Mui_Styles_DetailField' });
 

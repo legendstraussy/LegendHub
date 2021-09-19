@@ -1,7 +1,35 @@
 // import { PropTypes } from 'prop-types';
 import DetailField from 'components/detail/detailField';
 import DetailHeader from 'components/detail/detailHeader';
+import HubChip from 'components/common/hubChip';
 import { makeStyles } from '@material-ui/styles';
+
+const item = {
+  name: 'ring of strength',
+  rent: 2500,
+  material: 'silver',
+  timer: -1,
+  weight: 1,
+  price: 5000,
+  ac: -5,
+  align: 'GNE',
+  slots: [
+    { name: 'finger' },
+    { name: 'ear' },
+  ],
+  stats: [
+    { name: 'str', change: 6 },
+    { name: 'per', change: -1 },
+    { name: 'spi', change: -2 },
+    { name: 'damroll', change: 3 },
+    { name: 'hitroll', change: 2 },
+  ],
+  flags: [
+    { name: 'heroic' },
+    { name: 'limited' },
+    { name: 'unique' },
+  ],
+};
 
 const useStyles = makeStyles({
   root: {
@@ -35,82 +63,61 @@ const ItemDetails = () => {
   return (
     <div className={classes.root}>
       <section>
-        <DetailHeader title="item detail" />
-      </section>
-      <section>
-        <DetailField label="name" value="a ring of awesomeness" maxWidth="100%" />
-      </section>
-      <section>
-        <DetailHeader title="primary stats" />
+        <DetailHeader title={item.name} />
       </section>
       <section>
         <div className={classes.container}>
-          <DetailField label="str" value={19} />
-          <DetailField label="str cap" value={0} />
+          <DetailField label="rent" value={item.rent} />
+          <DetailField label="price" value={item.price} />
         </div>
         <div className={classes.container}>
-          <DetailField label="min" value={113} />
-          <DetailField label="min cap" value={13} />
+          <DetailField label="weight" value={item.weight} />
+          <DetailField label="material" value={item.material} />
         </div>
         <div className={classes.container}>
-          <DetailField label="dex" value={60} />
-          <DetailField label="dex cap" value={0} />
-        </div>
-        <div className={classes.container}>
-          <DetailField label="con" value={72} />
-          <DetailField label="con cap" value={0} />
-        </div>
-        <div className={classes.container}>
-          <DetailField label="per" value={40} />
-          <DetailField label="per cap" value={0} />
-        </div>
-        <div className={classes.container}>
-          <DetailField label="spi" value={43} />
-          <DetailField label="spi cap" value={0} />
+          <DetailField label="timer" value={item.timer} />
         </div>
       </section>
       <section>
-        <DetailHeader title="regen" />
+        <DetailHeader title="slots" />
       </section>
       <section>
-        <div className={classes.container}>
-          <DetailField label="HPR" value={4} />
-          <DetailField label="MVR" value={3} />
-          <DetailField label="MAR" value={30} />
+        <div className={classes.chips}>
+          {item.slots.map((slot, i) => (
+            <div key={i} style={{ margin: '.25em' }}>
+              <HubChip
+                bgColor="#2E94FA"
+                label={slot.name}
+                readOnly
+              />
+            </div>
+          ))}
         </div>
       </section>
       <section>
-        <header>
-          <div className={classes.container}>
-            <DetailHeader title="spell mods" flex />
-            <DetailHeader title="melee mods" flex />
-          </div>
-        </header>
+        <DetailHeader title="stats" />
       </section>
       <section>
-        <div className={classes.container}>
-          <DetailField label="spell dmg" value={85} />
-          <DetailField label="damroll" value={-31} />
-        </div>
-        <div className={classes.container}>
-          <DetailField label="spell crit" value={73} />
-          <DetailField label="hitroll" value={-21} />
-        </div>
-        <div className={classes.container}>
-          <DetailField label="spell redux" value={51} />
-          <DetailField label="mitigation" value={2} />
-        </div>
-        <div className={classes.container}>
-          <DetailField label="concen" value={30} />
-          <DetailField label="parry" value={0} />
+        <div className={classes.container} style={{ display: 'grid', gridTemplateColumns: '50% 50%' }}>
+          {item.stats?.map((stat, i) => (
+            <DetailField key={i} label={stat?.name} value={stat?.change} maxWidth="100%" />
+          ))}
         </div>
       </section>
       <section>
-        <DetailHeader title="range mods" />
+        <DetailHeader title="additional flags" />
       </section>
       <section>
-        <div className={classes.container}>
-          <DetailField label="accuracy" value={0} />
+        <div className={classes.chips}>
+          {item.flags.map((slot, i) => (
+            <div key={i} style={{ margin: '.25em' }}>
+              <HubChip
+                bgColor="#2E94FA"
+                label={slot.name}
+                readOnly
+              />
+            </div>
+          ))}
         </div>
       </section>
     </div>
