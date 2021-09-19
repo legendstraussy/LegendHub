@@ -1,6 +1,6 @@
 import { PropTypes } from 'prop-types';
-import Tab from 'components/hubTabs/tab';
-import TabDetail from 'components/hubTabs/tabDetail';
+import Tab from 'components/common/hubTabs/tab';
+import TabDetail from 'components/common/hubTabs/tabDetail';
 import { makeStyles } from '@material-ui/styles';
 
 const useStyles = makeStyles({

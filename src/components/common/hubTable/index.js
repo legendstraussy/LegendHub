@@ -12,7 +12,7 @@ import {
   TableRow,
 } from '@material-ui/core';
 import CheckIcon from '@material-ui/icons/Check';
-import IconHead from 'components/iconHead';
+import IconHead from 'components/common/iconHead';
 import { makeStyles } from '@material-ui/styles';
 import fetchItems from 'data/actions';
 

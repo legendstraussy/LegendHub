@@ -1,6 +1,6 @@
 import { Grid } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
-import StatInput from 'components/statInput';
+import StatInput from 'components/builder/statInput';
 import theme from 'utils/theme';
 
 const useStyles = makeStyles({

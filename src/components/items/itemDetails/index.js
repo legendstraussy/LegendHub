@@ -1,6 +1,6 @@
 // import { PropTypes } from 'prop-types';
-import DetailField from 'components/detail/detailField';
-import DetailHeader from 'components/detail/detailHeader';
+import DetailField from 'components/common/detail/detailField';
+import DetailHeader from 'components/common/detail/detailHeader';
 import HubChip from 'components/common/hubChip';
 import { makeStyles } from '@material-ui/styles';
 

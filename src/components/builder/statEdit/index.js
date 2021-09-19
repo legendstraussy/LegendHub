@@ -1,7 +1,7 @@
 import { PropTypes } from 'prop-types';
 import { makeStyles } from '@material-ui/styles';
 import HubIconButton from 'components/common/hubIconButton';
-import StatsGrid from 'components/statsGrid';
+import StatsGrid from 'components/builder/statsGrid';
 
 const useStyles = makeStyles({
   root: {

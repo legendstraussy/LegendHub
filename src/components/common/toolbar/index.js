@@ -1,5 +1,5 @@
 import HubButton from 'components/common/hubButton';
-import HubVersion from 'components/hubVersion';
+import HubVersion from 'components/main/hubVersion';
 import { makeStyles } from '@material-ui/styles';
 
 const useStyles = makeStyles({

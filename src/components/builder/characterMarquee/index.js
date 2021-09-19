@@ -1,13 +1,13 @@
 import { Divider } from '@material-ui/core';
-import CharacterSelect from 'components/characterSelect';
-import HeathStats from 'components/characterMarquee/marqueeStats/health';
-import BaseStats from 'components/characterMarquee/marqueeStats/main';
-import GenericStats from 'components/characterMarquee/marqueeStats/general';
-import MeleeStats from 'components/characterMarquee/marqueeStats/melee';
-import ParryStat from 'components/characterMarquee/marqueeStats/parry';
-import SpellStats from 'components/characterMarquee/marqueeStats/spell';
-import RangeStats from 'components/characterMarquee/marqueeStats/range';
-import RegenStats from 'components/characterMarquee/marqueeStats/regen';
+import CharacterSelect from 'components/builder/characterSelect';
+import HeathStats from 'components/builder/characterMarquee/marqueeStats/health';
+import BaseStats from 'components/builder/characterMarquee/marqueeStats/main';
+import GenericStats from 'components/builder/characterMarquee/marqueeStats/general';
+import MeleeStats from 'components/builder/characterMarquee/marqueeStats/melee';
+import ParryStat from 'components/builder/characterMarquee/marqueeStats/parry';
+import SpellStats from 'components/builder/characterMarquee/marqueeStats/spell';
+import RangeStats from 'components/builder/characterMarquee/marqueeStats/range';
+import RegenStats from 'components/builder/characterMarquee/marqueeStats/regen';
 import { makeStyles } from '@material-ui/styles';
 
 const baseStats = {
