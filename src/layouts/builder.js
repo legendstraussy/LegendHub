@@ -1,5 +1,4 @@
 import { PropTypes } from 'prop-types';
-import HubLayout from 'layouts/hub';
 import { makeStyles } from '@material-ui/styles';
 
 const useStyles = makeStyles({

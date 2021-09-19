@@ -3,7 +3,9 @@ import CharacterMarquee from 'components/builder/characterMarquee';
 import CharacterStats from 'components/builder/characterStats';
 import ItemDetails from 'components/items/itemDetails';
 import EquipmentList from 'components/builder/equipmentList';
-import DetailsTabs from 'components/common/detail/detailTabs';
+import {
+  DetailTabs,
+} from 'components/common/detail';
 import HubLayout from 'layouts/hub';
 import BuilderLayout from 'layouts/builder';
 
@@ -18,7 +20,7 @@ const Builder = () => {
       <BuilderLayout
         main={<EquipmentList />}
         marquee={<CharacterMarquee />}
-        side={<DetailsTabs tabs={tabs} />}
+        side={<DetailTabs tabs={tabs} />}
       />
     </HubLayout>
   );
