@@ -103,7 +103,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'contents !important',
     color: '#fff',
     '& .MuiToolbar-root': {
-      height: 36,
+      height: 35,
       background: 'rgba(0, 0, 0, .5)',
       textTransform: 'uppercase',
     },
