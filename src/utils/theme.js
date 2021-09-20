@@ -10,6 +10,14 @@ const theme = createTheme({
       cyan: '#31DBB9',
       green: '#71DE71',
     },
+    contrastText: {
+      red: '#fff',
+      purple: '#fff',
+      blue: '#fff',
+      yellow: '#000',
+      cyan: '#000',
+      green: '#000',
+    },
     link: '#219AFF',
   },
   overrides: {

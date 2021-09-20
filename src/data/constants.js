@@ -30,30 +30,31 @@ export const stats = {
 export const modifierColors = {
   potion: {
     bgColor: theme.palette.main.green,
-    color: '#fff',
+    color: theme.palette.contrastText.green,
   },
   spell: {
     bgColor: theme.palette.main.purple,
-    color: '#fff',
+    color: theme.palette.contrastText.purple,
   },
   skill: {
     bgColor: theme.palette.main.yellow,
-    color: '#fff',
+    color: theme.palette.contrastText.yellow,
   },
   ability: {
     bgColor: theme.palette.main.blue,
+    color: theme.palette.contrastText.blue,
   },
   resistance: {
     bgColor: theme.palette.main.blue,
-    color: '#fff',
+    color: theme.palette.contrastText.blue,
   },
   immunity: {
     bgColor: theme.palette.main.yellow,
-    color: '#fff',
+    color: theme.palette.contrastText.yellow,
   },
   susceptibility: {
     bgColor: theme.palette.main.red,
-    color: '#fff',
+    color: theme.palette.contrastText.red,
   },
 };
 

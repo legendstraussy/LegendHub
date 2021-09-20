@@ -40,7 +40,7 @@ const Tabs = props => {
           <Tab
             key={tab.name}
             test={tab?.test}
-            isActive={activeTab.name === tab.name}
+            isActive={activeTab?.name === tab.name}
             tab={tab}
             onTabClick={onTabClick}
           />

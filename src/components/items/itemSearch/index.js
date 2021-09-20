@@ -10,6 +10,7 @@ import {
   weaponTypes,
 } from 'data/constants';
 import getKeyArrayFromObject from 'utils/utilFns';
+import theme from 'utils/theme';
 
 const filterOptions = getKeyArrayFromObject(itemFilters)
   .map(filter => ({ name: filter?.name, value: filter?.name }));
@@ -146,7 +147,8 @@ const ItemSearch = () => {
           {filters.map((filter, i) => (
             <div key={i} style={{ margin: '.25em' }}>
               <HubChip
-                bgColor="#2E94FA"
+                bgColor={theme.palette.main.blue}
+                color={theme.palette.contrastText.blue}
                 label={filter.name}
                 onDelete={() => handleRemoveFilter(filter)}
               />

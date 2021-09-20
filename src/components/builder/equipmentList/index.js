@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import HubTable from 'components/common/hubTable';
+import HubFooter from 'components/common/HubFooter';
 
 const EquipmentList = () => {
   const [headers] = useState([
@@ -75,7 +76,10 @@ const EquipmentList = () => {
   ]);
 
   return (
-    <HubTable headers={headers} footer={false} />
+    <div style={{ overflow: 'auto', display: 'flex', flexDirection: 'column' }}>
+      <HubTable headers={headers} footer={false} />
+      <HubFooter />
+    </div>
   );
 };
 
