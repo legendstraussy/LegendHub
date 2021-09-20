@@ -3,51 +3,57 @@ import theme from 'utils/theme';
 export const stats = {
   str: {
     name: 'strength',
-    color: theme.palette.stats.strength,
+    color: theme.palette.main.red,
   },
   min: {
     name: 'mind',
-    color: theme.palette.stats.mind,
+    color: theme.palette.main.purple,
   },
   dex: {
     name: 'dexterity',
-    color: theme.palette.stats.dexterity,
+    color: theme.palette.main.blue,
   },
   con: {
     name: 'constitution',
-    color: theme.palette.stats.constitution,
+    color: theme.palette.main.yellow,
   },
   per: {
     name: 'perception',
-    color: theme.palette.stats.perception,
+    color: theme.palette.main.cyan,
   },
   spi: {
     name: 'spirit',
-    color: theme.palette.stats.spirit,
+    color: theme.palette.main.green,
   },
 };
 
-export const modifiers = {
+export const modifierColors = {
   potion: {
-    color: theme.palette.stats.spi,
+    bgColor: theme.palette.main.green,
+    color: '#fff',
   },
   spell: {
-    color: theme.palette.stats.min,
+    bgColor: theme.palette.main.purple,
+    color: '#fff',
   },
   skill: {
-    color: theme.palette.stats.con,
+    bgColor: theme.palette.main.yellow,
+    color: '#fff',
   },
   ability: {
-    color: theme.palette.stats.dex,
+    bgColor: theme.palette.main.blue,
   },
   resistance: {
-    color: theme.palette.stats.dex,
+    bgColor: theme.palette.main.blue,
+    color: '#fff',
   },
   immunity: {
-    color: theme.palette.stats.con,
+    bgColor: theme.palette.main.yellow,
+    color: '#fff',
   },
   susceptibility: {
-    color: theme.palette.stats.str,
+    bgColor: theme.palette.main.red,
+    color: '#fff',
   },
 };
 
