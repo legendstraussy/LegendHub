@@ -1,9 +1,9 @@
 const character = {
-  id: 1003,
+  name: 'Deacon',
+  description: 'badass mage version',
   createDate: '8/16/2021 7:28pm',
   modifiedDate: '8/16/2021 7:28pm',
-  hash: 'dsfaeffddsf7674f568dsfa5455s6adfds3a456fdsa7f3ds4a56fds34a56',
-  name: 'Deacon',
+  exportHash: 'dsfaeffddsf7674f568dsfa5455s6adfds3a456fdsa7f3ds4a56fds34a56',
   hp: 624,
   mv: 658,
   ma: 902,
@@ -107,3 +107,11 @@ const character = {
 };
 
 export default character;
+
+/*
+const hashids = new Hashids();
+const s = hashids.encode(1, 2, 3, 4, 5, 6, 10, 20, 30, 40, 50, 60, 1, 2, 3, 0, 0, 0, 1, 2, 1001, 1002, 1003, 1004, 1001, 1002, 1003, 1004, 1001, 1002, 1003, 1004, 1001, 1002, 1003, 1004, 1001, 1002, 1003, 1004, 1001, 1002, 1003, 1004, 1001, 1002, 1003, 1004)
+const o = { name: 'deacon', version: 'badass mage version', s}
+console.log('bingo', `${o.name}-${o.version}-${s}`);
+console.log('bango', hashids.decode(s))
+*/
