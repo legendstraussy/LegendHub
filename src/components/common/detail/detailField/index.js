@@ -1,9 +1,7 @@
 import { PropTypes } from 'prop-types';
 import { makeStyles } from '@material-ui/styles';
-import {
-  DetailFieldLabel,
-  DetailFieldValue,
-} from 'components/common/detail';
+import DetailFieldLabel from 'components/common/detail/detailField/detailFieldLabel';
+import DetailFieldValue from 'components/common/detail/detailField/detailFieldValue';
 
 const useStyles = makeStyles({
   root: {

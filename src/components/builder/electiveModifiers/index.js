@@ -1,7 +1,7 @@
 import HubIconButton from 'components/common/hubIconButton';
 import HubChip from 'components/common/hubChip';
 import { makeStyles } from '@material-ui/styles';
-import { modifiers } from 'data/constants';
+import { modifierColors } from 'data/constants';
 
 const useStyles = makeStyles({
   root: {
@@ -74,7 +74,7 @@ const CharElectiveModifiers = () => {
           {electives.map((elective, i) => (
             <div key={i} style={{ margin: '.25em' }}>
               <HubChip
-                bgColor={modifiers[elective?.type]?.color}
+                bgColor={modifierColors[elective?.type]?.color}
                 label={elective.name}
                 onDelete={() => {}}
               />

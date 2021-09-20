@@ -78,22 +78,22 @@ const useStyles = makeStyles((theme) => ({
       textOverflow: 'ellipsis',
     },
     '& [data-value=str]': {
-      color: theme.palette.stats.str,
+      color: theme.palette.main.red,
     },
     '& [data-value=min]': {
-      color: theme.palette.stats.min,
+      color: theme.palette.main.purple,
     },
     '& [data-value=dex]': {
-      color: theme.palette.stats.dex,
+      color: theme.palette.main.blue,
     },
     '& [data-value=con]': {
-      color: theme.palette.stats.con,
+      color: theme.palette.main.yellow,
     },
     '& [data-value=per]': {
-      color: theme.palette.stats.per,
+      color: theme.palette.main.cyan,
     },
     '& [data-value=spi]': {
-      color: theme.palette.stats.spi,
+      color: theme.palette.main.green,
     },
   },
   cell: {
@@ -129,7 +129,7 @@ const useStyles = makeStyles((theme) => ({
   },
   check: {
     width: '.75em',
-    color: theme.palette.stats.spi,
+    color: theme.palette.main.green,
   },
 }), { name: 'Mui_Styles_HubTable' });
 

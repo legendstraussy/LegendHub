@@ -3,9 +3,7 @@ import CharacterMarquee from 'components/builder/characterMarquee';
 import CharacterStats from 'components/builder/characterStats';
 import ItemDetails from 'components/items/itemDetails';
 import EquipmentList from 'components/builder/equipmentList';
-import {
-  DetailTabs,
-} from 'components/common/detail';
+import DetailTabs from 'components/common/detail/detailTabs';
 import HubLayout from 'layouts/hub';
 import BuilderLayout from 'layouts/builder';
 

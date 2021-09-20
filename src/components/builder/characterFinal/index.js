@@ -1,12 +1,10 @@
 import { PropTypes } from 'prop-types';
 import HubChip from 'components/common/hubChip';
 import HubIconButton from 'components/common/hubIconButton';
-import {
-  DetailField,
-  DetailHeader,
-} from 'components/common/detail';
+import DetailField from 'components/common/detail/detailField/';
+import DetailHeader from 'components/common/detail/detailHeader/';
 import { makeStyles } from '@material-ui/styles';
-import { modifiers } from 'data/constants';
+import { modifierColors } from 'data/constants';
 
 const useStyles = makeStyles({
   root: {
@@ -158,7 +156,7 @@ const CharacterFinal = props => {
           {electives.map((elective, i) => (
             <div key={i} style={{ margin: '.25em' }}>
               <HubChip
-                bgColor={modifiers[elective?.type]?.color}
+                bgColor={modifierColors[elective?.type]?.bgColor}
                 label={elective.name}
                 onDelete={() => {}}
                 readOnly={elective.readOnly}
@@ -175,7 +173,7 @@ const CharacterFinal = props => {
           {resistances.map((resistance, i) => (
             <div key={i} style={{ margin: '.25em' }}>
               <HubChip
-                bgColor={modifiers[resistance?.type]?.color}
+                bgColor={modifierColors[resistance?.type]?.bgColor}
                 label={resistance.name}
                 onDelete={() => {}}
                 readOnly={resistance.readOnly}
@@ -192,7 +190,8 @@ const CharacterFinal = props => {
           {immunities.map((immunity, i) => (
             <div key={i} style={{ margin: '.25em' }}>
               <HubChip
-                bgColor={modifiers[immunity?.type]?.color}
+                bgColor={modifierColors[immunity?.type]?.bgColor}
+                color="#fff"
                 label={immunity.name}
                 onDelete={() => {}}
                 readOnly={immunity.readOnly}
@@ -209,7 +208,7 @@ const CharacterFinal = props => {
           {susceptibilities.map((susceptibility, i) => (
             <div key={i} style={{ margin: '.25em' }}>
               <HubChip
-                bgColor={modifiers[susceptibility?.type]?.color}
+                bgColor={modifierColors[susceptibility?.type]?.bgColor}
                 label={susceptibility.name}
                 onDelete={() => {}}
                 readOnly={susceptibility.readOnly}

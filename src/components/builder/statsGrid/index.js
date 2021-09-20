@@ -2,6 +2,7 @@ import { Grid } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
 import StatInput from 'components/builder/statInput';
 import theme from 'utils/theme';
+import { stats as statsConstants } from 'data/constants';
 
 const useStyles = makeStyles({
   root: {
@@ -94,7 +95,7 @@ const StatsGrid = () => {
             xs={2}
             className={classes.label}
             style={{
-              color: theme.palette.stats[stat.name],
+              color: theme.palette.main[statsConstants[stat.name]],
               fontSize: '14px',
               fontWeight: '700',
             }}

@@ -52,7 +52,7 @@ const HubChip = props => {
 
 HubChip.propTypes = {
   label: PropTypes.string,
-  onDelete: PropTypes.func.isRequired,
+  onDelete: PropTypes.func,
   readOnly: PropTypes.bool,
 };
 

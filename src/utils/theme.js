@@ -2,13 +2,13 @@ import { createTheme } from '@material-ui/core/styles';
 
 const theme = createTheme({
   palette: {
-    stats: {
-      str: '#DE2E2E',
-      min: '#A57BF1',
-      dex: '#2e94fa',
-      con: '#FFD874',
-      per: '#31DBB9',
-      spi: '#71DE71',
+    main: {
+      red: '#DE2E2E',
+      purple: '#A57BF1',
+      blue: '#2e94fa',
+      yellow: '#FFD874',
+      cyan: '#31DBB9',
+      green: '#71DE71',
     },
     link: '#219AFF',
   },

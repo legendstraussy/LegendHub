@@ -9,7 +9,7 @@ const useStyles = makeStyles(theme => ({
     fontWeight: 'bold',
   },
   stat: {
-    color: theme.palette.stats.dex,
+    color: theme.palette.main.blue,
     display: 'flex',
     justifyContent: 'center',
     fontSize: 14,

@@ -1,8 +1,9 @@
 import { PropTypes } from 'prop-types';
 import Image from 'next/image';
 import { makeStyles } from '@material-ui/styles';
+import { stats } from 'data/constants';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles({
   root: {
     width: props => props?.width || 40,
     position: 'absolute',
@@ -38,13 +39,13 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flex: 1,
     alignItems: 'flex-end',
-    color: props => theme.palette.stats[props.label] || '#fff',
+    color: props => stats[props?.label]?.color || '#fff',
     position: 'relative',
     top: 4,
     fontSize: '10px',
     textTransform: 'uppercase',
   },
-}), { name: 'Mui_Styles_IconHead' });
+}, { name: 'Mui_Styles_IconHead' });
 
 const IconHead = props => {
   const {
