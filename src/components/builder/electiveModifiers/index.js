@@ -74,7 +74,8 @@ const CharElectiveModifiers = () => {
           {electives.map((elective, i) => (
             <div key={i} style={{ margin: '.25em' }}>
               <HubChip
-                bgColor={modifierColors[elective?.type]?.color}
+                bgColor={modifierColors[elective?.type]?.bgColor}
+                color={modifierColors[elective?.type]?.color}
                 label={elective.name}
                 onDelete={() => {}}
               />

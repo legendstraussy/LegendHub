@@ -12,13 +12,14 @@ const Items = () => {
     { name: 'search', iconPath: '/magnifying-glass.png', component: <ItemSearch /> },
     { name: 'item', iconPath: '/swords-emblem.png', component: <ItemDetails /> },
   ]);
+  const [defaultTab] = useState(tabs.findIndex(tab => tab.name === 'item'));
 
   return (
     <HubLayout>
       <BuilderLayout
         main={<ItemList />}
         marquee={<CharacterMarquee />}
-        side={<DetailTabs tabs={tabs} />}
+        side={<DetailTabs tabs={tabs} defaultTab={defaultTab} />}
       />
     </HubLayout>
   );

@@ -12,8 +12,8 @@ const useStyles = makeStyles({
 }, { name: 'Mui_Styles_DetailsTabs' });
 
 const DetailTabs = props => {
-  const { tabs = [] } = props;
-  const [activeTab, setActiveTab] = useState(tabs[0]);
+  const { defaultTab = 0, tabs = [] } = props;
+  const [activeTab, setActiveTab] = useState(tabs[defaultTab]);
   const classes = useStyles();
 
   const handleTabClick = tab => setActiveTab(tab);
@@ -26,6 +26,7 @@ const DetailTabs = props => {
 };
 
 DetailTabs.propTypes = {
+  defaultTab: PropTypes.number,
   tabs: PropTypes.arrayOf(
     PropTypes.shape({}),
   ),

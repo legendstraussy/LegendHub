@@ -33,10 +33,6 @@ const useStyles = makeStyles((theme) => ({
     height: 2000,
     background: 'rgba(0, 0, 0, .75)',
     overflow: 'auto !important',
-    borderRadius: '0 0 5px 5px',
-    '&::-webkit-scrollbar-corner': {
-      borderRadius: '0 0 5px 0',
-    },
   },
   table: {
     width: 'max-content;',
@@ -59,7 +55,7 @@ const useStyles = makeStyles((theme) => ({
   },
   tbody: {
     '& .MuiTableRow-root': {
-      height: '36px !important',
+      height: '35px !important',
       borderBottom: '1px solid rgba(45, 40, 40, .75)',
     },
     '& .MuiTableCell-body': {

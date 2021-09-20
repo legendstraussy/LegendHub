@@ -3,6 +3,7 @@ import DetailField from 'components/common/detail/detailField';
 import DetailHeader from 'components/common/detail/detailHeader';
 import HubChip from 'components/common/hubChip';
 import { makeStyles } from '@material-ui/styles';
+import theme from 'utils/theme';
 
 const item = {
   name: 'ring of strength',
@@ -86,7 +87,8 @@ const ItemDetails = () => {
           {item.slots.map((slot, i) => (
             <div key={i} style={{ margin: '.25em' }}>
               <HubChip
-                bgColor="#2E94FA"
+                bgColor={theme.palette.main.blue}
+                color={theme.palette.contrastText.blue}
                 label={slot.name}
                 readOnly
               />
@@ -112,7 +114,8 @@ const ItemDetails = () => {
           {item.flags.map((slot, i) => (
             <div key={i} style={{ margin: '.25em' }}>
               <HubChip
-                bgColor="#2E94FA"
+                bgColor={theme.palette.main.blue}
+                color={theme.palette.contrastText.blue}
                 label={slot.name}
                 readOnly
               />

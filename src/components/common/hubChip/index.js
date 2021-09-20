@@ -10,18 +10,18 @@ const useStyles = makeStyles({
     background: props => props.bgColor ?? '#444',
     fontFamily: 'Open Sans',
     fontSize: '12px',
-    fontWeight: 800,
+    fontWeight: 600,
     textTransform: 'uppercase',
     cursor: 'default',
   },
   avatar: {
-    background: '#ccc',
+    background: 'rgba(0, 0, 0, .2)',
     width: '18px !important',
     height: '18px !important',
     marginLeft: '2px !important',
   },
   icon: {
-    color: '#000',
+    color: props => props.color ?? 'rgba(0, 0, 0, .75);',
     width: '12px',
   },
 }, { name: 'Mui_Styles_HubChip' });
