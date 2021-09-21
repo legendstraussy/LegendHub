@@ -7,7 +7,7 @@ import ItemSearch from 'components/items/itemSearch';
 import ItemDetails from 'components/items/itemDetails';
 import ItemMarquee from 'components/items/itemMarquee';
 
-const equippedItem = {
+const eqItem = {
   name: 'ring of strength',
   rent: 2932,
   ac: -10,
@@ -28,7 +28,7 @@ const Items = () => {
     <HubLayout>
       <BuilderLayout
         main={<ItemList />}
-        marquee={<ItemMarquee equipped={equippedItem} />}
+        marquee={<ItemMarquee eqItem={eqItem} />}
         side={<DetailTabs tabs={tabs} defaultTab={defaultTab} />}
       />
     </HubLayout>

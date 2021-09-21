@@ -72,40 +72,40 @@ const HubStud = () => {
 };
 
 const ItemMarquee = props => {
-  const { equipped = {} } = props;
+  const { eqItem = {} } = props;
   const classes = useStyles();
 
   return (
     <div className={classes.root}>
       <div className={classes.equipped}>equipped</div>
-      <div className={classes.item}>{equipped.name}</div>
-      <div className={classes.iconStat} style={{ color: stats.str.color }}>{equipped.str || <HubStud />}</div>
-      <div className={classes.iconStat} style={{ color: stats.min.color }}>{equipped.min || <HubStud />}</div>
-      <div className={classes.iconStat} style={{ color: stats.dex.color }}>{equipped.dex || <HubStud />}</div>
-      <div className={classes.iconStat} style={{ color: stats.con.color }}>{equipped.con || <HubStud />}</div>
-      <div className={classes.iconStat} style={{ color: stats.per.color }}>{equipped.per || <HubStud />}</div>
-      <div className={classes.iconStat} style={{ color: stats.spi.color }}>{equipped.spi || <HubStud />}</div>
-      <div className={classes.ac}>{equipped.ac || <HubStud />}</div>
-      <div className={classes.align}>{equipped.align || <HubStud />}</div>
-      <div className={classes.rent}>{equipped.rent || <HubStud />}</div>
-      <div className={classes.iconStat}>{equipped.mitigation || <HubStud />}</div>
-      <div className={classes.iconStat}>{equipped.damroll || <HubStud />}</div>
-      <div className={classes.iconStat}>{equipped.hitroll || <HubStud />}</div>
-      <div className={classes.iconStat}>{equipped.parry || <HubStud />}</div>
-      <div className={classes.iconStat}>{equipped.accuracy || <HubStud />}</div>
-      <div className={classes.iconStat}>{equipped.spellCrit || <HubStud />}</div>
-      <div className={classes.iconStat}>{equipped.spellDam || <HubStud />}</div>
-      <div className={classes.iconStat}>{equipped.spellRedux || <HubStud />}</div>
-      <div className={classes.iconStat}>{equipped.concentration || <HubStud />}</div>
-      <div className={classes.iconStat}>{equipped.hpRegen || <HubStud />}</div>
-      <div className={classes.iconStat}>{equipped.mvRegen || <HubStud />}</div>
-      <div className={classes.iconStat}>{equipped.maRegen || <HubStud />}</div>
+      <div className={classes.item}>{eqItem.name}</div>
+      <div className={classes.iconStat} style={{ color: stats.str.color }}>{eqItem.str || <HubStud />}</div>
+      <div className={classes.iconStat} style={{ color: stats.min.color }}>{eqItem.min || <HubStud />}</div>
+      <div className={classes.iconStat} style={{ color: stats.dex.color }}>{eqItem.dex || <HubStud />}</div>
+      <div className={classes.iconStat} style={{ color: stats.con.color }}>{eqItem.con || <HubStud />}</div>
+      <div className={classes.iconStat} style={{ color: stats.per.color }}>{eqItem.per || <HubStud />}</div>
+      <div className={classes.iconStat} style={{ color: stats.spi.color }}>{eqItem.spi || <HubStud />}</div>
+      <div className={classes.ac}>{eqItem.ac || <HubStud />}</div>
+      <div className={classes.align}>{eqItem.align || <HubStud />}</div>
+      <div className={classes.rent}>{eqItem.rent || <HubStud />}</div>
+      <div className={classes.iconStat}>{eqItem.mitigation || <HubStud />}</div>
+      <div className={classes.iconStat}>{eqItem.damroll || <HubStud />}</div>
+      <div className={classes.iconStat}>{eqItem.hitroll || <HubStud />}</div>
+      <div className={classes.iconStat}>{eqItem.parry || <HubStud />}</div>
+      <div className={classes.iconStat}>{eqItem.accuracy || <HubStud />}</div>
+      <div className={classes.iconStat}>{eqItem.spellCrit || <HubStud />}</div>
+      <div className={classes.iconStat}>{eqItem.spellDam || <HubStud />}</div>
+      <div className={classes.iconStat}>{eqItem.spellRedux || <HubStud />}</div>
+      <div className={classes.iconStat}>{eqItem.concentration || <HubStud />}</div>
+      <div className={classes.iconStat}>{eqItem.hpRegen || <HubStud />}</div>
+      <div className={classes.iconStat}>{eqItem.mvRegen || <HubStud />}</div>
+      <div className={classes.iconStat}>{eqItem.maRegen || <HubStud />}</div>
     </div>
   );
 };
 
 ItemMarquee.propTypes = {
-  equipped: PropTypes.shape({
+  eqItem: PropTypes.shape({
     name: PropTypes.string,
     str: PropTypes.number,
     min: PropTypes.number,
