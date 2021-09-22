@@ -67,6 +67,7 @@ const useStyles = makeStyles((theme) => ({
       padding: '0 10px',
     },
     '& [data-value=name]': { // TODO: move out to generic classes
+      width: 'inherit',
       color: theme.palette.link,
       fontWeight: 100,
       whiteSpace: 'nowrap',
@@ -130,8 +131,9 @@ const useStyles = makeStyles((theme) => ({
 }), { name: 'Mui_Styles_HubTable' });
 
 const HubTable = props => {
-  const { headers = [], footer = true } = props;
+  const { headers = [], footer = true, Tools } = props;
   const tableEl = useRef(null);
+  const [showTools, setShowTools] = useState();
   const [order, setOrder] = useState(null);
   const [orderBy, setOrderBy] = useState(null);
   const [filters] = useState({});
@@ -181,50 +183,48 @@ const HubTable = props => {
   return (
     <div className={classes.root}>
       <div className={classes.headerContainer}>
-        <div ref={tableEl} style={{ position: 'relative' }}>
-          <Table style={{ width: 'max-content' }}>
-            <TableHead
-              className={classes.thead}
-            >
-              <TableRow>
-                {headers.map(header => (
-                  <TableCell
-                    key={header.id}
-                    style={{
-                      width: header?.width,
-                      textAlign: header?.align ? header?.align : 'center',
-                    }}
-                    className={clsx(classes?.cell, header?.class)}
-                    onClick={() => handleSortChange(header)}
-                  >
-                    {header?.class === 'icon'
-                      ? (
-                        <IconHead
-                          leftEnd={header?.leftEnd}
-                          rightEnd={header?.rightEnd}
-                          iconPath={header?.iconPath}
-                          label={header?.label}
-                          isSorting={orderBy === header?.id}
-                          order={order}
-                          width={header?.width}
-                        />
-                      )
-                      : (
-                        <div
-                          style={{ justifyContent: header.align || 'center' }}
-                          data-value={header.id}
-                        >
-                          {header.label}
-                        </div>
-                      )}
-                  </TableCell>
-                ))}
-              </TableRow>
-            </TableHead>
-          </Table>
-        </div>
+        <Table ref={tableEl} style={{ position: 'relative', width: 'max-content' }}>
+          <TableHead
+            className={classes.thead}
+          >
+            <TableRow>
+              {headers.map(header => (
+                <TableCell
+                  key={header.id}
+                  style={{
+                    width: header?.width,
+                    textAlign: header?.align ?? 'center',
+                  }}
+                  className={clsx(classes?.cell, header?.type)}
+                  onClick={() => handleSortChange(header)}
+                >
+                  {header?.type === 'icon'
+                    ? (
+                      <IconHead
+                        leftEnd={header?.leftEnd}
+                        rightEnd={header?.rightEnd}
+                        iconPath={header?.iconPath}
+                        label={header?.label}
+                        isSorting={orderBy === header?.id}
+                        order={order}
+                        width={header?.width}
+                      />
+                    )
+                    : (
+                      <div
+                        style={{ justifyContent: header.align || 'center' }}
+                        data-value={header.id}
+                      >
+                        {header.label}
+                      </div>
+                    )}
+                </TableCell>
+              ))}
+            </TableRow>
+          </TableHead>
+        </Table>
       </div>
-      <TableContainer className={classes.bodyContainer} onScroll={handleScroll}>
+      <div className={classes.bodyContainer} onScroll={handleScroll}>
         <Table className={classes.table}>
           <TableBody className={classes.tbody}>
             {items?.map(item => (
@@ -235,14 +235,34 @@ const HubTable = props => {
                     style={{
                       width: header?.width,
                       borderRight: header.hideBorder ? 'unset' : '',
-                      textAlign: header?.align ? header?.align : 'center',
+                      textAlign: header?.align ?? 'center',
                     }}
-                    className={clsx(classes?.cell, header?.class)}
+                    className={clsx(classes?.cell, header?.type)}
+                    onMouseOut={() => {
+                      if (showTools !== item.id) {
+                        setShowTools();
+                      }
+                    }}
+                    onMouseOver={() => {
+                      if (showTools !== item.id) {
+                        setShowTools(item.id);
+                      }
+                    }}
                   >
-                    <div data-value={header.id}>
-                      {typeof item[header.id] === 'boolean'
-                        ? <CheckIcon className={classes.check} />
-                        : item[header.id]}
+                    <div
+                      key={item.id}
+                      style={{
+                        width: header.id === 'name' ? header?.width : '', display: header.id === 'name' ? 'flex' : '', justifyContent: 'center', alignItems: 'center', height: header.id === 'name' ? 35 : '',
+                      }}
+                    >
+                      <div data-value={header.id}>
+                        {typeof item[header.id] === 'boolean'
+                          ? <CheckIcon className={classes.check} />
+                          : item[header.id]}
+                      </div>
+                      {header.id === 'name' && Tools && (
+                        <Tools show={showTools === item.id} />
+                      )}
                     </div>
                   </TableCell>
                 ))}
@@ -250,9 +270,8 @@ const HubTable = props => {
             ))}
           </TableBody>
         </Table>
-      </TableContainer>
-      {footer
-        && (
+      </div>
+      {footer && (
         <TablePagination
           className={classes.pagination}
           rowsPerPageOptions={[5, 10, 25]}
@@ -263,7 +282,7 @@ const HubTable = props => {
           onPageChange={handleChangePage}
           onRowsPerPageChange={handleChangeRowsPerPage}
         />
-        )}
+      )}
     </div>
   );
 };
@@ -273,6 +292,10 @@ HubTable.propTypes = {
   headers: PropTypes.arrayOf(
     PropTypes.shape({}),
   ),
+  Tools: PropTypes.oneOfType([
+    PropTypes.element,
+    PropTypes.func,
+  ]),
 };
 
 export default HubTable;

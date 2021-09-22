@@ -2,7 +2,7 @@ const items = [
   {
     "id": 20000,
     "slot": "amulet",
-    "name": "20000: proident incididunt",
+    "name": "20000: proident incididunt staff of longevity and style",
     "type": "weapon",
     "material": "iron",
     "rent": 1994,
