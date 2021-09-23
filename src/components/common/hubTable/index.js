@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useCallback, useRef, useState } from 'react';
 import { useQuery } from 'react-query';
 import { PropTypes } from 'prop-types';
 import clsx from 'clsx';
@@ -6,7 +6,6 @@ import {
   Table,
   TableBody,
   TableCell,
-  TableContainer,
   TableHead,
   TablePagination,
   TableRow,
@@ -128,11 +127,21 @@ const useStyles = makeStyles((theme) => ({
     width: '.75em',
     color: theme.palette.main.green,
   },
+  test: {
+    '& :hover': {
+      '& > span': {
+        opacity: '1 !important',
+        width: 'max-content !important',
+        transition: 'opacity .2s ease-in-out',
+      },
+    },
+  },
 }), { name: 'Mui_Styles_HubTable' });
 
 const HubTable = props => {
   const { headers = [], footer = true, Tools } = props;
   const tableEl = useRef(null);
+  const hoverRecord = useRef(0);
   const [showTools, setShowTools] = useState();
   const [order, setOrder] = useState(null);
   const [orderBy, setOrderBy] = useState(null);
@@ -177,6 +186,21 @@ const HubTable = props => {
       } else {
         setOrder('asc');
       }
+    }
+  };
+
+  const handleMouseOver = (item) => {
+    if (showTools === item.id) return;
+    hoverRecord.current = item.id;
+    console.log('bingo', hoverRecord.current)
+    if (showTools !== item.id) {
+      setShowTools(item.id);
+    }
+  };
+
+  const handleMouseOut = (item) => {
+    if (showTools !== item.id) {
+      setShowTools(null);
     }
   };
 
@@ -228,7 +252,12 @@ const HubTable = props => {
         <Table className={classes.table}>
           <TableBody className={classes.tbody}>
             {items?.map(item => (
-              <TableRow key={item.id}>
+              <TableRow
+                key={item.id}
+                // onMouseOut={() => handleMouseOut(item)}
+                // onMouseOver={() => handleMouseOver(item)}
+                hover
+              >
                 {headers.map(header => (
                   <TableCell
                     key={header.id}
@@ -237,17 +266,7 @@ const HubTable = props => {
                       borderRight: header.hideBorder ? 'unset' : '',
                       textAlign: header?.align ?? 'center',
                     }}
-                    className={clsx(classes?.cell, header?.type)}
-                    onMouseOut={() => {
-                      if (showTools !== item.id) {
-                        setShowTools();
-                      }
-                    }}
-                    onMouseOver={() => {
-                      if (showTools !== item.id) {
-                        setShowTools(item.id);
-                      }
-                    }}
+                    className={clsx(classes?.cell, header?.type, classes.test)}
                   >
                     <div
                       key={item.id}
@@ -261,7 +280,9 @@ const HubTable = props => {
                           : item[header.id]}
                       </div>
                       {header.id === 'name' && Tools && (
-                        <Tools show={showTools === item.id} />
+                        <span style={{ opacity: 0, width: 0 }}>
+                          <Tools show />
+                        </span>
                       )}
                     </div>
                   </TableCell>
