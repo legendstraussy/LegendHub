@@ -4,7 +4,11 @@ import { makeStyles } from '@material-ui/styles';
 
 const useStyles = makeStyles({
   root: {
-    display: props => props.show ? 'flex' : 'none',
+    width: '45%',
+    height: '100%',
+    display: 'flex',
+    justifyContent: 'space-around',
+    background: '#222',
   },
 }, { name: 'Mui_Styles_HubItemTools' });
 
