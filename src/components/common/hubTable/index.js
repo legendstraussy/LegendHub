@@ -132,7 +132,7 @@ const useStyles = makeStyles((theme) => ({
       '& > span': {
         opacity: '1 !important',
         width: 'max-content !important',
-        transition: 'opacity .2s ease-in-out',
+        transition: 'opacity 1s ease-in-out',
       },
     },
   },
