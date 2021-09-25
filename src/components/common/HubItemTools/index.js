@@ -4,10 +4,12 @@ import { makeStyles } from '@material-ui/styles';
 
 const useStyles = makeStyles({
   root: {
-    width: '100%',
+    width: 0,
+    height: 'inherit',
     display: 'flex',
     justifyContent: 'space-around',
     background: '#222',
+    opacity: 0,
   },
 }, { name: 'Mui_Styles_HubItemTools' });
 

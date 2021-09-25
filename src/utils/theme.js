@@ -21,6 +21,50 @@ const theme = createTheme({
     link: '#219AFF',
   },
   overrides: {
+    MuiTable: {
+      root: {
+        '& .MuiTableBody-root': {
+          '& .MuiTableRow-root': {
+            height: '35px !important',
+            borderBottom: '1px solid rgba(45, 40, 40, .75)',
+          },
+          '& .MuiTableCell-body': {
+            color: '#fff',
+            whiteSpace: 'nowrap',
+            borderRight: '1px solid rgba(64, 51, 51, .75)',
+          },
+        },
+        '& .MuiTableCell-root': {
+          fontFamily: 'inherit',
+          padding: 0,
+          border: 'unset',
+        },
+      },
+    },
+    MuiTablePagination: {
+      root: {
+        '& .MuiToolbar-root': {
+          height: 35,
+          background: 'rgba(0, 0, 0, .5)',
+          textTransform: 'uppercase',
+        },
+        '& .MuiTablePagination-toolbar': {
+          minHeight: 'unset',
+          borderRadius: '0 0 5px 5px',
+        },
+        '& .MuiTablePagination-selectIcon': {
+          color: '#219AFF',
+        },
+        '& .MuiTablePagination-actions': {
+          '& .Mui-disabled': {
+            color: '#444 !important',
+          },
+          '& .MuiButtonBase-root ': {
+            color: '#219AFF',
+          },
+        },
+      },
+    },
     MuiPaper: {
       root: {
         backgroundColor: 'unset',

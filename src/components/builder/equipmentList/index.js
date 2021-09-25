@@ -5,6 +5,19 @@ import HubItemTools from 'components/common/HubItemTools';
 import HubItemTool from 'components/common/HubItemTool';
 import DeleteOutlineIcon from '@material-ui/icons/DeleteOutline';
 import Fullscreen from '@material-ui/icons/Fullscreen';
+import { makeStyles } from '@material-ui/styles';
+
+const useStyles = makeStyles({
+  test: {
+    '&:hover': {
+      '& > .Mui_Styles_HubItemTools-root': {
+        opacity: '1 !important',
+        width: 'max-content !important',
+        transition: 'opacity .2s ease-in-out',
+      },
+    },
+  },
+}, { name: 'Mui_Styles_EquipmentList' });
 
 const Tools = props => (
   <HubItemTools {...props}>
@@ -18,12 +31,13 @@ const Tools = props => (
 );
 
 const EquipmentList = () => {
+  const classes = useStyles();
   const [headers] = useState([
     {
-      id: 'slot', label: 'slot', type: 'header', width: 65, align: 'right', hideBorder: true,
+      id: 'slot', label: 'slot', type: 'header', width: 65, align: 'flex-end', hideBorder: true,
     },
     {
-      id: 'name', label: 'item', type: 'header', width: 250, align: 'left',
+      id: 'name', label: 'item', type: 'header', width: 250, align: 'flex-start', test: classes.test, tools: <Tools />,
     },
     {
       id: 'str', label: 'str', type: 'icon', leftEnd: true, iconPath: '/winged-sword.png', width: 40,

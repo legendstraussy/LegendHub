@@ -1,4 +1,4 @@
-import { useCallback, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import { useQuery } from 'react-query';
 import { PropTypes } from 'prop-types';
 import clsx from 'clsx';
@@ -53,15 +53,15 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   tbody: {
-    '& .MuiTableRow-root': {
-      height: '35px !important',
-      borderBottom: '1px solid rgba(45, 40, 40, .75)',
-    },
-    '& .MuiTableCell-body': {
-      color: '#fff',
-      whiteSpace: 'nowrap',
-      borderRight: '1px solid rgba(64, 51, 51, .75)',
-    },
+    // '& .MuiTableRow-root': {
+    //   height: '35px !important',
+    //   borderBottom: '1px solid rgba(45, 40, 40, .75)',
+    // },
+    // '& .MuiTableCell-body': {
+    //   color: '#fff',
+    //   whiteSpace: 'nowrap',
+    //   borderRight: '1px solid rgba(64, 51, 51, .75)',
+    // },
     '& [data-value=slot], & [data-value=name]': { // TODO: move out to generic classes
       padding: '0 9px',
     },
@@ -92,57 +92,57 @@ const useStyles = makeStyles((theme) => ({
       color: theme.palette.main.green,
     },
   },
-  cell: {
-    fontFamily: 'inherit',
-    padding: 0,
-    border: 'unset',
-  },
+  // cell: {
+  //   fontFamily: 'inherit',
+  //   padding: 0,
+  //   border: 'unset',
+  // },
   pagination: {
     position: 'sticky',
     bottom: 0,
     display: 'contents !important',
     color: '#fff',
-    '& .MuiToolbar-root': {
-      height: 35,
-      background: 'rgba(0, 0, 0, .5)',
-      textTransform: 'uppercase',
-    },
-    '& .MuiTablePagination-toolbar': {
-      minHeight: 'unset',
-      borderRadius: '0 0 5px 5px',
-    },
-    '& .MuiTablePagination-selectIcon': {
-      color: '#219AFF',
-    },
-    '& .MuiTablePagination-actions': {
-      '& .Mui-disabled': {
-        color: '#444 !important',
-      },
-      '& .MuiButtonBase-root ': {
-        color: '#219AFF',
-      },
-    },
+    // '& .MuiToolbar-root': {
+    //   height: 35,
+    //   background: 'rgba(0, 0, 0, .5)',
+    //   textTransform: 'uppercase',
+    // },
+    // '& .MuiTablePagination-toolbar': {
+    //   minHeight: 'unset',
+    //   borderRadius: '0 0 5px 5px',
+    // },
+    // '& .MuiTablePagination-selectIcon': {
+    //   color: '#219AFF',
+    // },
+    // '& .MuiTablePagination-actions': {
+    //   '& .Mui-disabled': {
+    //     color: '#444 !important',
+    //   },
+    //   '& .MuiButtonBase-root ': {
+    //     color: '#219AFF',
+    //   },
+    // },
   },
   check: {
     width: '.75em',
     color: theme.palette.main.green,
   },
-  test: {
-    '& :hover': {
-      '& > span': {
-        opacity: '1 !important',
-        width: 'max-content !important',
-        transition: 'opacity .2s ease-in-out',
-      },
-    },
-  },
+  // test: {
+  //   '& :hover': {
+  //     '& > span': {
+  //       opacity: '1 !important',
+  //       width: 'max-content !important',
+  //       transition: 'opacity .2s ease-in-out',
+  //     },
+  //   },
+  // },
 }), { name: 'Mui_Styles_HubTable' });
 
 const HubTable = props => {
-  const { headers = [], footer = true, Tools } = props;
+  const { headers = [], footer = true } = props;
   const tableEl = useRef(null);
-  const hoverRecord = useRef(0);
-  const [showTools, setShowTools] = useState();
+  // const hoverRecord = useRef(0);
+  // const [showTools, setShowTools] = useState();
   const [order, setOrder] = useState(null);
   const [orderBy, setOrderBy] = useState(null);
   const [filters] = useState({});
@@ -189,20 +189,20 @@ const HubTable = props => {
     }
   };
 
-  const handleMouseOver = (item) => {
-    if (showTools === item.id) return;
-    hoverRecord.current = item.id;
-    console.log('bingo', hoverRecord.current)
-    if (showTools !== item.id) {
-      setShowTools(item.id);
-    }
-  };
+  // const handleMouseOver = (item) => {
+  //   if (showTools === item.id) return;
+  //   hoverRecord.current = item.id;
+  //   console.log('bingo', hoverRecord.current)
+  //   if (showTools !== item.id) {
+  //     setShowTools(item.id);
+  //   }
+  // };
 
-  const handleMouseOut = (item) => {
-    if (showTools !== item.id) {
-      setShowTools(null);
-    }
-  };
+  // const handleMouseOut = (item) => {
+  //   if (showTools !== item.id) {
+  //     setShowTools(null);
+  //   }
+  // };
 
   return (
     <div className={classes.root}>
@@ -254,9 +254,6 @@ const HubTable = props => {
             {items?.map(item => (
               <TableRow
                 key={item.id}
-                // onMouseOut={() => handleMouseOut(item)}
-                // onMouseOver={() => handleMouseOver(item)}
-                hover
               >
                 {headers.map(header => (
                   <TableCell
@@ -264,26 +261,23 @@ const HubTable = props => {
                     style={{
                       width: header?.width,
                       borderRight: header.hideBorder ? 'unset' : '',
-                      textAlign: header?.align ?? 'center',
                     }}
-                    className={clsx(classes?.cell, header?.type, classes.test)}
                   >
                     <div
-                      key={item.id}
                       style={{
-                        width: header.id === 'name' ? header?.width : '', display: header.id === 'name' ? 'flex' : '', justifyContent: 'center', alignItems: 'center', height: header.id === 'name' ? 35 : '',
+                        display: 'flex',
+                        width: header?.id === 'name' ? 'inherit' : '',
+                        justifyContent: header?.align ?? 'center',
+                        alignItems: 'center',
                       }}
+                      className={header?.test}
                     >
-                      <div data-value={header.id}>
-                        {typeof item[header.id] === 'boolean'
-                          ? <CheckIcon className={classes.check} />
-                          : item[header.id]}
+                      <div
+                        data-value={header.id}
+                      >
+                        {item[header.id]}
                       </div>
-                      {header.id === 'name' && Tools && (
-                        <span style={{ opacity: 0, display: 'flex', width: 0, height: 'inherit' }}>
-                          <Tools show item={item} />
-                        </span>
-                      )}
+                      {header.tools}
                     </div>
                   </TableCell>
                 ))}
