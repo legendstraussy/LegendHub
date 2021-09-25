@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { useQuery } from 'react-query';
 import { PropTypes } from 'prop-types';
 import clsx from 'clsx';
@@ -10,7 +10,6 @@ import {
   TablePagination,
   TableRow,
 } from '@material-ui/core';
-import CheckIcon from '@material-ui/icons/Check';
 import IconHead from 'components/common/iconHead';
 import { makeStyles } from '@material-ui/styles';
 import fetchItems from 'data/actions';
@@ -53,20 +52,11 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   tbody: {
-    // '& .MuiTableRow-root': {
-    //   height: '35px !important',
-    //   borderBottom: '1px solid rgba(45, 40, 40, .75)',
-    // },
-    // '& .MuiTableCell-body': {
-    //   color: '#fff',
-    //   whiteSpace: 'nowrap',
-    //   borderRight: '1px solid rgba(64, 51, 51, .75)',
-    // },
     '& [data-value=slot], & [data-value=name]': { // TODO: move out to generic classes
       padding: '0 9px',
     },
     '& [data-value=name]': { // TODO: move out to generic classes
-      width: 'inherit',
+      width: 'inherit !important',
       color: theme.palette.link,
       fontWeight: 100,
       whiteSpace: 'nowrap',
@@ -92,57 +82,21 @@ const useStyles = makeStyles((theme) => ({
       color: theme.palette.main.green,
     },
   },
-  // cell: {
-  //   fontFamily: 'inherit',
-  //   padding: 0,
-  //   border: 'unset',
-  // },
   pagination: {
     position: 'sticky',
     bottom: 0,
     display: 'contents !important',
     color: '#fff',
-    // '& .MuiToolbar-root': {
-    //   height: 35,
-    //   background: 'rgba(0, 0, 0, .5)',
-    //   textTransform: 'uppercase',
-    // },
-    // '& .MuiTablePagination-toolbar': {
-    //   minHeight: 'unset',
-    //   borderRadius: '0 0 5px 5px',
-    // },
-    // '& .MuiTablePagination-selectIcon': {
-    //   color: '#219AFF',
-    // },
-    // '& .MuiTablePagination-actions': {
-    //   '& .Mui-disabled': {
-    //     color: '#444 !important',
-    //   },
-    //   '& .MuiButtonBase-root ': {
-    //     color: '#219AFF',
-    //   },
-    // },
   },
   check: {
     width: '.75em',
     color: theme.palette.main.green,
   },
-  // test: {
-  //   '& :hover': {
-  //     '& > span': {
-  //       opacity: '1 !important',
-  //       width: 'max-content !important',
-  //       transition: 'opacity .2s ease-in-out',
-  //     },
-  //   },
-  // },
 }), { name: 'Mui_Styles_HubTable' });
 
 const HubTable = props => {
   const { headers = [], footer = true } = props;
   const tableEl = useRef(null);
-  // const hoverRecord = useRef(0);
-  // const [showTools, setShowTools] = useState();
   const [order, setOrder] = useState(null);
   const [orderBy, setOrderBy] = useState(null);
   const [filters] = useState({});
@@ -188,21 +142,6 @@ const HubTable = props => {
       }
     }
   };
-
-  // const handleMouseOver = (item) => {
-  //   if (showTools === item.id) return;
-  //   hoverRecord.current = item.id;
-  //   console.log('bingo', hoverRecord.current)
-  //   if (showTools !== item.id) {
-  //     setShowTools(item.id);
-  //   }
-  // };
-
-  // const handleMouseOut = (item) => {
-  //   if (showTools !== item.id) {
-  //     setShowTools(null);
-  //   }
-  // };
 
   return (
     <div className={classes.root}>
@@ -277,7 +216,8 @@ const HubTable = props => {
                       >
                         {item[header.id]}
                       </div>
-                      {header.tools}
+                      {header?.tools
+                        && React.cloneElement(header?.tools, { item })}
                     </div>
                   </TableCell>
                 ))}
@@ -307,10 +247,6 @@ HubTable.propTypes = {
   headers: PropTypes.arrayOf(
     PropTypes.shape({}),
   ),
-  Tools: PropTypes.oneOfType([
-    PropTypes.element,
-    PropTypes.func,
-  ]),
 };
 
 export default HubTable;

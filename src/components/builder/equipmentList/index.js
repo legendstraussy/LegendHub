@@ -2,13 +2,12 @@ import { useState } from 'react';
 import HubTable from 'components/common/hubTable';
 import HubFooter from 'components/common/HubFooter';
 import HubItemTools from 'components/common/HubItemTools';
-import HubItemTool from 'components/common/HubItemTool';
 import DeleteOutlineIcon from '@material-ui/icons/DeleteOutline';
 import Fullscreen from '@material-ui/icons/Fullscreen';
 import { makeStyles } from '@material-ui/styles';
 
 const useStyles = makeStyles({
-  test: {
+  tools: {
     '&:hover': {
       '& > .Mui_Styles_HubItemTools-root': {
         opacity: '1 !important',
@@ -19,25 +18,18 @@ const useStyles = makeStyles({
   },
 }, { name: 'Mui_Styles_EquipmentList' });
 
-const Tools = props => (
-  <HubItemTools {...props}>
-    <HubItemTool color="#fff">
-      <Fullscreen />
-    </HubItemTool>
-    <HubItemTool color="#fff">
-      <DeleteOutlineIcon />
-    </HubItemTool>
-  </HubItemTools>
-);
-
 const EquipmentList = () => {
   const classes = useStyles();
+  const [tools] = useState([
+    { color: '#fff', IconComponent: Fullscreen },
+    { color: '#fff', IconComponent: DeleteOutlineIcon },
+  ]);
   const [headers] = useState([
     {
       id: 'slot', label: 'slot', type: 'header', width: 65, align: 'flex-end', hideBorder: true,
     },
     {
-      id: 'name', label: 'item', type: 'header', width: 250, align: 'flex-start', test: classes.test, tools: <Tools />,
+      id: 'name', label: 'item', type: 'header', width: 250, align: 'flex-start', test: classes.tools, tools: <HubItemTools tools={tools} />,
     },
     {
       id: 'str', label: 'str', type: 'icon', leftEnd: true, iconPath: '/winged-sword.png', width: 40,
@@ -106,7 +98,7 @@ const EquipmentList = () => {
 
   return (
     <div style={{ overflow: 'auto', display: 'flex', flexDirection: 'column' }}>
-      <HubTable headers={headers} footer={false} Tools={Tools} />
+      <HubTable headers={headers} footer={false} />
       <HubFooter />
     </div>
   );

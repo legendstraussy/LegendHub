@@ -1,6 +1,7 @@
+import React from 'react';
 import { PropTypes } from 'prop-types';
-// import Image from 'next/image';
 import { makeStyles } from '@material-ui/styles';
+import HubItemTool from '../HubItemTool';
 
 const useStyles = makeStyles({
   root: {
@@ -13,18 +14,28 @@ const useStyles = makeStyles({
   },
 }, { name: 'Mui_Styles_HubItemTools' });
 
-const HubItemTools = props => {
+const HubItemTools = React.memo(props => {
+  const { item, tools } = props;
   const classes = useStyles(props);
 
   return (
     <span className={classes.root}>
-      {props.children}
+      {tools?.map(({ color, IconComponent }, i) => (
+        <HubItemTool color={color} key={i} onClick={() => console.log('bingo', item)}>
+          <IconComponent />
+        </HubItemTool>
+      ))}
     </span>
   );
-};
+});
 
 HubItemTools.propTypes = {
-  children: PropTypes.node,
+  item: PropTypes.shape({}),
+  tools: PropTypes.arrayOf(
+    PropTypes.shape({
+      IconComponent: PropTypes.shape({}),
+    }),
+  ),
 };
 
 export default HubItemTools;

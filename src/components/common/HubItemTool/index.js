@@ -1,5 +1,4 @@
 import { PropTypes } from 'prop-types';
-// import Image from 'next/image';
 import { makeStyles } from '@material-ui/styles';
 
 const useStyles = makeStyles({
@@ -20,7 +19,7 @@ const HubItemTool = props => {
   const classes = useStyles(props);
 
   return (
-    <span className={classes.root}>
+    <span className={classes.root} role="button" tabIndex={0} onClick={props.onClick}>
       {props.children}
     </span>
   );
