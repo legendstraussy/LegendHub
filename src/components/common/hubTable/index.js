@@ -1,7 +1,6 @@
-import React, { useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import { useQuery } from 'react-query';
 import { PropTypes } from 'prop-types';
-import clsx from 'clsx';
 import {
   Table,
   TableBody,
@@ -13,6 +12,8 @@ import {
 import IconHead from 'components/common/iconHead';
 import { makeStyles } from '@material-ui/styles';
 import fetchItems from 'data/actions';
+import useCloneComponent from 'hooks/useCloneComponent';
+import useScroll from 'hooks/useScroll';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -33,7 +34,8 @@ const useStyles = makeStyles((theme) => ({
     overflow: 'auto !important',
   },
   table: {
-    width: 'max-content;',
+    position: 'relative',
+    width: 'max-content',
     fontFamily: 'open sans',
   },
   thead: {
@@ -54,6 +56,10 @@ const useStyles = makeStyles((theme) => ({
   tbody: {
     '& [data-value=slot], & [data-value=name]': { // TODO: move out to generic classes
       padding: '0 9px',
+    },
+    '& [data-value=slot]': {
+      fontStyle: 'italic',
+      textTransform: 'capitalize',
     },
     '& [data-value=name]': { // TODO: move out to generic classes
       width: 'inherit !important',
@@ -97,6 +103,8 @@ const useStyles = makeStyles((theme) => ({
 const HubTable = props => {
   const { headers = [], footer = true } = props;
   const tableEl = useRef(null);
+  const cloneComponent = useCloneComponent();
+  const scroll = useScroll();
   const [order, setOrder] = useState(null);
   const [orderBy, setOrderBy] = useState(null);
   const [filters] = useState({});
@@ -109,13 +117,11 @@ const HubTable = props => {
   const classes = useStyles(props);
 
   const handleScroll = event => {
-    // eslint-disable-next-line no-undef
-    const mar = document.querySelector('.Mui_Styles_Builder-marquee');
     const pos = event.target.scrollLeft;
-    tableEl.current.style.left = `${-pos}px`;
-    if (mar) {
-      mar.style.marginLeft = `${-pos}px`;
-    }
+    // TODO: swap with useRef
+    // eslint-disable-next-line no-undef
+    scroll(document.querySelector('.Mui_Styles_Builder-marquee'), pos);
+    scroll(tableEl.current, pos);
   };
 
   const handleChangePage = (_, newPage) => {
@@ -146,19 +152,19 @@ const HubTable = props => {
   return (
     <div className={classes.root}>
       <div className={classes.headerContainer}>
-        <Table ref={tableEl} style={{ position: 'relative', width: 'max-content' }}>
+        <Table ref={tableEl} className={classes.table}>
           <TableHead
             className={classes.thead}
           >
             <TableRow>
-              {headers.map(header => (
+              {headers.map((header, i) => (
                 <TableCell
-                  key={header.id}
+                  key={i}
                   style={{
                     width: header?.width,
                     textAlign: header?.align ?? 'center',
                   }}
-                  className={clsx(classes?.cell, header?.type)}
+                  className={header?.type}
                   onClick={() => handleSortChange(header)}
                 >
                   {header?.type === 'icon'
@@ -190,13 +196,13 @@ const HubTable = props => {
       <div className={classes.bodyContainer} onScroll={handleScroll}>
         <Table className={classes.table}>
           <TableBody className={classes.tbody}>
-            {items?.map(item => (
+            {items?.map((item, i) => (
               <TableRow
-                key={item.id}
+                key={i}
               >
-                {headers.map(header => (
+                {headers.map((header, j) => (
                   <TableCell
-                    key={header.id}
+                    key={j}
                     style={{
                       width: header?.width,
                       borderRight: header.hideBorder ? 'unset' : '',
@@ -205,7 +211,7 @@ const HubTable = props => {
                     <div
                       style={{
                         display: 'flex',
-                        width: header?.id === 'name' ? 'inherit' : '',
+                        width: header?.type === 'header' ? 'inherit' : '',
                         justifyContent: header?.align ?? 'center',
                         alignItems: 'center',
                       }}
@@ -216,8 +222,7 @@ const HubTable = props => {
                       >
                         {item[header.id]}
                       </div>
-                      {header?.tools
-                        && React.cloneElement(header?.tools, { item })}
+                      {header?.tools && cloneComponent(header.tools, { item })}
                     </div>
                   </TableCell>
                 ))}

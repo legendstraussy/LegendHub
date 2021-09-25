@@ -7,7 +7,7 @@ const useStyles = makeStyles({
   root: {
     width: 0,
     height: 'inherit',
-    display: 'flex',
+    display: props => props.item?.id ? 'flex' : 'none',
     justifyContent: 'space-around',
     background: '#222',
     opacity: 0,

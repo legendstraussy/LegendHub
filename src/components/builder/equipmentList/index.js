@@ -26,10 +26,10 @@ const EquipmentList = () => {
   ]);
   const [headers] = useState([
     {
-      id: 'slot', label: 'slot', type: 'header', width: 65, align: 'flex-end', hideBorder: true,
+      id: 'slot', label: 'slot', type: 'header', width: 65, align: 'right', hideBorder: true,
     },
     {
-      id: 'name', label: 'item', type: 'header', width: 250, align: 'flex-start', test: classes.tools, tools: <HubItemTools tools={tools} />,
+      id: 'name', label: 'item', type: 'header', width: 250, align: 'left', test: classes.tools, tools: <HubItemTools tools={tools} />,
     },
     {
       id: 'str', label: 'str', type: 'icon', leftEnd: true, iconPath: '/winged-sword.png', width: 40,
