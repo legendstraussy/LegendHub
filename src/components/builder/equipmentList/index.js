@@ -8,10 +8,10 @@ import Fullscreen from '@material-ui/icons/Fullscreen';
 
 const Tools = props => (
   <HubItemTools {...props}>
-    <HubItemTool color="#FFD874">
+    <HubItemTool color="#fff">
       <Fullscreen />
     </HubItemTool>
-    <HubItemTool color="#FFD874">
+    <HubItemTool color="#fff">
       <DeleteOutlineIcon />
     </HubItemTool>
   </HubItemTools>
