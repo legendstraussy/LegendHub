@@ -4,9 +4,15 @@ import { makeStyles } from '@material-ui/styles';
 
 const useStyles = makeStyles({
   root: {
+    color: 'rgba(66, 60, 60, 0.75)',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
+    margin: 5,
+    padding: '0 .2em',
+    '& :hover': {
+      color: props => props?.color ?? '#ccc',
+    },
   },
 }, { name: 'Mui_Styles_HubItemTool' });
 

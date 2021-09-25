@@ -132,7 +132,7 @@ const useStyles = makeStyles((theme) => ({
       '& > span': {
         opacity: '1 !important',
         width: 'max-content !important',
-        transition: 'opacity 1s ease-in-out',
+        transition: 'opacity .2s ease-in-out',
       },
     },
   },
@@ -280,7 +280,7 @@ const HubTable = props => {
                           : item[header.id]}
                       </div>
                       {header.id === 'name' && Tools && (
-                        <span style={{ opacity: 0, width: 0 }}>
+                        <span style={{ opacity: 0, display: 'flex', width: 0, height: 'inherit' }}>
                           <Tools show />
                         </span>
                       )}

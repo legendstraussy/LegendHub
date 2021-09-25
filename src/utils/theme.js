@@ -51,16 +51,16 @@ const theme = createTheme({
           color: '#219AFF',
         },
         '&.Mui-focusVisible': {
-          backgroundColor: 'rgba(86, 86, 86, .5)',
+          backgroundColor: 'rgba(35, 35, 35, .75)',
         },
         '&.Mui-selected:hover': {
           fontStyle: 'italic',
           color: '#219AFF',
-          backgroundColor: 'rgba(86, 86, 86, .5)',
+          backgroundColor: 'rgba(35, 35, 35, .75)',
         },
         '&:hover': {
           color: '#fff',
-          backgroundColor: 'rgba(86, 86, 86, .5)',
+          backgroundColor: 'rgba(35, 35, 35, .75)',
         },
       },
     },
