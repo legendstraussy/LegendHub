@@ -63,7 +63,7 @@ const useStyles = makeStyles((theme) => ({
       borderRight: '1px solid rgba(64, 51, 51, .75)',
     },
     '& [data-value=slot], & [data-value=name]': { // TODO: move out to generic classes
-      padding: '0 10px',
+      padding: '0 9px',
     },
     '& [data-value=name]': { // TODO: move out to generic classes
       width: 'inherit',
@@ -281,7 +281,7 @@ const HubTable = props => {
                       </div>
                       {header.id === 'name' && Tools && (
                         <span style={{ opacity: 0, display: 'flex', width: 0, height: 'inherit' }}>
-                          <Tools show />
+                          <Tools show item={item} />
                         </span>
                       )}
                     </div>
