@@ -16,10 +16,11 @@ const useStyles = makeStyles({
 }, { name: 'Mui_Styles_HubItemTool' });
 
 const HubItemTool = props => {
+  const { onClick } = props;
   const classes = useStyles(props);
 
   return (
-    <span className={classes.root} role="button" tabIndex={0} onClick={props.onClick}>
+    <span className={classes.root} role="button" tabIndex={0} onClick={onClick}>
       {props.children}
     </span>
   );
@@ -27,6 +28,7 @@ const HubItemTool = props => {
 
 HubItemTool.propTypes = {
   children: PropTypes.node,
+  onClick: PropTypes.func,
 };
 
 export default HubItemTool;

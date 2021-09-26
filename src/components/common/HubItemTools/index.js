@@ -21,7 +21,7 @@ const HubItemTools = React.memo(props => {
   return (
     <span className={classes.root}>
       {tools?.map(({ color, IconComponent }, i) => (
-        <HubItemTool color={color} key={i} onClick={() => console.log('bingo', itemId)}>
+        <HubItemTool color={color} key={i} onClick={() => itemId}>
           <IconComponent />
         </HubItemTool>
       ))}
