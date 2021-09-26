@@ -21,6 +21,32 @@ const theme = createTheme({
     link: '#219AFF',
   },
   overrides: {
+    MuiDialog: {
+      root: {
+        '& .MuiDialog-paper': {
+          background: '#222',
+          maxWidth: 450,
+        },
+        '& .MuiDialogTitle-root': {
+          color: '#FFD874',
+          padding: 15,
+          fontFamily: 'Open Sans',
+          fontSize: 18,
+          fontWeight: 600,
+          textTransform: 'uppercase',
+        },
+        '& .MuiDialogContent-root': {
+          color: '#fff',
+          padding: 15,
+          fontFamily: 'Open Sans',
+          fontSize: 14,
+          fontWeight: 100,
+        },
+        '& .MuiDialogActions-root': {
+          padding: 15,
+        },
+      },
+    },
     MuiTable: {
       root: {
         '& .MuiTableBody-root': {

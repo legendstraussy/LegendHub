@@ -1,7 +1,7 @@
 import { PropTypes } from 'prop-types';
 import Background from 'components/main/background';
 import NavBar from 'components/main/hubNavbar/hubNavBar';
-import Toolbar from 'components/common/toolbar';
+import Toolbar from 'components/main/toolbar';
 
 const Hub = props => {
   const { children } = props;
