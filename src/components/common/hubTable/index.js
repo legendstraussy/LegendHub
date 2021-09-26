@@ -1,20 +1,19 @@
 import { useRef, useState } from 'react';
 import { useQuery } from 'react-query';
 import { PropTypes } from 'prop-types';
-import clsx from 'clsx';
 import {
   Table,
   TableBody,
   TableCell,
-  TableContainer,
   TableHead,
   TablePagination,
   TableRow,
 } from '@material-ui/core';
-import CheckIcon from '@material-ui/icons/Check';
 import IconHead from 'components/common/iconHead';
 import { makeStyles } from '@material-ui/styles';
 import fetchItems from 'data/actions';
+import useCloneComponent from 'hooks/useCloneComponent';
+import useScroll from 'hooks/useScroll';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -35,7 +34,8 @@ const useStyles = makeStyles((theme) => ({
     overflow: 'auto !important',
   },
   table: {
-    width: 'max-content;',
+    position: 'relative',
+    width: 'max-content',
     fontFamily: 'open sans',
   },
   thead: {
@@ -54,19 +54,15 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   tbody: {
-    '& .MuiTableRow-root': {
-      height: '35px !important',
-      borderBottom: '1px solid rgba(45, 40, 40, .75)',
-    },
-    '& .MuiTableCell-body': {
-      color: '#fff',
-      whiteSpace: 'nowrap',
-      borderRight: '1px solid rgba(64, 51, 51, .75)',
-    },
     '& [data-value=slot], & [data-value=name]': { // TODO: move out to generic classes
-      padding: '0 10px',
+      padding: '0 9px',
+    },
+    '& [data-value=slot]': {
+      fontStyle: 'italic',
+      textTransform: 'capitalize',
     },
     '& [data-value=name]': { // TODO: move out to generic classes
+      width: 'inherit !important',
       color: theme.palette.link,
       fontWeight: 100,
       whiteSpace: 'nowrap',
@@ -92,36 +88,11 @@ const useStyles = makeStyles((theme) => ({
       color: theme.palette.main.green,
     },
   },
-  cell: {
-    fontFamily: 'inherit',
-    padding: 0,
-    border: 'unset',
-  },
   pagination: {
     position: 'sticky',
     bottom: 0,
     display: 'contents !important',
     color: '#fff',
-    '& .MuiToolbar-root': {
-      height: 35,
-      background: 'rgba(0, 0, 0, .5)',
-      textTransform: 'uppercase',
-    },
-    '& .MuiTablePagination-toolbar': {
-      minHeight: 'unset',
-      borderRadius: '0 0 5px 5px',
-    },
-    '& .MuiTablePagination-selectIcon': {
-      color: '#219AFF',
-    },
-    '& .MuiTablePagination-actions': {
-      '& .Mui-disabled': {
-        color: '#444 !important',
-      },
-      '& .MuiButtonBase-root ': {
-        color: '#219AFF',
-      },
-    },
   },
   check: {
     width: '.75em',
@@ -132,6 +103,8 @@ const useStyles = makeStyles((theme) => ({
 const HubTable = props => {
   const { headers = [], footer = true } = props;
   const tableEl = useRef(null);
+  const cloneComponent = useCloneComponent();
+  const scroll = useScroll();
   const [order, setOrder] = useState(null);
   const [orderBy, setOrderBy] = useState(null);
   const [filters] = useState({});
@@ -144,13 +117,11 @@ const HubTable = props => {
   const classes = useStyles(props);
 
   const handleScroll = event => {
-    // eslint-disable-next-line no-undef
-    const mar = document.querySelector('.Mui_Styles_Builder-marquee');
     const pos = event.target.scrollLeft;
-    tableEl.current.style.left = `${-pos}px`;
-    if (mar) {
-      mar.style.marginLeft = `${-pos}px`;
-    }
+    // TODO: swap with useRef
+    // eslint-disable-next-line no-undef
+    scroll(document.querySelector('.Mui_Styles_Builder-marquee'), pos);
+    scroll(tableEl.current, pos);
   };
 
   const handleChangePage = (_, newPage) => {
@@ -181,78 +152,86 @@ const HubTable = props => {
   return (
     <div className={classes.root}>
       <div className={classes.headerContainer}>
-        <div ref={tableEl} style={{ position: 'relative' }}>
-          <Table style={{ width: 'max-content' }}>
-            <TableHead
-              className={classes.thead}
-            >
-              <TableRow>
-                {headers.map(header => (
-                  <TableCell
-                    key={header.id}
-                    style={{
-                      width: header?.width,
-                      textAlign: header?.align ? header?.align : 'center',
-                    }}
-                    className={clsx(classes?.cell, header?.class)}
-                    onClick={() => handleSortChange(header)}
-                  >
-                    {header?.class === 'icon'
-                      ? (
-                        <IconHead
-                          leftEnd={header?.leftEnd}
-                          rightEnd={header?.rightEnd}
-                          iconPath={header?.iconPath}
-                          label={header?.label}
-                          isSorting={orderBy === header?.id}
-                          order={order}
-                          width={header?.width}
-                        />
-                      )
-                      : (
-                        <div
-                          style={{ justifyContent: header.align || 'center' }}
-                          data-value={header.id}
-                        >
-                          {header.label}
-                        </div>
-                      )}
-                  </TableCell>
-                ))}
-              </TableRow>
-            </TableHead>
-          </Table>
-        </div>
+        <Table ref={tableEl} className={classes.table}>
+          <TableHead
+            className={classes.thead}
+          >
+            <TableRow>
+              {headers.map((header, i) => (
+                <TableCell
+                  key={i}
+                  style={{
+                    width: header?.width,
+                    textAlign: header?.align ?? 'center',
+                  }}
+                  className={header?.type}
+                  onClick={() => handleSortChange(header)}
+                >
+                  {header?.type === 'icon'
+                    ? (
+                      <IconHead
+                        leftEnd={header?.leftEnd}
+                        rightEnd={header?.rightEnd}
+                        iconPath={header?.iconPath}
+                        label={header?.label}
+                        isSorting={orderBy === header?.id}
+                        order={order}
+                        width={header?.width}
+                      />
+                    )
+                    : (
+                      <div
+                        style={{ justifyContent: header.align || 'center' }}
+                        data-value={header.id}
+                      >
+                        {header.label}
+                      </div>
+                    )}
+                </TableCell>
+              ))}
+            </TableRow>
+          </TableHead>
+        </Table>
       </div>
-      <TableContainer className={classes.bodyContainer} onScroll={handleScroll}>
+      <div className={classes.bodyContainer} onScroll={handleScroll}>
         <Table className={classes.table}>
           <TableBody className={classes.tbody}>
-            {items?.map(item => (
-              <TableRow key={item.id}>
-                {headers.map(header => (
+            {items?.map((item, i) => (
+              <TableRow
+                key={i}
+              >
+                {headers.map((header, j) => (
                   <TableCell
-                    key={header.id}
+                    key={j}
                     style={{
                       width: header?.width,
                       borderRight: header.hideBorder ? 'unset' : '',
-                      textAlign: header?.align ? header?.align : 'center',
                     }}
-                    className={clsx(classes?.cell, header?.class)}
                   >
-                    <div data-value={header.id}>
-                      {typeof item[header.id] === 'boolean'
-                        ? <CheckIcon className={classes.check} />
-                        : item[header.id]}
-                    </div>
+                    {header?.cellComponent
+                      ? cloneComponent(header.cellComponent, { itemId: item.id, text: item[header.id], label: header.id })
+                      : (
+                        <div style={{
+                          display: 'flex',
+                          width: header?.cellWidth ?? '',
+                          height: 35,
+                          justifyContent: 'center',
+                          alignItems: 'center',
+                        }}
+                        >
+                          <div data-value={header.id}>
+                            {item[header.id]}
+                          </div>
+                        </div>
+                      )}
                   </TableCell>
                 ))}
               </TableRow>
             ))}
           </TableBody>
         </Table>
-      </TableContainer>
-      {footer
-        && (
+      </div>
+      {footer && (
         <TablePagination
           className={classes.pagination}
           rowsPerPageOptions={[5, 10, 25]}
@@ -263,7 +242,7 @@ const HubTable = props => {
           onPageChange={handleChangePage}
           onRowsPerPageChange={handleChangeRowsPerPage}
         />
-        )}
+      )}
     </div>
   );
 };

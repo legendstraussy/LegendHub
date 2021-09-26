@@ -157,6 +157,7 @@ const CharacterFinal = props => {
             <div key={i} style={{ margin: '.25em' }}>
               <HubChip
                 bgColor={modifierColors[elective?.type]?.bgColor}
+                color={modifierColors[elective?.type]?.color}
                 label={elective.name}
                 onDelete={() => {}}
                 readOnly={elective.readOnly}
@@ -174,6 +175,7 @@ const CharacterFinal = props => {
             <div key={i} style={{ margin: '.25em' }}>
               <HubChip
                 bgColor={modifierColors[resistance?.type]?.bgColor}
+                color={modifierColors[resistance?.type]?.color}
                 label={resistance.name}
                 onDelete={() => {}}
                 readOnly={resistance.readOnly}
@@ -191,7 +193,7 @@ const CharacterFinal = props => {
             <div key={i} style={{ margin: '.25em' }}>
               <HubChip
                 bgColor={modifierColors[immunity?.type]?.bgColor}
-                color="#fff"
+                color={modifierColors[immunity?.type]?.color}
                 label={immunity.name}
                 onDelete={() => {}}
                 readOnly={immunity.readOnly}
@@ -209,6 +211,7 @@ const CharacterFinal = props => {
             <div key={i} style={{ margin: '.25em' }}>
               <HubChip
                 bgColor={modifierColors[susceptibility?.type]?.bgColor}
+                color={modifierColors[susceptibility?.type]?.color}
                 label={susceptibility.name}
                 onDelete={() => {}}
                 readOnly={susceptibility.readOnly}
