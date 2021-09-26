@@ -7,7 +7,7 @@ const ItemList = () => {
       id: 'slot', label: 'slot', type: 'header', width: 65, align: 'right', hideBorder: true,
     },
     {
-      id: 'name', label: 'item', type: 'header', width: 250, align: 'left',
+      id: 'name', label: 'item', type: 'header', width: 250, align: 'left', cellWidth: 'inherit',
     },
     {
       id: 'str', label: 'str', type: 'icon', leftEnd: true, iconPath: '/winged-sword.png', width: 40,

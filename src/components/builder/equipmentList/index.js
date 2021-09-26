@@ -4,22 +4,8 @@ import HubFooter from 'components/common/HubFooter';
 import HubTooledCell from 'components/common/hubTooledCell';
 import DeleteOutlineIcon from '@material-ui/icons/DeleteOutline';
 import Fullscreen from '@material-ui/icons/Fullscreen';
-// import { makeStyles } from '@material-ui/styles';
-
-// const useStyles = makeStyles({
-//   tools: {
-//     '&:hover': {
-//       '& > .Mui_Styles_HubItemTools-root': {
-//         opacity: '1 !important',
-//         width: 'max-content !important',
-//         transition: 'opacity .2s ease-in-out',
-//       },
-//     },
-//   },
-// }, { name: 'Mui_Styles_EquipmentList' });
 
 const EquipmentList = () => {
-  // const classes = useStyles();
   const [tools] = useState([
     { color: '#fff', IconComponent: Fullscreen },
     { color: '#fff', IconComponent: DeleteOutlineIcon },

@@ -7,7 +7,7 @@ const useStyles = makeStyles({
   root: {
     width: 0,
     height: 'inherit',
-    display: props => props.item?.id ? 'flex' : 'none',
+    display: props => props?.itemId ? 'flex' : 'none',
     justifyContent: 'space-around',
     background: '#222',
     opacity: 0,
@@ -15,13 +15,13 @@ const useStyles = makeStyles({
 }, { name: 'Mui_Styles_HubItemTools' });
 
 const HubItemTools = React.memo(props => {
-  const { item, tools } = props;
+  const { itemId, tools } = props;
   const classes = useStyles(props);
 
   return (
     <span className={classes.root}>
       {tools?.map(({ color, IconComponent }, i) => (
-        <HubItemTool color={color} key={i} onClick={() => console.log('bingo', item)}>
+        <HubItemTool color={color} key={i} onClick={() => console.log('bingo', itemId)}>
           <IconComponent />
         </HubItemTool>
       ))}
@@ -30,7 +30,7 @@ const HubItemTools = React.memo(props => {
 });
 
 HubItemTools.propTypes = {
-  item: PropTypes.shape({}),
+  itemId: PropTypes.number,
   tools: PropTypes.arrayOf(
     PropTypes.shape({
       IconComponent: PropTypes.shape({}),

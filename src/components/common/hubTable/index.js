@@ -10,7 +10,6 @@ import {
   TableRow,
 } from '@material-ui/core';
 import IconHead from 'components/common/iconHead';
-import HubTableCell from 'components/common/hubTableCell';
 import { makeStyles } from '@material-ui/styles';
 import fetchItems from 'data/actions';
 import useCloneComponent from 'hooks/useCloneComponent';
@@ -210,8 +209,21 @@ const HubTable = props => {
                     }}
                   >
                     {header?.cellComponent
-                      ? cloneComponent(header.cellComponent, { item, text: item[header.id], label: header.id })
-                      : <HubTableCell text={item[header.id]} label={header.id} />}
+                      ? cloneComponent(header.cellComponent, { itemId: item.id, text: item[header.id], label: header.id })
+                      : (
+                        <div style={{
+                          display: 'flex',
+                          width: header?.cellWidth ?? '',
+                          height: 35,
+                          justifyContent: 'center',
+                          alignItems: 'center',
+                        }}
+                        >
+                          <div data-value={header.id}>
+                            {item[header.id]}
+                          </div>
+                        </div>
+                      )}
                   </TableCell>
                 ))}
               </TableRow>
