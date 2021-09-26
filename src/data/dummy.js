@@ -104,7 +104,7 @@ const items = [
   {
     // "id": null,
     "slot": "light",
-    // "name": null,
+    "name": null,
     // "type": null,
     // "material": "gold",
     // "rent": 3048,

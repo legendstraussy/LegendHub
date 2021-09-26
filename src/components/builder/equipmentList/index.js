@@ -1,25 +1,25 @@
 import { useState } from 'react';
 import HubTable from 'components/common/hubTable';
 import HubFooter from 'components/common/HubFooter';
-import HubItemTools from 'components/common/HubItemTools';
+import HubTooledCell from 'components/common/hubTooledCell';
 import DeleteOutlineIcon from '@material-ui/icons/DeleteOutline';
 import Fullscreen from '@material-ui/icons/Fullscreen';
-import { makeStyles } from '@material-ui/styles';
+// import { makeStyles } from '@material-ui/styles';
 
-const useStyles = makeStyles({
-  tools: {
-    '&:hover': {
-      '& > .Mui_Styles_HubItemTools-root': {
-        opacity: '1 !important',
-        width: 'max-content !important',
-        transition: 'opacity .2s ease-in-out',
-      },
-    },
-  },
-}, { name: 'Mui_Styles_EquipmentList' });
+// const useStyles = makeStyles({
+//   tools: {
+//     '&:hover': {
+//       '& > .Mui_Styles_HubItemTools-root': {
+//         opacity: '1 !important',
+//         width: 'max-content !important',
+//         transition: 'opacity .2s ease-in-out',
+//       },
+//     },
+//   },
+// }, { name: 'Mui_Styles_EquipmentList' });
 
 const EquipmentList = () => {
-  const classes = useStyles();
+  // const classes = useStyles();
   const [tools] = useState([
     { color: '#fff', IconComponent: Fullscreen },
     { color: '#fff', IconComponent: DeleteOutlineIcon },
@@ -29,7 +29,7 @@ const EquipmentList = () => {
       id: 'slot', label: 'slot', type: 'header', width: 65, align: 'right', hideBorder: true,
     },
     {
-      id: 'name', label: 'item', type: 'header', width: 250, align: 'left', test: classes.tools, tools: <HubItemTools tools={tools} />,
+      id: 'name', label: 'item', type: 'header', width: 250, align: 'left', cellComponent: <HubTooledCell tools={tools} width="inherit" />,
     },
     {
       id: 'str', label: 'str', type: 'icon', leftEnd: true, iconPath: '/winged-sword.png', width: 40,
