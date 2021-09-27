@@ -2,9 +2,15 @@ import { useEffect, useState } from 'react';
 import { MenuItem, Select } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
 
-const useStyles = makeStyles({
+const characters = [
+  // 'Deacon',
+  // 'Galactus',
+  // 'Testeroniopio',
+];
+
+const useStyles = makeStyles(theme => ({
   root: {
-    color: '#219AFF',
+    color: theme.palette.main.blue,
     maxWidth: '200px',
     fontFamily: 'inherit',
     fontSize: '14px',
@@ -20,10 +26,18 @@ const useStyles = makeStyles({
       color: '#219AFF',
     },
   },
-}, { name: 'Mui_Styles_Select' });
+  empty: {
+    color: 'rgba(136, 130, 130, 0.75)',
+    maxWidth: '200px',
+    fontFamily: 'inherit',
+    fontSize: '14px',
+    fontStyle: 'italic',
+    width: '120px',
+  },
+}), { name: 'Mui_Styles_Select' });
 
 const CharacterSelect = () => {
-  const [character, setCharacter] = useState('Deacon');
+  const [character, setCharacter] = useState(characters[0]);
   const classes = useStyles();
 
   useEffect(() => {
@@ -34,27 +48,31 @@ const CharacterSelect = () => {
 
   return (
     <>
-      <Select
-        className={classes.root}
-        style={{ cursor: 'default' }}
-        value={character}
-        onChange={event => setCharacter(event.target.value)}
-        MenuProps={{
-          anchorOrigin: {
-            vertical: 'bottom',
-            horizontal: 'left',
-          },
-          transformOrigin: {
-            vertical: 'top',
-            horizontal: 'left',
-          },
-          getContentAnchorEl: null,
-        }}
-      >
-        <MenuItem value="Deacon">Deacon</MenuItem>
-        <MenuItem value="Galactus">Galactus</MenuItem>
-        <MenuItem value="Testeroniopio">Testeroniopio</MenuItem>
-      </Select>
+      {characters?.length > 0
+        ? (
+          <Select
+            className={classes.root}
+            style={{ cursor: 'default' }}
+            value={character}
+            onChange={event => setCharacter(event.target.value)}
+            MenuProps={{
+              anchorOrigin: {
+                vertical: 'bottom',
+                horizontal: 'left',
+              },
+              transformOrigin: {
+                vertical: 'top',
+                horizontal: 'left',
+              },
+              getContentAnchorEl: null,
+            }}
+          >
+            {characters?.map(c => (
+              <MenuItem key={c} value={c}>{c}</MenuItem>
+            ))}
+          </Select>
+        )
+        : <div className={classes.empty}>No characters</div>}
     </>
   );
 };

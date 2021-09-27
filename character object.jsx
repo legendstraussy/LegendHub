@@ -1,112 +1,80 @@
 const character = {
-  name: 'Deacon',
-  description: 'badass mage version',
-  createDate: '8/16/2021 7:28pm',
-  modifiedDate: '8/16/2021 7:28pm',
-  exportHash: 'dsfaeffddsf7674f568dsfa5455s6adfds3a456fdsa7f3ds4a56fds34a56',
-  hp: 624,
-  mv: 658,
-  ma: 902,
-  ac: -117,
+  name: '',
+  description: '',
+  createDate: '',
+  modifiedDate: '',
+  exportHash: '',
+  history: [],
+  hp: 0,
+  mv: 0,
+  ma: 0,
+  ac: 0,
   align: 'GNE',
-  rent: 53274,
+  rent: 0,
   equipment: {
-    light: 102,
-    finger1: 102,
-    finger2: 102,
-    neck1: 102,
-    neck2: 102,
-    body: 102,
-    head: 102,
-    face: 102,
-    legs: 102,
-    feet: 102,
-    hands: 102,
-    arms: 102,
-    about: 102,
-    waist: 102,
-    wrist1: 102,
-    wrist2: 102,
-    wield: 102,
-    hold1: 102,
-    hold2: 102,
-    ear1: 102,
-    ear2: 102,
-    arm: 102,
-    aux: 102,
-    amulet: 102,
   },
-  affects: [
-    { id: 202 }, // spells
-    { id: 203 },
-    { id: 303 }, // potions
-    { id: 312 },
-  ],
   baseStats: {
-    str: 19,
-    min: 113,
-    dex: 60,
-    con: 72,
-    per: 40,
-    spi: 43,
+    str: 0,
+    min: 0,
+    dex: 0,
+    con: 0,
+    per: 0,
+    spi: 0,
   },
   capStats: {
     strCap: 0,
-    minCap: 13,
+    minCap: 0,
     dexCap: 0,
     conCap: 0,
     perCap: 0,
     spiCap: 0,
   },
   regenStats: {
-    hpRegen: 5,
-    mvRegen: 3,
-    maRegen: 30,
+    hpRegen: 0,
+    mvRegen: 0,
+    maRegen: 0,
   },
   spellStats: {
-    spellCrit: 72,
-    spellDam: 85,
-    spellRedux: 47,
-    concentration: 35,
+    spellCrit: 0,
+    spellDam: 0,
+    spellRedux: 0,
+    concentration: 0,
     spellFail: 0,
   },
   meleeStats: {
-    hitroll: -12,
-    damroll: -22,
-    mitigation: 2,
+    hitroll: 0,
+    damroll: 0,
+    mitigation: 0,
     parry: 0,
     damcap: 0,
   },
   rangeStats: {
     accuracy: 0,
   },
+  affects: [
+  ],
   abilities: [
-    { id: 403 },
-    { id: 412 },
-    { id: 417 },
-    { id: 414 },
   ],
   skills: [
-    { id: 502 },
   ],
   quests: [
-    { id: 602 },
-    { id: 604 },
-    { id: 603 },
-    { id: 606 },
   ],
   resistances: [
-    { id: 702 },
   ],
   immunities: [
-    { id: 802 },
   ],
   susceptibilities: [
-    { id: 902 },
   ],
 };
 
-export default character;
+const characters = [
+  { ...character },
+];
+
+export {
+  character,
+  characters,
+};
 
 /*
 const hashids = new Hashids();

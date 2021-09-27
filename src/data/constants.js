@@ -1,5 +1,23 @@
 import theme from 'utils/theme';
 
+export const character = {
+  name: '',
+  description: '',
+  createDate: '',
+  modifiedDate: '',
+  exportHash: '',
+  equipment: {
+  },
+  baseStats: {
+    str: 0,
+    min: 0,
+    dex: 0,
+    con: 0,
+    per: 0,
+    spi: 0,
+  },
+};
+
 export const stats = {
   str: {
     name: 'strength',

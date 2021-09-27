@@ -1,14 +1,12 @@
 import { PropTypes } from 'prop-types';
 import {
   Dialog,
-  DialogActions,
-  DialogContent,
   DialogTitle,
 } from '@material-ui/core';
 
 const HubModal = props => {
   const {
-    dialog,
+    children,
     handleClose,
     show = false,
     title,
@@ -31,22 +29,13 @@ const HubModal = props => {
           {title}
         </DialogTitle>
         )}
-      <DialogContent>
-        {dialog}
-      </DialogContent>
-      <DialogActions>
-        {props.children}
-      </DialogActions>
+      {children}
     </Dialog>
   );
 };
 
 HubModal.propTypes = {
   children: PropTypes.node,
-  dialog: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.element,
-  ]),
   handleClose: PropTypes.func,
   show: PropTypes.bool,
   title: PropTypes.oneOfType([

@@ -1,3 +1,4 @@
+import { forwardRef } from 'react';
 import { PropTypes } from 'prop-types';
 import { makeStyles } from '@material-ui/styles';
 
@@ -17,19 +18,20 @@ const useStyles = makeStyles({
   },
 }, { name: 'Mui_Styles_HubInput' });
 
-const HubInput = props => {
+const HubInput = forwardRef((props, ref) => {
   const { onChange, value } = props;
   const classes = useStyles();
 
   return (
     <input
+      className={classes.root}
+      onChange={(event) => onChange(event.target.value)}
+      ref={ref}
       type="text"
       value={value}
-      onChange={(event) => onChange(event.target.value)}
-      className={classes.root}
     />
   );
-};
+});
 
 HubInput.propTypes = {
   value: PropTypes.string,
