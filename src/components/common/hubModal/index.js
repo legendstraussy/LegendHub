@@ -1,16 +1,29 @@
 import { PropTypes } from 'prop-types';
 import {
   Dialog,
+  DialogActions,
+  DialogContent,
   DialogTitle,
+  makeStyles,
 } from '@material-ui/core';
+
+const useStyles = makeStyles(({
+  actions: {
+    width: 205,
+    display: 'flex',
+    justifyContent: 'space-between',
+  },
+}), { name: 'Mui_Styles_HubModal' });
 
 const HubModal = props => {
   const {
+    actions,
     children,
     handleClose,
     show = false,
     title,
   } = props;
+  const classes = useStyles();
 
   const handleClickClose = () => {
     handleClose();
@@ -29,12 +42,20 @@ const HubModal = props => {
           {title}
         </DialogTitle>
         )}
-      {children}
+      <DialogContent>
+        {children}
+      </DialogContent>
+      <DialogActions>
+        <div className={classes.actions}>
+          {actions}
+        </div>
+      </DialogActions>
     </Dialog>
   );
 };
 
 HubModal.propTypes = {
+  actions: PropTypes.node,
   children: PropTypes.node,
   handleClose: PropTypes.func,
   show: PropTypes.bool,

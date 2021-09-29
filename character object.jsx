@@ -51,13 +51,15 @@ const character = {
   rangeStats: {
     accuracy: 0,
   },
+  quests: {
+    ten: 0,
+    fiveThree: 0,
+  },
   affects: [
   ],
   abilities: [
   ],
   skills: [
-  ],
-  quests: [
   ],
   resistances: [
   ],

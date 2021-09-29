@@ -1,26 +1,25 @@
 import { useState } from 'react';
 
-const useLocalStorage = (key, initialValue) => {
-  const [storedValue, setStoredValue] = useState(() => {
+const useLocalStorage = () => {
+  const [storage, setStorage] = useState(null);
+
+  const setValue = (key, value) => {
     try {
       // eslint-disable-next-line no-undef
       const item = window.localStorage.getItem(key);
-      return item ? JSON.parse(item) : initialValue;
-    } catch (error) {
-      return initialValue;
-    }
-  });
-  const setValue = (value) => {
-    try {
-      const valueToStore = value instanceof Function ? value(storedValue) : value;
-      setStoredValue(valueToStore);
+      const valueToStore = value instanceof Function ? value(item) : value;
+      setStorage(valueToStore);
       // eslint-disable-next-line no-undef
       window.localStorage.setItem(key, JSON.stringify(valueToStore));
     } catch (error) {
       throw new Error(error);
     }
   };
-  return [storedValue, setValue];
+
+  return {
+    setStorage: setValue,
+    storage,
+  };
 };
 
 export default useLocalStorage;

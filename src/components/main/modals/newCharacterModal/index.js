@@ -1,47 +1,30 @@
-import { useEffect, useState, useRef } from 'react';
 import { PropTypes } from 'prop-types';
 import HubModal from 'components/common/hubModal';
 import HubButton from 'components/common/hubButton';
-import HubInput from 'components/common/hubInput';
-import { DialogActions, DialogContent, makeStyles } from '@material-ui/core';
-
-const useStyles = makeStyles(({
-  root: {
-    '& header': {
-      paddingBottom: 15,
-    },
-  },
-  actions: {
-    width: 205,
-    display: 'flex',
-    justifyContent: 'space-between',
-  },
-}), { name: 'Mui_Styles_NewCharacterModal' });
+import { character } from 'data/constants';
+import NewCharacterForm from 'components/main/forms/newCharacter';
+import useCharacterManager from 'hooks/useCharacterManager';
 
 const NewCharacterModal = props => {
   const { open, handleCloseCallback } = props;
-  const nameRef = useRef();
-  const [show, setShow] = useState(false);
-  // const [name, setName] = useState('');
-  const classes = useStyles();
+  const { create } = useCharacterManager();
 
-  useEffect(() => {
-    if (show && nameRef) {
-      console.log('bingo', nameRef);
-      // nameRef.current.focus();
-    }
-  }, [show]);
-
-  useEffect(() => {
-    setShow(open);
-  }, [open]);
+  console.log('render test', open);
 
   const handleClickClose = () => {
-    setShow(false);
     handleCloseCallback();
   };
 
-  const handleConfirm = () => {
+  const handleConfirm = (event, name) => {
+    event.preventDefault();
+
+    if (name) {
+      const char = {
+        ...character,
+        name,
+      };
+      create(char);
+    }
     handleClickClose();
   };
 
@@ -49,31 +32,28 @@ const NewCharacterModal = props => {
     handleClickClose();
   };
 
+  const actions = (
+    <>
+      <HubButton
+        label="confirm"
+        onClick={handleConfirm}
+      />
+      <HubButton
+        label="cancel"
+        type="warning"
+        onClick={handleCancel}
+      />
+    </>
+  );
+
   return (
     <HubModal
+      actions={actions}
       handleClose={handleClickClose}
-      show={show}
+      show={open}
       title="new character"
     >
-      <DialogContent>
-        <form className={classes.root}>
-          <header>Please enter the name of your new character.</header>
-          <HubInput ref={nameRef} />
-        </form>
-      </DialogContent>
-      <DialogActions>
-        <div className={classes.actions}>
-          <HubButton
-            label="confirm"
-            onClick={handleConfirm}
-          />
-          <HubButton
-            label="cancel"
-            type="warning"
-            onClick={handleCancel}
-          />
-        </div>
-      </DialogActions>
+      <NewCharacterForm onSubmit={handleConfirm} />
     </HubModal>
   );
 };

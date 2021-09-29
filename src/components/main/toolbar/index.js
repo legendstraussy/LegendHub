@@ -21,6 +21,10 @@ const Toolbar = () => {
   const [modal, setModal] = useState('');
   const classes = useStyles();
 
+  console.log('wooooo', modal);
+
+  const handleModalCheck = key => modal === key;
+
   const handleClearModal = () => {
     setModal('');
   };
@@ -29,7 +33,7 @@ const Toolbar = () => {
     <div className={classes.root}>
       <div className={classes.buttonLayout}>
         <HubButton label="New" type="primary" onClick={() => setModal('new')} />
-        <NewCharacterModal open={modal === 'new'} handleCloseCallback={handleClearModal} />
+        <NewCharacterModal open={handleModalCheck('new')} handleCloseCallback={handleClearModal} />
       </div>
       <div className={classes.buttonLayout}>
         <HubButton label="Undo" type="default" onClick={() => {}} />
