@@ -3,14 +3,15 @@ import useLocalStorage from './useLocalStorage';
 
 const useCharacterManager = () => {
   // const [storage, setStorage] = useState(null);
-  const { setStorage } = useLocalStorage();
+  const { getStorage, setStorage } = useLocalStorage();
 
   // const clearEquipment = () => {
 
   // };
 
   const createCharacter = character => {
-    setStorage('character', character);
+    const characters = getStorage('characters') || [];
+    setStorage('characters', [...characters, character]);
   };
 
   // const deleteCharacter = () => {

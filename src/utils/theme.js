@@ -39,7 +39,7 @@ const theme = createTheme({
         },
         '& .MuiDialogContent-root': {
           color: '#fff',
-          padding: '0 0 15px 0 !important',
+          padding: 'unset !important',
           fontFamily: 'Open Sans',
           fontSize: 14,
           fontWeight: 100,

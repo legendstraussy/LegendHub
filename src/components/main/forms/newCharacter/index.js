@@ -2,17 +2,29 @@ import { useEffect, useRef, useState } from 'react';
 import { PropTypes } from 'prop-types';
 import { makeStyles } from '@material-ui/core';
 import HubInput from 'components/common/hubInput';
+import HubButton from 'components/common/hubButton';
 
 const useStyles = makeStyles(({
   root: {
-    '& header': {
+    '& section': {
+      display: 'flex',
+      flexDirection: 'column',
       paddingBottom: 15,
+    },
+  },
+  actions: {
+    padding: 'unset !important',
+    alignItems: 'flex-end',
+    '& > div': {
+      width: 205,
+      display: 'flex',
+      justifyContent: 'space-between',
     },
   },
 }), { name: 'Mui_Styles_NewCharacterModal' });
 
 const NewCharacterForm = props => {
-  const { onSubmit } = props;
+  const { handleCancel, handleConfirm } = props;
   const nameRef = useRef();
   const [name, setName] = useState('');
   const classes = useStyles();
@@ -22,15 +34,31 @@ const NewCharacterForm = props => {
   }, []);
 
   return (
-    <form className={classes.root} onSubmit={event => onSubmit(event, name)}>
-      <header>Please enter the name of your new character.</header>
-      <HubInput ref={nameRef} value={name} onChange={setName} />
+    <form className={classes.root} onSubmit={event => handleConfirm(event, name)}>
+      <section>
+        <p>Please enter the name of your new character.</p>
+        <HubInput ref={nameRef} value={name} onChange={setName} />
+      </section>
+      <section className={classes.actions}>
+        <div>
+          <HubButton
+            label="confirm"
+            onClick={event => handleConfirm(event, name)}
+          />
+          <HubButton
+            label="cancel"
+            type="warning"
+            onClick={handleCancel}
+          />
+        </div>
+      </section>
     </form>
   );
 };
 
 NewCharacterForm.propTypes = {
-  onSubmit: PropTypes.func,
+  handleCancel: PropTypes.func,
+  handleConfirm: PropTypes.func,
 };
 
 export default NewCharacterForm;

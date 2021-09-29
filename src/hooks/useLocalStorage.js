@@ -1,15 +1,19 @@
-import { useState } from 'react';
+/* eslint-disable no-undef */
 
 const useLocalStorage = () => {
-  const [storage, setStorage] = useState(null);
+  const getValue = key => {
+    try {
+      const item = window.localStorage.getItem(key);
+      return JSON.parse(item);
+    } catch (error) {
+      throw new Error(error);
+    }
+  };
 
   const setValue = (key, value) => {
     try {
-      // eslint-disable-next-line no-undef
       const item = window.localStorage.getItem(key);
       const valueToStore = value instanceof Function ? value(item) : value;
-      setStorage(valueToStore);
-      // eslint-disable-next-line no-undef
       window.localStorage.setItem(key, JSON.stringify(valueToStore));
     } catch (error) {
       throw new Error(error);
@@ -17,8 +21,8 @@ const useLocalStorage = () => {
   };
 
   return {
+    getStorage: getValue,
     setStorage: setValue,
-    storage,
   };
 };
 
