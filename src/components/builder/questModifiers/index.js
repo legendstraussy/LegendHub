@@ -3,7 +3,7 @@ import HubSelect from 'components/common/hubSelect';
 import HubCheckbox from 'components/common/hubCheckbox';
 import { makeStyles } from '@material-ui/styles';
 import { stats, fiveThreeQuests } from 'data/constants';
-import getKeyArrayFromObject from 'utils/utilFns';
+import { getKeyArrayFromObject } from 'utils/utilFns';
 
 const useStyles = makeStyles({
   root: {
@@ -57,6 +57,9 @@ const CharQuestModifiers = () => {
           <div className={classes.fieldLabel}>+10 mod.</div>
           <div className={classes.fieldValue}>
             <HubSelect
+              background="#222"
+              border="1px solid rgba(105, 85, 85, .75)"
+              borderRadius="5px"
               defaultText="Select a stat"
               onChange={setTenModifier}
               options={statOptions}
@@ -70,6 +73,9 @@ const CharQuestModifiers = () => {
           <div className={classes.fieldLabel}>+5/3 mod.</div>
           <div className={classes.fieldValue}>
             <HubSelect
+              background="#222"
+              border="1px solid rgba(105, 85, 85, .75)"
+              borderRadius="5px"
               defaultText="Select stats"
               onChange={setFiveThreeModifier}
               options={fiveThreeOptions}

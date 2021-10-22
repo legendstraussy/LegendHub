@@ -1,5 +1,6 @@
-import { PropTypes } from 'prop-types';
+import { useRecoilValue } from 'recoil';
 import { makeStyles } from '@material-ui/styles';
+import { characterStatsState } from 'data/characterState';
 
 const useStyles = makeStyles({
   root: {
@@ -34,18 +35,18 @@ const useStyles = makeStyles({
   },
 }, { name: 'Mui_Styles_BaseStats' });
 
-const BaseStats = props => {
+const BaseStats = () => {
+  const classes = useStyles();
   const {
-    stats: {
-      con,
-      dex,
+    baseStats: {
+      str,
       min,
+      dex,
+      con,
       per,
       spi,
-      str,
     },
-  } = props;
-  const classes = useStyles();
+  } = useRecoilValue(characterStatsState);
 
   return (
     <div className={classes.root}>
@@ -59,15 +60,13 @@ const BaseStats = props => {
   );
 };
 
-BaseStats.propTypes = {
-  stats: PropTypes.shape({
-    con: PropTypes.number,
-    dex: PropTypes.number,
-    min: PropTypes.number,
-    per: PropTypes.number,
-    spi: PropTypes.number,
-    str: PropTypes.number,
-  }).isRequired,
-};
+// BaseStats.propTypes = {
+//   con: PropTypes.number,
+//   dex: PropTypes.number,
+//   min: PropTypes.number,
+//   per: PropTypes.number,
+//   spi: PropTypes.number,
+//   str: PropTypes.number,
+// };
 
 export default BaseStats;

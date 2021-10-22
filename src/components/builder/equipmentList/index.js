@@ -15,7 +15,7 @@ const EquipmentList = () => {
       id: 'slot', label: 'slot', type: 'header', width: 65, align: 'right', hideBorder: true,
     },
     {
-      id: 'name', label: 'item', type: 'header', width: 250, align: 'left', cellComponent: <HubTooledCell tools={tools} width="inherit" />,
+      id: 'name', label: 'item', type: 'header', width: 265, align: 'left', cellComponent: <HubTooledCell tools={tools} width="inherit" />,
     },
     {
       id: 'str', label: 'str', type: 'icon', leftEnd: true, iconPath: '/winged-sword.png', width: 40,

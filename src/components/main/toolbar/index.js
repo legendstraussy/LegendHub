@@ -18,15 +18,13 @@ const useStyles = makeStyles({
 }, { name: 'Mui_Styles_Toolbar' });
 
 const Toolbar = () => {
-  const [modal, setModal] = useState('');
+  const [modal, setModal] = useState(null);
   const classes = useStyles();
-
-  console.log('wooooo', modal);
 
   const handleModalCheck = key => modal === key;
 
   const handleClearModal = () => {
-    setModal('');
+    setModal(null);
   };
 
   return (

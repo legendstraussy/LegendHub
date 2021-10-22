@@ -1,5 +1,6 @@
 import fetch from 'isomorphic-unfetch';
 
+// TODO convert this into a hook
 const fetchItems = async ({
   page = 0, rowsPerPage = 25, order = null, orderBy = null,
 }) => {

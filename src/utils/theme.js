@@ -63,7 +63,7 @@ const theme = createTheme({
           },
         },
         '& .MuiTableCell-root': {
-          fontFamily: 'inherit',
+          fontFamily: 'Roboto',
           padding: 0,
           border: 'unset',
         },

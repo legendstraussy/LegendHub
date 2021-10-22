@@ -3,10 +3,11 @@
 const useLocalStorage = () => {
   const getValue = key => {
     try {
+      /* eslint-disable no-undef */
       const item = window.localStorage.getItem(key);
       return JSON.parse(item);
     } catch (error) {
-      throw new Error(error);
+      return false;
     }
   };
 
