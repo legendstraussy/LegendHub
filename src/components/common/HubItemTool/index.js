@@ -20,9 +20,9 @@ const HubItemTool = props => {
   const classes = useStyles(props);
 
   return (
-    <span className={classes.root} role="button" tabIndex={0} onClick={onClick}>
+    <div className={classes.root} role="button" tabIndex={0} onClick={onClick}>
       {props.children}
-    </span>
+    </div>
   );
 };
 

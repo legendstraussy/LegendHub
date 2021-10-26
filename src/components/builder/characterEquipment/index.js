@@ -1,21 +1,46 @@
-import { useState } from 'react';
+import { useEffect, useRef } from 'react';
 import HubTable from 'components/common/hubTable';
 import HubFooter from 'components/common/HubFooter';
-import HubTooledCell from 'components/common/hubTooledCell';
 import DeleteOutlineIcon from '@material-ui/icons/DeleteOutline';
 import Fullscreen from '@material-ui/icons/Fullscreen';
+import CharacterMarquee from 'components/builder/characterMarquee';
+import MarqueeTable from 'components/builder/marqueeTable';
+import { makeStyles } from '@material-ui/styles';
 
-const EquipmentList = () => {
-  const [tools] = useState([
-    { color: '#fff', IconComponent: Fullscreen },
-    { color: '#fff', IconComponent: DeleteOutlineIcon },
-  ]);
-  const [headers] = useState([
+const useStyles = makeStyles(() => ({
+  root: {
+    overflow: 'auto',
+    display: 'flex',
+    flexDirection: 'column',
+  },
+}), { name: 'Mui_Styles_CharacterEquipment' });
+
+const CharacterEquipment = () => {
+  const scrollRef = useRef(null);
+  const classes = useStyles();
+
+  const handleItemDetailClick = item => {
+    console.log('tis tis', item);
+  };
+
+  const handleItemRemoveClick = item => {
+    console.log('tas tas', item);
+  };
+
+  const headers = [
     {
       id: 'slot', label: 'slot', type: 'header', width: 65, align: 'right', hideBorder: true,
     },
     {
-      id: 'name', label: 'item', type: 'header', width: 265, align: 'left', cellComponent: <HubTooledCell tools={tools} width="inherit" />,
+      id: 'name',
+      label: 'item',
+      type: 'header',
+      width: 265,
+      align: 'left',
+      tools: [
+        { IconComponent: Fullscreen, onClick: handleItemDetailClick },
+        { IconComponent: DeleteOutlineIcon, onClick: handleItemRemoveClick },
+      ],
     },
     {
       id: 'str', label: 'str', type: 'icon', leftEnd: true, iconPath: '/winged-sword.png', width: 40,
@@ -80,14 +105,23 @@ const EquipmentList = () => {
     {
       id: 'maRegen', label: 'mar', rightEnd: true, type: 'icon', iconPath: '/maRegen.png', width: 40,
     },
-  ]);
+  ];
+
+  useEffect(() => {
+    // eslint-disable-next-line no-undef
+    scrollRef.current = document.querySelector('.Mui_Styles_MarqueeTable-marquee');
+  }, []);
 
   return (
-    <div style={{ overflow: 'auto', display: 'flex', flexDirection: 'column' }}>
-      <HubTable headers={headers} footer={false} />
-      <HubFooter />
-    </div>
+    <MarqueeTable
+      marquee={<CharacterMarquee />}
+    >
+      <div className={classes.root}>
+        <HubTable headers={headers} footer={false} scrollRef={scrollRef} />
+        <HubFooter />
+      </div>
+    </MarqueeTable>
   );
 };
 
-export default EquipmentList;
+export default CharacterEquipment;

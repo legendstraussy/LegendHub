@@ -1,33 +1,30 @@
-import React from 'react';
 import { PropTypes } from 'prop-types';
 import { makeStyles } from '@material-ui/styles';
 import HubItemTool from '../HubItemTool';
 
 const useStyles = makeStyles({
   root: {
-    width: 0,
     height: 'inherit',
-    display: props => props?.itemId ? 'flex' : 'none',
+    display: 'flex',
     justifyContent: 'space-around',
     background: '#222',
-    opacity: 0,
   },
 }, { name: 'Mui_Styles_HubItemTools' });
 
-const HubItemTools = React.memo(props => {
+const HubItemTools = props => {
   const { itemId, tools } = props;
   const classes = useStyles(props);
 
   return (
-    <span className={classes.root}>
-      {tools?.map(({ color, IconComponent }, i) => (
-        <HubItemTool color={color} key={i} onClick={() => itemId}>
+    <div className={classes.root}>
+      {tools?.map(({ color, IconComponent, onClick }, i) => (
+        <HubItemTool color={color} key={i} onClick={() => onClick(itemId)}>
           <IconComponent />
         </HubItemTool>
       ))}
-    </span>
+    </div>
   );
-});
+};
 
 HubItemTools.propTypes = {
   itemId: PropTypes.number,

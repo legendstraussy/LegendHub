@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { useQuery } from 'react-query';
 import { PropTypes } from 'prop-types';
 import {
@@ -10,10 +10,10 @@ import {
   TableRow,
 } from '@material-ui/core';
 import IconHead from 'components/common/iconHead';
+import HubTooledCell from 'components/common/hubTooledCell';
 import { makeStyles } from '@material-ui/styles';
-import fetchItems from 'data/actions';
-import useCloneComponent from 'hooks/useCloneComponent';
 import useScroll from 'hooks/useScroll';
+import fetchItems from 'data/actions';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -100,27 +100,28 @@ const useStyles = makeStyles((theme) => ({
 }), { name: 'Mui_Styles_HubTable' });
 
 const HubTable = props => {
-  const { headers = [], footer = true } = props;
-  const tableEl = useRef(null);
-  const cloneComponent = useCloneComponent();
+  const { footer = true, headers = [], scrollRef = null } = props;
+  const headersEl = useRef(null);
   const scroll = useScroll();
+
   const [order, setOrder] = useState(null);
   const [orderBy, setOrderBy] = useState(null);
   const [filters] = useState({});
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(25);
-  const { data } = useQuery(['items', page, rowsPerPage, order, orderBy, filters], () => fetchItems({
+  const { data } = useQuery(['hubTable', page, rowsPerPage, order, orderBy, filters], () => fetchItems({
     page, rowsPerPage, order, orderBy, filters,
   }), { keepPreviousData: true, initialData: { items: [], total: 0 } });
   const { items, total } = data;
+
   const classes = useStyles(props);
 
   const handleScroll = event => {
     const pos = event.target.scrollLeft;
-    // TODO: swap with useRef
-    // eslint-disable-next-line no-undef
-    scroll(document.querySelector('.Mui_Styles_Builder-marquee'), pos);
-    scroll(tableEl.current, pos);
+    if (scrollRef?.current) {
+      scroll(scrollRef.current, pos);
+    }
+    scroll(headersEl.current, pos);
   };
 
   const handleChangePage = (_, newPage) => {
@@ -151,7 +152,7 @@ const HubTable = props => {
   return (
     <div className={classes.root}>
       <div className={classes.headerContainer}>
-        <Table ref={tableEl} className={classes.table}>
+        <Table ref={headersEl} className={classes.table}>
           <TableHead
             className={classes.thead}
           >
@@ -207,9 +208,17 @@ const HubTable = props => {
                       borderRight: header.hideBorder ? 'unset' : '',
                     }}
                   >
-                    {header?.cellComponent
-                      ? cloneComponent(header.cellComponent, { itemId: item.id, text: item[header.id], label: header.id })
+                    {header?.tools
+                      ? (
+                        <HubTooledCell
+                          itemId={item.id}
+                          label={header.id}
+                          text={item[header.id]}
+                          tools={header.tools}
+                        />
+                      )
                       : (
+                        // TODO: componentize
                         <div style={{
                           display: 'flex',
                           width: header?.cellWidth ?? '',
@@ -251,6 +260,9 @@ HubTable.propTypes = {
   headers: PropTypes.arrayOf(
     PropTypes.shape({}),
   ),
+  scrollRef: PropTypes.shape({
+    current: PropTypes.shape({}),
+  }),
 };
 
 export default HubTable;
