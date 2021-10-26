@@ -56,7 +56,7 @@ const IconHead = props => {
   return (
     <div className={classes.root}>
       {iconPath
-        && <Image src={iconPath} alt="" width={32} height={32} layout="fixed" className={classes.icon} />}
+        && <Image src={iconPath} alt="" priority width={32} height={32} layout="fixed" className={classes.icon} />}
       <div className={classes.label}>
         {label}
         {isSorting && order
