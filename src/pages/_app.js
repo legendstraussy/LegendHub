@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { QueryClient, QueryClientProvider, QueryCache } from 'react-query';
-import { Hydrate } from 'react-query/hydration';
 import { RecoilRoot } from 'recoil';
 import { ThemeProvider, StylesProvider } from '@material-ui/core/styles';
 import { PropTypes } from 'prop-types';
@@ -17,9 +16,7 @@ const App = ({ Component, pageProps }) => {
       <StylesProvider>
         <QueryClientProvider client={queryClient} queryCache={queryCache}>
           <RecoilRoot>
-            <Hydrate state={pageProps.dehydratedState}>
-              <Component {...pageProps} />
-            </Hydrate>
+            <Component {...pageProps} />
           </RecoilRoot>
         </QueryClientProvider>
       </StylesProvider>

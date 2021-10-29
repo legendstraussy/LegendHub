@@ -1,5 +1,4 @@
-import React, { useRef, useState } from 'react';
-import { useQuery } from 'react-query';
+import React, { useRef } from 'react';
 import { PropTypes } from 'prop-types';
 import {
   Table,
@@ -9,11 +8,12 @@ import {
   TablePagination,
   TableRow,
 } from '@material-ui/core';
-import IconHead from 'components/common/iconHead';
+import IconHeader from 'components/common/iconHeader';
+import HubTableHeader from 'components/common/hubTableHeader';
+import HubTableCell from 'components/common/hubTableCell';
 import HubTooledCell from 'components/common/hubTooledCell';
 import { makeStyles } from '@material-ui/styles';
 import useScroll from 'hooks/useScroll';
-import fetchItems from 'data/actions';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -100,20 +100,23 @@ const useStyles = makeStyles((theme) => ({
 }), { name: 'Mui_Styles_HubTable' });
 
 const HubTable = props => {
-  const { footer = true, headers = [], scrollRef = null } = props;
+  const {
+    data = {},
+    footer = true,
+    headers = [],
+    options,
+    scrollRef = null,
+    updateOptions,
+  } = props;
+  const {
+    page, rowsPerPage, order, orderBy,
+  } = options;
+  const {
+    items = [],
+    total = 0,
+  } = data;
   const headersEl = useRef(null);
   const scroll = useScroll();
-
-  const [order, setOrder] = useState(null);
-  const [orderBy, setOrderBy] = useState(null);
-  const [filters] = useState({});
-  const [page, setPage] = useState(0);
-  const [rowsPerPage, setRowsPerPage] = useState(25);
-  const { data } = useQuery(['hubTable', page, rowsPerPage, order, orderBy, filters], () => fetchItems({
-    page, rowsPerPage, order, orderBy, filters,
-  }), { keepPreviousData: true, initialData: { items: [], total: 0 } });
-  const { items, total } = data;
-
   const classes = useStyles(props);
 
   const handleScroll = event => {
@@ -125,26 +128,25 @@ const HubTable = props => {
   };
 
   const handleChangePage = (_, newPage) => {
-    setPage(newPage);
+    updateOptions({ page: newPage });
   };
 
   const handleChangeRowsPerPage = event => {
-    setRowsPerPage(parseInt(event.target.value, 10));
-    setPage(0);
+    updateOptions({
+      rowsPerPage: parseInt(event.target.value, 10),
+      page: 0,
+    });
   };
 
   const handleSortChange = header => {
     const { id = '' } = header;
     if (!orderBy || orderBy !== id) {
-      setOrderBy(id);
-      setOrder('asc');
-      return;
-    }
-    if (orderBy === id) {
+      updateOptions({ order: 'asc', orderBy: id });
+    } else if (orderBy === id) {
       if (order) {
-        setOrder(order === 'desc' ? null : 'desc');
+        updateOptions({ order: order === 'desc' ? null : 'desc' });
       } else {
-        setOrder('asc');
+        updateOptions({ order: 'asc', orderBy: id });
       }
     }
   };
@@ -169,7 +171,7 @@ const HubTable = props => {
                 >
                   {header?.type === 'icon'
                     ? (
-                      <IconHead
+                      <IconHeader
                         leftEnd={header?.leftEnd}
                         rightEnd={header?.rightEnd}
                         iconPath={header?.iconPath}
@@ -180,12 +182,9 @@ const HubTable = props => {
                       />
                     )
                     : (
-                      <div
-                        style={{ justifyContent: header.align || 'center' }}
-                        data-value={header.id}
-                      >
-                        {header.label}
-                      </div>
+                      <HubTableHeader
+                        header={header}
+                      />
                     )}
                 </TableCell>
               ))}
@@ -218,19 +217,10 @@ const HubTable = props => {
                         />
                       )
                       : (
-                        // TODO: componentize
-                        <div style={{
-                          display: 'flex',
-                          width: header?.cellWidth ?? '',
-                          height: 35,
-                          justifyContent: 'center',
-                          alignItems: 'center',
-                        }}
-                        >
-                          <div data-value={header.id}>
-                            {item[header.id]}
-                          </div>
-                        </div>
+                        <HubTableCell
+                          label={header.id}
+                          text={item[header.id]}
+                        />
                       )}
                   </TableCell>
                 ))}
@@ -256,13 +246,23 @@ const HubTable = props => {
 };
 
 HubTable.propTypes = {
+  data: PropTypes.shape({
+
+  }),
   footer: PropTypes.bool,
   headers: PropTypes.arrayOf(
     PropTypes.shape({}),
   ),
+  options: PropTypes.shape({
+    page: PropTypes.number,
+    rowsPerPage: PropTypes.number,
+    order: PropTypes.string,
+    orderBy: PropTypes.string,
+  }),
   scrollRef: PropTypes.shape({
     current: PropTypes.shape({}),
   }),
+  updateOptions: PropTypes.func,
 };
 
 export default HubTable;

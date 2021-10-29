@@ -11,6 +11,7 @@ const useCharacterManager = () => {
 
   const saveCharacter = character => {
     try {
+      console.log('bango', character)
       setStorage('character', character);
     } catch {
       return { success: false, message: 'Error: Could not save to local storage.'}

@@ -6,7 +6,7 @@ const useStyles = makeStyles({
   root: {
     height: 'inherit',
     display: 'flex',
-    justifyContent: 'space-around',
+    justifyContent: 'flex-end',
     background: '#222',
   },
 }, { name: 'Mui_Styles_HubItemTools' });

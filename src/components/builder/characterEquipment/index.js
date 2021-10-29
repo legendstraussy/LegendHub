@@ -1,10 +1,15 @@
 import { useEffect, useRef } from 'react';
+// import { useQuery } from 'react-query';
 import HubTable from 'components/common/hubTable';
 import HubFooter from 'components/common/HubFooter';
 import DeleteOutlineIcon from '@material-ui/icons/DeleteOutline';
 import Fullscreen from '@material-ui/icons/Fullscreen';
 import CharacterMarquee from 'components/builder/characterMarquee';
 import MarqueeTable from 'components/builder/marqueeTable';
+import usePagination from 'hooks/usePagination';
+// import fetchItems from 'data/actions';
+import { useRecoilValue } from 'recoil';
+import { characterEqState } from 'data/characterState';
 import { makeStyles } from '@material-ui/styles';
 
 const useStyles = makeStyles(() => ({
@@ -17,7 +22,19 @@ const useStyles = makeStyles(() => ({
 
 const CharacterEquipment = () => {
   const scrollRef = useRef(null);
+  const {
+    options,
+    actions,
+  } = usePagination({ page: 0, rowsPerPage: 25 });
+  // const {
+  //   page, rowsPerPage, order, orderBy, filters,
+  // } = options;
+  // const { data } = useQuery(['hubTable', page, rowsPerPage, order, orderBy, filters], () => fetchItems({
+  //   page, rowsPerPage, order, orderBy, filters,
+  // }), { keepPreviousData: true, initialData: { items: [], total: 0 } });
   const classes = useStyles();
+  const equipment = useRecoilValue(characterEqState);
+  console.log('bingo', equipment)
 
   const handleItemDetailClick = item => {
     console.log('tis tis', item);
@@ -117,7 +134,14 @@ const CharacterEquipment = () => {
       marquee={<CharacterMarquee />}
     >
       <div className={classes.root}>
-        <HubTable headers={headers} footer={false} scrollRef={scrollRef} />
+        <HubTable
+          data={{ items: equipment, total: equipment.length }}
+          options={options}
+          headers={headers}
+          footer={false}
+          scrollRef={scrollRef}
+          updateOptions={actions.setOptions}
+        />
         <HubFooter />
       </div>
     </MarqueeTable>

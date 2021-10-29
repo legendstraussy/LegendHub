@@ -21,6 +21,7 @@
     "hashids": "^2.2.8",
     "isomorphic-unfetch": "^3.1.0",
     "next": "^11.1.2-canary.0",
+    "next-i18next": "^8.9.0",
     "prop-types": "^15.7.2",
     "react": "17.0.2",
     "react-dom": "17.0.2",

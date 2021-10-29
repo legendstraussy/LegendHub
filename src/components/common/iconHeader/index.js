@@ -9,6 +9,7 @@ const useStyles = makeStyles({
     position: 'absolute',
     top: -15,
     bottom: 0,
+    padding: '0 20px',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
@@ -45,9 +46,9 @@ const useStyles = makeStyles({
     fontSize: '10px',
     textTransform: 'uppercase',
   },
-}, { name: 'Mui_Styles_IconHead' });
+}, { name: 'Mui_Styles_IconHeader' });
 
-const IconHead = props => {
+const IconHeader = props => {
   const {
     iconPath, isSorting, label, order,
   } = props;
@@ -67,11 +68,11 @@ const IconHead = props => {
   );
 };
 
-IconHead.propTypes = {
+IconHeader.propTypes = {
   iconPath: PropTypes.string,
   isSorting: PropTypes.bool,
   label: PropTypes.string,
   order: PropTypes.string,
 };
 
-export default IconHead;
+export default IconHeader;
