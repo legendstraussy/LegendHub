@@ -12,13 +12,13 @@ const useStyles = makeStyles({
 }, { name: 'Mui_Styles_HubItemTools' });
 
 const HubItemTools = props => {
-  const { itemId, tools } = props;
+  const { item, tools } = props;
   const classes = useStyles(props);
 
   return (
     <div className={classes.root}>
       {tools?.map(({ color, IconComponent, onClick }, i) => (
-        <HubItemTool color={color} key={i} onClick={() => onClick(itemId)}>
+        <HubItemTool color={color} key={i} onClick={() => onClick(item)}>
           <IconComponent />
         </HubItemTool>
       ))}
@@ -27,7 +27,7 @@ const HubItemTools = props => {
 };
 
 HubItemTools.propTypes = {
-  itemId: PropTypes.number,
+  item: PropTypes.shape({}),
   tools: PropTypes.arrayOf(
     PropTypes.shape({
       IconComponent: PropTypes.shape({}),

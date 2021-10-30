@@ -8,8 +8,8 @@ import CharacterMarquee from 'components/builder/characterMarquee';
 import MarqueeTable from 'components/builder/marqueeTable';
 import usePagination from 'hooks/usePagination';
 // import fetchItems from 'data/actions';
-import { useRecoilValue } from 'recoil';
-import { characterEqState } from 'data/characterState';
+import { useRecoilValue, useSetRecoilState } from 'recoil';
+import { characterEqState, selectedItemState } from 'data/characterState';
 import { makeStyles } from '@material-ui/styles';
 
 const useStyles = makeStyles(() => ({
@@ -34,14 +34,18 @@ const CharacterEquipment = () => {
   // }), { keepPreviousData: true, initialData: { items: [], total: 0 } });
   const classes = useStyles();
   const equipment = useRecoilValue(characterEqState);
-  console.log('bingo', equipment)
+  const setTab = useSetRecoilState(selectedItemState);
+  // console.log('bingo', equipment);
 
   const handleItemDetailClick = item => {
-    console.log('tis tis', item);
+    setTab({
+      ...item,
+      flags: [],
+    });
   };
 
-  const handleItemRemoveClick = item => {
-    console.log('tas tas', item);
+  const handleItemRemoveClick = () => {
+    // console.log('tas tas', item);
   };
 
   const headers = [

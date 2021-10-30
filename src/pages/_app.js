@@ -14,11 +14,11 @@ const App = ({ Component, pageProps }) => {
   return (
     <ThemeProvider theme={theme}>
       <StylesProvider>
-        <QueryClientProvider client={queryClient} queryCache={queryCache}>
-          <RecoilRoot>
+        <RecoilRoot>
+          <QueryClientProvider client={queryClient} queryCache={queryCache}>
             <Component {...pageProps} />
-          </RecoilRoot>
-        </QueryClientProvider>
+          </QueryClientProvider>
+        </RecoilRoot>
       </StylesProvider>
     </ThemeProvider>
   );

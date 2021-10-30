@@ -210,7 +210,7 @@ const HubTable = props => {
                     {header?.tools
                       ? (
                         <HubTooledCell
-                          itemId={item.id}
+                          item={item}
                           label={header.id}
                           text={item[header.id]}
                           tools={header.tools}

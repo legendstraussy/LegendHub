@@ -24,7 +24,7 @@ const useStyles = makeStyles({
   },
   icon: {
     position: 'absolute',
-    top: '15px !important',
+    top: '-10px !important',
     left: 0,
     bottom: 0,
     right: 0,
@@ -42,7 +42,7 @@ const useStyles = makeStyles({
     alignItems: 'flex-end',
     color: props => stats[props?.label]?.color || '#fff',
     position: 'relative',
-    top: 4,
+    top: 5,
     fontSize: '10px',
     textTransform: 'uppercase',
   },
@@ -57,7 +57,7 @@ const IconHeader = props => {
   return (
     <div className={classes.root}>
       {iconPath
-        && <Image src={iconPath} alt="" priority width={32} height={32} layout="fixed" className={classes.icon} />}
+        && <div style={{ position: 'relative', display: 'contents' }}><Image src={iconPath} alt="" priority layout="fill" className={classes.icon} /></div>}
       <div className={classes.label}>
         {label}
         {isSorting && order

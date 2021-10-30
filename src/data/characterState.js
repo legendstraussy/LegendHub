@@ -11,23 +11,30 @@ export const characterState = atom({
   default: character,
 });
 
+export const selectedItemState = atom({
+  key: 'selectedItemState',
+  default: null,
+});
+
 export const characterEqState = selector({
   key: 'characterEqState',
   get: ({ get }) => {
     const character = get(characterState);
-    if (character.name) {
+    if (character.name !== '') {
+      // console.log('how many times?')
       return Object
         .keys(character?.equipment)
         .reduce((gear, key) => {
           let newItem = character?.equipment[key]?.item;
-          // console.log('bingo!!!!', character?.equipment[key])
           if (newItem?.id === 1001) {
-            // const n = Math.floor(Math.random() * 9) + 1;
-            // const s = await fetch(`https://swapi.dev/api/starships/${n}/`);
-            // console.log('s', s.response.json())
             newItem = {
               ...newItem,
+              name: 'Ring of Strength',
               rent: Math.floor(Math.random() * 5000) + 1000,
+              price: Math.floor(Math.random() * 5000) + 1000,
+              material: 'leather',
+              timer: -1,
+              slots: [{ name: 'light' }, { name: 'held' }],
               str: Math.floor(Math.random() * 5) + 1,
               min: Math.floor(Math.random() * 5) + 1,
               dex: Math.floor(Math.random() * 5) + 1,

@@ -22,7 +22,7 @@ const useStyles = makeStyles(() => ({
   tools: {
     width: 0,
     height: 'inherit',
-    display: props => props?.itemId ? 'block' : 'none',
+    display: props => props?.item ? 'block' : 'none',
     opacity: 0,
   },
 }), { name: 'Mui_Styles_hubTooledCell' });
