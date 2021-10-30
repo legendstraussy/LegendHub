@@ -17,7 +17,7 @@ const useStyles = makeStyles({
 const CharacterSelect = () => {
   const { character = {}, characters = [], saveCharacter } = useCharacterManager();
   const characterOptions = getKeyArrayFromObject(characters)
-    .map(c => ({ name: c?.name, value: c?.id }));
+    .map(c => ({ name: c.name, label: `${c?.name} (${c?.version})`, value: c?.id }));
   const classes = useStyles();
 
   const handleCharacterSelect = characterId => {
@@ -35,6 +35,7 @@ const CharacterSelect = () => {
             onChange={handleCharacterSelect}
             options={characterOptions}
             value={character.id}
+            name={character.name}
             width="135px"
           />
         )

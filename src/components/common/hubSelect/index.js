@@ -32,6 +32,7 @@ const HubSelect = props => {
     options,
     onChange,
     value = props.value,
+    name,
   } = props;
   const classes = useStyles(props);
 
@@ -40,6 +41,8 @@ const HubSelect = props => {
       className={classes.root}
       style={{ cursor: 'default' }}
       value={value}
+      renderValue={() => name}
+      name={name}
       onChange={event => onChange(event.target.value)}
       MenuProps={{
         anchorOrigin: {
@@ -57,7 +60,7 @@ const HubSelect = props => {
         <MenuItem key="none" value={defaultText} style={{ fontStyle: 'italic' }}>{defaultText}</MenuItem>
       )}
       {options?.map(option => (
-        <MenuItem key={option?.value} value={option?.value}>{option?.name}</MenuItem>
+        <MenuItem key={option?.value} value={option?.value}>{option?.label || option?.name}</MenuItem>
       ))}
     </Select>
   );
@@ -65,9 +68,11 @@ const HubSelect = props => {
 
 HubSelect.propTypes = {
   defaultText: PropTypes.string,
+  name: PropTypes.string,
   onChange: PropTypes.func.isRequired,
   options: PropTypes.arrayOf(
     PropTypes.shape({
+      label: PropTypes.string,
       name: PropTypes.string,
       value: PropTypes.string,
     }),
