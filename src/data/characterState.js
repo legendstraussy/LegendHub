@@ -8,7 +8,7 @@ export const charactersState = atom({
 
 export const characterState = atom({
   key: 'characterState',
-  default: character,
+  default: null,
 });
 
 export const selectedItemState = atom({
@@ -20,7 +20,7 @@ export const characterEqState = selector({
   key: 'characterEqState',
   get: ({ get }) => {
     const character = get(characterState);
-    if (character.name !== '') {
+    if (character) {
       // console.log('how many times?')
       return Object
         .keys(character?.equipment)
@@ -59,24 +59,28 @@ export const characterEqState = selector({
 export const characterStatsState = selector({
   key: 'characterStatsState',
   get: ({ get }) => {
-    const {
-      hp,
-      mv,
-      ma,
-      ac,
-      align,
-      rent,
-      baseStats,
-    } = get(characterState);
-    return {
-      hp,
-      mv,
-      ma,
-      ac,
-      align,
-      rent,
-      baseStats,
-    };
+    const selectedCharacter = get(characterState);
+    if (selectedCharacter) {
+      const {
+        hp,
+        mv,
+        ma,
+        ac,
+        align,
+        rent,
+        baseStats,
+      } = selectedCharacter;
+      return {
+        hp,
+        mv,
+        ma,
+        ac,
+        align,
+        rent,
+        baseStats,
+      };
+    }
+    return character;
   },
 });
 

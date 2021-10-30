@@ -8,7 +8,7 @@ const useStyles = makeStyles({
   },
   label: {
     color: '#FFD874',
-    fontSize: '14px',
+    fontSize: props => props.fontSize ?? '14px',
     fontWeight: 600,
     textTransform: 'uppercase',
   },
@@ -21,12 +21,15 @@ const useStyles = makeStyles({
 }, { name: 'Mui_Styles_DetailHeader' });
 
 const DetailHeader = props => {
-  const { children, title } = props;
+  const { children, isRequired, title } = props;
   const classes = useStyles(props);
 
   return (
     <header className={classes.root}>
-      <div className={classes.label}>{title}</div>
+      <div className={classes.label}>
+        {title}
+        {isRequired ? ' *' : ''}
+      </div>
       {children
         && (
         <div className={classes.toolbar}>
@@ -41,6 +44,7 @@ const DetailHeader = props => {
 
 DetailHeader.propTypes = {
   children: PropTypes.node,
+  isRequired: PropTypes.bool,
   title: PropTypes.string,
 };
 

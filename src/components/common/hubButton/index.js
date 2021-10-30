@@ -26,16 +26,20 @@ const useStyles = makeStyles({
 
 const HubButton = props => {
   const classes = useStyles();
-  const { label, onClick, type = 'default' } = props;
+  const {
+    autoFocus = false, label, onClick, submit, type = 'default',
+  } = props;
 
   return (
-    <Button onClick={onClick} className={`${classes.button} ${type}`}>{label}</Button>
+    <Button autoFocus={autoFocus} type={submit ? 'submit' : 'button'} onClick={onClick} className={`${classes.button} ${type}`}>{label}</Button>
   );
 };
 
 HubButton.propTypes = {
+  autoFocus: PropTypes.bool,
   label: PropTypes.string,
   onClick: PropTypes.func,
+  submit: PropTypes.bool,
   type: PropTypes.string,
 };
 

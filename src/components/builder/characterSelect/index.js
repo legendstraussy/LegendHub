@@ -15,13 +15,13 @@ const useStyles = makeStyles({
 }, { name: 'Mui_Styles_Select' });
 
 const CharacterSelect = () => {
-  const { character, characters, saveCharacter } = useCharacterManager();
+  const { character = {}, characters = [], saveCharacter } = useCharacterManager();
   const characterOptions = getKeyArrayFromObject(characters)
-    .map(c => ({ name: c?.name, value: c?.name }));
+    .map(c => ({ name: c?.name, value: c?.id }));
   const classes = useStyles();
 
-  const handleCharacterSelect = characterName => {
-    const selectedCharacter = characters.find(c => c.name === characterName);
+  const handleCharacterSelect = characterId => {
+    const selectedCharacter = characters.find(c => c.id === characterId);
     if (selectedCharacter) {
       saveCharacter(selectedCharacter);
     }
@@ -34,7 +34,7 @@ const CharacterSelect = () => {
           <HubSelect
             onChange={handleCharacterSelect}
             options={characterOptions}
-            value={character.name}
+            value={character.id}
             width="135px"
           />
         )

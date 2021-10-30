@@ -1,10 +1,11 @@
-import { useEffect, useRef, useState } from 'react';
+import { useState } from 'react';
 import { PropTypes } from 'prop-types';
 import { makeStyles } from '@material-ui/core';
-import HubInput from 'components/common/hubInput';
 import HubButton from 'components/common/hubButton';
-import DetailHeader from 'components/common/detail/detailHeader/';
+import DetailField from 'components/common/detail/detailField/';
 import useCharacterManager from 'hooks/useCharacterManager';
+import { useRecoilValueLoadable } from 'recoil';
+import { characterState } from 'data/characterState';
 
 const useStyles = makeStyles(({
   root: {
@@ -23,30 +24,19 @@ const useStyles = makeStyles(({
       justifyContent: 'space-between',
     },
   },
-}), { name: 'Mui_Styles_NewCharacterModal' });
+}), { name: 'Mui_Styles_CharacterModal' });
 
-const NewCharacterForm = props => {
+const DeleteCharacterForm = props => {
   const { handleClickClose } = props;
-  const nameRef = useRef();
-  const [name, setName] = useState('');
-  const [version, setVersion] = useState('');
   const [status, setStatus] = useState(null);
-  const { create } = useCharacterManager();
+  const character = useRecoilValueLoadable(characterState);
+  const { remove } = useCharacterManager();
   const classes = useStyles();
-
-  useEffect(() => {
-    nameRef?.current?.focus();
-  }, []);
 
   const handleSubmit = event => {
     event.preventDefault();
 
-    const char = {
-      name,
-      version,
-    };
-
-    const submit = create(char);
+    const submit = remove(character);
     if (submit.success) {
       setStatus(submit.message);
       handleClickClose();
@@ -59,27 +49,20 @@ const NewCharacterForm = props => {
     <form className={classes.root} onSubmit={handleSubmit}>
       <section>
         {status && <p>{status}</p>}
-        <p>Please enter the name of your new character.</p>
-        <section>
-          <DetailHeader title="Name" fontSize="12px" isRequired />
-        </section>
-        <section>
-          <div className={classes.container}>
-            <HubInput ref={nameRef} value={name} onChange={setName} />
-          </div>
-        </section>
-        <section>
-          <DetailHeader title="version" fontSize="12px" isRequired />
-        </section>
-        <section>
-          <div className={classes.container}>
-            <HubInput value={version} onChange={setVersion} />
-          </div>
-        </section>
+        <p>Are you sure you want to delete this character?</p>
+        <DetailField
+          label="name"
+          value="tricky dick"
+        />
+        <DetailField
+          label="version"
+          value="tricky dick 2"
+        />
       </section>
       <section className={classes.actions}>
         <div>
           <HubButton
+            autoFocus
             label="confirm"
             onClick={handleSubmit}
             submit
@@ -95,8 +78,8 @@ const NewCharacterForm = props => {
   );
 };
 
-NewCharacterForm.propTypes = {
+DeleteCharacterForm.propTypes = {
   handleClickClose: PropTypes.func,
 };
 
-export default NewCharacterForm;
+export default DeleteCharacterForm;

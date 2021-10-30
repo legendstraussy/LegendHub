@@ -13,9 +13,13 @@ const useLocalStorage = () => {
 
   const setValue = (key, value) => {
     try {
-      const item = window.localStorage.getItem(key);
-      const valueToStore = value instanceof Function ? value(item) : value;
-      window.localStorage.setItem(key, JSON.stringify(valueToStore));
+      if (!value) {
+        window.localStorage.removeItem(key);
+      } else {
+        const item = window.localStorage.getItem(key);
+        const valueToStore = value instanceof Function ? value(item) : value;
+        window.localStorage.setItem(key, JSON.stringify(valueToStore));
+      }
     } catch (error) {
       throw new Error(error);
     }

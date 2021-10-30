@@ -2,6 +2,7 @@ import { useState } from 'react';
 import HubButton from 'components/common/hubButton';
 import HubVersion from 'components/main/hubVersion';
 import NewCharacterModal from 'components/main/modals/newCharacterModal';
+import DeleteCharacterModal from 'components/main/modals/deleteCharacterModal';
 import { makeStyles } from '@material-ui/styles';
 
 const useStyles = makeStyles({
@@ -30,23 +31,24 @@ const Toolbar = () => {
   return (
     <div className={classes.root}>
       <div className={classes.buttonLayout}>
-        <HubButton label="New" type="primary" onClick={() => setModal('new')} />
+        <HubButton label="new" type="primary" onClick={() => setModal('new')} />
         <NewCharacterModal open={handleModalCheck('new')} handleCloseCallback={handleClearModal} />
       </div>
       <div className={classes.buttonLayout}>
-        <HubButton label="Undo" type="default" onClick={() => {}} />
+        <HubButton label="undo" type="default" onClick={() => {}} />
       </div>
       <div className={classes.buttonLayout}>
-        <HubButton label="Import" type="default" onClick={() => {}} />
+        <HubButton label="import" type="default" onClick={() => {}} />
       </div>
       <div className={classes.buttonLayout}>
-        <HubButton label="Export" type="default" onClick={() => {}} />
+        <HubButton label="export" type="default" onClick={() => {}} />
       </div>
       <div className={classes.buttonLayout}>
-        <HubButton label="Clear" type="default" onClick={() => {}} />
+        <HubButton label="clear" type="default" onClick={() => {}} />
       </div>
       <div className={classes.buttonLayout}>
-        <HubButton label="Delete" type="warning" onClick={() => {}} />
+        <HubButton label="delete" type="warning" onClick={() => setModal('delete')} />
+        <DeleteCharacterModal open={handleModalCheck('delete')} handleCloseCallback={handleClearModal} />
       </div>
       <HubVersion />
     </div>

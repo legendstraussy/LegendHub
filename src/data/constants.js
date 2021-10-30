@@ -1,6 +1,7 @@
 import theme from 'utils/theme';
 
 export const character = {
+  id: null,
   name: '',
   version: '',
   createDate: '',
