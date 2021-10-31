@@ -8,7 +8,7 @@ const useStyles = makeStyles({
     display: 'flex',
     flex: 1,
     alignItems: 'baseline',
-    justifyContent: 'space-between',
+    justifyContent: props => props.justifyContent ?? 'space-between',
     maxWidth: props => props?.maxWidth ?? '50%',
     padding: '0 8px',
   },

@@ -59,6 +59,10 @@ const useCharacterManager = () => {
     }
   };
 
+  const updateCharacter = character => {
+    
+  }
+
   const readCharacters = useCallback(() => {
     const storedCharacters = getStorage('characters');
     const storedCharacter = getStorage('character');
@@ -106,10 +110,6 @@ const useCharacterManager = () => {
 
   // };
 
-  // const saveCharacter = () => {
-
-  // };
-
   // const undoLastChange = () => {
 
   // };
@@ -123,6 +123,7 @@ const useCharacterManager = () => {
     character,
     characters,
     create: createCharacter,
+    update: updateCharacter,
     remove: deleteCharacter,
     read: readCharacters,
     saveCharacter,

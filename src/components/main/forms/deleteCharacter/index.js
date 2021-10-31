@@ -4,7 +4,7 @@ import { makeStyles } from '@material-ui/core';
 import HubButton from 'components/common/hubButton';
 import DetailField from 'components/common/detail/detailField/';
 import useCharacterManager from 'hooks/useCharacterManager';
-import { useRecoilValueLoadable } from 'recoil';
+import { useRecoilValue } from 'recoil';
 import { characterState } from 'data/characterState';
 
 const useStyles = makeStyles(({
@@ -24,13 +24,14 @@ const useStyles = makeStyles(({
       justifyContent: 'space-between',
     },
   },
-}), { name: 'Mui_Styles_CharacterModal' });
+}), { name: 'Mui_Styles_DeleteCharacterModal' });
 
 const DeleteCharacterForm = props => {
   const { handleClickClose } = props;
-  const [status, setStatus] = useState(null);
-  const character = useRecoilValueLoadable(characterState);
+  const character = useRecoilValue(characterState);
   const { remove } = useCharacterManager();
+  const [{ name, version }] = useState(character);
+  const [status, setStatus] = useState(null);
   const classes = useStyles();
 
   const handleSubmit = event => {
@@ -38,7 +39,6 @@ const DeleteCharacterForm = props => {
 
     const submit = remove(character);
     if (submit.success) {
-      setStatus(submit.message);
       handleClickClose();
     } else {
       setStatus(submit.message);
@@ -51,12 +51,16 @@ const DeleteCharacterForm = props => {
         {status && <p>{status}</p>}
         <p>Are you sure you want to delete this character?</p>
         <DetailField
+          justifyContent="flex-start"
           label="name"
-          value="tricky dick"
+          maxWidth="inherit"
+          value={name}
         />
         <DetailField
+          justifyContent="flex-start"
           label="version"
-          value="tricky dick 2"
+          maxWidth="inherit"
+          value={version}
         />
       </section>
       <section className={classes.actions}>

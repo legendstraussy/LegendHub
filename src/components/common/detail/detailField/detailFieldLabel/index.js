@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/styles';
 
 const useStyles = makeStyles({
   root: {
-    minWidth: '25%',
+    minWidth: '30%',
     fontSize: '12px',
     fontWeight: 600,
     textTransform: 'uppercase',

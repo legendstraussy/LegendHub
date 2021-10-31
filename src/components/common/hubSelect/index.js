@@ -41,7 +41,7 @@ const HubSelect = props => {
       className={classes.root}
       style={{ cursor: 'default' }}
       value={value}
-      renderValue={() => name}
+      renderValue={value => name ?? value}
       name={name}
       onChange={event => onChange(event.target.value)}
       MenuProps={{
@@ -72,7 +72,7 @@ HubSelect.propTypes = {
   onChange: PropTypes.func.isRequired,
   options: PropTypes.arrayOf(
     PropTypes.shape({
-      label: PropTypes.string,
+      label: PropTypes.shape({}),
       name: PropTypes.string,
       value: PropTypes.string,
     }),

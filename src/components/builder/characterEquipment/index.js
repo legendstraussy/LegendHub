@@ -35,7 +35,6 @@ const CharacterEquipment = () => {
   const classes = useStyles();
   const equipment = useRecoilValue(characterEqState);
   const setTab = useSetRecoilState(selectedItemState);
-  // console.log('bingo', equipment);
 
   const handleItemDetailClick = item => {
     setTab({
@@ -45,7 +44,6 @@ const CharacterEquipment = () => {
   };
 
   const handleItemRemoveClick = () => {
-    // console.log('tas tas', item);
   };
 
   const headers = [

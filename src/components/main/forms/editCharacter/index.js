@@ -5,6 +5,8 @@ import HubInput from 'components/common/hubInput';
 import HubButton from 'components/common/hubButton';
 import DetailHeader from 'components/common/detail/detailHeader/';
 import useCharacterManager from 'hooks/useCharacterManager';
+import { useRecoilValue } from 'recoil';
+import { characterState } from 'data/characterState';
 
 const useStyles = makeStyles(({
   root: {
@@ -21,13 +23,14 @@ const useStyles = makeStyles(({
       margin: '0 0 0 10px',
     },
   },
-}), { name: 'Mui_Styles_NewCharacterModal' });
+}), { name: 'Mui_Styles_EditCharacterModal' });
 
-const NewCharacterForm = props => {
+const EditCharacterForm = props => {
   const { handleClickClose } = props;
   const nameRef = useRef();
-  const [name, setName] = useState('');
-  const [version, setVersion] = useState('');
+  const character = useRecoilValue(characterState);
+  const [name, setName] = useState(character.name);
+  const [version, setVersion] = useState(character?.version);
   const [status, setStatus] = useState(null);
   const { create } = useCharacterManager();
   const classes = useStyles();
@@ -75,23 +78,29 @@ const NewCharacterForm = props => {
         </section>
       </section>
       <section className={classes.actions}>
-        <HubButton
-          label="save"
-          onClick={handleSubmit}
-          submit
-        />
-        <HubButton
-          label="cancel"
-          type="warning"
-          onClick={handleClickClose}
-        />
+        <div>
+          <HubButton
+            label="clone"
+            onClick={() => {}}
+          />
+          <HubButton
+            label="save"
+            onClick={handleSubmit}
+            submit
+          />
+          <HubButton
+            label="cancel"
+            type="warning"
+            onClick={handleClickClose}
+          />
+        </div>
       </section>
     </form>
   );
 };
 
-NewCharacterForm.propTypes = {
+EditCharacterForm.propTypes = {
   handleClickClose: PropTypes.func,
 };
 
-export default NewCharacterForm;
+export default EditCharacterForm;

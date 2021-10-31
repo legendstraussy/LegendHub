@@ -12,12 +12,21 @@ const useStyles = makeStyles({
     fontStyle: 'italic',
     width: '120px',
   },
+  select: {
+    display: 'flex',
+    flex: 1,
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    minWidth: 200,
+  },
+  version: {
+    fontSize: 10,
+    textTransform: 'uppercase',
+  },
 }, { name: 'Mui_Styles_Select' });
 
 const CharacterSelect = () => {
   const { character = {}, characters = [], saveCharacter } = useCharacterManager();
-  const characterOptions = getKeyArrayFromObject(characters)
-    .map(c => ({ name: c.name, label: `${c?.name} (${c?.version})`, value: c?.id }));
   const classes = useStyles();
 
   const handleCharacterSelect = characterId => {
@@ -26,6 +35,18 @@ const CharacterSelect = () => {
       saveCharacter(selectedCharacter);
     }
   };
+
+  const characterOptions = getKeyArrayFromObject(characters)
+    .map(c => ({
+      name: c.name,
+      label: (
+        <span className={classes.select}>
+          <span>{c.name}&nbsp;</span>
+          <span className={classes.version}>{c?.version}</span>
+        </span>
+      ),
+      value: c.id,
+    }));
 
   return (
     <>

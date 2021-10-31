@@ -64,8 +64,6 @@ const ItemDetails = () => {
   const item = useRecoilValue(selectedItemState);
   const classes = useStyles();
 
-  // console.log('bingo', item);
-
   return (
     <div className={classes.root}>
       {!item

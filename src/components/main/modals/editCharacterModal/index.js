@@ -1,25 +1,24 @@
 import { PropTypes } from 'prop-types';
 import HubModal from 'components/common/hubModal';
-import DeleteCharacterForm from 'components/main/forms/deleteCharacter';
+import EditCharacterForm from 'components/main/forms/editCharacter';
 
-const DeleteCharacterModal = props => {
+const EditCharacterModal = props => {
   const { open, handleCloseCallback } = props;
 
   return (
     <HubModal
       handleClose={handleCloseCallback}
-      minWidth="325px"
       show={open}
-      title="delete character"
+      title="edit character"
     >
-      <DeleteCharacterForm handleClickClose={handleCloseCallback} />
+      <EditCharacterForm handleClickClose={handleCloseCallback} />
     </HubModal>
   );
 };
 
-DeleteCharacterModal.propTypes = {
+EditCharacterModal.propTypes = {
   handleCloseCallback: PropTypes.func,
   open: PropTypes.bool,
 };
 
-export default DeleteCharacterModal;
+export default EditCharacterModal;

@@ -21,7 +21,6 @@ export const characterEqState = selector({
   get: ({ get }) => {
     const character = get(characterState);
     if (character) {
-      // console.log('how many times?')
       return Object
         .keys(character?.equipment)
         .reduce((gear, key) => {
@@ -30,8 +29,8 @@ export const characterEqState = selector({
             newItem = {
               ...newItem,
               name: 'Ring of Strength',
-              rent: Math.floor(Math.random() * 5000) + 1000,
-              price: Math.floor(Math.random() * 5000) + 1000,
+              rent: 3232,
+              price: 1000,
               material: 'leather',
               timer: -1,
               slots: [{ name: 'light' }, { name: 'held' }],
