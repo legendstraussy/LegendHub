@@ -3,10 +3,12 @@ import { PropTypes } from 'prop-types';
 import { makeStyles } from '@material-ui/core';
 import HubInput from 'components/common/hubInput';
 import HubButton from 'components/common/hubButton';
-import DetailHeader from 'components/common/detail/detailHeader/';
+import HubCheckbox from 'components/common/hubCheckbox';
+import DetailField from 'components/common/detail/detailField';
 import useCharacterManager from 'hooks/useCharacterManager';
 import { useRecoilValue } from 'recoil';
 import { characterState } from 'data/characterState';
+import theme from 'utils/theme';
 
 const useStyles = makeStyles(({
   root: {
@@ -23,77 +25,97 @@ const useStyles = makeStyles(({
       margin: '0 0 0 10px',
     },
   },
-}), { name: 'Mui_Styles_EditCharacterModal' });
+}), { name: 'Mui_Styles_EditCharacterForm' });
 
 const EditCharacterForm = props => {
   const { handleClickClose } = props;
-  const nameRef = useRef();
   const character = useRecoilValue(characterState);
-  const [name, setName] = useState(character.name);
-  const [version, setVersion] = useState(character?.version);
+  const [name, setName] = useState(character?.name || '');
+  const [version, setVersion] = useState(character?.version || '');
+  const [isCloning, setIsCloning] = useState(false);
   const [status, setStatus] = useState(null);
-  const { create } = useCharacterManager();
+  const { clone, update } = useCharacterManager();
+  const nameRef = useRef();
+  const versionRef = useRef();
   const classes = useStyles();
 
   useEffect(() => {
-    nameRef?.current?.focus();
-  }, []);
+    if (isCloning) {
+      nameRef?.current?.focus();
+    } else {
+      versionRef?.current?.focus();
+    }
+  }, [isCloning]);
 
   const handleSubmit = event => {
     event.preventDefault();
 
-    const char = {
+    const edit = isCloning ? clone : update;
+
+    const submit = edit({
       name,
       version,
-    };
+    });
 
-    const submit = create(char);
-    if (submit.success) {
+    if (submit?.success) {
       handleClickClose();
     } else {
-      setStatus(submit.message);
+      setStatus(submit?.message);
     }
   };
 
   return (
     <form className={classes.root} onSubmit={handleSubmit}>
       <section>
-        {status && <p>{status}</p>}
-        <p>Please enter the name of your new character.</p>
-        <section>
-          <DetailHeader title="Name" fontSize="12px" isRequired />
-        </section>
-        <section>
-          <div className={classes.container}>
-            <HubInput ref={nameRef} value={name} onChange={setName} />
-          </div>
-        </section>
-        <section>
-          <DetailHeader title="version" fontSize="12px" isRequired />
-        </section>
-        <section>
-          <div className={classes.container}>
-            <HubInput value={version} onChange={setVersion} />
-          </div>
-        </section>
+        {status && <section>{status}</section>}
+        {isCloning
+          ? (
+            <>
+              <section>Create a new character below to inherit the existing build.</section>
+              <DetailField
+                justifyContent="flex-start"
+                label="name"
+                maxWidth="unset"
+                value={<HubInput ref={nameRef} value={name} onChange={setName} />}
+              />
+            </>
+          )
+          : (
+            <>
+              <section>Please enter the name of your new character.</section>
+              <DetailField
+                justifyContent="flex-start"
+                label="name"
+                maxWidth="unset"
+                value={<span style={{ display: 'flex', height: '35px', alignItems: 'center' }}>{name}</span>}
+              />
+            </>
+          )}
+        <DetailField
+          justifyContent="flex-start"
+          label="version"
+          maxWidth="unset"
+          value={<HubInput ref={versionRef} value={version} onChange={setVersion} />}
+        />
+        <DetailField
+          alignItems="center"
+          justifyContent="flex-start"
+          label={<span style={{ color: theme.palette.main.yellow }}>is a clone?</span>}
+          maxWidth="unset"
+          value={<HubCheckbox onChange={setIsCloning} value={isCloning} />}
+        />
       </section>
       <section className={classes.actions}>
-        <div>
-          <HubButton
-            label="clone"
-            onClick={() => {}}
-          />
-          <HubButton
-            label="save"
-            onClick={handleSubmit}
-            submit
-          />
-          <HubButton
-            label="cancel"
-            type="warning"
-            onClick={handleClickClose}
-          />
-        </div>
+        <HubButton
+          label="save"
+          onClick={handleSubmit}
+          submit
+        />
+        <HubButton
+          label="cancel"
+          type="warning"
+          onClick={handleClickClose}
+        />
       </section>
     </form>
   );

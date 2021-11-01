@@ -7,10 +7,10 @@ const useStyles = makeStyles({
   root: {
     display: 'flex',
     flex: 1,
-    alignItems: 'baseline',
-    justifyContent: props => props.justifyContent ?? 'space-between',
+    alignItems: props => props.alignItems ?? 'baseline',
+    justifyContent: props => props.justifyContent ?? 'flex-end',
     maxWidth: props => props?.maxWidth ?? '50%',
-    padding: '0 8px',
+    padding: props => props?.padding ?? 'inherit',
   },
 }, { name: 'Mui_Styles_DetailField' });
 
@@ -27,10 +27,15 @@ const DetailField = props => {
 };
 
 DetailField.propTypes = {
-  label: PropTypes.string,
+  label: PropTypes.oneOfType([
+    PropTypes.number,
+    PropTypes.string,
+    PropTypes.node,
+  ]),
   value: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
+    PropTypes.node,
   ]),
 };
 

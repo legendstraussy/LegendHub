@@ -5,6 +5,8 @@ import DetailField from 'components/common/detail/detailField/';
 import DetailHeader from 'components/common/detail/detailHeader/';
 import { makeStyles } from '@material-ui/styles';
 import { modifierColors } from 'data/constants';
+import { useRecoilValue } from 'recoil';
+import { characterState } from 'data/characterState';
 
 const useStyles = makeStyles({
   root: {
@@ -53,6 +55,11 @@ const susceptibilities = [
 
 const CharacterFinal = props => {
   const { onStatsClick } = props;
+  const character = useRecoilValue(characterState);
+  const {
+    name,
+    version,
+  } = character;
   const classes = useStyles();
 
   return (
@@ -63,16 +70,19 @@ const CharacterFinal = props => {
         </DetailHeader>
       </section>
       <section>
-        <DetailField label="name" value="Deacon" />
+        <DetailField justifyContent="flex-start" maxWidth="unset" label="name" value={name} padding="0 8px" />
+        <DetailField justifyContent="flex-start" maxWidth="unset" label="version" value={version} padding="0 8px" />
+      </section>
+      <section>
         <div className={classes.container}>
-          <DetailField label="HP" value={750} />
-          <DetailField label="MV" value={423} />
-          <DetailField label="MA" value={857} />
+          <DetailField label="HP" value={750} padding="0 8px" />
+          <DetailField label="MV" value={423} padding="0 8px" />
+          <DetailField label="MA" value={857} padding="0 8px" />
         </div>
         <div className={classes.container}>
-          <DetailField label="AC" value={-127} />
-          <DetailField label="align" value="GNE" />
-          <DetailField label="rent" value={53273} />
+          <DetailField label="AC" value={-127} padding="0 8px" />
+          <DetailField label="align" value="GNE" padding="0 8px" />
+          <DetailField label="rent" value={53273} padding="0 8px" />
         </div>
       </section>
       <section>
@@ -80,28 +90,28 @@ const CharacterFinal = props => {
       </section>
       <section>
         <div className={classes.container}>
-          <DetailField label="str" value={19} />
-          <DetailField label="str cap" value={0} />
+          <DetailField label="str" value={19} padding="0 8px" />
+          <DetailField label="str cap" value={0} padding="0 8px" />
         </div>
         <div className={classes.container}>
-          <DetailField label="min" value={113} />
-          <DetailField label="min cap" value={13} />
+          <DetailField label="min" value={113} padding="0 8px" />
+          <DetailField label="min cap" value={13} padding="0 8px" />
         </div>
         <div className={classes.container}>
-          <DetailField label="dex" value={60} />
-          <DetailField label="dex cap" value={0} />
+          <DetailField label="dex" value={60} padding="0 8px" />
+          <DetailField label="dex cap" value={0} padding="0 8px" />
         </div>
         <div className={classes.container}>
-          <DetailField label="con" value={72} />
-          <DetailField label="con cap" value={0} />
+          <DetailField label="con" value={72} padding="0 8px" />
+          <DetailField label="con cap" value={0} padding="0 8px" />
         </div>
         <div className={classes.container}>
-          <DetailField label="per" value={40} />
-          <DetailField label="per cap" value={0} />
+          <DetailField label="per" value={40} padding="0 8px" />
+          <DetailField label="per cap" value={0} padding="0 8px" />
         </div>
         <div className={classes.container}>
-          <DetailField label="spi" value={43} />
-          <DetailField label="spi cap" value={0} />
+          <DetailField label="spi" value={43} padding="0 8px" />
+          <DetailField label="spi cap" value={0} padding="0 8px" />
         </div>
       </section>
       <section>
@@ -109,9 +119,9 @@ const CharacterFinal = props => {
       </section>
       <section>
         <div className={classes.container}>
-          <DetailField label="HPR" value={4} />
-          <DetailField label="MVR" value={3} />
-          <DetailField label="MAR" value={30} />
+          <DetailField label="HPR" value={4} padding="0 8px" />
+          <DetailField label="MVR" value={3} padding="0 8px" />
+          <DetailField label="MAR" value={30} padding="0 8px" />
         </div>
       </section>
       <section>
@@ -124,20 +134,20 @@ const CharacterFinal = props => {
       </section>
       <section>
         <div className={classes.container}>
-          <DetailField label="spell dmg" value={85} />
-          <DetailField label="damroll" value={-31} />
+          <DetailField label="spell dmg" value={85} padding="0 8px" />
+          <DetailField label="damroll" value={-31} padding="0 8px" />
         </div>
         <div className={classes.container}>
-          <DetailField label="spell crit" value={73} />
-          <DetailField label="hitroll" value={-21} />
+          <DetailField label="spell crit" value={73} padding="0 8px" />
+          <DetailField label="hitroll" value={-21} padding="0 8px" />
         </div>
         <div className={classes.container}>
-          <DetailField label="spell redux" value={51} />
-          <DetailField label="mitigation" value={2} />
+          <DetailField label="spell redux" value={51} padding="0 8px" />
+          <DetailField label="mitigation" value={2} padding="0 8px" />
         </div>
         <div className={classes.container}>
-          <DetailField label="concen" value={30} />
-          <DetailField label="parry" value={0} />
+          <DetailField label="concen" value={30} padding="0 8px" />
+          <DetailField label="parry" value={0} padding="0 8px" />
         </div>
       </section>
       <section>
@@ -145,7 +155,7 @@ const CharacterFinal = props => {
       </section>
       <section>
         <div className={classes.container}>
-          <DetailField label="accuracy" value={0} />
+          <DetailField label="accuracy" value={0} padding="0 8px" />
         </div>
       </section>
       <section>

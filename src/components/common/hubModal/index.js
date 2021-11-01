@@ -8,7 +8,7 @@ import {
 
 const useStyles = makeStyles(() => ({
   root: {
-    minWidth: props => props.minWidth ?? '400px',
+    width: props => props.width ?? '400px',
   },
 }));
 

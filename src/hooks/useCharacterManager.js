@@ -30,7 +30,8 @@ const useCharacterManager = () => {
   }
 
   const createCharacter = ({ name, version }) => {
-    const newCharacter = { ...characterDefault, name, version, id: uuidv4() };
+    const formattedName = name.charAt(0).toUpperCase() + name.slice(1);
+    const newCharacter = { ...characterDefault, name: formattedName, version, id: uuidv4() };
     const storedCharacters = getStorage('characters');
     if (!newCharacter.name) {
       return { success: false, message: `Please provide a character name.` };
@@ -46,7 +47,7 @@ const useCharacterManager = () => {
       const duplicateCharacter = storedCharacters
         ?.some(character => isDuplicateCharacter(character, newCharacter));
       if (duplicateCharacter) {
-        return { success: false, message: `Error: Character ${newCharacter.name} already exists.` };
+        return { success: false, message: `Error: Character name and/or version already exists.` };
       }
       updatedCharacters = [...storedCharacters, newCharacter];
     }
@@ -60,7 +61,59 @@ const useCharacterManager = () => {
   };
 
   const updateCharacter = character => {
-    
+    const storedCharacters = getStorage('characters');
+    const storedCharacter = getStorage('character');
+    const updatedCharacter = { ...storedCharacter, ...character };
+    if (!storedCharacters) {
+      return { success: false, message: 'Error: Could not find characters in local storage.'}
+    }
+    if (!character.name) {
+      return { success: false, message: `Please provide a character name.` };
+    }
+    if (!character.version) {
+      return { success: false, message: `Please provide a character version (ex. '60 dex con fighter').` };
+    }
+    const duplicateCharacter = storedCharacters
+      ?.some(c => isDuplicateCharacter(c, updatedCharacter));
+    if (duplicateCharacter) {
+      return { success: false, message: `Error: Character name and/or version already exists.` };
+    }
+    const remainingCharacters = storedCharacters.filter(storedCharacter => storedCharacter?.id !== updatedCharacter.id);
+    const updatedCharacters = [...remainingCharacters, updatedCharacter];
+
+    try {
+      saveCharacters(updatedCharacters);
+      saveCharacter(updatedCharacter);
+      return { success: true, message: `Success: Character edited.` };
+    } catch (e) {
+      return { success: false, message: 'Error: Could not save to local storage.'}
+    }
+  }
+
+  const cloneCharacter = ({ name, version }) => {
+    const storedCharacters = getStorage('characters');
+    const storedCharacter = getStorage('character');
+    const formattedName = name.charAt(0).toUpperCase() + name.slice(1);
+    const clonedCharacter = { ...characterDefault, equipment: storedCharacter?.equipment, name: formattedName, version, id: uuidv4() };
+    if (!storedCharacters) {
+      return { success: false, message: 'Error: Could not find characters in local storage.'}
+    }
+    if (!name) {
+      return { success: false, message: `Please provide a character name.` };
+    }
+    if (!version) {
+      return { success: false, message: `Please provide a character version (ex. '60 dex con fighter').` };
+    }
+
+    const updatedCharacters = [...storedCharacters, clonedCharacter];
+
+    try {
+      saveCharacters(updatedCharacters);
+      saveCharacter(clonedCharacter);
+      return { success: true, message: `Success: Character cloned.` };
+    } catch (e) {
+      return { success: false, message: 'Error: Could not save to local storage.'}
+    }
   }
 
   const readCharacters = useCallback(() => {
@@ -122,14 +175,14 @@ const useCharacterManager = () => {
     // clear: clearEquipment,
     character,
     characters,
+    clone: cloneCharacter,
     create: createCharacter,
-    update: updateCharacter,
-    remove: deleteCharacter,
-    read: readCharacters,
-    saveCharacter,
-    // delete: deleteCharacter,
     // export: exportCharacter,
     // import: importCharacter,
+    read: readCharacters,
+    remove: deleteCharacter,
+    saveCharacter,
+    update: updateCharacter,
     // undo: undoLastChange,
   };
 };

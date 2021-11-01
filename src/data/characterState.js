@@ -34,11 +34,11 @@ export const characterEqState = selector({
               material: 'leather',
               timer: -1,
               slots: [{ name: 'light' }, { name: 'held' }],
-              str: Math.floor(Math.random() * 5) + 1,
-              min: Math.floor(Math.random() * 5) + 1,
-              dex: Math.floor(Math.random() * 5) + 1,
-              con: Math.floor(Math.random() * 5) + 1,
-              mvRegen: Math.floor(Math.random() * 5) + 1,
+              str: 1,
+              min: 2,
+              dex: 3,
+              con: 4,
+              mvRegen: 1,
             };
           }
           return [

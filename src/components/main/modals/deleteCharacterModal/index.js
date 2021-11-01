@@ -8,7 +8,7 @@ const DeleteCharacterModal = props => {
   return (
     <HubModal
       handleClose={handleCloseCallback}
-      minWidth="325px"
+      maxWidth="325px"
       show={open}
       title="delete character"
     >

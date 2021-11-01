@@ -23,7 +23,11 @@ const DetailFieldLabel = props => {
 };
 
 DetailFieldLabel.propTypes = {
-  label: PropTypes.string,
+  label: PropTypes.oneOfType([
+    PropTypes.number,
+    PropTypes.string,
+    PropTypes.node,
+  ]),
 };
 
 export default DetailFieldLabel;
