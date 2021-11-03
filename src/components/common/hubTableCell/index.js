@@ -4,7 +4,7 @@ import { makeStyles } from '@material-ui/styles';
 const useStyles = makeStyles({
   root: {
     display: 'flex',
-    width: props => props?.header?.cellWidth ?? 'inherit',
+    width: 'inherit',
     height: 35,
     justifyContent: 'center',
     alignItems: 'center',

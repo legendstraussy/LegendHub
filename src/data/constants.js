@@ -16,7 +16,7 @@ export const character = {
   rent: 0,
   equipment: [
     {
-      slot: 'light', slots: ['light'], id: 1001, name: 'light brite',
+      slot: 'light', slots: ['light'], id: 1001, name: 'light brite', str: 5, rent: 2300,
     },
     { slot: 'finger', item: null },
     { slot: 'finger', item: null },
