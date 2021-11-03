@@ -23,13 +23,15 @@ export const equipmentStat = selector({
     const character = get(characterState);
     if (character) {
       const { equipment } = character;
-      const list = Object
-        .entries(equipment)
-        .map(([slot, eq]) => ({
-          ...eq.item,
-          slot,
-        }));
-      return list;
+      if (equipment) {
+        const list = Object
+          .entries(equipment)
+          .map(([slot, eq]) => ({
+            ...eq.item,
+            slot,
+          }));
+        return list;
+      }
     }
     return [];
   },

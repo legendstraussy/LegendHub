@@ -24,133 +24,133 @@ export const character = {
     finger1: {
       slot: 'finger',
       item: {
-        slots: ['finger'], id: 1023, name: 'ring of might', hp: 123, ma: 5000, con: 3, rent: 1700,
+        slots: ['finger'], id: 1023, name: 'ring of might', hp: 123, ma: 3, con: 3, rent: 1700,
       },
     },
     finger2: {
       slot: 'finger',
       item: {
-        slots: ['finger'], id: 1023, name: 'ring of might', hp: 123, ma: 5000, con: 3, rent: 1700,
+        slots: ['finger'], id: 1023, name: 'ring of might', hp: 123, ma: 3, con: 3, rent: 1700,
       },
     },
     neck1: {
       slot: 'neck',
       item: {
-        slots: ['neck'], id: 1023, name: 'ring of might', hp: 123, ma: 5000, con: 3, rent: 1700,
+        slots: ['neck'], id: 1023, name: 'ring of might', hp: 123, ma: 3, con: 3, rent: 1700,
       },
     },
     neck2: {
       slot: 'neck',
       item: {
-        slots: ['neck'], id: 1023, name: 'ring of might', hp: 123, ma: 5000, con: 3, rent: 1700,
+        slots: ['neck'], id: 1023, name: 'ring of might', hp: 123, ma: 3, con: 3, rent: 1700,
       },
     },
     body: {
       slot: 'body',
       item: {
-        slots: ['body'], id: 1023, name: 'ring of might', hp: 123, ma: 5000, con: 3, rent: 1700,
+        slots: ['body'], id: 1023, name: 'ring of might', hp: 123, ma: 3, con: 3, rent: 1700,
       },
     },
     head: {
       slot: 'head',
       item: {
-        slots: ['head'], id: 1023, name: 'ring of might', hp: 123, ma: 5000, con: 3, rent: 1700,
+        slots: ['head'], id: 1023, name: 'ring of might', hp: 123, ma: 3, con: 3, rent: 1700,
       },
     },
     face: {
       slot: 'face',
       item: {
-        slots: ['face'], id: 1023, name: 'ring of might', hp: 123, ma: 5000, con: 3, rent: 1700,
+        slots: ['face'], id: 1023, name: 'ring of might', hp: 123, ma: 3, con: 3, rent: 1700,
       },
     },
     legs: {
       slot: 'legs',
       item: {
-        slots: ['legs'], id: 1023, name: 'ring of might', hp: 123, ma: 5000, con: 3, rent: 1700,
+        slots: ['legs'], id: 1023, name: 'ring of might', hp: 123, ma: 3, con: 3, rent: 1700,
       },
     },
     feet: {
       slot: 'feet',
       item: {
-        slots: ['feet'], id: 1023, name: 'ring of might', hp: 123, ma: 5000, con: 3, rent: 1700,
+        slots: ['feet'], id: 1023, name: 'ring of might', hp: 123, ma: 3, con: 3, rent: 1700,
       },
     },
     hands: {
       slot: 'hands',
       item: {
-        slots: ['hands'], id: 1023, name: 'ring of might', hp: 123, ma: 5000, con: 3, rent: 1700,
+        slots: ['hands'], id: 1023, name: 'ring of might', hp: 123, ma: 3, con: 3, rent: 1700,
       },
     },
     arms: {
       slot: 'arms',
       item: {
-        slots: ['arms'], id: 1023, name: 'ring of might', hp: 123, ma: 5000, con: 3, rent: 1700,
+        slots: ['arms'], id: 1023, name: 'ring of might', hp: 123, ma: 3, con: 3, rent: 1700,
       },
     },
     waist: {
       slot: 'waist',
       item: {
-        slots: ['waist'], id: 1023, name: 'ring of might', hp: 123, ma: 5000, con: 3, rent: 1700,
+        slots: ['waist'], id: 1023, name: 'ring of might', hp: 123, ma: 3, con: 3, rent: 1700,
       },
     },
     wrist1: {
       slot: 'wrist',
       item: {
-        slots: ['wrist'], id: 1023, name: 'ring of might', hp: 123, ma: 5000, con: 3, rent: 1700,
+        slots: ['wrist'], id: 1023, name: 'ring of might', hp: 123, ma: 3, con: 3, rent: 1700,
       },
     },
     wrist2: {
       slot: 'wrist',
       item: {
-        slots: ['wrist'], id: 1023, name: 'ring of might', hp: 123, ma: 5000, con: 3, rent: 1700,
+        slots: ['wrist'], id: 1023, name: 'ring of might', hp: 123, ma: 3, con: 3, rent: 1700,
       },
     },
     weapon: {
       slot: 'weapon',
       item: {
-        slots: ['weapon'], id: 1023, name: 'ring of might', hp: 123, ma: 5000, con: 3, rent: 1700,
+        slots: ['weapon'], id: 1023, name: 'ring of might', hp: 123, ma: 3, con: 3, rent: 1700,
       },
     },
     held1: {
       slot: 'held',
       item: {
-        slots: ['held'], id: 1023, name: 'ring of might', hp: 123, ma: 5000, con: 3, rent: 1700,
+        slots: ['held'], id: 1023, name: 'ring of might', hp: 123, ma: 3, con: 3, rent: 1700,
       },
     },
     held2: {
       slot: 'held',
       item: {
-        slots: ['held'], id: 1023, name: 'ring of might', hp: 123, ma: 5000, con: 3, rent: 1700,
+        slots: ['held'], id: 1023, name: 'ring of might', hp: 123, ma: 3, con: 3, rent: 1700,
       },
     },
     ear1: {
       slot: 'ear',
       item: {
-        slots: ['ear'], id: 1023, name: 'ring of might', hp: 123, ma: 5000, con: 3, rent: 1700,
+        slots: ['ear'], id: 1023, name: 'ring of might', hp: 123, ma: 3, con: 3, rent: 1700,
       },
     },
     ear2: {
       slot: 'ear',
       item: {
-        slots: ['ear'], id: 1023, name: 'ring of might', hp: 123, ma: 5000, con: 3, rent: 1700,
+        slots: ['ear'], id: 1023, name: 'ring of might', hp: 123, ma: 3, con: 3, rent: 1700,
       },
     },
     arm: {
       slot: 'arm',
       item: {
-        slots: ['arm'], id: 1023, name: 'ring of might', hp: 123, ma: 5000, con: 3, rent: 1700,
+        slots: ['arm'], id: 1023, name: 'ring of might', hp: 123, ma: 3, con: 3, rent: 1700,
       },
     },
     amulet: {
       slot: 'amulet',
       item: {
-        slots: ['amulet'], id: 1023, name: 'ring of might', hp: 123, ma: 5000, con: 3, rent: 1700,
+        slots: ['amulet'], id: 1023, name: 'ring of might', hp: 123, ma: 3, con: 3, rent: 1700,
       },
     },
     aux: {
       slot: 'aux',
       item: {
-        slots: ['aux'], id: 1023, name: 'ring of might', hp: 123, ma: 5000, con: 3, rent: 1700,
+        slots: ['aux'], id: 1023, name: 'ring of might', hp: 123, ma: 3, con: 3, rent: 1700,
       },
     },
   },
