@@ -25,8 +25,8 @@ export const equipmentStat = selector({
       const { equipment } = character;
       const list = Object
         .entries(equipment)
-        .map(([slot, item]) => ({
-          ...item,
+        .map(([slot, eq]) => ({
+          ...eq.item,
           slot,
         }));
       return list;

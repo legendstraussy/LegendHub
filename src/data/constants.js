@@ -16,73 +16,142 @@ export const character = {
   rent: 0,
   equipment: {
     light: {
-      slots: ['light', 'held'], id: 1001, name: 'light brite', hp: 2000, str: 5, rent: 2300,
+      slot: 'light',
+      item: {
+        slots: ['light', 'held'], id: 1001, name: 'light brite', hp: 2000, str: 5, rent: 2300,
+      },
     },
     finger1: {
-      slots: ['finger'], id: 1023, name: 'ring of might', hp: 123, ma: 5000, con: 3, rent: 1700,
+      slot: 'finger',
+      item: {
+        slots: ['finger'], id: 1023, name: 'ring of might', hp: 123, ma: 5000, con: 3, rent: 1700,
+      },
     },
     finger2: {
-      slots: ['finger'], id: 1023, name: 'ring of might', hp: 123, ma: 5000, con: 3, rent: 1700,
+      slot: 'finger',
+      item: {
+        slots: ['finger'], id: 1023, name: 'ring of might', hp: 123, ma: 5000, con: 3, rent: 1700,
+      },
     },
     neck1: {
-      slots: ['finger'], id: 1023, name: 'ring of might', hp: 123, ma: 5000, con: 3, rent: 1700,
+      slot: 'neck',
+      item: {
+        slots: ['neck'], id: 1023, name: 'ring of might', hp: 123, ma: 5000, con: 3, rent: 1700,
+      },
     },
     neck2: {
-      slots: ['finger'], id: 1023, name: 'ring of might', hp: 123, ma: 5000, con: 3, rent: 1700,
+      slot: 'neck',
+      item: {
+        slots: ['neck'], id: 1023, name: 'ring of might', hp: 123, ma: 5000, con: 3, rent: 1700,
+      },
     },
     body: {
-      slots: ['finger'], id: 1023, name: 'ring of might', hp: 123, ma: 5000, con: 3, rent: 1700,
+      slot: 'body',
+      item: {
+        slots: ['body'], id: 1023, name: 'ring of might', hp: 123, ma: 5000, con: 3, rent: 1700,
+      },
     },
     head: {
-      slots: ['finger'], id: 1023, name: 'ring of might', hp: 123, ma: 5000, con: 3, rent: 1700,
+      slot: 'head',
+      item: {
+        slots: ['head'], id: 1023, name: 'ring of might', hp: 123, ma: 5000, con: 3, rent: 1700,
+      },
     },
     face: {
-      slots: ['finger'], id: 1023, name: 'ring of might', hp: 123, ma: 5000, con: 3, rent: 1700,
+      slot: 'face',
+      item: {
+        slots: ['face'], id: 1023, name: 'ring of might', hp: 123, ma: 5000, con: 3, rent: 1700,
+      },
     },
     legs: {
-      slots: ['finger'], id: 1023, name: 'ring of might', hp: 123, ma: 5000, con: 3, rent: 1700,
+      slot: 'legs',
+      item: {
+        slots: ['legs'], id: 1023, name: 'ring of might', hp: 123, ma: 5000, con: 3, rent: 1700,
+      },
     },
     feet: {
-      slots: ['finger'], id: 1023, name: 'ring of might', hp: 123, ma: 5000, con: 3, rent: 1700,
+      slot: 'feet',
+      item: {
+        slots: ['feet'], id: 1023, name: 'ring of might', hp: 123, ma: 5000, con: 3, rent: 1700,
+      },
     },
     hands: {
-      slots: ['finger'], id: 1023, name: 'ring of might', hp: 123, ma: 5000, con: 3, rent: 1700,
+      slot: 'hands',
+      item: {
+        slots: ['hands'], id: 1023, name: 'ring of might', hp: 123, ma: 5000, con: 3, rent: 1700,
+      },
     },
     arms: {
-      slots: ['finger'], id: 1023, name: 'ring of might', hp: 123, ma: 5000, con: 3, rent: 1700,
+      slot: 'arms',
+      item: {
+        slots: ['arms'], id: 1023, name: 'ring of might', hp: 123, ma: 5000, con: 3, rent: 1700,
+      },
     },
     waist: {
-      slots: ['finger'], id: 1023, name: 'ring of might', hp: 123, ma: 5000, con: 3, rent: 1700,
+      slot: 'waist',
+      item: {
+        slots: ['waist'], id: 1023, name: 'ring of might', hp: 123, ma: 5000, con: 3, rent: 1700,
+      },
     },
     wrist1: {
-      slots: ['finger'], id: 1023, name: 'ring of might', hp: 123, ma: 5000, con: 3, rent: 1700,
+      slot: 'wrist',
+      item: {
+        slots: ['wrist'], id: 1023, name: 'ring of might', hp: 123, ma: 5000, con: 3, rent: 1700,
+      },
     },
     wrist2: {
-      slots: ['finger'], id: 1023, name: 'ring of might', hp: 123, ma: 5000, con: 3, rent: 1700,
+      slot: 'wrist',
+      item: {
+        slots: ['wrist'], id: 1023, name: 'ring of might', hp: 123, ma: 5000, con: 3, rent: 1700,
+      },
     },
     weapon: {
-      slots: ['finger'], id: 1023, name: 'ring of might', hp: 123, ma: 5000, con: 3, rent: 1700,
+      slot: 'weapon',
+      item: {
+        slots: ['weapon'], id: 1023, name: 'ring of might', hp: 123, ma: 5000, con: 3, rent: 1700,
+      },
     },
     held1: {
-      slots: ['finger'], id: 1023, name: 'ring of might', hp: 123, ma: 5000, con: 3, rent: 1700,
+      slot: 'held',
+      item: {
+        slots: ['held'], id: 1023, name: 'ring of might', hp: 123, ma: 5000, con: 3, rent: 1700,
+      },
     },
     held2: {
-      slots: ['finger'], id: 1023, name: 'ring of might', hp: 123, ma: 5000, con: 3, rent: 1700,
+      slot: 'held',
+      item: {
+        slots: ['held'], id: 1023, name: 'ring of might', hp: 123, ma: 5000, con: 3, rent: 1700,
+      },
     },
     ear1: {
-      slots: ['finger'], id: 1023, name: 'ring of might', hp: 123, ma: 5000, con: 3, rent: 1700,
+      slot: 'ear',
+      item: {
+        slots: ['ear'], id: 1023, name: 'ring of might', hp: 123, ma: 5000, con: 3, rent: 1700,
+      },
     },
     ear2: {
-      slots: ['finger'], id: 1023, name: 'ring of might', hp: 123, ma: 5000, con: 3, rent: 1700,
+      slot: 'ear',
+      item: {
+        slots: ['ear'], id: 1023, name: 'ring of might', hp: 123, ma: 5000, con: 3, rent: 1700,
+      },
     },
     arm: {
-      slots: ['finger'], id: 1023, name: 'ring of might', hp: 123, ma: 5000, con: 3, rent: 1700,
+      slot: 'arm',
+      item: {
+        slots: ['arm'], id: 1023, name: 'ring of might', hp: 123, ma: 5000, con: 3, rent: 1700,
+      },
     },
     amulet: {
-      slots: ['finger'], id: 1023, name: 'ring of might', hp: 123, ma: 5000, con: 3, rent: 1700,
+      slot: 'amulet',
+      item: {
+        slots: ['amulet'], id: 1023, name: 'ring of might', hp: 123, ma: 5000, con: 3, rent: 1700,
+      },
     },
     aux: {
-      slots: ['finger'], id: 1023, name: 'ring of might', hp: 123, ma: 5000, con: 3, rent: 1700,
+      slot: 'aux',
+      item: {
+        slots: ['aux'], id: 1023, name: 'ring of might', hp: 123, ma: 5000, con: 3, rent: 1700,
+      },
     },
   },
   // equipment: [
