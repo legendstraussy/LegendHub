@@ -10,18 +10,16 @@ import { characterState } from 'data/characterState';
 const useStyles = makeStyles(({
   root: {
     '& section': {
-      display: 'flex',
-      flexDirection: 'column',
-      paddingBottom: 15,
+      paddingBottom: 5,
     },
   },
   actions: {
-    padding: 'unset !important',
+    display: 'flex',
+    justifyContent: 'flex-end',
+    padding: '8px 0 !important',
     alignItems: 'flex-end',
-    '& > div': {
-      width: 205,
-      display: 'flex',
-      justifyContent: 'space-between',
+    '& button': {
+      margin: '0 0 0 10px',
     },
   },
 }), { name: 'Mui_Styles_DeleteCharacterModal' });
@@ -47,36 +45,31 @@ const DeleteCharacterForm = props => {
 
   return (
     <form className={classes.root} onSubmit={handleSubmit}>
-      <section>
-        {status && <p>{status}</p>}
-        <p>Are you sure you want to delete this character?</p>
-        <DetailField
-          justifyContent="flex-start"
-          label="name"
-          maxWidth="inherit"
-          value={name}
-        />
-        <DetailField
-          justifyContent="flex-start"
-          label="version"
-          maxWidth="inherit"
-          value={version}
-        />
-      </section>
+      {status && <section>{status}</section>}
+      <section>Are you sure you want to delete this character?</section>
+      <DetailField
+        justifyContent="flex-start"
+        label="name"
+        maxWidth="unset"
+        value={name}
+      />
+      <DetailField
+        justifyContent="flex-start"
+        label="version"
+        maxWidth="unset"
+        value={version}
+      />
       <section className={classes.actions}>
-        <div>
-          <HubButton
-            autoFocus
-            label="confirm"
-            onClick={handleSubmit}
-            submit
-          />
-          <HubButton
-            label="cancel"
-            type="warning"
-            onClick={handleClickClose}
-          />
-        </div>
+        <HubButton
+          label="confirm"
+          onClick={handleSubmit}
+          submit
+        />
+        <HubButton
+          label="cancel"
+          type="warning"
+          onClick={handleClickClose}
+        />
       </section>
     </form>
   );

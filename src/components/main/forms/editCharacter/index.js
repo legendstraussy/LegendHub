@@ -42,7 +42,10 @@ const EditCharacterForm = props => {
   useEffect(() => {
     const ref = isCloning ? nameRef : versionRef;
     ref?.current?.focus();
-  }, [isCloning]);
+    if (!isCloning) {
+      setName(character.name);
+    }
+  }, [isCloning, character.name]);
 
   const handleSubmit = event => {
     event.preventDefault();
