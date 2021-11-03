@@ -10,23 +10,24 @@ const useStyles = makeStyles({
     alignItems: props => props.alignItems ?? 'baseline',
     justifyContent: props => props.justifyContent ?? 'flex-end',
     maxWidth: props => props?.maxWidth ?? '50%',
-    padding: props => props?.padding ?? 'inherit',
+    padding: 8,
   },
 }, { name: 'Mui_Styles_DetailField' });
 
 const DetailField = props => {
-  const { label, value } = props;
+  const { hideColon, label, value } = props;
   const classes = useStyles(props);
 
   return (
     <div className={classes.root}>
-      <DetailFieldLabel label={label} />
+      <DetailFieldLabel label={label} hideColon={hideColon} />
       <DetailFieldValue value={value} />
     </div>
   );
 };
 
 DetailField.propTypes = {
+  hideColon: PropTypes.bool,
   label: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,

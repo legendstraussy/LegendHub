@@ -3,19 +3,19 @@ import { PropTypes } from 'prop-types';
 import { makeStyles } from '@material-ui/core';
 import HubInput from 'components/common/hubInput';
 import HubButton from 'components/common/hubButton';
-import DetailHeader from 'components/common/detail/detailHeader/';
+import DetailField from 'components/common/detail/detailField/';
 import useCharacterManager from 'hooks/useCharacterManager';
 
 const useStyles = makeStyles(({
   root: {
     '& section': {
-      paddingBottom: 15,
+      paddingBottom: 5,
     },
   },
   actions: {
     display: 'flex',
     justifyContent: 'flex-end',
-    padding: 'unset !important',
+    padding: '8px 0 !important',
     alignItems: 'flex-end',
     '& button': {
       margin: '0 0 0 10px',
@@ -54,26 +54,20 @@ const NewCharacterForm = props => {
 
   return (
     <form className={classes.root} onSubmit={handleSubmit}>
-      <section>
-        {status && <p>{status}</p>}
-        <p>Please enter the name of your new character.</p>
-        <section>
-          <DetailHeader title="Name" fontSize="12px" isRequired />
-        </section>
-        <section>
-          <div className={classes.container}>
-            <HubInput ref={nameRef} value={name} onChange={setName} />
-          </div>
-        </section>
-        <section>
-          <DetailHeader title="version" fontSize="12px" isRequired />
-        </section>
-        <section>
-          <div className={classes.container}>
-            <HubInput value={version} onChange={setVersion} />
-          </div>
-        </section>
-      </section>
+      {status && <section>{status}</section>}
+      <section>Please enter the name and version of your new character.</section>
+      <DetailField
+        justifyContent="flex-start"
+        label="name"
+        maxWidth="unset"
+        value={<HubInput ref={nameRef} value={name} onChange={setName} />}
+      />
+      <DetailField
+        justifyContent="flex-start"
+        label="version"
+        maxWidth="unset"
+        value={<HubInput value={version} onChange={setVersion} />}
+      />
       <section className={classes.actions}>
         <HubButton
           label="save"

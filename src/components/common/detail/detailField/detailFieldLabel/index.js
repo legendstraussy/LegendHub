@@ -11,13 +11,13 @@ const useStyles = makeStyles({
 }, { name: 'Mui_Styles_DetailFieldLabel' });
 
 const DetailFieldLabel = props => {
-  const { label } = props;
+  const { label, hideColon = false } = props;
   const classes = useStyles();
 
   return (
     <div className={classes.root}>
       {label}
-      :
+      {!hideColon && <span>:</span>}
     </div>
   );
 };
@@ -28,6 +28,7 @@ DetailFieldLabel.propTypes = {
     PropTypes.string,
     PropTypes.node,
   ]),
+  hideColon: PropTypes.bool,
 };
 
 export default DetailFieldLabel;
