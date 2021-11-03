@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/styles';
 
 const useStyles = makeStyles({
   root: {
-    minWidth: '25%',
+    minWidth: '30%',
     fontSize: '12px',
     fontWeight: 600,
     textTransform: 'uppercase',
@@ -11,19 +11,24 @@ const useStyles = makeStyles({
 }, { name: 'Mui_Styles_DetailFieldLabel' });
 
 const DetailFieldLabel = props => {
-  const { label } = props;
+  const { label, hideColon = false } = props;
   const classes = useStyles();
 
   return (
     <div className={classes.root}>
       {label}
-      :
+      {!hideColon && <span>:</span>}
     </div>
   );
 };
 
 DetailFieldLabel.propTypes = {
-  label: PropTypes.string,
+  label: PropTypes.oneOfType([
+    PropTypes.number,
+    PropTypes.string,
+    PropTypes.node,
+  ]),
+  hideColon: PropTypes.bool,
 };
 
 export default DetailFieldLabel;

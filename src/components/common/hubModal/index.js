@@ -1,18 +1,25 @@
 import { PropTypes } from 'prop-types';
 import {
   Dialog,
-  DialogActions,
   DialogContent,
   DialogTitle,
+  makeStyles,
 } from '@material-ui/core';
+
+const useStyles = makeStyles(() => ({
+  root: {
+    width: props => props.width ?? '400px',
+  },
+}));
 
 const HubModal = props => {
   const {
-    dialog,
+    children,
     handleClose,
     show = false,
     title,
   } = props;
+  const classes = useStyles();
 
   const handleClickClose = () => {
     handleClose();
@@ -24,6 +31,7 @@ const HubModal = props => {
       onClose={handleClickClose}
       aria-labelledby="alert-dialog-title"
       aria-describedby="alert-dialog-description"
+      classes={{ paper: classes.root }}
     >
       {title
         && (
@@ -32,21 +40,14 @@ const HubModal = props => {
         </DialogTitle>
         )}
       <DialogContent>
-        {dialog}
+        {children}
       </DialogContent>
-      <DialogActions>
-        {props.children}
-      </DialogActions>
     </Dialog>
   );
 };
 
 HubModal.propTypes = {
   children: PropTypes.node,
-  dialog: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.element,
-  ]),
   handleClose: PropTypes.func,
   show: PropTypes.bool,
   title: PropTypes.oneOfType([

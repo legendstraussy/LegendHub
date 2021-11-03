@@ -1,4 +1,6 @@
+import { useEffect } from 'react';
 import { PropTypes } from 'prop-types';
+import useCharacterManager from 'hooks/useCharacterManager';
 import { makeStyles } from '@material-ui/styles';
 
 const useStyles = makeStyles({
@@ -11,7 +13,7 @@ const useStyles = makeStyles({
     color: '#fff',
     overflow: 'hidden',
   },
-  left: {
+  main: {
     maxWidth: '80%',
     margin: '.2em .35em .2em .2em',
     display: 'flex',
@@ -19,7 +21,7 @@ const useStyles = makeStyles({
     flex: 1,
     overflow: 'hidden',
   },
-  right: {
+  side: {
     maxWidth: '20%',
     minWidth: '300px',
     display: 'flex',
@@ -27,33 +29,23 @@ const useStyles = makeStyles({
     margin: '.2em .2em .2em .35em',
     overflow: 'hidden',
   },
-  main: {
-    display: 'flex',
-    flex: 1,
-    flexDirection: 'column',
-    margin: '0 0 0 0',
-    overflow: 'hidden',
-  },
-  marquee: {
-    display: 'flex',
-  },
 }, { name: 'Mui_Styles_Builder' });
 
 const Builder = props => {
-  const { main, marquee, side } = props;
+  const { children, side } = props;
+  const { read: readCharacters } = useCharacterManager();
   const classes = useStyles();
+
+  useEffect(() => {
+    readCharacters();
+  }, [readCharacters]);
 
   return (
     <div className={classes.root}>
-      <div className={classes.left}>
-        <div className={classes.marquee}>
-          {marquee}
-        </div>
-        <div className={classes.main}>
-          {main}
-        </div>
+      <div className={classes.main}>
+        {children}
       </div>
-      <div className={classes.right}>
+      <div className={classes.side}>
         {side}
       </div>
     </div>
@@ -61,8 +53,7 @@ const Builder = props => {
 };
 
 Builder.propTypes = {
-  main: PropTypes.node,
-  marquee: PropTypes.node,
+  children: PropTypes.node,
   side: PropTypes.node,
 };
 

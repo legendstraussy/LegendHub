@@ -2,7 +2,11 @@ import { useState } from 'react';
 import HubButton from 'components/common/hubButton';
 import HubVersion from 'components/main/hubVersion';
 import NewCharacterModal from 'components/main/modals/newCharacterModal';
+import DeleteCharacterModal from 'components/main/modals/deleteCharacterModal';
+import EditCharacterModal from 'components/main/modals/editCharacterModal';
 import { makeStyles } from '@material-ui/styles';
+import { useRecoilValue } from 'recoil';
+import { characterState } from 'data/characterState';
 
 const useStyles = makeStyles({
   root: {
@@ -18,33 +22,41 @@ const useStyles = makeStyles({
 }, { name: 'Mui_Styles_Toolbar' });
 
 const Toolbar = () => {
-  const [modal, setModal] = useState('');
+  const [modal, setModal] = useState(null);
+  const character = useRecoilValue(characterState);
   const classes = useStyles();
 
+  const handleModalCheck = key => modal === key;
+
   const handleClearModal = () => {
-    setModal('');
+    setModal(null);
   };
 
   return (
     <div className={classes.root}>
       <div className={classes.buttonLayout}>
-        <HubButton label="New" type="primary" onClick={() => setModal('new')} />
-        <NewCharacterModal open={modal === 'new'} handleCloseCallback={handleClearModal} />
+        <HubButton label="new" type="primary" onClick={() => setModal('new')} />
+        <NewCharacterModal open={handleModalCheck('new')} handleCloseCallback={handleClearModal} />
       </div>
       <div className={classes.buttonLayout}>
-        <HubButton label="Undo" type="default" onClick={() => {}} />
+        <HubButton disabled={!character} label="edit" type="default" onClick={() => setModal('edit')} />
+        <EditCharacterModal open={handleModalCheck('edit')} handleCloseCallback={handleClearModal} />
       </div>
       <div className={classes.buttonLayout}>
-        <HubButton label="Import" type="default" onClick={() => {}} />
+        <HubButton disabled label="undo" type="default" onClick={() => {}} />
       </div>
       <div className={classes.buttonLayout}>
-        <HubButton label="Export" type="default" onClick={() => {}} />
+        <HubButton disabled label="import" type="default" onClick={() => {}} />
       </div>
       <div className={classes.buttonLayout}>
-        <HubButton label="Clear" type="default" onClick={() => {}} />
+        <HubButton disabled label="export" type="default" onClick={() => {}} />
       </div>
       <div className={classes.buttonLayout}>
-        <HubButton label="Delete" type="warning" onClick={() => {}} />
+        <HubButton disabled label="clear" type="default" onClick={() => {}} />
+      </div>
+      <div className={classes.buttonLayout}>
+        <HubButton disabled={!character} label="delete" type="warning" onClick={() => setModal('delete')} />
+        <DeleteCharacterModal open={handleModalCheck('delete')} handleCloseCallback={handleClearModal} />
       </div>
       <HubVersion />
     </div>

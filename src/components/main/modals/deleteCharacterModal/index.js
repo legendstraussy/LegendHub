@@ -1,24 +1,25 @@
 import { PropTypes } from 'prop-types';
 import HubModal from 'components/common/hubModal';
-import NewCharacterForm from 'components/main/forms/newCharacter';
+import DeleteCharacterForm from 'components/main/forms/deleteCharacter';
 
-const NewCharacterModal = props => {
+const DeleteCharacterModal = props => {
   const { open, handleCloseCallback } = props;
 
   return (
     <HubModal
       handleClose={handleCloseCallback}
+      maxWidth="325px"
       show={open}
-      title="new character"
+      title="delete character"
     >
-      <NewCharacterForm handleClickClose={handleCloseCallback} />
+      <DeleteCharacterForm handleClickClose={handleCloseCallback} />
     </HubModal>
   );
 };
 
-NewCharacterModal.propTypes = {
+DeleteCharacterModal.propTypes = {
   handleCloseCallback: PropTypes.func,
   open: PropTypes.bool,
 };
 
-export default NewCharacterModal;
+export default DeleteCharacterModal;

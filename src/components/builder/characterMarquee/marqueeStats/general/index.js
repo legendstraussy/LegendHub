@@ -1,4 +1,5 @@
-import { PropTypes } from 'prop-types';
+import { useRecoilValue } from 'recoil';
+import { characterStatsState } from 'data/characterState';
 import { makeStyles } from '@material-ui/styles';
 
 const useStyles = makeStyles({
@@ -25,14 +26,8 @@ const useStyles = makeStyles({
   },
 }, { name: 'Mui_Styles_GenericStats' });
 
-const GenericStats = props => {
-  const {
-    stats: {
-      ac,
-      align,
-      rent,
-    },
-  } = props;
+const GenericStats = () => {
+  const { ac, align, rent } = useRecoilValue(characterStatsState);
   const classes = useStyles();
 
   return (
@@ -42,14 +37,6 @@ const GenericStats = props => {
       <span className={`${classes.stat} ${classes.rent}`}>{rent}</span>
     </div>
   );
-};
-
-GenericStats.propTypes = {
-  stats: PropTypes.shape({
-    ac: PropTypes.number,
-    align: PropTypes.string,
-    rent: PropTypes.number,
-  }).isRequired,
 };
 
 export default GenericStats;

@@ -26,10 +26,12 @@ const theme = createTheme({
         '& .MuiDialog-paper': {
           background: '#222',
           maxWidth: 450,
+          margin: 0,
+          padding: 15,
         },
         '& .MuiDialogTitle-root': {
           color: '#FFD874',
-          padding: 15,
+          padding: '0 0 10px 0 !important',
           fontFamily: 'Open Sans',
           fontSize: 18,
           fontWeight: 600,
@@ -37,13 +39,13 @@ const theme = createTheme({
         },
         '& .MuiDialogContent-root': {
           color: '#fff',
-          padding: 15,
+          padding: 'unset !important',
           fontFamily: 'Open Sans',
           fontSize: 14,
           fontWeight: 100,
         },
         '& .MuiDialogActions-root': {
-          padding: 15,
+          padding: 'unset !important',
         },
       },
     },
@@ -57,11 +59,11 @@ const theme = createTheme({
           '& .MuiTableCell-body': {
             color: '#fff',
             whiteSpace: 'nowrap',
-            borderRight: '1px solid rgba(64, 51, 51, .75)',
+            outline: '.5px solid rgba(64, 51, 51, .75)',
           },
         },
         '& .MuiTableCell-root': {
-          fontFamily: 'inherit',
+          fontFamily: 'Roboto',
           padding: 0,
           border: 'unset',
         },

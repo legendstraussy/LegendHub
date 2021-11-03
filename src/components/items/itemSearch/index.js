@@ -9,7 +9,7 @@ import {
   weaponStats,
   weaponTypes,
 } from 'data/constants';
-import getKeyArrayFromObject from 'utils/utilFns';
+import { getKeyArrayFromObject } from 'utils/utilFns';
 import theme from 'utils/theme';
 
 const filterOptions = getKeyArrayFromObject(itemFilters)
@@ -93,6 +93,9 @@ const ItemSearch = () => {
       </section>
       <section>
         <HubSelect
+          background="#222"
+          border="1px solid rgba(105, 85, 85, .75)"
+          borderRadius="5px"
           defaultText="Any slot"
           onChange={setSlot}
           options={slotOptions}
@@ -108,6 +111,9 @@ const ItemSearch = () => {
           </section>
           <section>
             <HubSelect
+              background="#222"
+              border="1px solid rgba(105, 85, 85, .75)"
+              borderRadius="5px"
               defaultText="Any weapon type"
               onChange={setWeaponType}
               options={weaponTypeOptions}
@@ -121,6 +127,9 @@ const ItemSearch = () => {
           </section>
           <section>
             <HubSelect
+              background="#222"
+              border="1px solid rgba(105, 85, 85, .75)"
+              borderRadius="5px"
               defaultText="Any weapon stat"
               onChange={setWeaponStat}
               options={weaponStatOptions}
@@ -136,6 +145,9 @@ const ItemSearch = () => {
       </section>
       <section>
         <HubSelect
+          background="#222"
+          border="1px solid rgba(105, 85, 85, .75)"
+          borderRadius="5px"
           defaultText="Select a filter"
           onChange={handleAddFilter}
           options={filterOptions}

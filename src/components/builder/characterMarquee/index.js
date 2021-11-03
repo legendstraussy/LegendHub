@@ -10,21 +10,6 @@ import RangeStats from 'components/builder/characterMarquee/marqueeStats/range';
 import RegenStats from 'components/builder/characterMarquee/marqueeStats/regen';
 import { makeStyles } from '@material-ui/styles';
 
-const baseStats = {
-  con: 72,
-  dex: 60,
-  min: 113,
-  per: 40,
-  spi: 43,
-  str: 19,
-};
-
-const genericStats = {
-  ac: -127,
-  align: 'GNE',
-  rent: 53273,
-};
-
 const meleeStats = {
   hitroll: -22,
   damroll: -32,
@@ -79,8 +64,8 @@ const CharacterMarquee = () => {
       <CharacterSelect />
       <Divider orientation="vertical" className={classes.divider} />
       <HeathStats />
-      <BaseStats stats={baseStats} />
-      <GenericStats stats={genericStats} />
+      <BaseStats />
+      <GenericStats />
       <MeleeStats stats={meleeStats} />
       <ParryStat stats={parryStat} />
       <RangeStats stats={rangeStats} />
