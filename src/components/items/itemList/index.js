@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import HubTable from 'components/common/hubTable';
 
 const ItemList = () => {
@@ -73,9 +73,17 @@ const ItemList = () => {
       id: 'maRegen', label: 'mar', rightEnd: true, type: 'icon', iconPath: '/maRegen.png', width: 40,
     },
   ]);
+  const scrollRef = useRef(null);
+
+  useEffect(() => {
+    // eslint-disable-next-line no-undef
+    scrollRef.current = document.querySelector('.Mui_Styles_Builder-marquee');
+  }, []);
 
   return (
-    <HubTable headers={headers} />
+    <HubTable
+      headers={headers}
+    />
   );
 };
 

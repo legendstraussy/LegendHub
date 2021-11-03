@@ -12,6 +12,33 @@ const character = {
   align: 'GNE',
   rent: 0,
   equipment: {
+<<<<<<< HEAD
+=======
+    light: { slot: 'light', item: {} },
+    finger1: { slot: 'finger', item: {} },
+    finger2: { slot: 'finger', item: {} },
+    neck1: { slot: 'neck', item: {} },
+    neck2: { slot: 'neck', item: {} },
+    body: { slot: 'body', item: {} },
+    head: { slot: 'head', item: {} },
+    face: { slot: 'face', item: {} },
+    legs: { slot: 'legs', item: {} },
+    feet: { slot: 'feet', item: {} },
+    hands: { slot: 'hands', item: {} },
+    arms: { slot: 'arms', item: {} },
+    about: { slot: 'about', item: {} },
+    waist: { slot: 'waist', item: {} },
+    wrist1: { slot: 'wrist', item: {} },
+    wrist2: { slot: 'wrist', item: {} },
+    weapon: { slot: 'weapon', item: {} },
+    held: { slot: 'held', item: {} },
+    held2: { slot: 'held', item: {} },
+    ear1: { slot: 'ear', item: {} },
+    ear2: { slot: 'ear', item: {} },
+    arm: { slot: 'arm', item: {} },
+    amulet: { slot: 'amulet', item: {} },
+    aux: { slot: 'aux', item: {} },
+>>>>>>> 7c9885a2546f3028b29b00d6c2954d49f91479b1
   },
   baseStats: {
     str: 0,

@@ -59,11 +59,11 @@ const theme = createTheme({
           '& .MuiTableCell-body': {
             color: '#fff',
             whiteSpace: 'nowrap',
-            borderRight: '1px solid rgba(64, 51, 51, .75)',
+            outline: '.5px solid rgba(64, 51, 51, .75)',
           },
         },
         '& .MuiTableCell-root': {
-          fontFamily: 'inherit',
+          fontFamily: 'Roboto',
           padding: 0,
           border: 'unset',
         },

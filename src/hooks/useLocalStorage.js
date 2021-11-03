@@ -3,18 +3,23 @@
 const useLocalStorage = () => {
   const getValue = key => {
     try {
+      /* eslint-disable no-undef */
       const item = window.localStorage.getItem(key);
       return JSON.parse(item);
     } catch (error) {
-      throw new Error(error);
+      return false;
     }
   };
 
   const setValue = (key, value) => {
     try {
-      const item = window.localStorage.getItem(key);
-      const valueToStore = value instanceof Function ? value(item) : value;
-      window.localStorage.setItem(key, JSON.stringify(valueToStore));
+      if (!value) {
+        window.localStorage.removeItem(key);
+      } else {
+        const item = window.localStorage.getItem(key);
+        const valueToStore = value instanceof Function ? value(item) : value;
+        window.localStorage.setItem(key, JSON.stringify(valueToStore));
+      }
     } catch (error) {
       throw new Error(error);
     }

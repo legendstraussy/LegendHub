@@ -3,7 +3,14 @@ import {
   Dialog,
   DialogContent,
   DialogTitle,
+  makeStyles,
 } from '@material-ui/core';
+
+const useStyles = makeStyles(() => ({
+  root: {
+    width: props => props.width ?? '400px',
+  },
+}));
 
 const HubModal = props => {
   const {
@@ -12,6 +19,7 @@ const HubModal = props => {
     show = false,
     title,
   } = props;
+  const classes = useStyles();
 
   const handleClickClose = () => {
     handleClose();
@@ -23,6 +31,7 @@ const HubModal = props => {
       onClose={handleClickClose}
       aria-labelledby="alert-dialog-title"
       aria-describedby="alert-dialog-description"
+      classes={{ paper: classes.root }}
     >
       {title
         && (

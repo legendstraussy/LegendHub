@@ -5,20 +5,15 @@ import { makeStyles } from '@material-ui/styles';
 const useStyles = makeStyles({
   root: {
     color: '#fff',
-    width: '100%',
-    height: 35,
+    width: props => props.width ?? '100%',
+    paddingLeft: '10px',
+    maxWidth: '200px',
     fontFamily: 'inherit',
     fontSize: '14px',
-    minWidth: '100px',
-    background: '#222222',
-    border: '1px solid rgba(105, 85, 85, .75)',
-    borderRadius: '5px',
-    padding: '0 10px',
+    background: props => props?.background ?? 'unset',
+    border: props => props?.border ?? 'unset',
+    borderRadius: props => props?.borderRadius ?? 'unset',
     '& .MuiSelect-select': {
-      position: 'relative',
-      left: '-10px',
-      paddingLeft: '10px',
-      marginRight: '-20px',
       cursor: 'default',
     },
     '&:before, &:after': {
@@ -36,15 +31,18 @@ const HubSelect = props => {
     defaultText,
     options,
     onChange,
-    value = props?.value ?? defaultText,
+    value = props.value,
+    name,
   } = props;
-  const classes = useStyles();
+  const classes = useStyles(props);
 
   return (
     <Select
       className={classes.root}
       style={{ cursor: 'default' }}
       value={value}
+      renderValue={value => name ?? value}
+      name={name}
       onChange={event => onChange(event.target.value)}
       MenuProps={{
         anchorOrigin: {
@@ -58,19 +56,23 @@ const HubSelect = props => {
         getContentAnchorEl: null,
       }}
     >
-      <MenuItem key="none" value={defaultText} style={{ fontStyle: 'italic' }}>{defaultText}</MenuItem>
+      {defaultText && (
+        <MenuItem key="none" value={defaultText} style={{ fontStyle: 'italic' }}>{defaultText}</MenuItem>
+      )}
       {options?.map(option => (
-        <MenuItem key={option?.value} value={option?.value}>{option?.name}</MenuItem>
+        <MenuItem key={option?.value} value={option?.value}>{option?.label || option?.name}</MenuItem>
       ))}
     </Select>
   );
 };
 
 HubSelect.propTypes = {
-  defaultText: PropTypes.string.isRequired,
+  defaultText: PropTypes.string,
+  name: PropTypes.string,
   onChange: PropTypes.func.isRequired,
   options: PropTypes.arrayOf(
     PropTypes.shape({
+      label: PropTypes.shape({}),
       name: PropTypes.string,
       value: PropTypes.string,
     }),

@@ -3,8 +3,11 @@ import { makeStyles } from '@material-ui/styles';
 
 const useStyles = makeStyles({
   root: {
+    display: 'flex',
+    justifyContent: 'inherit',
     fontSize: '14px',
     fontWeight: '100',
+    flex: 1,
   },
 }, { name: 'Mui_Styles_DetailFieldValue' });
 
@@ -21,6 +24,7 @@ DetailFieldValue.propTypes = {
   value: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
+    PropTypes.node,
   ]),
 };
 

@@ -1,31 +1,9 @@
-import { useEffect, useState } from 'react';
-import { MenuItem, Select } from '@material-ui/core';
+import HubSelect from 'components/common/hubSelect';
 import { makeStyles } from '@material-ui/styles';
+import useCharacterManager from 'hooks/useCharacterManager';
+import { getKeyArrayFromObject } from 'utils/utilFns';
 
-const characters = [
-  // 'Deacon',
-  // 'Galactus',
-  // 'Testeroniopio',
-];
-
-const useStyles = makeStyles(theme => ({
-  root: {
-    color: theme.palette.main.blue,
-    maxWidth: '200px',
-    fontFamily: 'inherit',
-    fontSize: '14px',
-    width: '120px',
-    '& .MuiSelect-select': {
-      cursor: 'default',
-    },
-    '&:before, &:after': {
-      border: 'unset',
-      content: 'unset',
-    },
-    '& .MuiSelect-icon': {
-      color: '#219AFF',
-    },
-  },
+const useStyles = makeStyles({
   empty: {
     color: 'rgba(136, 130, 130, 0.75)',
     maxWidth: '200px',
@@ -34,43 +12,53 @@ const useStyles = makeStyles(theme => ({
     fontStyle: 'italic',
     width: '120px',
   },
-}), { name: 'Mui_Styles_Select' });
+  select: {
+    display: 'flex',
+    flex: 1,
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    minWidth: 200,
+  },
+  version: {
+    fontSize: 10,
+    textTransform: 'uppercase',
+  },
+}, { name: 'Mui_Styles_Select' });
 
 const CharacterSelect = () => {
-  const [character, setCharacter] = useState(characters[0]);
+  const { character = {}, characters = [], saveCharacter } = useCharacterManager();
   const classes = useStyles();
 
-  useEffect(() => {
-    if (character) {
-      // handle loading a new character
+  const handleCharacterSelect = characterId => {
+    const selectedCharacter = characters.find(c => c.id === characterId);
+    if (selectedCharacter) {
+      saveCharacter(selectedCharacter);
     }
-  }, [character]);
+  };
+
+  const characterOptions = getKeyArrayFromObject(characters)
+    .map(c => ({
+      name: c.name,
+      label: (
+        <span className={classes.select}>
+          <span>{c.name}&nbsp;</span>
+          <span className={classes.version}>{c?.version}</span>
+        </span>
+      ),
+      value: c.id,
+    }));
 
   return (
     <>
       {characters?.length > 0
         ? (
-          <Select
-            className={classes.root}
-            style={{ cursor: 'default' }}
-            value={character}
-            onChange={event => setCharacter(event.target.value)}
-            MenuProps={{
-              anchorOrigin: {
-                vertical: 'bottom',
-                horizontal: 'left',
-              },
-              transformOrigin: {
-                vertical: 'top',
-                horizontal: 'left',
-              },
-              getContentAnchorEl: null,
-            }}
-          >
-            {characters?.map(c => (
-              <MenuItem key={c} value={c}>{c}</MenuItem>
-            ))}
-          </Select>
+          <HubSelect
+            onChange={handleCharacterSelect}
+            options={characterOptions}
+            value={character.id}
+            name={character.name}
+            width="135px"
+          />
         )
         : <div className={classes.empty}>No characters</div>}
     </>

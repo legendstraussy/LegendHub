@@ -26,6 +26,7 @@ const Logo = () => {
         width={128}
         height={128}
         layout="fixed"
+        priority
         className={classes.logo}
       />
     </div>

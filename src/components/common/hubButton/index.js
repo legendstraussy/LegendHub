@@ -5,6 +5,7 @@ import { makeStyles } from '@material-ui/styles';
 const useStyles = makeStyles({
   button: {
     height: 35,
+    minWidth: 90,
     color: '#fff',
     padding: '.6em 2em',
     fontFamily: 'Titillium Web',
@@ -21,21 +22,31 @@ const useStyles = makeStyles({
     '&.warning': {
       backgroundColor: '#DE2E2E',
     },
+    '&.Mui-disabled': {
+      backgroundColor: '#171318',
+      color: '#6a6464bd',
+      fontStyle: 'italic',
+    },
   },
 }, { name: 'Mui_Styles_HubButton' });
 
 const HubButton = props => {
   const classes = useStyles();
-  const { label, onClick, type = 'default' } = props;
+  const {
+    autoFocus = false, disabled = false, label, onClick, submit, type = 'default',
+  } = props;
 
   return (
-    <Button onClick={onClick} className={`${classes.button} ${type}`}>{label}</Button>
+    <Button disableFocusRipple autoFocus={autoFocus} disabled={disabled} type={submit ? 'submit' : 'button'} onClick={onClick} className={`${classes.button} ${type}`}>{label}</Button>
   );
 };
 
 HubButton.propTypes = {
+  autoFocus: PropTypes.bool,
+  disabled: PropTypes.bool,
   label: PropTypes.string,
   onClick: PropTypes.func,
+  submit: PropTypes.bool,
   type: PropTypes.string,
 };
 
