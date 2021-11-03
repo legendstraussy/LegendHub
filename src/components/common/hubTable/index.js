@@ -104,13 +104,13 @@ const HubTable = props => {
     data = {},
     footer = true,
     headers = [],
-    options,
+    options = {},
     scrollRef = null,
     updateOptions,
   } = props;
-  const {
-    page, rowsPerPage, order, orderBy,
-  } = options;
+  // const {
+  //   page, rowsPerPage, order, orderBy,
+  // } = options;
   const {
     items = [],
     total = 0,
@@ -140,11 +140,11 @@ const HubTable = props => {
 
   const handleSortChange = header => {
     const { id = '' } = header;
-    if (!orderBy || orderBy !== id) {
+    if (!options?.orderBy || options?.orderBy !== id) {
       updateOptions({ order: 'asc', orderBy: id });
-    } else if (orderBy === id) {
-      if (order) {
-        updateOptions({ order: order === 'desc' ? null : 'desc' });
+    } else if (options?.orderBy === id) {
+      if (options?.order) {
+        updateOptions({ order: options?.order === 'desc' ? null : 'desc' });
       } else {
         updateOptions({ order: 'asc', orderBy: id });
       }
@@ -176,8 +176,8 @@ const HubTable = props => {
                         rightEnd={header?.rightEnd}
                         iconPath={header?.iconPath}
                         label={header?.label}
-                        isSorting={orderBy === header?.id}
-                        order={order}
+                        isSorting={options?.orderBy === header?.id}
+                        order={options?.order}
                         width={header?.width}
                       />
                     )
@@ -235,8 +235,8 @@ const HubTable = props => {
           rowsPerPageOptions={[5, 10, 25]}
           component="div"
           count={total}
-          rowsPerPage={rowsPerPage}
-          page={page}
+          rowsPerPage={options?.rowsPerPage}
+          page={options?.page}
           onPageChange={handleChangePage}
           onRowsPerPageChange={handleChangeRowsPerPage}
         />

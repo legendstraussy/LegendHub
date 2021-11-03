@@ -16,21 +16,20 @@ export const selectedItemState = atom({
   default: null,
 });
 
-export const equipmentStat = selector({
-  key: 'equipmentStat',
+export const equipmentState = selector({
+  key: 'equipmentState',
   default: null,
   get: ({ get }) => {
     const character = get(characterState);
     if (character) {
       const { equipment } = character;
       if (equipment) {
-        const list = Object
-          .entries(equipment)
-          .map(([slot, eq]) => ({
+        return Object
+          .values(equipment)
+          .map((eq) => ({
             ...eq.item,
-            slot,
+            slot: eq.slot,
           }));
-        return list;
       }
     }
     return [];
@@ -43,7 +42,7 @@ export const healthStatsState = selector({
     const selectedCharacter = get(characterState);
     if (selectedCharacter) {
       const { hp, mv, ma } = selectedCharacter;
-      return get(equipmentStat)
+      return get(equipmentState)
         .reduce((stats, item) => ({
           ...stats,
           hp: (item.hp) ? stats.hp + item.hp : stats.hp,
@@ -63,7 +62,7 @@ export const mainStatsState = selector({
       const {
         str, min, dex, con, per, spi,
       } = selectedCharacter?.baseStats;
-      return get(equipmentStat)
+      return get(equipmentState)
         .reduce((stats, item) => ({
           ...stats,
           str: (item.str) ? stats.str + item.str : stats.str,
