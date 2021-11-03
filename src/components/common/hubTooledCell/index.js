@@ -28,7 +28,7 @@ const useStyles = makeStyles(() => ({
 }), { name: 'Mui_Styles_hubTooledCell' });
 
 const HubTooledCell = React.memo(props => {
-  const { label, text = 'empty', tools } = props;
+  const { label, text, tools } = props;
   const classes = useStyles(props);
 
   return (

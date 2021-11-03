@@ -1,5 +1,5 @@
 import { atom, selector } from 'recoil';
-import { character, item } from './constants';
+import { character } from './constants';
 
 export const charactersState = atom({
   key: 'charactersState',
@@ -14,45 +14,6 @@ export const characterState = atom({
 export const selectedItemState = atom({
   key: 'selectedItemState',
   default: null,
-});
-
-export const characterEqState = selector({
-  key: 'characterEqState',
-  get: ({ get }) => {
-    const character = get(characterState);
-    if (character) {
-      return Object
-        .keys(character?.equipment)
-        .reduce((gear, key) => {
-          let newItem = character?.equipment[key]?.item;
-          if (newItem?.id === 1001) {
-            newItem = {
-              ...newItem,
-              name: 'Ring of Strength',
-              rent: 3232,
-              price: 1000,
-              material: 'leather',
-              timer: -1,
-              slots: [{ name: 'light' }, { name: 'held' }],
-              str: 1,
-              min: 2,
-              dex: 3,
-              con: 4,
-              mvRegen: 1,
-            };
-          }
-          return [
-            ...gear,
-            {
-              ...item,
-              ...newItem,
-              slot: character?.equipment[key]?.slot,
-            },
-          ];
-        }, []);
-    }
-    return [];
-  },
 });
 
 export const characterStatsState = selector({

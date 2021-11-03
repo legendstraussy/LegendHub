@@ -9,7 +9,7 @@ import MarqueeTable from 'components/builder/marqueeTable';
 import usePagination from 'hooks/usePagination';
 // import fetchItems from 'data/actions';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
-import { characterEqState, selectedItemState } from 'data/characterState';
+import { characterState, selectedItemState } from 'data/characterState';
 import { makeStyles } from '@material-ui/styles';
 
 const useStyles = makeStyles(() => ({
@@ -26,14 +26,8 @@ const CharacterEquipment = () => {
     options,
     actions,
   } = usePagination({ page: 0, rowsPerPage: 25 });
-  // const {
-  //   page, rowsPerPage, order, orderBy, filters,
-  // } = options;
-  // const { data } = useQuery(['hubTable', page, rowsPerPage, order, orderBy, filters], () => fetchItems({
-  //   page, rowsPerPage, order, orderBy, filters,
-  // }), { keepPreviousData: true, initialData: { items: [], total: 0 } });
   const classes = useStyles();
-  const equipment = useRecoilValue(characterEqState);
+  const character = useRecoilValue(characterState);
   const setTab = useSetRecoilState(selectedItemState);
 
   const handleItemDetailClick = item => {
@@ -135,9 +129,10 @@ const CharacterEquipment = () => {
     <MarqueeTable
       marquee={<CharacterMarquee />}
     >
+      {character && (
       <div className={classes.root}>
         <HubTable
-          data={{ items: equipment, total: equipment.length }}
+          data={{ items: character?.equipment, total: character?.equipment.length }}
           options={options}
           headers={headers}
           footer={false}
@@ -146,6 +141,7 @@ const CharacterEquipment = () => {
         />
         <HubFooter />
       </div>
+      )}
     </MarqueeTable>
   );
 };
