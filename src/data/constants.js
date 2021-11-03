@@ -14,33 +14,106 @@ export const character = {
   ac: 0,
   align: 'GNE',
   rent: 0,
-  equipment: [
-    {
-      slot: 'light', slots: ['light'], id: 1001, name: 'light brite', str: 5, rent: 2300,
+  equipment: {
+    light: {
+      slots: ['light', 'held'], id: 1001, name: 'light brite', hp: 2000, str: 5, rent: 2300,
     },
-    { slot: 'finger', item: null },
-    { slot: 'finger', item: null },
-    { slot: 'neck', item: null },
-    { slot: 'neck', item: null },
-    { slot: 'body', item: null },
-    { slot: 'head', item: null },
-    { slot: 'face', item: null },
-    { slot: 'legs', item: null },
-    { slot: 'feet', item: null },
-    { slot: 'hands', item: null },
-    { slot: 'arms', item: null },
-    { slot: 'waist', item: null },
-    { slot: 'wrist', item: null },
-    { slot: 'wrist', item: null },
-    { slot: 'weapon', item: null },
-    { slot: 'held', item: null },
-    { slot: 'held', item: null },
-    { slot: 'ear', item: null },
-    { slot: 'ear', item: null },
-    { slot: 'arm', item: null },
-    { slot: 'amulet', item: null },
-    { slot: 'aux', item: null },
-  ],
+    finger1: {
+      slots: ['finger'], id: 1023, name: 'ring of might', hp: 123, ma: 5000, con: 3, rent: 1700,
+    },
+    finger2: {
+      slots: ['finger'], id: 1023, name: 'ring of might', hp: 123, ma: 5000, con: 3, rent: 1700,
+    },
+    neck1: {
+      slots: ['finger'], id: 1023, name: 'ring of might', hp: 123, ma: 5000, con: 3, rent: 1700,
+    },
+    neck2: {
+      slots: ['finger'], id: 1023, name: 'ring of might', hp: 123, ma: 5000, con: 3, rent: 1700,
+    },
+    body: {
+      slots: ['finger'], id: 1023, name: 'ring of might', hp: 123, ma: 5000, con: 3, rent: 1700,
+    },
+    head: {
+      slots: ['finger'], id: 1023, name: 'ring of might', hp: 123, ma: 5000, con: 3, rent: 1700,
+    },
+    face: {
+      slots: ['finger'], id: 1023, name: 'ring of might', hp: 123, ma: 5000, con: 3, rent: 1700,
+    },
+    legs: {
+      slots: ['finger'], id: 1023, name: 'ring of might', hp: 123, ma: 5000, con: 3, rent: 1700,
+    },
+    feet: {
+      slots: ['finger'], id: 1023, name: 'ring of might', hp: 123, ma: 5000, con: 3, rent: 1700,
+    },
+    hands: {
+      slots: ['finger'], id: 1023, name: 'ring of might', hp: 123, ma: 5000, con: 3, rent: 1700,
+    },
+    arms: {
+      slots: ['finger'], id: 1023, name: 'ring of might', hp: 123, ma: 5000, con: 3, rent: 1700,
+    },
+    waist: {
+      slots: ['finger'], id: 1023, name: 'ring of might', hp: 123, ma: 5000, con: 3, rent: 1700,
+    },
+    wrist1: {
+      slots: ['finger'], id: 1023, name: 'ring of might', hp: 123, ma: 5000, con: 3, rent: 1700,
+    },
+    wrist2: {
+      slots: ['finger'], id: 1023, name: 'ring of might', hp: 123, ma: 5000, con: 3, rent: 1700,
+    },
+    weapon: {
+      slots: ['finger'], id: 1023, name: 'ring of might', hp: 123, ma: 5000, con: 3, rent: 1700,
+    },
+    held1: {
+      slots: ['finger'], id: 1023, name: 'ring of might', hp: 123, ma: 5000, con: 3, rent: 1700,
+    },
+    held2: {
+      slots: ['finger'], id: 1023, name: 'ring of might', hp: 123, ma: 5000, con: 3, rent: 1700,
+    },
+    ear1: {
+      slots: ['finger'], id: 1023, name: 'ring of might', hp: 123, ma: 5000, con: 3, rent: 1700,
+    },
+    ear2: {
+      slots: ['finger'], id: 1023, name: 'ring of might', hp: 123, ma: 5000, con: 3, rent: 1700,
+    },
+    arm: {
+      slots: ['finger'], id: 1023, name: 'ring of might', hp: 123, ma: 5000, con: 3, rent: 1700,
+    },
+    amulet: {
+      slots: ['finger'], id: 1023, name: 'ring of might', hp: 123, ma: 5000, con: 3, rent: 1700,
+    },
+    aux: {
+      slots: ['finger'], id: 1023, name: 'ring of might', hp: 123, ma: 5000, con: 3, rent: 1700,
+    },
+  },
+  // equipment: [
+  //   {
+  //     slot: 'light', slots: ['light'], id: 1001, name: 'light brite', str: 5, rent: 2300,
+  //   },
+  //   {
+  //     slot: 'finger', slots: ['finger'], id: 1001, name: 'ring of might', con: 5, rent: 1700,
+  //   },
+  //   { slot: 'finger' },
+  //   { slot: 'neck' },
+  //   { slot: 'neck' },
+  //   { slot: 'body' },
+  //   { slot: 'head' },
+  //   { slot: 'face' },
+  //   { slot: 'legs' },
+  //   { slot: 'feet' },
+  //   { slot: 'hands' },
+  //   { slot: 'arms' },
+  //   { slot: 'waist' },
+  //   { slot: 'wrist' },
+  //   { slot: 'wrist' },
+  //   { slot: 'weapon' },
+  //   { slot: 'held' },
+  //   { slot: 'held' },
+  //   { slot: 'ear' },
+  //   { slot: 'ear' },
+  //   { slot: 'arm' },
+  //   { slot: 'amulet' },
+  //   { slot: 'aux' },
+  // ],
   baseStats: {
     str: 0,
     min: 0,

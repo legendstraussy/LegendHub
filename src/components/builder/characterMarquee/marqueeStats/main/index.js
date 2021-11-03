@@ -1,6 +1,6 @@
 import { useRecoilValue } from 'recoil';
 import { makeStyles } from '@material-ui/styles';
-import { characterStatsState } from 'data/characterState';
+import { mainStatsState } from 'data/characterState';
 
 const useStyles = makeStyles({
   root: {
@@ -38,15 +38,8 @@ const useStyles = makeStyles({
 const BaseStats = () => {
   const classes = useStyles();
   const {
-    baseStats: {
-      str,
-      min,
-      dex,
-      con,
-      per,
-      spi,
-    },
-  } = useRecoilValue(characterStatsState);
+    str, min, dex, con, per, spi,
+  } = useRecoilValue(mainStatsState);
 
   return (
     <div className={classes.root}>

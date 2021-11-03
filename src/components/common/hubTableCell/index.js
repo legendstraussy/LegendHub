@@ -12,7 +12,7 @@ const useStyles = makeStyles({
 }, { name: 'Mui_Styles_huTabbleCell' });
 
 const HubTableCell = props => {
-  const { label, text } = props;
+  const { label, text = '' } = props;
   const classes = useStyles(props);
 
   return (

@@ -9,7 +9,7 @@ import MarqueeTable from 'components/builder/marqueeTable';
 import usePagination from 'hooks/usePagination';
 // import fetchItems from 'data/actions';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
-import { characterState, selectedItemState } from 'data/characterState';
+import { equipmentStat, selectedItemState } from 'data/characterState';
 import { makeStyles } from '@material-ui/styles';
 
 const useStyles = makeStyles(() => ({
@@ -27,7 +27,7 @@ const CharacterEquipment = () => {
     actions,
   } = usePagination({ page: 0, rowsPerPage: 25 });
   const classes = useStyles();
-  const character = useRecoilValue(characterState);
+  const equipment = useRecoilValue(equipmentStat);
   const setTab = useSetRecoilState(selectedItemState);
 
   const handleItemDetailClick = item => {
@@ -48,7 +48,7 @@ const CharacterEquipment = () => {
       id: 'name',
       label: 'item',
       type: 'header',
-      width: 265,
+      width: 289,
       align: 'left',
       tools: [
         { IconComponent: Fullscreen, onClick: handleItemDetailClick },
@@ -129,10 +129,10 @@ const CharacterEquipment = () => {
     <MarqueeTable
       marquee={<CharacterMarquee />}
     >
-      {character && (
+      {equipment && (
       <div className={classes.root}>
         <HubTable
-          data={{ items: character?.equipment, total: character?.equipment.length }}
+          data={{ items: equipment, total: equipment.length }}
           options={options}
           headers={headers}
           footer={false}

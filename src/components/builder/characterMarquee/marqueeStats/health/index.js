@@ -1,11 +1,12 @@
 import { useRecoilValue } from 'recoil';
 import { PropTypes } from 'prop-types';
 import { makeStyles } from '@material-ui/styles';
-import { characterStatsState } from 'data/characterState';
+import { healthStatsState } from 'data/characterState';
 import HealthStat from './healthStat/HealthStat';
 
 const useStyles = makeStyles({
   root: {
+    width: 202,
     display: 'flex',
     justifyContent: 'space-evenly',
     fontFamily: 'inherit',
@@ -18,7 +19,7 @@ const useStyles = makeStyles({
 
 const HealthStats = props => {
   const { labelSize } = props;
-  const { hp, mv, ma } = useRecoilValue(characterStatsState);
+  const { hp, mv, ma } = useRecoilValue(healthStatsState);
   const classes = useStyles();
 
   return (

@@ -27,14 +27,14 @@ const useStyles = makeStyles({
 }, { name: 'Mui_Styles_GenericStats' });
 
 const GenericStats = () => {
-  const { ac, align, rent } = useRecoilValue(characterStatsState);
+  // const { ac, align, rent } = useRecoilValue(characterStatsState);
   const classes = useStyles();
 
   return (
     <div className={classes.root}>
-      <span className={`${classes.stat} ${classes.ac}`}>{ac}</span>
-      <span className={`${classes.stat} ${classes.align}`}>{align}</span>
-      <span className={`${classes.stat} ${classes.rent}`}>{rent}</span>
+      <span className={`${classes.stat} ${classes.ac}`}>0</span>
+      <span className={`${classes.stat} ${classes.align}`}>''</span>
+      <span className={`${classes.stat} ${classes.rent}`}>0</span>
     </div>
   );
 };
