@@ -26,11 +26,6 @@ const Toolbar = () => {
   const character = useRecoilValue(characterState);
   const classes = useStyles();
 
-<<<<<<< HEAD
-  console.log('wooooo', modal);
-
-=======
->>>>>>> 7c9885a2546f3028b29b00d6c2954d49f91479b1
   const handleModalCheck = key => modal === key;
 
   const handleClearModal = () => {
@@ -40,17 +35,12 @@ const Toolbar = () => {
   return (
     <div className={classes.root}>
       <div className={classes.buttonLayout}>
-<<<<<<< HEAD
-        <HubButton label="New" type="primary" onClick={() => setModal('new')} />
-        <NewCharacterModal open={handleModalCheck('new')} handleCloseCallback={handleClearModal} />
-=======
         <HubButton label="new" type="primary" onClick={() => setModal('new')} />
         <NewCharacterModal open={handleModalCheck('new')} handleCloseCallback={handleClearModal} />
       </div>
       <div className={classes.buttonLayout}>
         <HubButton disabled={!character} label="edit" type="default" onClick={() => setModal('edit')} />
         <EditCharacterModal open={handleModalCheck('edit')} handleCloseCallback={handleClearModal} />
->>>>>>> 7c9885a2546f3028b29b00d6c2954d49f91479b1
       </div>
       <div className={classes.buttonLayout}>
         <HubButton disabled label="undo" type="default" onClick={() => {}} />
