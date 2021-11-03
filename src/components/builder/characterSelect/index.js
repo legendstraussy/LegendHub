@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import HubSelect from 'components/common/hubSelect';
 import { makeStyles } from '@material-ui/styles';
 import useCharacterManager from 'hooks/useCharacterManager';
@@ -26,8 +27,16 @@ const useStyles = makeStyles({
 }, { name: 'Mui_Styles_Select' });
 
 const CharacterSelect = () => {
-  const { character = {}, characters = [], saveCharacter } = useCharacterManager();
+  const {
+    character = {}, characters = [], read, saveCharacter,
+  } = useCharacterManager();
   const classes = useStyles();
+
+  useEffect(() => {
+    if (characters && !character) {
+      read();
+    }
+  }, [character, characters, read]);
 
   const handleCharacterSelect = characterId => {
     const selectedCharacter = characters.find(c => c.id === characterId);

@@ -1,6 +1,4 @@
-import { useEffect } from 'react';
 import { PropTypes } from 'prop-types';
-import useCharacterManager from 'hooks/useCharacterManager';
 import { makeStyles } from '@material-ui/styles';
 
 const useStyles = makeStyles({
@@ -33,12 +31,7 @@ const useStyles = makeStyles({
 
 const Builder = props => {
   const { children, side } = props;
-  const { read: readCharacters } = useCharacterManager();
   const classes = useStyles();
-
-  useEffect(() => {
-    readCharacters();
-  }, [readCharacters]);
 
   return (
     <div className={classes.root}>
