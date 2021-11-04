@@ -5,7 +5,6 @@ import DeleteOutlineIcon from '@material-ui/icons/DeleteOutline';
 import Fullscreen from '@material-ui/icons/Fullscreen';
 import CharacterMarquee from 'components/builder/characterMarquee';
 import MarqueeTable from 'components/builder/marqueeTable';
-// import usePagination from 'hooks/usePagination';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 import { equipmentState, selectedItemState } from 'data/characterState';
 import { makeStyles } from '@material-ui/styles';
@@ -20,10 +19,6 @@ const useStyles = makeStyles(() => ({
 
 const CharacterEquipment = () => {
   const scrollRef = useRef(null);
-  // const {
-  //   options,
-  //   actions,
-  // } = usePagination({ page: 0, rowsPerPage: 25 });
   const classes = useStyles();
   const equipment = useRecoilValue(equipmentState);
   const setTab = useSetRecoilState(selectedItemState);
@@ -131,11 +126,9 @@ const CharacterEquipment = () => {
         <div className={classes.root}>
           <HubTable
             data={{ items: equipment, total: equipment.length }}
-            // options={options}
             headers={headers}
             footer={false}
             scrollRef={scrollRef}
-            // updateOptions={actions.setOptions}
           />
           <HubFooter />
         </div>

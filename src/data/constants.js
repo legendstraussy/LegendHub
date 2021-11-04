@@ -18,13 +18,31 @@ export const character = {
     light: {
       slot: 'light',
       item: {
-        slots: ['light', 'held'], id: 1001, name: 'light brite', hp: 2000, str: 5, rent: 2300,
+        slots: ['light', 'held'],
+        id: 1001,
+        name: 'light brite',
+        material: 'leather',
+        hp: 2000,
+        str: 6,
+        min: 5,
+        dex: 4,
+        con: 3,
+        per: 2,
+        spi: 1,
+        rent: 2300,
       },
     },
     finger1: {
       slot: 'finger',
       item: {
-        slots: ['finger'], id: 1023, name: 'ring of might', hp: 123, ma: 3, con: 3, rent: 1700,
+        slots: ['finger'],
+        id: 1023,
+        name: 'ring of might',
+        hp: 123,
+        ma: 3,
+        con: 3,
+        per: -2,
+        rent: 1700,
       },
     },
     finger2: {

@@ -43,7 +43,6 @@ const useStyles = makeStyles((theme) => ({
     fontFamily: 'Open Sans',
     fontSize: '10px',
     whiteSpace: 'nowrap',
-    // header columns
     '& .header': {
       color: '#fff',
       padding: '0 10px',

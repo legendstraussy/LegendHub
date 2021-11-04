@@ -1,4 +1,3 @@
-// import { PropTypes } from 'prop-types';
 import DetailField from 'components/common/detail/detailField';
 import DetailHeader from 'components/common/detail/detailHeader';
 import HubChip from 'components/common/hubChip';
@@ -6,33 +5,6 @@ import { makeStyles } from '@material-ui/styles';
 import theme from 'utils/theme';
 import { useRecoilValue } from 'recoil';
 import { selectedItemState } from 'data/characterState';
-
-// const item = {
-//   name: 'ring of strength',
-//   rent: 2500,
-//   material: 'silver',
-//   timer: -1,
-//   weight: 1,
-//   price: 5000,
-//   ac: -5,
-//   align: 'GNE',
-//   slots: [
-//     { name: 'finger' },
-//     { name: 'ear' },
-//   ],
-//   stats: [
-//     { name: 'str', change: 6 },
-//     { name: 'per', change: -1 },
-//     { name: 'spi', change: -2 },
-//     { name: 'damroll', change: 3 },
-//     { name: 'hitroll', change: 2 },
-//   ],
-//   flags: [
-//     { name: 'heroic' },
-//     { name: 'limited' },
-//     { name: 'unique' },
-//   ],
-// };
 
 const useStyles = makeStyles({
   root: {
@@ -60,7 +32,6 @@ const useStyles = makeStyles({
 }, { name: 'Mui_Styles_ItemDetails' });
 
 const ItemDetails = () => {
-  // const { onStatsClick } = props;
   const item = useRecoilValue(selectedItemState);
   const classes = useStyles();
 
@@ -146,9 +117,5 @@ const ItemDetails = () => {
     </div>
   );
 };
-
-// ItemDetails.propTypes = {
-//   onStatsClick: PropTypes.func,
-// };
 
 export default ItemDetails;

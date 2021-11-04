@@ -53,13 +53,4 @@ const BaseStats = () => {
   );
 };
 
-// BaseStats.propTypes = {
-//   con: PropTypes.number,
-//   dex: PropTypes.number,
-//   min: PropTypes.number,
-//   per: PropTypes.number,
-//   spi: PropTypes.number,
-//   str: PropTypes.number,
-// };
-
 export default BaseStats;

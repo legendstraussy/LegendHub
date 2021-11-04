@@ -1,4 +1,3 @@
-// import { PropTypes } from 'prop-types';
 import { makeStyles } from '@material-ui/styles';
 
 const useStyles = makeStyles({
@@ -20,9 +19,6 @@ const HubFooter = () => {
       16/22 slots filled
     </div>
   );
-};
-
-HubFooter.propTypes = {
 };
 
 export default HubFooter;

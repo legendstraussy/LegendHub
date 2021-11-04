@@ -1,5 +1,4 @@
 import { atom, selector } from 'recoil';
-// import { character } from './constants';
 
 export const charactersState = atom({
   key: 'charactersState',
