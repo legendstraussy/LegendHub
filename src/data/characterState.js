@@ -1,4 +1,5 @@
 import { atom, selector } from 'recoil';
+import { configureCalcAlign } from 'utils/utilFns';
 
 export const charactersState = atom({
   key: 'charactersState',
@@ -77,6 +78,26 @@ export const mainStatsState = selector({
     return {
       str: 0, min: 0, dex: 0, con: 0, per: 0, spi: 0,
     };
+  },
+});
+
+export const genericStatsState = selector({
+  key: 'genericStatsState',
+  get: ({ get }) => {
+    const selectedCharacter = get(characterState);
+    if (selectedCharacter) {
+      const { ac, align, rent } = selectedCharacter;
+      const calcAlign = configureCalcAlign(align);
+
+      return get(equipmentState)
+        .reduce((stats, item) => ({
+          ...stats,
+          ac: (item.ac) ? stats.ac + item.ac : stats.ac,
+          align: (item.align) ? calcAlign(item.align) : stats.align,
+          rent: (item.rent) ? stats.rent + item.rent : stats.rent,
+        }), { ac, align, rent });
+    }
+    return { ac: 0, align: 'GNE', rent: 0 };
   },
 });
 

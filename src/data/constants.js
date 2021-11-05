@@ -48,19 +48,19 @@ export const character = {
     finger2: {
       slot: 'finger',
       item: {
-        slots: ['finger'], id: 1023, name: 'ring of might', hp: 123, ma: 3, con: 3, rent: 1700,
+        slots: ['finger'], id: 1023, name: 'ring of might', align: 'GE', hp: 123, ac: -6, ma: 3, con: 3, rent: 1700,
       },
     },
     neck1: {
       slot: 'neck',
       item: {
-        slots: ['neck'], id: 1023, name: 'ring of might', hp: 123, ma: 3, con: 3, rent: 1700,
+        slots: ['neck'], id: 1023, name: 'ring of might', hp: 123, ac: -6, ma: 3, con: 3, rent: 1700,
       },
     },
     neck2: {
       slot: 'neck',
       item: {
-        slots: ['neck'], id: 1023, name: 'ring of might', hp: 123, ma: 3, con: 3, rent: 1700,
+        slots: ['neck'], id: 1023, name: 'ring of might', hp: 123, ac: -8, ma: 3, con: 3, rent: 1700,
       },
     },
     body: {
