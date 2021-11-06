@@ -1,4 +1,5 @@
-import { PropTypes } from 'prop-types';
+import { useRecoilValue } from 'recoil';
+import { spellStatsState } from 'data/characterState';
 import { makeStyles } from '@material-ui/styles';
 
 const useStyles = makeStyles({
@@ -17,35 +18,20 @@ const useStyles = makeStyles({
   },
 }, { name: 'Mui_Styles_SpellStats' });
 
-const SpellStats = props => {
+const SpellStats = () => {
   const {
-    stats: {
-      spellCrit,
-      spellDam,
-      spellRedux,
-      concentration,
-    },
-  } = props;
+    spellDam, spellCrit, spellRedux, concentration,
+  } = useRecoilValue(spellStatsState);
   const classes = useStyles();
 
   return (
     <div className={classes.root}>
-      <span className={classes.stat}>{spellCrit}</span>
       <span className={classes.stat}>{spellDam}</span>
+      <span className={classes.stat}>{spellCrit}</span>
       <span className={classes.stat}>{spellRedux}</span>
       <span className={classes.stat}>{concentration}</span>
     </div>
   );
-};
-
-SpellStats.propTypes = {
-  stats: PropTypes.shape({
-    spellCrit: PropTypes.number,
-    spellDam: PropTypes.number,
-    spellRedux: PropTypes.number,
-    concentration: PropTypes.number,
-    spellFail: PropTypes.number,
-  }).isRequired,
 };
 
 export default SpellStats;

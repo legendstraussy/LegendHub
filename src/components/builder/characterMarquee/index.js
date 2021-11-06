@@ -8,6 +8,7 @@ import ParryStat from 'components/builder/characterMarquee/marqueeStats/parry';
 import SpellStats from 'components/builder/characterMarquee/marqueeStats/spell';
 import RangeStats from 'components/builder/characterMarquee/marqueeStats/range';
 import RegenStats from 'components/builder/characterMarquee/marqueeStats/regen';
+import VitalStats from 'components/builder/characterMarquee/marqueeStats/vitals';
 import { makeStyles } from '@material-ui/styles';
 
 const meleeStats = {
@@ -70,6 +71,7 @@ const CharacterMarquee = () => {
       <ParryStat stats={parryStat} />
       <RangeStats stats={rangeStats} />
       <SpellStats stats={spellStats} />
+      <VitalStats stats={{ hp: 2, mv: 2, ma: 3 }} />
       <RegenStats stats={regenStats} />
     </div>
   );

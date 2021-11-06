@@ -1,4 +1,5 @@
-import { PropTypes } from 'prop-types';
+import { useRecoilValue } from 'recoil';
+import { rangeStatsState } from 'data/characterState';
 import { makeStyles } from '@material-ui/styles';
 
 const useStyles = makeStyles({
@@ -17,12 +18,8 @@ const useStyles = makeStyles({
   },
 }, { name: 'Mui_Styles_RangeStats' });
 
-const RangeStats = props => {
-  const {
-    stats: {
-      accuracy,
-    },
-  } = props;
+const RangeStats = () => {
+  const { accuracy } = useRecoilValue(rangeStatsState);
   const classes = useStyles();
 
   return (
@@ -30,12 +27,6 @@ const RangeStats = props => {
       <span className={classes.stat}>{accuracy}</span>
     </div>
   );
-};
-
-RangeStats.propTypes = {
-  stats: PropTypes.shape({
-    accuracy: PropTypes.number,
-  }).isRequired,
 };
 
 export default RangeStats;

@@ -1,5 +1,5 @@
-// import { useRecoilValue } from 'recoil';
-// import { characterStatsState } from 'data/characterState';
+import { useRecoilValue } from 'recoil';
+import { genericStatsState } from 'data/characterState';
 import { makeStyles } from '@material-ui/styles';
 
 const useStyles = makeStyles({
@@ -27,14 +27,14 @@ const useStyles = makeStyles({
 }, { name: 'Mui_Styles_GenericStats' });
 
 const GenericStats = () => {
-  // const { ac, align, rent } = useRecoilValue(characterStatsState);
+  const { ac, align, rent } = useRecoilValue(genericStatsState);
   const classes = useStyles();
 
   return (
     <div className={classes.root}>
-      <span className={`${classes.stat} ${classes.ac}`}>0</span>
-      <span className={`${classes.stat} ${classes.align}`}>{null}</span>
-      <span className={`${classes.stat} ${classes.rent}`}>0</span>
+      <span className={`${classes.stat} ${classes.ac}`}>{ac}</span>
+      <span className={`${classes.stat} ${classes.align}`}>{align}</span>
+      <span className={`${classes.stat} ${classes.rent}`}>{rent}</span>
     </div>
   );
 };
