@@ -1,4 +1,5 @@
-import { PropTypes } from 'prop-types';
+import { useRecoilValue } from 'recoil';
+import { meleeStatsState } from 'data/characterState';
 import { makeStyles } from '@material-ui/styles';
 
 const useStyles = makeStyles(theme => ({
@@ -17,12 +18,8 @@ const useStyles = makeStyles(theme => ({
   },
 }), { name: 'Mui_Styles_ParryStat' });
 
-const ParryStat = props => {
-  const {
-    stats: {
-      parry,
-    },
-  } = props;
+const ParryStat = () => {
+  const { parry } = useRecoilValue(meleeStatsState);
   const classes = useStyles();
 
   return (
@@ -30,12 +27,6 @@ const ParryStat = props => {
       <span className={classes.stat}>{parry}</span>
     </div>
   );
-};
-
-ParryStat.propTypes = {
-  stats: PropTypes.shape({
-    parry: PropTypes.number,
-  }).isRequired,
 };
 
 export default ParryStat;

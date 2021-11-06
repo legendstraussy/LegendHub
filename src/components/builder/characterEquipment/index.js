@@ -103,6 +103,15 @@ const CharacterEquipment = () => {
       id: 'concentration', label: 'conc', rightEnd: true, type: 'icon', iconPath: '/spell-book.png', width: 40,
     },
     {
+      id: 'hp', label: 'hp', type: 'header', width: 40,
+    },
+    {
+      id: 'mv', label: 'mv', type: 'header', width: 40,
+    },
+    {
+      id: 'ma', label: 'ma', type: 'header', width: 40,
+    },
+    {
       id: 'hpRegen', label: 'hpr', leftEnd: true, type: 'icon', iconPath: '/hpRegen.png', width: 40,
     },
     {

@@ -1,6 +1,6 @@
-import { useRecoilValue } from 'recoil';
-import { regenStatsState } from 'data/characterState';
 import { makeStyles } from '@material-ui/styles';
+import { useRecoilValue } from 'recoil';
+import { healthStatsState } from 'data/characterState';
 
 const useStyles = makeStyles({
   root: {
@@ -26,19 +26,19 @@ const useStyles = makeStyles({
     color: '#A57BF1',
     width: 40,
   },
-}, { name: 'Mui_Styles_RegenStats' });
+}, { name: 'Mui_Styles_VitalStats' });
 
-const RegenStats = () => {
-  const { hpRegen, mvRegen, maRegen } = useRecoilValue(regenStatsState);
+const VitalStats = () => {
+  const { hpRaw, mvRaw, maRaw } = useRecoilValue(healthStatsState);
   const classes = useStyles();
 
   return (
     <div className={classes.root}>
-      <span className={`${classes.stat} ${classes.hp}`}>{hpRegen}</span>
-      <span className={`${classes.stat} ${classes.mv}`}>{mvRegen}</span>
-      <span className={`${classes.stat} ${classes.ma}`}>{maRegen}</span>
+      <span className={`${classes.stat} ${classes.hp}`}>{hpRaw}</span>
+      <span className={`${classes.stat} ${classes.mv}`}>{mvRaw}</span>
+      <span className={`${classes.stat} ${classes.ma}`}>{maRaw}</span>
     </div>
   );
 };
 
-export default RegenStats;
+export default VitalStats;

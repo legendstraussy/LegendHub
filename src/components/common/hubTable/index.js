@@ -139,6 +139,7 @@ const HubTable = props => {
 
   const handleSortChange = header => {
     const { id = '' } = header;
+    if (!updateOptions) return;
     if (!options?.orderBy || options?.orderBy !== id) {
       updateOptions({ order: 'asc', orderBy: id });
     } else if (options?.orderBy === id) {

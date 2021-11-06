@@ -4,14 +4,13 @@ export const isDuplicateCharacter = (existingCharacter, newCharacter) => (existi
     && existingCharacter.version === newCharacter.version);
 
 export const configureCalcAlign = align => {
-  const BAD_ALIGN = '---';
+  const NO_VALID_ALIGN = '---';
   let alignText = align;
   return itemAlign => {
     if (alignText === itemAlign) return alignText;
-    const newAlign = alignText
+    alignText = alignText
       .split('')
-      .reduce((acc, cur) => (itemAlign.includes(cur)) ? acc + cur : acc, '');
-    alignText = newAlign.length ? newAlign : BAD_ALIGN;
+      .reduce((acc, cur) => (itemAlign.includes(cur)) ? acc + cur : acc.length ? acc : NO_VALID_ALIGN, '');
     return alignText;
   };
 };

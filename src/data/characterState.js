@@ -48,9 +48,14 @@ export const healthStatsState = selector({
           hp: (item.hp) ? stats.hp + item.hp : stats.hp,
           mv: (item.mv) ? stats.mv + item.mv : stats.mv,
           ma: (item.ma) ? stats.ma + item.ma : stats.ma,
-        }), { hp, mv, ma });
+          hpRaw: (item.hp) ? stats.hpRaw + item.hp : stats.hpRaw,
+          mvRaw: (item.mv) ? stats.mvRaw + item.mv : stats.mvRaw,
+          maRaw: (item.ma) ? stats.maRaw + item.ma : stats.maRaw,
+        }), {
+          hp, mv, ma, hpRaw: 0, mvRaw: 0, maRaw: 0,
+        });
     }
-    return { hp: 0, mv: 0, ma: 0 };
+    return { hp: 231, mv: 346, ma: 296 };
   },
 });
 
@@ -98,6 +103,90 @@ export const genericStatsState = selector({
         }), { ac, align, rent });
     }
     return { ac: 0, align: 'GNE', rent: 0 };
+  },
+});
+
+export const meleeStatsState = selector({
+  key: 'meleeStatsState',
+  get: ({ get }) => {
+    const selectedCharacter = get(characterState);
+    if (selectedCharacter) {
+      const {
+        hitroll, damroll, mitigation, parry,
+      } = selectedCharacter?.meleeStats;
+      return get(equipmentState)
+        .reduce((stats, item) => ({
+          ...stats,
+          hitroll: (item.hitroll) ? stats.hitroll + item.hitroll : stats.hitroll,
+          damroll: (item.damroll) ? stats.damroll + item.damroll : stats.damroll,
+          mitigation: (item.mitigation) ? stats.mitigation + item.mitigation : stats.mitigation,
+          parry: (item.parry) ? stats.parry + item.parry : stats.parry,
+        }), {
+          hitroll, damroll, mitigation, parry,
+        });
+    }
+    return {
+      hitroll: 0, damroll: 0, mitigation: 0, parry: 0,
+    };
+  },
+});
+
+export const spellStatsState = selector({
+  key: 'spellStatsState',
+  get: ({ get }) => {
+    const selectedCharacter = get(characterState);
+    if (selectedCharacter) {
+      const {
+        spellDam, spellCrit, spellRedux, concentration,
+      } = selectedCharacter?.spellStats;
+      return get(equipmentState)
+        .reduce((stats, item) => ({
+          ...stats,
+          spellDam: (item.spellDam) ? stats.spellDam + item.spellDam : stats.spellDam,
+          spellCrit: (item.spellCrit) ? stats.spellCrit + item.spellCrit : stats.spellCrit,
+          spellRedux: (item.spellRedux) ? stats.spellRedux + item.spellRedux : stats.spellRedux,
+          concentration: (item.concentration) ? stats.concentration + item.concentration : stats.concentration,
+        }), {
+          spellDam, spellCrit, spellRedux, concentration,
+        });
+    }
+    return {
+      spellDam: 0, spellCrit: 0, spellRedux: 0, concentration: 0,
+    };
+  },
+});
+
+export const rangeStatsState = selector({
+  key: 'rangeStatsState',
+  get: ({ get }) => {
+    const selectedCharacter = get(characterState);
+    if (selectedCharacter) {
+      const { accuracy } = selectedCharacter?.rangeStats;
+      return get(equipmentState)
+        .reduce((stats, item) => ({
+          ...stats,
+          accuracy: (item.accuracy) ? stats.accuracy + item.accuracy : stats.accuracy,
+        }), { accuracy });
+    }
+    return { accuracy: 0 };
+  },
+});
+
+export const regenStatsState = selector({
+  key: 'regenStatsState',
+  get: ({ get }) => {
+    const selectedCharacter = get(characterState);
+    if (selectedCharacter) {
+      const { hpRegen, mvRegen, maRegen } = selectedCharacter?.regenStats;
+      return get(equipmentState)
+        .reduce((stats, item) => ({
+          ...stats,
+          hpRegen: (item.hpRegen) ? stats.hpRegen + item.hpRegen : stats.hpRegen,
+          mvRegen: (item.mvRegen) ? stats.mvRegen + item.mvRegen : stats.mvRegen,
+          maRegen: (item.maRegen) ? stats.maRegen + item.maRegen : stats.maRegen,
+        }), { hpRegen, mvRegen, maRegen });
+    }
+    return { hpRegen: 0, mvRegen: 0, maRegen: 0 };
   },
 });
 
