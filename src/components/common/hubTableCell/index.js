@@ -1,7 +1,7 @@
 import { PropTypes } from 'prop-types';
 import { makeStyles } from '@material-ui/styles';
 
-const useStyles = makeStyles(props => ({
+const useStyles = makeStyles({
   root: {
     display: 'flex',
     width: 'inherit',
@@ -9,16 +9,11 @@ const useStyles = makeStyles(props => ({
     padding: props => props.cellPadding ?? 'unset',
     justifyContent: 'center',
     alignItems: 'center',
-    // fontStyle: props => props.fontStyle ?? 'inherit',
-    // textTransform: props => props.textTransform ?? 'capitalize',
   },
-  [props.className]: {
-    ...props.className,
-  },
-}), { name: 'Mui_Styles_huTabbleCell' });
+}, { name: 'Mui_Styles_huTableCell' });
 
 const HubTableCell = props => {
-  const { className = {}, label, text = '' } = props;
+  const { className, label, text = '' } = props;
   const classes = useStyles(props);
 
   return (
@@ -29,6 +24,7 @@ const HubTableCell = props => {
 };
 
 HubTableCell.propTypes = {
+  className: PropTypes.string,
   label: PropTypes.string,
   text: PropTypes.oneOfType([
     PropTypes.string,

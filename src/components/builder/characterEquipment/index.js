@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
   },
   short: {
-    textAlign: 'left',
+    justifyContent: 'left',
   },
   str: {
     color: theme.palette.main.red,

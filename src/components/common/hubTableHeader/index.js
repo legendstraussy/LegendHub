@@ -3,12 +3,13 @@ import { makeStyles } from '@material-ui/styles';
 
 const useStyles = makeStyles({
   root: {
+    display: 'flex',
+    justifyContent: props => props.justifyContent ?? 'center',
     color: '#fff',
     padding: '0 10px',
     fontSize: 10,
     textTransform: 'uppercase',
     userSelect: 'none',
-    justifyContent: props => props.justifyContent ?? 'center',
   },
 }, { name: 'Mui_Styles_hubTableHeader' });
 
