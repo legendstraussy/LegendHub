@@ -11,33 +11,6 @@ import RegenStats from 'components/builder/characterMarquee/marqueeStats/regen';
 import VitalStats from 'components/builder/characterMarquee/marqueeStats/vitals';
 import { makeStyles } from '@material-ui/styles';
 
-const meleeStats = {
-  hitroll: -22,
-  damroll: -32,
-  mitigation: 3,
-};
-
-const rangeStats = {
-  accuracy: 10,
-};
-
-const parryStat = {
-  parry: 3,
-};
-
-const spellStats = {
-  spellCrit: 78,
-  spellDam: 85,
-  spellRedux: 47,
-  concentration: 30,
-};
-
-const regenStats = {
-  hpRegen: 5,
-  mvRegen: 2,
-  maRegen: 30,
-};
-
 const useStyles = makeStyles({
   root: {
     position: 'relative',
@@ -67,12 +40,12 @@ const CharacterMarquee = () => {
       <HeathStats />
       <BaseStats />
       <GenericStats />
-      <MeleeStats stats={meleeStats} />
-      <ParryStat stats={parryStat} />
-      <RangeStats stats={rangeStats} />
-      <SpellStats stats={spellStats} />
-      <VitalStats stats={{ hp: 2, mv: 2, ma: 3 }} />
-      <RegenStats stats={regenStats} />
+      <MeleeStats />
+      <ParryStat />
+      <RangeStats />
+      <SpellStats />
+      <VitalStats />
+      <RegenStats />
     </div>
   );
 };

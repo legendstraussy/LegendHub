@@ -18,6 +18,9 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'column',
   },
+  slot: {
+    justifyContent: 'center',
+  },
   short: {
     justifyContent: 'left',
   },
@@ -61,6 +64,7 @@ const CharacterEquipment = () => {
     {
       id: 'slot',
       customHeader: <HubTableHeader id="slot" label="slot" />,
+      className: classes.slot,
       width: 65,
     },
     {
@@ -307,17 +311,15 @@ const CharacterEquipment = () => {
     <MarqueeTable
       marquee={<CharacterMarquee />}
     >
-      {equipment && (
-        <div className={classes.root}>
-          <HubTable
-            data={{ items: equipment, total: equipment.length }}
-            headers={headers}
-            footer={false}
-            scrollRef={scrollRef}
-          />
-          <HubFooter />
-        </div>
-      )}
+      <div className={classes.root}>
+        <HubTable
+          data={{ items: equipment, total: equipment.length }}
+          headers={headers}
+          footer={false}
+          scrollRef={scrollRef}
+        />
+        <HubFooter />
+      </div>
     </MarqueeTable>
   );
 };

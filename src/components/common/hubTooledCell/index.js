@@ -8,7 +8,6 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     width: 'inherit',
     height: 35,
-    justifyContent: 'center',
     alignItems: 'center',
     '&:hover': {
       '& .Mui_Styles_hubTooledCell-tools': {
