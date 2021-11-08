@@ -60,7 +60,7 @@ const CharacterEquipment = () => {
   const headers = [
     {
       id: 'slot',
-      renderHeader: () => <HubTableHeader id="slot" label="slot" />,
+      customHeader: <HubTableHeader id="slot" label="slot" />,
       width: 65,
     },
     {
@@ -84,7 +84,7 @@ const CharacterEquipment = () => {
       id: 'str',
       className: classes.str,
       width: 40,
-      renderHeader: () => (
+      customHeader: (
         <IconHeader
           leftEnd
           iconPath="/winged-sword.png"
@@ -96,7 +96,7 @@ const CharacterEquipment = () => {
       id: 'min',
       className: classes.min,
       width: 40,
-      renderHeader: () => (
+      customHeader: (
         <IconHeader
           iconPath="/spell-book.png"
           label="min"
@@ -107,7 +107,7 @@ const CharacterEquipment = () => {
       id: 'dex',
       className: classes.dex,
       width: 40,
-      renderHeader: () => (
+      customHeader: (
         <IconHeader
           iconPath="/high-five.png"
           label="dex"
@@ -118,7 +118,7 @@ const CharacterEquipment = () => {
       id: 'con',
       className: classes.con,
       width: 40,
-      renderHeader: () => (
+      customHeader: (
         <IconHeader
           iconPath="/heart-wings.png"
           label="con"
@@ -129,7 +129,7 @@ const CharacterEquipment = () => {
       id: 'per',
       className: classes.per,
       width: 40,
-      renderHeader: () => (
+      customHeader: (
         <IconHeader
           iconPath="/spyglass.png"
           label="per"
@@ -140,7 +140,7 @@ const CharacterEquipment = () => {
       id: 'spi',
       className: classes.spi,
       width: 40,
-      renderHeader: () => (
+      customHeader: (
         <IconHeader
           rightEnd
           iconPath="/vine-leaf.png"
@@ -160,7 +160,7 @@ const CharacterEquipment = () => {
     {
       id: 'damroll',
       width: 40,
-      renderHeader: () => (
+      customHeader: (
         <IconHeader
           leftEnd
           iconPath="/sword-wound.png"
@@ -171,7 +171,7 @@ const CharacterEquipment = () => {
     {
       id: 'hitroll',
       width: 40,
-      renderHeader: () => (
+      customHeader: (
         <IconHeader
           iconPath="/sword-wound.png"
           label="hit"
@@ -181,7 +181,7 @@ const CharacterEquipment = () => {
     {
       id: 'mitigation',
       width: 40,
-      renderHeader: () => (
+      customHeader: (
         <IconHeader
           rightEnd
           iconPath="/sword-wound.png"
@@ -192,7 +192,7 @@ const CharacterEquipment = () => {
     {
       id: 'parry',
       width: 40,
-      renderHeader: () => (
+      customHeader: (
         <IconHeader
           leftEnd
           rightEnd
@@ -204,7 +204,7 @@ const CharacterEquipment = () => {
     {
       id: 'accuracy',
       width: 40,
-      renderHeader: () => (
+      customHeader: (
         <IconHeader
           leftEnd
           rightEnd
@@ -216,7 +216,7 @@ const CharacterEquipment = () => {
     {
       id: 'spellDam',
       width: 40,
-      renderHeader: () => (
+      customHeader: (
         <IconHeader
           leftEnd
           iconPath="/spell-book.png"
@@ -227,7 +227,7 @@ const CharacterEquipment = () => {
     {
       id: 'spellCrit',
       width: 40,
-      renderHeader: () => (
+      customHeader: (
         <IconHeader
           iconPath="/spell-book.png"
           label="crit"
@@ -237,7 +237,7 @@ const CharacterEquipment = () => {
     {
       id: 'spellRedux',
       width: 40,
-      renderHeader: () => (
+      customHeader: (
         <IconHeader
           iconPath="/spell-book.png"
           label="redux"
@@ -247,7 +247,7 @@ const CharacterEquipment = () => {
     {
       id: 'concentration',
       width: 40,
-      renderHeader: () => (
+      customHeader: (
         <IconHeader
           rightEnd
           iconPath="/spell-book.png"
@@ -267,7 +267,7 @@ const CharacterEquipment = () => {
     {
       id: 'hpRegen',
       width: 40,
-      renderHeader: () => (
+      customHeader: (
         <IconHeader
           leftEnd
           iconPath="/hpRegen.png"
@@ -278,7 +278,7 @@ const CharacterEquipment = () => {
     {
       id: 'mvRegen',
       width: 40,
-      renderHeader: () => (
+      customHeader: (
         <IconHeader
           iconPath="/mvRegen.png"
           label="mvr"
@@ -288,7 +288,7 @@ const CharacterEquipment = () => {
     {
       id: 'maRegen',
       width: 40,
-      renderHeader: () => (
+      customHeader: (
         <IconHeader
           rightEnd
           iconPath="/maRegen.png"

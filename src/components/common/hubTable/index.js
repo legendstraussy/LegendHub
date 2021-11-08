@@ -54,7 +54,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }), { name: 'Mui_Styles_HubTable' });
 
-const HubTable = props => {
+const HubTable = React.memo(props => {
   const {
     data = {},
     footer = true,
@@ -120,8 +120,8 @@ const HubTable = props => {
                   }}
                   onClick={() => handleSortChange(header)}
                 >
-                  {header?.renderHeader
-                    ? header.renderHeader(options)
+                  {header?.customHeader
+                    ? header.customHeader
                     : (
                       <HubTableHeader
                         id={header?.id}
@@ -179,7 +179,7 @@ const HubTable = props => {
       )}
     </div>
   );
-};
+});
 
 HubTable.propTypes = {
   data: PropTypes.shape({
