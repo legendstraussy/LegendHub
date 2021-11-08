@@ -6,7 +6,7 @@ const useStyles = makeStyles({
     display: 'flex',
     width: 'inherit',
     height: 35,
-    padding: props => props.cellPadding ?? 'unset',
+    // padding: props => props.cellPadding ?? 'unset',
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -14,7 +14,7 @@ const useStyles = makeStyles({
 
 const HubTableCell = props => {
   const { className, label, text = '' } = props;
-  const classes = useStyles(props);
+  const classes = useStyles();
 
   return (
     <div className={`${classes.root} ${className}`} data-value={label}>

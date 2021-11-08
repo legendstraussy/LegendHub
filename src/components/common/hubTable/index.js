@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import { useRef } from 'react';
 import { PropTypes } from 'prop-types';
 import {
   Table,
@@ -54,7 +54,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }), { name: 'Mui_Styles_HubTable' });
 
-const HubTable = React.memo(props => {
+const HubTable = props => {
   const {
     data = {},
     footer = true,
@@ -179,7 +179,7 @@ const HubTable = React.memo(props => {
       )}
     </div>
   );
-});
+};
 
 HubTable.propTypes = {
   data: PropTypes.shape({

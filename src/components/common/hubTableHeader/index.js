@@ -4,7 +4,7 @@ import { makeStyles } from '@material-ui/styles';
 const useStyles = makeStyles({
   root: {
     display: 'flex',
-    justifyContent: props => props.justifyContent ?? 'center',
+    // justifyContent: props => props.justifyContent ?? 'center',
     color: '#fff',
     padding: '0 10px',
     fontSize: 10,
@@ -15,7 +15,7 @@ const useStyles = makeStyles({
 
 const HubTableHeader = props => {
   const { className, id, label } = props;
-  const classes = useStyles(props);
+  const classes = useStyles();
 
   return (
     <div
