@@ -34,6 +34,10 @@ export const equipmentState = selector({
     }
     return [];
   },
+  cachePolicy_UNSTABLE: {
+    // Only store the most recent set of dependencies and their values
+    eviction: 'most-recent',
+  },
 });
 
 export const healthStatsState = selector({
