@@ -7,6 +7,7 @@ import CharacterMarquee from 'components/builder/characterMarquee';
 import MarqueeTable from 'components/builder/marqueeTable';
 import HubTableHeader from 'components/common/hubTableHeader';
 import HubTooledCell from 'components/common/hubTooledCell';
+import IconHeader from 'components/common/iconHeader';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 import { equipmentState, selectedItemState } from 'data/characterState';
 import { makeStyles } from '@material-ui/styles';
@@ -58,9 +59,8 @@ const CharacterEquipment = () => {
 
   const headers = [
     {
-      hideBorder: true,
       id: 'slot',
-      renderHeader: () => (<HubTableHeader id="slot" label="slot" />),
+      renderHeader: () => <HubTableHeader id="slot" label="slot" />,
       width: 65,
     },
     {
@@ -81,22 +81,72 @@ const CharacterEquipment = () => {
       ),
     },
     {
-      id: 'str', className: classes.str, label: 'str', type: 'icon', leftEnd: true, iconPath: '/winged-sword.png', width: 40,
+      id: 'str',
+      className: classes.str,
+      width: 40,
+      renderHeader: () => (
+        <IconHeader
+          leftEnd
+          iconPath="/winged-sword.png"
+          label="str"
+        />
+      ),
     },
     {
-      id: 'min', className: classes.min, label: 'min', type: 'icon', iconPath: '/spell-book.png', width: 40,
+      id: 'min',
+      className: classes.min,
+      width: 40,
+      renderHeader: () => (
+        <IconHeader
+          iconPath="/spell-book.png"
+          label="min"
+        />
+      ),
     },
     {
-      id: 'dex', className: classes.dex, label: 'dex', type: 'icon', iconPath: '/high-five.png', width: 40,
+      id: 'dex',
+      className: classes.dex,
+      width: 40,
+      renderHeader: () => (
+        <IconHeader
+          iconPath="/high-five.png"
+          label="dex"
+        />
+      ),
     },
     {
-      id: 'con', className: classes.con, label: 'con', type: 'icon', iconPath: '/heart-wings.png', width: 40,
+      id: 'con',
+      className: classes.con,
+      width: 40,
+      renderHeader: () => (
+        <IconHeader
+          iconPath="/heart-wings.png"
+          label="con"
+        />
+      ),
     },
     {
-      id: 'per', className: classes.per, label: 'per', type: 'icon', iconPath: '/spyglass.png', width: 40,
+      id: 'per',
+      className: classes.per,
+      width: 40,
+      renderHeader: () => (
+        <IconHeader
+          iconPath="/spyglass.png"
+          label="per"
+        />
+      ),
     },
     {
-      id: 'spi', className: classes.spi, label: 'spi', rightEnd: true, type: 'icon', iconPath: '/vine-leaf.png', width: 40,
+      id: 'spi',
+      className: classes.spi,
+      width: 40,
+      renderHeader: () => (
+        <IconHeader
+          rightEnd
+          iconPath="/vine-leaf.png"
+          label="min"
+        />
+      ),
     },
     {
       id: 'ac', label: 'ac', width: 35,
@@ -108,31 +158,102 @@ const CharacterEquipment = () => {
       id: 'rent', label: 'rent', width: 50,
     },
     {
-      id: 'damroll', label: 'dam', leftEnd: true, type: 'icon', iconPath: '/sword-wound.png', width: 40,
+      id: 'damroll',
+      width: 40,
+      renderHeader: () => (
+        <IconHeader
+          leftEnd
+          iconPath="/sword-wound.png"
+          label="dam"
+        />
+      ),
     },
     {
-      id: 'hitroll', label: 'hit', type: 'icon', iconPath: '/sword-wound.png', width: 40,
+      id: 'hitroll',
+      width: 40,
+      renderHeader: () => (
+        <IconHeader
+          iconPath="/sword-wound.png"
+          label="hit"
+        />
+      ),
     },
     {
-      id: 'mitigation', label: 'mit', rightEnd: true, type: 'icon', iconPath: '/shield-reflect.png', width: 40,
+      id: 'mitigation',
+      width: 40,
+      renderHeader: () => (
+        <IconHeader
+          rightEnd
+          iconPath="/sword-wound.png"
+          label="mit"
+        />
+      ),
     },
     {
-      id: 'parry', label: 'parry', rightEnd: true, leftEnd: true, type: 'icon', iconPath: '/fencer.png', width: 40,
+      id: 'parry',
+      width: 40,
+      renderHeader: () => (
+        <IconHeader
+          leftEnd
+          rightEnd
+          iconPath="/fencer.png"
+          label="parry"
+        />
+      ),
     },
     {
-      id: 'accuracy', label: 'acc', leftEnd: true, rightEnd: true, type: 'icon', iconPath: '/high-shot.png', width: 40,
+      id: 'accuracy',
+      width: 40,
+      renderHeader: () => (
+        <IconHeader
+          leftEnd
+          rightEnd
+          iconPath="/high-shot.png"
+          label="acc"
+        />
+      ),
     },
     {
-      id: 'spellDam', label: 'dam', leftEnd: true, type: 'icon', iconPath: '/spell-book.png', width: 40,
+      id: 'spellDam',
+      width: 40,
+      renderHeader: () => (
+        <IconHeader
+          leftEnd
+          iconPath="/spell-book.png"
+          label="dam"
+        />
+      ),
     },
     {
-      id: 'spellCrit', label: 'crit', type: 'icon', iconPath: '/spell-book.png', width: 40,
+      id: 'spellCrit',
+      width: 40,
+      renderHeader: () => (
+        <IconHeader
+          iconPath="/spell-book.png"
+          label="crit"
+        />
+      ),
     },
     {
-      id: 'spellRedux', label: 'rdux', type: 'icon', iconPath: '/spell-book.png', width: 40,
+      id: 'spellRedux',
+      width: 40,
+      renderHeader: () => (
+        <IconHeader
+          iconPath="/spell-book.png"
+          label="redux"
+        />
+      ),
     },
     {
-      id: 'concentration', label: 'conc', rightEnd: true, type: 'icon', iconPath: '/spell-book.png', width: 40,
+      id: 'concentration',
+      width: 40,
+      renderHeader: () => (
+        <IconHeader
+          rightEnd
+          iconPath="/spell-book.png"
+          label="conc"
+        />
+      ),
     },
     {
       id: 'hp', label: 'hp', width: 40,
@@ -144,13 +265,36 @@ const CharacterEquipment = () => {
       id: 'ma', label: 'ma', width: 40,
     },
     {
-      id: 'hpRegen', label: 'hpr', leftEnd: true, type: 'icon', iconPath: '/hpRegen.png', width: 40,
+      id: 'hpRegen',
+      width: 40,
+      renderHeader: () => (
+        <IconHeader
+          leftEnd
+          iconPath="/hpRegen.png"
+          label="hpr"
+        />
+      ),
     },
     {
-      id: 'mvRegen', label: 'mvr', type: 'icon', iconPath: '/mvRegen.png', width: 40,
+      id: 'mvRegen',
+      width: 40,
+      renderHeader: () => (
+        <IconHeader
+          iconPath="/mvRegen.png"
+          label="mvr"
+        />
+      ),
     },
     {
-      id: 'maRegen', label: 'mar', rightEnd: true, type: 'icon', iconPath: '/maRegen.png', width: 40,
+      id: 'maRegen',
+      width: 40,
+      renderHeader: () => (
+        <IconHeader
+          rightEnd
+          iconPath="/maRegen.png"
+          label="mar"
+        />
+      ),
     },
   ];
 

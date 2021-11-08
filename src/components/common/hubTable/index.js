@@ -8,7 +8,6 @@ import {
   TablePagination,
   TableRow,
 } from '@material-ui/core';
-import IconHeader from 'components/common/iconHeader';
 import HubTableHeader from 'components/common/hubTableHeader';
 import HubTableCell from 'components/common/hubTableCell';
 import { makeStyles } from '@material-ui/styles';
@@ -118,26 +117,18 @@ const HubTable = props => {
                   key={i}
                   style={{
                     width: header?.width,
-                    textAlign: header?.align ?? 'center',
                   }}
-                  className={header?.type}
                   onClick={() => handleSortChange(header)}
                 >
-                  {header?.type === 'icon'
-                    ? (
-                      <IconHeader
-                        leftEnd={header?.leftEnd}
-                        rightEnd={header?.rightEnd}
-                        iconPath={header?.iconPath}
+                  {header?.renderHeader
+                    ? header.renderHeader(options)
+                    : (
+                      <HubTableHeader
+                        id={header?.id}
                         label={header?.label}
-                        isSorting={options?.orderBy === header?.id}
-                        order={options?.order}
-                        width={header?.width}
+                        className={header?.className}
                       />
-                    )
-                    : header?.renderHeader
-                      ? header.renderHeader()
-                      : <HubTableHeader id={header?.id} label={header?.label} className={header?.className} />}
+                    )}
                 </TableCell>
               ))}
             </TableRow>
@@ -156,7 +147,6 @@ const HubTable = props => {
                     key={j}
                     style={{
                       width: header?.width,
-                      borderRight: header.hideBorder ? 'unset' : '',
                     }}
                   >
                     {header?.renderRow
