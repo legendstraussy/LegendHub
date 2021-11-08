@@ -5,15 +5,38 @@ import DeleteOutlineIcon from '@material-ui/icons/DeleteOutline';
 import Fullscreen from '@material-ui/icons/Fullscreen';
 import CharacterMarquee from 'components/builder/characterMarquee';
 import MarqueeTable from 'components/builder/marqueeTable';
+import HubTableHeader from 'components/common/hubTableHeader';
+import HubTooledCell from 'components/common/hubTooledCell';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 import { equipmentState, selectedItemState } from 'data/characterState';
 import { makeStyles } from '@material-ui/styles';
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     overflow: 'auto',
     display: 'flex',
     flexDirection: 'column',
+  },
+  short: {
+    textAlign: 'left',
+  },
+  str: {
+    color: theme.palette.main.red,
+  },
+  min: {
+    color: theme.palette.main.purple,
+  },
+  dex: {
+    color: theme.palette.main.blue,
+  },
+  con: {
+    color: theme.palette.main.yellow,
+  },
+  per: {
+    color: theme.palette.main.cyan,
+  },
+  spi: {
+    color: theme.palette.main.green,
   },
 }), { name: 'Mui_Styles_CharacterEquipment' });
 
@@ -35,45 +58,54 @@ const CharacterEquipment = () => {
 
   const headers = [
     {
-      id: 'slot', label: 'slot', type: 'header', width: 65, align: 'right', hideBorder: true,
+      hideBorder: true,
+      id: 'slot',
+      renderHeader: () => (<HubTableHeader id="slot" label="slot" />),
+      width: 65,
     },
     {
-      id: 'name',
+      id: 'short',
       label: 'item',
-      type: 'header',
+      className: classes.short,
       width: 289,
-      align: 'left',
-      tools: [
-        { IconComponent: Fullscreen, onClick: handleItemDetailClick },
-        { IconComponent: DeleteOutlineIcon, onClick: handleItemRemoveClick },
-      ],
+      renderRow: row => (
+        <HubTooledCell
+          item={row}
+          label="short"
+          text={row['short']}
+          tools={[
+            { IconComponent: Fullscreen, onClick: handleItemDetailClick },
+            { IconComponent: DeleteOutlineIcon, onClick: handleItemRemoveClick },
+          ]}
+        />
+      ),
     },
     {
-      id: 'str', label: 'str', type: 'icon', leftEnd: true, iconPath: '/winged-sword.png', width: 40,
+      id: 'str', className: classes.str, label: 'str', type: 'icon', leftEnd: true, iconPath: '/winged-sword.png', width: 40,
     },
     {
-      id: 'min', label: 'min', type: 'icon', iconPath: '/spell-book.png', width: 40,
+      id: 'min', className: classes.min, label: 'min', type: 'icon', iconPath: '/spell-book.png', width: 40,
     },
     {
-      id: 'dex', label: 'dex', type: 'icon', iconPath: '/high-five.png', width: 40,
+      id: 'dex', className: classes.dex, label: 'dex', type: 'icon', iconPath: '/high-five.png', width: 40,
     },
     {
-      id: 'con', label: 'con', type: 'icon', iconPath: '/heart-wings.png', width: 40,
+      id: 'con', className: classes.con, label: 'con', type: 'icon', iconPath: '/heart-wings.png', width: 40,
     },
     {
-      id: 'per', label: 'per', type: 'icon', iconPath: '/spyglass.png', width: 40,
+      id: 'per', className: classes.per, label: 'per', type: 'icon', iconPath: '/spyglass.png', width: 40,
     },
     {
-      id: 'spi', label: 'spi', rightEnd: true, type: 'icon', iconPath: '/vine-leaf.png', width: 40,
+      id: 'spi', className: classes.spi, label: 'spi', rightEnd: true, type: 'icon', iconPath: '/vine-leaf.png', width: 40,
     },
     {
-      id: 'ac', label: 'ac', type: 'header', width: 35,
+      id: 'ac', label: 'ac', width: 35,
     },
     {
-      id: 'align', label: 'align', type: 'header', width: 55,
+      id: 'align', label: 'align', width: 55,
     },
     {
-      id: 'rent', label: 'rent', type: 'header', width: 50,
+      id: 'rent', label: 'rent', width: 50,
     },
     {
       id: 'damroll', label: 'dam', leftEnd: true, type: 'icon', iconPath: '/sword-wound.png', width: 40,
@@ -103,13 +135,13 @@ const CharacterEquipment = () => {
       id: 'concentration', label: 'conc', rightEnd: true, type: 'icon', iconPath: '/spell-book.png', width: 40,
     },
     {
-      id: 'hp', label: 'hp', type: 'header', width: 40,
+      id: 'hp', label: 'hp', width: 40,
     },
     {
-      id: 'mv', label: 'mv', type: 'header', width: 40,
+      id: 'mv', label: 'mv', width: 40,
     },
     {
-      id: 'ma', label: 'ma', type: 'header', width: 40,
+      id: 'ma', label: 'ma', width: 40,
     },
     {
       id: 'hpRegen', label: 'hpr', leftEnd: true, type: 'icon', iconPath: '/hpRegen.png', width: 40,

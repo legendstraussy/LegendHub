@@ -3,7 +3,7 @@ import { PropTypes } from 'prop-types';
 import { makeStyles } from '@material-ui/styles';
 import HubItemTools from 'components/common/HubItemTools';
 
-const useStyles = makeStyles(() => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
     width: 'inherit',
@@ -19,6 +19,15 @@ const useStyles = makeStyles(() => ({
       },
     },
   },
+  label: {
+    color: theme.palette.link,
+    padding: '0 10px',
+    justifyContent: 'flex-start',
+    alignItems: 'flex-start',
+    flex: 1,
+    overflow: 'hidden',
+    textOverflow: 'ellipsis',
+  },
   tools: {
     width: 0,
     height: 'inherit',
@@ -33,7 +42,7 @@ const HubTooledCell = React.memo(props => {
 
   return (
     <div className={classes.root}>
-      <div data-value={label}>
+      <div className={classes.label} data-value={label}>
         {text}
       </div>
       <div className={classes.tools}>
@@ -44,6 +53,7 @@ const HubTooledCell = React.memo(props => {
 });
 
 HubTooledCell.propTypes = {
+  className: PropTypes.string,
   label: PropTypes.string,
   text: PropTypes.oneOfType([
     PropTypes.string,

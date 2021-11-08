@@ -3,30 +3,33 @@ import { makeStyles } from '@material-ui/styles';
 
 const useStyles = makeStyles({
   root: {
+    color: '#fff',
+    padding: '0 10px',
+    fontSize: 10,
+    textTransform: 'uppercase',
+    userSelect: 'none',
     justifyContent: props => props.justifyContent ?? 'center',
   },
 }, { name: 'Mui_Styles_hubTableHeader' });
 
 const HubTableHeader = props => {
-  const { header } = props;
+  const { className, id, label } = props;
   const classes = useStyles(props);
 
   return (
     <div
-      className={classes.root}
-      data-value={header.id}
+      className={`${classes.root} ${className}`}
+      data-value={id}
     >
-      {header.label}
+      {label}
     </div>
   );
 };
 
 HubTableHeader.propTypes = {
-  header: PropTypes.shape({
-    align: PropTypes.string,
-    id: PropTypes.string,
-    label: PropTypes.string,
-  }),
+  className: PropTypes.string,
+  id: PropTypes.string,
+  label: PropTypes.string,
 };
 
 export default HubTableHeader;

@@ -11,6 +11,7 @@
   "rules": {
     "no-shadow": "off",
     "no-nested-ternary": "off",
+    "dot-notation": "off",
     "max-len": "off",
     "react/no-array-index-key": "off",
     "react/destructuring-assignment": "off",

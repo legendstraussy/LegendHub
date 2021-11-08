@@ -11,7 +11,6 @@ import {
 import IconHeader from 'components/common/iconHeader';
 import HubTableHeader from 'components/common/hubTableHeader';
 import HubTableCell from 'components/common/hubTableCell';
-import HubTooledCell from 'components/common/hubTooledCell';
 import { makeStyles } from '@material-ui/styles';
 import useScroll from 'hooks/useScroll';
 
@@ -43,48 +42,6 @@ const useStyles = makeStyles((theme) => ({
     fontFamily: 'Open Sans',
     fontSize: '10px',
     whiteSpace: 'nowrap',
-    '& .header': {
-      color: '#fff',
-      padding: '0 10px',
-      fontSize: 10,
-      textTransform: 'uppercase',
-      userSelect: 'none',
-    },
-  },
-  tbody: {
-    '& [data-value=slot], & [data-value=name]': { // TODO: move out to generic classes
-      padding: '0 9px',
-    },
-    '& [data-value=slot]': {
-      fontStyle: 'italic',
-      textTransform: 'capitalize',
-    },
-    '& [data-value=name]': { // TODO: move out to generic classes
-      width: 'inherit !important',
-      color: theme.palette.link,
-      fontWeight: 100,
-      whiteSpace: 'nowrap',
-      overflow: 'hidden',
-      textOverflow: 'ellipsis',
-    },
-    '& [data-value=str]': {
-      color: theme.palette.main.red,
-    },
-    '& [data-value=min]': {
-      color: theme.palette.main.purple,
-    },
-    '& [data-value=dex]': {
-      color: theme.palette.main.blue,
-    },
-    '& [data-value=con]': {
-      color: theme.palette.main.yellow,
-    },
-    '& [data-value=per]': {
-      color: theme.palette.main.cyan,
-    },
-    '& [data-value=spi]': {
-      color: theme.palette.main.green,
-    },
   },
   pagination: {
     position: 'sticky',
@@ -107,9 +64,6 @@ const HubTable = props => {
     scrollRef = null,
     updateOptions,
   } = props;
-  // const {
-  //   page, rowsPerPage, order, orderBy,
-  // } = options;
   const {
     items = [],
     total = 0,
@@ -181,11 +135,9 @@ const HubTable = props => {
                         width={header?.width}
                       />
                     )
-                    : (
-                      <HubTableHeader
-                        header={header}
-                      />
-                    )}
+                    : header?.renderHeader
+                      ? header.renderHeader()
+                      : <HubTableHeader id={header?.id} label={header?.label} className={header?.className} />}
                 </TableCell>
               ))}
             </TableRow>
@@ -207,19 +159,13 @@ const HubTable = props => {
                       borderRight: header.hideBorder ? 'unset' : '',
                     }}
                   >
-                    {header?.tools
-                      ? (
-                        <HubTooledCell
-                          item={item}
-                          label={header.id}
-                          text={item[header.id]}
-                          tools={header.tools}
-                        />
-                      )
+                    {header?.renderRow
+                      ? header.renderRow(item)
                       : (
                         <HubTableCell
                           label={header.id}
                           text={item[header.id]}
+                          className={header.className}
                         />
                       )}
                   </TableCell>
