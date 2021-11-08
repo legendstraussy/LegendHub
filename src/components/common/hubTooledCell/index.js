@@ -31,7 +31,6 @@ const useStyles = makeStyles((theme) => ({
   tools: {
     width: 0,
     height: 'inherit',
-    display: props => props?.item?.id ? 'block' : 'none',
     opacity: 0,
   },
 }), { name: 'Mui_Styles_hubTooledCell' });
