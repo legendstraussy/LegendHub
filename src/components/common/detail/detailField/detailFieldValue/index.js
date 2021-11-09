@@ -5,9 +5,10 @@ const useStyles = makeStyles({
   root: {
     display: 'flex',
     justifyContent: 'inherit',
-    fontSize: '14px',
-    fontWeight: '100',
+    fontSize: 14,
+    fontWeight: 500,
     flex: 1,
+    margin: '0 min(10px)',
   },
 }, { name: 'Mui_Styles_DetailFieldValue' });
 

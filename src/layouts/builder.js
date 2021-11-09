@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/styles';
 
 const useStyles = makeStyles({
   root: {
+    position: 'relative',
     margin: '1.25em .75em .75em .75em',
     padding: '.55em',
     backgroundColor: 'rgba(27, 13, 24, .5)',
@@ -12,6 +13,7 @@ const useStyles = makeStyles({
     overflow: 'hidden',
   },
   main: {
+    position: 'inherit',
     maxWidth: '80%',
     margin: '.2em .35em .2em .2em',
     display: 'flex',

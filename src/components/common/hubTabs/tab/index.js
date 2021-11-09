@@ -14,7 +14,7 @@ const useStyles = makeStyles({
     maxWidth: 'fit-content',
     cursor: 'default',
     textTransform: 'uppercase',
-    fontFamily: 'Open Sans',
+    fontFamily: 'Titillium Web',
     fontSize: '12px',
     fontWeight: 700,
     color: props => props.isActive ? '#fff' : 'rgba(106, 100, 100, 0.75)',

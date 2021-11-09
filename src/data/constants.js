@@ -20,7 +20,10 @@ export const character = {
       item: {
         slots: ['light', 'held'],
         id: 1001,
-        short: 'light brite, and it\'s really outta sight!',
+        ac: -7,
+        timer: -1,
+        short: 'light brite, outta sight!',
+        long: 'It\'s a light brite!',
         material: 'leather',
         str: 6,
         min: 5,
@@ -44,6 +47,8 @@ export const character = {
         mvRegen: 2,
         maRegen: 3,
         rent: 2300,
+        weight: 0.1,
+        price: 54500,
       },
     },
     finger1: {

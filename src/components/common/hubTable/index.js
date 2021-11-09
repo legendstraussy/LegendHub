@@ -33,12 +33,12 @@ const useStyles = makeStyles((theme) => ({
   table: {
     position: 'relative',
     width: 'max-content',
-    fontFamily: 'open sans',
+    fontFamily: 'Titillium Web',
   },
   thead: {
     position: 'sticky',
     top: 0,
-    fontFamily: 'Open Sans',
+    fontFamily: 'Titillium Web',
     fontSize: '10px',
     whiteSpace: 'nowrap',
   },

@@ -73,6 +73,7 @@ const EditCharacterForm = props => {
             <DetailField
               justifyContent="flex-start"
               label="name"
+              padding="8px"
               maxWidth="unset"
               value={<HubInput ref={nameRef} value={name} onChange={setName} />}
             />
@@ -84,6 +85,7 @@ const EditCharacterForm = props => {
             <DetailField
               justifyContent="flex-start"
               label="name"
+              padding="8px"
               maxWidth="unset"
               value={<span style={{ display: 'flex', height: '35px', alignItems: 'center' }}>{name}</span>}
             />
@@ -92,6 +94,7 @@ const EditCharacterForm = props => {
       <DetailField
         justifyContent="flex-start"
         label="version"
+        padding="8px"
         maxWidth="unset"
         value={<HubInput ref={versionRef} value={version} onChange={setVersion} />}
       />
@@ -99,6 +102,7 @@ const EditCharacterForm = props => {
         alignItems="center"
         justifyContent="flex-start"
         label={<span style={{ color: theme.palette.main.yellow }}>is a clone?</span>}
+        padding="8px"
         maxWidth="unset"
         hideColon
         value={<HubCheckbox onChange={setIsCloning} value={isCloning} />}

@@ -59,12 +59,14 @@ const NewCharacterForm = props => {
       <DetailField
         justifyContent="flex-start"
         label="name"
+        padding="8px"
         maxWidth="unset"
         value={<HubInput ref={nameRef} value={name} onChange={setName} />}
       />
       <DetailField
         justifyContent="flex-start"
         label="version"
+        padding="8px"
         maxWidth="unset"
         value={<HubInput value={version} onChange={setVersion} />}
       />

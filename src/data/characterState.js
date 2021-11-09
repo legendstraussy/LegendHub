@@ -16,6 +16,38 @@ export const selectedItemState = atom({
   default: null,
 });
 
+export const itemDetailState = selector({
+  key: 'itemDetailState',
+  default: null,
+  get: ({ get }) => {
+    const item = get(selectedItemState);
+    if (item) {
+      return {
+        id: item.id,
+        short: item.short,
+        long: item.long,
+        ac: item.ac,
+        rent: item.rent,
+        weight: item.weight,
+        material: item.material,
+        price: item.price,
+        timer: item.timer,
+        stats: [
+          { name: 'strength', value: item.str },
+          { name: 'mind', value: item.min },
+          { name: 'dexterity', value: item.dex },
+          { name: 'constitution', value: item.con },
+          { name: 'perception', value: item.per },
+          { name: 'spirit', value: item.spi },
+          { name: 'damroll', value: item.damroll },
+          { name: 'hitroll', value: item.hitroll },
+        ].filter(stat => stat.value),
+      };
+    }
+    return null;
+  },
+});
+
 export const equipmentState = selector({
   key: 'equipmentState',
   default: null,
@@ -33,10 +65,6 @@ export const equipmentState = selector({
       }
     }
     return [];
-  },
-  cachePolicy_UNSTABLE: {
-    // Only store the most recent set of dependencies and their values
-    eviction: 'most-recent',
   },
 });
 

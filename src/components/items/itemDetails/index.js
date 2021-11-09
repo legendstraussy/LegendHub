@@ -1,43 +1,113 @@
 import DetailField from 'components/common/detail/detailField';
 import DetailHeader from 'components/common/detail/detailHeader';
-import HubChip from 'components/common/hubChip';
+// import HubChip from 'components/common/hubChip';
 import { makeStyles } from '@material-ui/styles';
-import theme from 'utils/theme';
+// import theme from 'utils/theme';
 import { useRecoilValue } from 'recoil';
-import { selectedItemState } from 'data/characterState';
+import { itemDetailState } from 'data/characterState';
+import AllInclusiveRounded from '@material-ui/icons/AllInclusiveRounded';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme => ({
   root: {
     display: 'flex',
     flexDirection: 'column',
     flex: 1,
-    '& section': {
-      margin: '0 0 1em 0',
-    },
-    '& header': {
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'space-between',
-    },
   },
   container: {
-    display: 'flex',
-    flex: 1,
-    justifyContent: 'space-between',
+    margin: '0 0 1em 0',
   },
-  chips: {
+  column: {
     display: 'flex',
-    flexWrap: 'wrap',
   },
-}, { name: 'Mui_Styles_ItemDetails' });
+  grid: {
+    display: 'grid',
+    gridTemplateColumns: '1fr 1fr',
+  },
+  // chips: {
+  //   display: 'flex',
+  //   flexWrap: 'wrap',
+  // },
+  gold: {
+    color: theme.palette.main.yellow,
+  },
+  timer: {
+    color: item => item.timer > 0 ? '#fff' : theme.palette.main.yellow,
+    display: 'flex',
+    alignItems: 'center',
+  },
+}), { name: 'Mui_Styles_ItemDetails' });
 
 const ItemDetails = () => {
-  const item = useRecoilValue(selectedItemState);
+  const item = useRecoilValue(itemDetailState);
   const classes = useStyles();
+
+  if (!item) {
+    return (
+      <section className={classes.container}>
+        <DetailHeader title="select an item" />
+        <div className={classes.container} style={{ fontSize: '14px' }}>
+          Select an item from your gear list or from an item search.
+        </div>
+      </section>
+    );
+  }
 
   return (
     <div className={classes.root}>
-      {!item
+      <section className={classes.container}>
+        <DetailHeader title="item name" />
+        <DetailField maxWidth="100%" label="short" value={item?.short} />
+        <DetailField maxWidth="100%" label="long" value={item?.long} />
+      </section>
+      <section className={classes.container}>
+        <DetailHeader title="general" />
+        <section className={classes.column}>
+          <DetailField label="ac" value={item?.ac} />
+          <DetailField label="rent" value={item?.rent} />
+        </section>
+        <section className={classes.column}>
+          <DetailField label="weight" value={<span>{item?.weight} kg</span>} />
+          <DetailField label="material" value={item?.material} />
+        </section>
+        <section className={classes.column}>
+          <DetailField
+            label="price"
+            value={<span>{item?.price} <span className={classes.gold}>gp</span></span>}
+          />
+          <DetailField
+            label="timer"
+            alignItems="center"
+            value={(
+              <span className={classes.timer}>
+                {item?.timer > 0
+                  ? <span>{item?.timer} ticks</span>
+                  : <AllInclusiveRounded fontSize="small" />}
+              </span>
+            )}
+          />
+        </section>
+      </section>
+      <section className={classes.container}>
+        <DetailHeader title="stats" />
+        <section className={classes.grid}>
+          {item.stats.map((stat, i) => (
+            <DetailField maxWidth="unset" key={i} label={stat.name} value={stat.value} />
+          ))}
+        </section>
+        {/* <section className={classes.column}>
+          <DetailField label="str" value={item?.str} />
+          <DetailField label="min" value={item?.min} />
+        </section>
+        <section className={classes.column}>
+          <DetailField label="dex" value={item?.dex} />
+          <DetailField label="con" value={item?.con} />
+        </section>
+        <section className={classes.column}>
+          <DetailField label="per" value={item?.per} />
+          <DetailField label="spi" value={item?.spi} />
+        </section> */}
+      </section>
+      {/* {!item
         ? (
           <>
             <section>
@@ -113,7 +183,7 @@ const ItemDetails = () => {
               </div>
             </section>
           </>
-        )}
+        )} */}
     </div>
   );
 };

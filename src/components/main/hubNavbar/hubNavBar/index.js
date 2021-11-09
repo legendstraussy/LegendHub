@@ -4,6 +4,7 @@ import NavLink from '../hubNavLink';
 
 const useStyles = makeStyles({
   root: {
+    position: 'relative',
     backgroundColor: 'rgba(6, 100, 187, .8)',
     color: '#fff',
     height: '40px',

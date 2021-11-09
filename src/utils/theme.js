@@ -32,7 +32,7 @@ const theme = createTheme({
         '& .MuiDialogTitle-root': {
           color: '#FFD874',
           padding: '0 0 10px 0 !important',
-          fontFamily: 'Open Sans',
+          fontFamily: 'Titillium Web',
           fontSize: 18,
           fontWeight: 600,
           textTransform: 'uppercase',
@@ -40,7 +40,7 @@ const theme = createTheme({
         '& .MuiDialogContent-root': {
           color: '#fff',
           padding: 'unset !important',
-          fontFamily: 'Open Sans',
+          fontFamily: 'Titillium Web',
           fontSize: 14,
           fontWeight: 100,
         },
@@ -63,7 +63,7 @@ const theme = createTheme({
           },
         },
         '& .MuiTableCell-root': {
-          fontFamily: 'Roboto',
+          fontFamily: 'Titillium Web',
           padding: 0,
           border: 'unset',
         },

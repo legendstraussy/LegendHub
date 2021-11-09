@@ -3,9 +3,9 @@ import { makeStyles } from '@material-ui/styles';
 
 const useStyles = makeStyles({
   root: {
-    minWidth: '30%',
-    fontSize: '12px',
-    fontWeight: 600,
+    minWidth: '25%',
+    fontSize: 12,
+    fontWeight: 100,
     textTransform: 'uppercase',
   },
 }, { name: 'Mui_Styles_DetailFieldLabel' });

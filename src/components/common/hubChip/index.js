@@ -8,7 +8,7 @@ const useStyles = makeStyles({
     height: '25px !important',
     color: props => props.color ?? 'rgba(0, 0, 0, .75);',
     background: props => props.bgColor ?? '#444',
-    fontFamily: 'Open Sans',
+    fontFamily: 'Titillium Web',
     fontSize: '12px',
     fontWeight: 600,
     textTransform: 'uppercase',
