@@ -1,8 +1,10 @@
 import { useCallback } from 'react';
 import { useRecoilState, useSetRecoilState } from 'recoil';
-import { characterState, charactersState, selectedItemState } from 'data/characterState';
+import {
+  characterState, charactersState, selectedItemState, selectedTabState,
+} from 'data/characterState';
 import { v4 as uuidv4 } from 'uuid';
-import { character as characterDefault } from 'data/constants';
+import { character as characterDefault, tabKeys } from 'data/constants';
 import { isDuplicateCharacter } from 'utils/utilFns';
 import useLocalStorage from './useLocalStorage';
 
@@ -11,6 +13,7 @@ const useCharacterManager = () => {
   const [characters, setCharacters] = useRecoilState(charactersState);
   const [character, setCharacter] = useRecoilState(characterState);
   const setSelectedItem = useSetRecoilState(selectedItemState);
+  const setActiveTab = useSetRecoilState(selectedTabState);
 
   const saveCharacter = newCharacter => {
     try {
@@ -57,6 +60,7 @@ const useCharacterManager = () => {
     try {
       saveCharacters(updatedCharacters);
       saveCharacter(newCharacter);
+      setActiveTab(tabKeys.CHARACTER);
       return { success: true, message: 'Success: Character created.' };
     } catch (e) {
       return { success: false, message: 'Error: Could not save to local storage.' };
