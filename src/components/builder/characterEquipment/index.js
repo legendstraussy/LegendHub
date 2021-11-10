@@ -151,7 +151,7 @@ const CharacterEquipment = () => {
         <IconHeader
           rightEnd
           iconPath="/vine-leaf.png"
-          label="min"
+          label="spi"
         />
       ),
     },
