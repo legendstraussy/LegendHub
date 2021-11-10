@@ -6,7 +6,7 @@ const useStyles = makeStyles({
   root: {
     width: 45,
     height: 30,
-    fontFamily: 'Open Sans',
+    fontFamily: 'Titillium Web',
     fontSize: '12px',
     border: '1px solid rgba(105, 85, 85, .75)',
     display: 'flex',

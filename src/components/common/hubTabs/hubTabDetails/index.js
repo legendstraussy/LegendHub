@@ -11,9 +11,9 @@ const useStyles = makeStyles({
     overflowX: 'hidden',
     borderRadius: '0 0 5px 5px',
   },
-}, { name: 'Mui_Styles_TabsDetail' });
+}, { name: 'Mui_Styles_HubTabDetails' });
 
-const TabsDetail = props => {
+const HubTabsDetails = props => {
   const { children } = props;
   const classes = useStyles();
 
@@ -24,8 +24,8 @@ const TabsDetail = props => {
   );
 };
 
-TabsDetail.propTypes = {
+HubTabsDetails.propTypes = {
   children: PropTypes.node,
 };
 
-export default TabsDetail;
+export default HubTabsDetails;

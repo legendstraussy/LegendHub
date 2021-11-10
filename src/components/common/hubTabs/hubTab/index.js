@@ -14,7 +14,7 @@ const useStyles = makeStyles({
     maxWidth: 'fit-content',
     cursor: 'default',
     textTransform: 'uppercase',
-    fontFamily: 'Open Sans',
+    fontFamily: 'Titillium Web',
     fontSize: '12px',
     fontWeight: 700,
     color: props => props.isActive ? '#fff' : 'rgba(106, 100, 100, 0.75)',
@@ -27,23 +27,25 @@ const useStyles = makeStyles({
     flex: 1,
     justifyContent: 'center',
   },
-}, { name: 'Mui_Styles_TabsTab' });
+}, { name: 'Mui_Styles_HubTab' });
 
-const TabsTab = props => {
-  const { onTabClick, tab } = props;
+const HubTab = props => {
+  const { onTabClick, iconPath, label } = props;
   const classes = useStyles(props);
 
   return (
-    <div role="button" tabIndex={0} className={classes.root} onClick={() => onTabClick(tab)}>
-      <Image src={tab.iconPath} alt="" width={32} height={32} layout="fixed" />
+    <div role="button" tabIndex={0} className={classes.root} onClick={() => onTabClick(label)}>
+      <Image src={iconPath} alt="" width={32} height={32} layout="fixed" />
       <div className={classes.tabLabel}>
-        {tab.name}
+        {label}
       </div>
     </div>
   );
 };
 
-TabsTab.propTypes = {
+HubTab.propTypes = {
+  iconPath: PropTypes.string,
+  label: PropTypes.string,
   onTabClick: PropTypes.func,
   tab: PropTypes.shape({
     iconPath: PropTypes.string,
@@ -51,4 +53,4 @@ TabsTab.propTypes = {
   }),
 };
 
-export default TabsTab;
+export default HubTab;

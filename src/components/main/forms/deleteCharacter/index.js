@@ -50,12 +50,14 @@ const DeleteCharacterForm = props => {
       <DetailField
         justifyContent="flex-start"
         label="name"
+        padding="8px"
         maxWidth="unset"
         value={name}
       />
       <DetailField
         justifyContent="flex-start"
         label="version"
+        padding="8px"
         maxWidth="unset"
         value={version}
       />

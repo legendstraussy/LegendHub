@@ -16,6 +16,67 @@ export const selectedItemState = atom({
   default: null,
 });
 
+export const itemDetailState = selector({
+  key: 'itemDetailState',
+  default: null,
+  get: ({ get }) => {
+    const item = get(selectedItemState);
+    if (item) {
+      return {
+        id: item.id,
+        short: item.short,
+        long: item.long,
+        ac: item.ac,
+        rent: item.rent,
+        weight: item.weight,
+        material: item.material,
+        price: item.price,
+        timer: item.timer,
+        slots: item.slots,
+        stats: [
+          { name: 'str', value: item.str },
+          { name: 'min', value: item.min },
+          { name: 'dex', value: item.dex },
+          { name: 'con', value: item.con },
+          { name: 'per', value: item.per },
+          { name: 'spi', value: item.spi },
+          { name: 'str cap', value: item.strCap },
+          { name: 'min cap', value: item.minCap },
+          { name: 'dex cap', value: item.dexCap },
+          { name: 'con cap', value: item.conCap },
+          { name: 'per cap', value: item.perCap },
+          { name: 'spi cap', value: item.spiCap },
+          { name: 'damroll', value: item.damroll },
+          { name: 'hitroll', value: item.hitroll },
+          { name: 'mit', value: item.mitigation },
+          { name: 'parry', value: item.parry },
+          { name: 'accuracy', value: item.accuracy },
+          { name: 'sp. dam', value: item.spellDam },
+          { name: 'sp. crit', value: item.spellCrit },
+          { name: 'sp. redux', value: item.spellRedux },
+          { name: 'concent', value: item.concentration },
+          { name: 'hp', value: item.hp },
+          { name: 'mv', value: item.mv },
+          { name: 'ma', value: item.ma },
+          { name: 'hp regen', value: item.hpRegen },
+          { name: 'mv regen', value: item.mvRegen },
+          { name: 'ma regen', value: item.maRegen },
+        ].filter(stat => stat.value),
+        flags: [
+          { name: 'bonded', value: item.isBonded },
+          { name: 'heroic', value: item.isHeroic },
+          { name: 'light', value: item.isLight },
+          { name: 'limited', value: item.isLimited },
+          { name: 'soulbound', value: item.isSoulbound },
+          { name: 'two handed', value: item.isTwoHanded },
+          { name: 'unique', value: item.isUnique },
+        ].filter(flag => flag.value),
+      };
+    }
+    return null;
+  },
+});
+
 export const equipmentState = selector({
   key: 'equipmentState',
   default: null,
@@ -33,10 +94,6 @@ export const equipmentState = selector({
       }
     }
     return [];
-  },
-  cachePolicy_UNSTABLE: {
-    // Only store the most recent set of dependencies and their values
-    eviction: 'most-recent',
   },
 });
 
@@ -202,4 +259,9 @@ export const characterNamesState = selector({
       name,
     }));
   },
+});
+
+export const selectedTabState = atom({
+  key: 'selectedTabState',
+  default: null,
 });

@@ -4,16 +4,16 @@ import { makeStyles } from '@material-ui/styles';
 const useStyles = makeStyles({
   root: {
     display: 'flex',
+    flex: props => props?.flex ?? 'inherit',
     justifyContent: 'inherit',
-    fontSize: '14px',
-    fontWeight: '100',
-    flex: 1,
+    fontSize: 14,
+    fontWeight: 500,
   },
 }, { name: 'Mui_Styles_DetailFieldValue' });
 
 const DetailFieldValue = props => {
   const { value } = props;
-  const classes = useStyles();
+  const classes = useStyles(props);
 
   return (
     <div className={classes.root}>{value}</div>

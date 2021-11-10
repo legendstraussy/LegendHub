@@ -11,11 +11,18 @@ const Hub = props => {
       display: 'flex', flexDirection: 'column', flex: 1, overflow: 'hidden',
     }}
     >
-      <Background>
+      <Background />
+      <div style={{
+        display: 'flex',
+        flexDirection: 'column',
+        flex: 1,
+        overflow: 'hidden',
+      }}
+      >
         <NavBar />
         <Toolbar />
         {children}
-      </Background>
+      </div>
     </div>
   );
 };
