@@ -73,7 +73,23 @@ export const character = {
     neck1: {
       slot: 'neck',
       item: {
-        slots: ['neck'], id: 1023, short: 'ring of might', align: 'GNE', hp: 1, ac: -6, ma: 3, con: 3, rent: 1700,
+        slots: ['neck'],
+        dexCap: 4,
+        id: 1023,
+        short: 'neckguard of the gods',
+        long: 'Behold, the glorious neckguard of the gods.',
+        align: 'GNE',
+        hp: 1,
+        ac: -6,
+        ma: 3,
+        con: 3,
+        rent: 1700,
+        price: 2200,
+        weight: 2,
+        material: 'bronze',
+        timer: 450,
+        isHeroic: true,
+        isSoulbound: true,
       },
     },
     neck2: {
@@ -466,3 +482,8 @@ export const weaponStats = [
   { name: 'dex' },
   { name: 'con' },
 ];
+
+export const tabKeys = {
+  ITEM: 'item',
+  CHARACTER: 'character',
+};

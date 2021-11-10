@@ -1,8 +1,8 @@
 import DetailField from 'components/common/detail/detailField';
 import DetailHeader from 'components/common/detail/detailHeader';
-// import HubChip from 'components/common/hubChip';
+import HubChip from 'components/common/hubChip';
 import { makeStyles } from '@material-ui/styles';
-// import theme from 'utils/theme';
+import theme from 'utils/theme';
 import { useRecoilValue } from 'recoil';
 import { itemDetailState } from 'data/characterState';
 import AllInclusiveRounded from '@material-ui/icons/AllInclusiveRounded';
@@ -23,10 +23,10 @@ const useStyles = makeStyles(theme => ({
     display: 'grid',
     gridTemplateColumns: '1fr 1fr',
   },
-  // chips: {
-  //   display: 'flex',
-  //   flexWrap: 'wrap',
-  // },
+  chips: {
+    display: 'flex',
+    flexWrap: 'wrap',
+  },
   gold: {
     color: theme.palette.main.yellow,
   },
@@ -35,11 +35,17 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     alignItems: 'center',
   },
+  add: {
+    color: theme.palette.main.green,
+  },
+  sub: {
+    color: theme.palette.main.red,
+  },
 }), { name: 'Mui_Styles_ItemDetails' });
 
 const ItemDetails = () => {
   const item = useRecoilValue(itemDetailState);
-  const classes = useStyles();
+  const classes = useStyles(item);
 
   if (!item) {
     return (
@@ -56,23 +62,25 @@ const ItemDetails = () => {
     <div className={classes.root}>
       <section className={classes.container}>
         <DetailHeader title="item name" />
-        <DetailField maxWidth="100%" label="short" value={item?.short} />
-        <DetailField maxWidth="100%" label="long" value={item?.long} />
+        <DetailField labelFlex="1" valueFlex="4" label="short" value={item?.short} />
+        <DetailField labelFlex="1" valueFlex="4" label="long" value={item?.long} />
       </section>
       <section className={classes.container}>
         <DetailHeader title="general" />
         <section className={classes.column}>
-          <DetailField label="ac" value={item?.ac} />
-          <DetailField label="rent" value={item?.rent} />
+          <DetailField label="ac" value={item?.ac} labelFlex="1" valueFlex="1" />
+          <DetailField label="rent" value={item?.rent} labelFlex="1" valueFlex="1" />
         </section>
         <section className={classes.column}>
-          <DetailField label="weight" value={<span>{item?.weight} kg</span>} />
-          <DetailField label="material" value={item?.material} />
+          <DetailField label="weight" value={<span>{item?.weight} kg</span>} labelFlex="1" valueFlex="1" />
+          <DetailField label="material" value={item?.material} labelFlex="1" valueFlex="1" />
         </section>
         <section className={classes.column}>
           <DetailField
             label="price"
             value={<span>{item?.price} <span className={classes.gold}>gp</span></span>}
+            labelFlex="1"
+            valueFlex="1"
           />
           <DetailField
             label="timer"
@@ -84,28 +92,54 @@ const ItemDetails = () => {
                   : <AllInclusiveRounded fontSize="small" />}
               </span>
             )}
+            labelFlex="1"
+            valueFlex="1"
           />
         </section>
+      </section>
+      <section className={classes.container}>
+        <DetailHeader title="slots" />
+        <div className={classes.chips}>
+          {item.slots.map((slot, i) => (
+            <div key={i} style={{ margin: '.25em' }}>
+              <HubChip
+                bgColor={theme.palette.main.blue}
+                color={theme.palette.contrastText.blue}
+                label={slot}
+                readOnly
+              />
+            </div>
+          ))}
+        </div>
       </section>
       <section className={classes.container}>
         <DetailHeader title="stats" />
         <section className={classes.grid}>
           {item.stats.map((stat, i) => (
-            <DetailField maxWidth="unset" key={i} label={stat.name} value={stat.value} />
+            <DetailField
+              maxWidth="unset"
+              key={i}
+              label={stat.name}
+              value={<span className={stat.value >= 0 ? classes.add : classes.sub}>{stat.value}</span>}
+              justifyContent="center"
+            />
           ))}
         </section>
-        {/* <section className={classes.column}>
-          <DetailField label="str" value={item?.str} />
-          <DetailField label="min" value={item?.min} />
-        </section>
-        <section className={classes.column}>
-          <DetailField label="dex" value={item?.dex} />
-          <DetailField label="con" value={item?.con} />
-        </section>
-        <section className={classes.column}>
-          <DetailField label="per" value={item?.per} />
-          <DetailField label="spi" value={item?.spi} />
-        </section> */}
+      </section>
+      <section className={classes.container}>
+        <DetailHeader title="additional flags" />
+        <div className={classes.chips}>
+          {item.flags.map((flag, i) => (
+            <div key={i} style={{ margin: '.25em' }}>
+              <HubChip
+                bgColor={theme.palette.main.blue}
+                color={theme.palette.contrastText.blue}
+                label={flag.name}
+                readOnly
+              />
+            </div>
+          ))}
+        </div>
       </section>
       {/* {!item
         ? (

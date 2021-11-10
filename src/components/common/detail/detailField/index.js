@@ -7,23 +7,22 @@ const useStyles = makeStyles({
   root: {
     display: 'flex',
     flex: 1,
+    justifyContent: props => props.justifyContent ?? 'unset',
     alignItems: props => props.alignItems ?? 'baseline',
-    justifyContent: props => props.justifyContent ?? 'flex-start',
-    maxWidth: props => props?.maxWidth ?? '50%',
     padding: props => props?.padding ?? '0 4px',
   },
 }, { name: 'Mui_Styles_DetailField' });
 
 const DetailField = props => {
   const {
-    hideColon, label, minWidth, value,
+    hideColon, label, value, labelFlex, valueFlex,
   } = props;
   const classes = useStyles(props);
 
   return (
     <div className={classes.root}>
-      <DetailFieldLabel label={label} minWidth={minWidth} hideColon={hideColon} />
-      <DetailFieldValue value={value} />
+      <DetailFieldLabel label={label} flex={labelFlex} hideColon={hideColon} />
+      <DetailFieldValue value={value} flex={valueFlex} />
     </div>
   );
 };
@@ -35,12 +34,13 @@ DetailField.propTypes = {
     PropTypes.string,
     PropTypes.node,
   ]),
-  minWidth: PropTypes.string,
+  labelFlex: PropTypes.string,
   value: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
     PropTypes.node,
   ]),
+  valueFlex: PropTypes.string,
 };
 
 export default DetailField;

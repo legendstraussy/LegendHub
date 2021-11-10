@@ -9,8 +9,9 @@ import HubTableHeader from 'components/common/hubTableHeader';
 import HubTooledCell from 'components/common/hubTooledCell';
 import IconHeader from 'components/common/iconHeader';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
-import { equipmentState, selectedItemState } from 'data/characterState';
+import { equipmentState, selectedItemState, selectedTabState } from 'data/characterState';
 import { makeStyles } from '@material-ui/styles';
+import { tabKeys } from 'data/constants';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -48,13 +49,15 @@ const CharacterEquipment = () => {
   const scrollRef = useRef(null);
   const classes = useStyles();
   const equipment = useRecoilValue(equipmentState);
-  const setTab = useSetRecoilState(selectedItemState);
+  const selectItem = useSetRecoilState(selectedItemState);
+  const setTab = useSetRecoilState(selectedTabState);
 
   const handleItemDetailClick = item => {
-    setTab({
+    selectItem({
       ...item,
       flags: [],
     });
+    setTab(tabKeys.ITEM);
   };
 
   const handleItemRemoveClick = () => {

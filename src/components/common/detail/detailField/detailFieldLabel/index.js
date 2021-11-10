@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/styles';
 
 const useStyles = makeStyles({
   root: {
-    minWidth: '25%',
+    flex: props => props?.flex ?? 'inherit',
     fontSize: 12,
     fontWeight: 100,
     textTransform: 'uppercase',
@@ -12,7 +12,7 @@ const useStyles = makeStyles({
 
 const DetailFieldLabel = props => {
   const { label, hideColon = false } = props;
-  const classes = useStyles();
+  const classes = useStyles(props);
 
   return (
     <div className={classes.root}>
