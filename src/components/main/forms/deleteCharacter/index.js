@@ -48,18 +48,17 @@ const DeleteCharacterForm = props => {
       {status && <section>{status}</section>}
       <section>Are you sure you want to delete this character?</section>
       <DetailField
-        justifyContent="flex-start"
         label="name"
-        padding="8px"
-        maxWidth="unset"
         value={name}
+        labelFlex="1"
+        valueFlex="4"
       />
       <DetailField
         justifyContent="flex-start"
         label="version"
-        padding="8px"
-        maxWidth="unset"
         value={version}
+        labelFlex="1"
+        valueFlex="4"
       />
       <section className={classes.actions}>
         <HubButton

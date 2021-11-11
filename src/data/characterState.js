@@ -73,7 +73,7 @@ export const itemDetailState = selector({
         ].filter(flag => flag.value),
       };
     }
-    return null;
+    return {};
   },
 });
 
@@ -86,10 +86,10 @@ export const equipmentState = selector({
       const { equipment } = character;
       if (equipment) {
         return Object
-          .values(equipment)
-          .map((eq) => ({
-            ...eq.item,
-            slot: eq.slot,
+          .keys(equipment)
+          .map((slot) => ({
+            ...equipment[slot].item,
+            slot,
           }));
       }
     }
