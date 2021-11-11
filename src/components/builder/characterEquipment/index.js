@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useCallback, useEffect, useRef } from 'react';
 import HubTable from 'components/common/hubTable';
 import HubFooter from 'components/common/HubFooter';
 import DeleteOutlineIcon from '@material-ui/icons/DeleteOutline';
@@ -12,6 +12,7 @@ import { useRecoilValue, useSetRecoilState } from 'recoil';
 import { equipmentState, selectedItemState, selectedTabState } from 'data/characterState';
 import { makeStyles } from '@material-ui/styles';
 import { tabKeys } from 'data/constants';
+import useCharacterManager from 'hooks/useCharacterManager';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -51,17 +52,14 @@ const CharacterEquipment = () => {
   const equipment = useRecoilValue(equipmentState);
   const selectItem = useSetRecoilState(selectedItemState);
   const setTab = useSetRecoilState(selectedTabState);
+  const { removeItem } = useCharacterManager();
 
-  const handleItemDetailClick = item => {
-    selectItem({
-      ...item,
-      flags: [],
-    });
+  const handleItemDetailClick = useCallback(item => {
+    selectItem(item);
     setTab(tabKeys.ITEM);
-  };
+  }, [selectItem, setTab]);
 
-  const handleItemRemoveClick = () => {
-  };
+  const handleItemRemoveClick = useCallback(item => removeItem(item), [removeItem]);
 
   const headers = [
     {

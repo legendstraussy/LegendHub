@@ -205,6 +205,32 @@ const useCharacterManager = () => {
     }
   };
 
+  const removeItem = item => {
+    const storedCharacters = getStorage('characters');
+    const { equipment } = character;
+    const updatedCharacter = {
+      ...character,
+      equipment: {
+        ...equipment,
+        [item.slot]: {
+          slot: item.slot,
+          item: null,
+        },
+      },
+    };
+    const remainingCharacters = storedCharacters
+      .filter(storedCharacter => storedCharacter?.id !== updatedCharacter.id);
+    const updatedCharacters = [...remainingCharacters, updatedCharacter];
+
+    try {
+      saveCharacters(updatedCharacters);
+      saveCharacter(updatedCharacter);
+      return { success: true, message: 'Success: Character equipment cleared.' };
+    } catch {
+      return { success: false, message: 'Error: Could not save character to local storage.' };
+    }
+  };
+
   return {
     clear: clearEquipment,
     character,
@@ -215,6 +241,7 @@ const useCharacterManager = () => {
     // import: importCharacter,
     read: readCharacters,
     remove: deleteCharacter,
+    removeItem,
     saveCharacter,
     update: updateCharacter,
     // undo: undoLastChange,

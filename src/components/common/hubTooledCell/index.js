@@ -1,4 +1,3 @@
-import React from 'react';
 import { PropTypes } from 'prop-types';
 import { makeStyles } from '@material-ui/styles';
 import HubItemTools from 'components/common/HubItemTools';
@@ -34,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }), { name: 'Mui_Styles_hubTooledCell' });
 
-const HubTooledCell = React.memo(props => {
+const HubTooledCell = props => {
   const {
     item, label, text, tools,
   } = props;
@@ -52,7 +51,7 @@ const HubTooledCell = React.memo(props => {
       </div>
     </div>
   );
-});
+};
 
 HubTooledCell.propTypes = {
   className: PropTypes.string,
