@@ -487,3 +487,5 @@ export const tabKeys = {
   ITEM: 'item',
   CHARACTER: 'character',
 };
+
+export const NO_VALID_ALIGN = 'XXX';
