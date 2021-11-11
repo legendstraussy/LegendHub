@@ -61,7 +61,7 @@ const NewCharacterForm = props => {
         value={<HubInput ref={nameRef} value={name} onChange={setName} />}
         labelFlex="1"
         valueFlex="4"
-        padding="8px 0"
+        padding="8px"
       />
       <DetailField
         label="version"
