@@ -1,12 +1,14 @@
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import HubButton from 'components/common/hubButton';
 import HubVersion from 'components/main/hubVersion';
-import NewCharacterModal from 'components/main/modals/newCharacterModal';
-import DeleteCharacterModal from 'components/main/modals/deleteCharacterModal';
-import EditCharacterModal from 'components/main/modals/editCharacterModal';
+import HubModal from 'components/common/hubModal';
 import { makeStyles } from '@material-ui/styles';
 import { useRecoilValue } from 'recoil';
 import { characterState } from 'data/characterState';
+import ClearCharacterForm from '../forms/clearCharacter';
+import NewCharacterForm from '../forms/newCharacter';
+import EditCharacterForm from '../forms/editCharacter';
+import DeleteCharacterForm from '../forms/deleteCharacter';
 
 const useStyles = makeStyles({
   root: {
@@ -16,49 +18,55 @@ const useStyles = makeStyles({
     padding: 0,
     margin: '30px 13px 0px 125px',
   },
-  buttonLayout: {
-    margin: '0 .4em',
+  buttons: {
+    '& button': {
+      margin: '0 .4em',
+    },
   },
 }, { name: 'Mui_Styles_Toolbar' });
 
 const Toolbar = () => {
   const [modal, setModal] = useState(null);
+  const [open, setOpen] = useState(false);
   const character = useRecoilValue(characterState);
   const classes = useStyles();
 
-  const handleModalCheck = key => modal === key;
+  const handleModalClick = useCallback(key => {
+    setModal(key);
+    setOpen(true);
+  }, [setModal, setOpen]);
 
   const handleClearModal = () => {
-    setModal(null);
+    setOpen(false);
   };
+
+  const [modals] = useState({
+    new: { title: 'new character', component: <NewCharacterForm handleClickClose={handleClearModal} /> },
+    edit: { title: 'edit character', component: <EditCharacterForm handleClickClose={handleClearModal} /> },
+    clear: { title: 'clear equipment', component: <ClearCharacterForm handleClickClose={handleClearModal} /> },
+    delete: { title: 'delete character', component: <DeleteCharacterForm handleClickClose={handleClearModal} /> },
+  });
 
   return (
     <div className={classes.root}>
-      <div className={classes.buttonLayout}>
-        <HubButton label="new" type="primary" onClick={() => setModal('new')} />
-        <NewCharacterModal open={handleModalCheck('new')} handleCloseCallback={handleClearModal} />
-      </div>
-      <div className={classes.buttonLayout}>
-        <HubButton disabled={!character} label="edit" type="default" onClick={() => setModal('edit')} />
-        <EditCharacterModal open={handleModalCheck('edit')} handleCloseCallback={handleClearModal} />
-      </div>
-      <div className={classes.buttonLayout}>
-        <HubButton disabled label="undo" type="default" onClick={() => {}} />
-      </div>
-      <div className={classes.buttonLayout}>
-        <HubButton disabled label="import" type="default" onClick={() => {}} />
-      </div>
-      <div className={classes.buttonLayout}>
-        <HubButton disabled label="export" type="default" onClick={() => {}} />
-      </div>
-      <div className={classes.buttonLayout}>
-        <HubButton disabled label="clear" type="default" onClick={() => {}} />
-      </div>
-      <div className={classes.buttonLayout}>
-        <HubButton disabled={!character} label="delete" type="warning" onClick={() => setModal('delete')} />
-        <DeleteCharacterModal open={handleModalCheck('delete')} handleCloseCallback={handleClearModal} />
-      </div>
+      <section className={classes.buttons}>
+        <HubButton label="new" type="primary" onClick={() => handleModalClick('new')} />
+        <HubButton disabled={!character} label="edit" type="default" onClick={() => handleModalClick('edit')} />
+        <HubButton disabled label="undo" type="default" onClick={() => handleModalClick('undo')} />
+        <HubButton disabled label="import" type="default" onClick={() => handleModalClick('import')} />
+        <HubButton disabled label="export" type="default" onClick={() => handleModalClick('export')} />
+        <HubButton disabled={!character} label="clear" type="default" onClick={() => handleModalClick('clear')} />
+        <HubButton disabled={!character} label="delete" type="warning" onClick={() => handleModalClick('delete')} />
+      </section>
       <HubVersion />
+      <HubModal
+        handleClose={handleClearModal}
+        maxWidth="325px"
+        show={open}
+        title={modals[modal]?.title}
+      >
+        {modals[modal]?.component}
+      </HubModal>
     </div>
   );
 };

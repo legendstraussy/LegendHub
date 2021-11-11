@@ -71,11 +71,11 @@ const EditCharacterForm = props => {
           <>
             <section>Create a new character below to inherit the existing build.</section>
             <DetailField
-              justifyContent="flex-start"
               label="name"
-              padding="8px"
-              maxWidth="unset"
               value={<HubInput ref={nameRef} value={name} onChange={setName} />}
+              labelFlex="1"
+              valueFlex="4"
+              padding="8px"
             />
           </>
         )
@@ -83,29 +83,29 @@ const EditCharacterForm = props => {
           <>
             <section>Please enter the name of your new character.</section>
             <DetailField
-              justifyContent="flex-start"
               label="name"
-              padding="8px"
-              maxWidth="unset"
               value={<span style={{ display: 'flex', height: '35px', alignItems: 'center' }}>{name}</span>}
+              labelFlex="1"
+              valueFlex="4"
+              padding="8px"
             />
           </>
         )}
       <DetailField
-        justifyContent="flex-start"
         label="version"
-        padding="8px"
-        maxWidth="unset"
         value={<HubInput ref={versionRef} value={version} onChange={setVersion} />}
+        labelFlex="1"
+        valueFlex="4"
+        padding="8px"
       />
       <DetailField
         alignItems="center"
-        justifyContent="flex-start"
         label={<span style={{ color: theme.palette.main.yellow }}>is a clone?</span>}
-        padding="8px"
-        maxWidth="unset"
         hideColon
         value={<HubCheckbox onChange={setIsCloning} value={isCloning} />}
+        labelFlex="1"
+        valueFlex="4"
+        padding="8px"
       />
       <section className={classes.actions}>
         <HubButton

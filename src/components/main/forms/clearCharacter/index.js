@@ -1,10 +1,11 @@
-import { useEffect, useRef, useState } from 'react';
+import { useState } from 'react';
 import { PropTypes } from 'prop-types';
 import { makeStyles } from '@material-ui/core';
-import HubInput from 'components/common/hubInput';
 import HubButton from 'components/common/hubButton';
 import DetailField from 'components/common/detail/detailField/';
 import useCharacterManager from 'hooks/useCharacterManager';
+import { useRecoilValue } from 'recoil';
+import { characterState } from 'data/characterState';
 
 const useStyles = makeStyles(({
   root: {
@@ -21,30 +22,20 @@ const useStyles = makeStyles(({
       margin: '0 0 0 10px',
     },
   },
-}), { name: 'Mui_Styles_NewCharacterModal' });
+}), { name: 'Mui_Styles_ClearCharacterModal' });
 
-const NewCharacterForm = props => {
+const ClearCharacterForm = props => {
   const { handleClickClose } = props;
-  const nameRef = useRef();
-  const [name, setName] = useState('');
-  const [version, setVersion] = useState('');
+  const character = useRecoilValue(characterState);
+  const { clear } = useCharacterManager();
+  const [{ name, version }] = useState(character);
   const [status, setStatus] = useState(null);
-  const { create } = useCharacterManager();
   const classes = useStyles();
-
-  useEffect(() => {
-    nameRef?.current?.focus();
-  }, []);
 
   const handleSubmit = event => {
     event.preventDefault();
 
-    const char = {
-      name,
-      version,
-    };
-
-    const submit = create(char);
+    const submit = clear();
     if (submit.success) {
       handleClickClose();
     } else {
@@ -55,24 +46,22 @@ const NewCharacterForm = props => {
   return (
     <form className={classes.root} onSubmit={handleSubmit}>
       {status && <section>{status}</section>}
-      <section>Please enter the name and version of your new character.</section>
+      <section>Are you sure you want to clear the gear from this character?</section>
       <DetailField
         label="name"
-        value={<HubInput ref={nameRef} value={name} onChange={setName} />}
+        value={name}
         labelFlex="1"
         valueFlex="4"
-        padding="8px 0"
       />
       <DetailField
         label="version"
-        value={<HubInput value={version} onChange={setVersion} />}
+        value={version}
         labelFlex="1"
         valueFlex="4"
-        padding="8px"
       />
       <section className={classes.actions}>
         <HubButton
-          label="save"
+          label="confirm"
           onClick={handleSubmit}
           submit
         />
@@ -86,8 +75,8 @@ const NewCharacterForm = props => {
   );
 };
 
-NewCharacterForm.propTypes = {
+ClearCharacterForm.propTypes = {
   handleClickClose: PropTypes.func,
 };
 
-export default NewCharacterForm;
+export default ClearCharacterForm;

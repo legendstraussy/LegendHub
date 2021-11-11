@@ -15,14 +15,14 @@ const useCharacterManager = () => {
   const setSelectedItem = useSetRecoilState(selectedItemState);
   const setActiveTab = useSetRecoilState(selectedTabState);
 
-  const saveCharacter = newCharacter => {
+  const saveCharacter = useCallback(newCharacter => {
     try {
       setStorage('character', newCharacter || null);
       setCharacter(newCharacter);
     } catch {
       throw new Error();
     }
-  };
+  }, [setCharacter, setStorage]);
 
   const saveCharacters = newCharacters => {
     try {
@@ -91,9 +91,9 @@ const useCharacterManager = () => {
     try {
       saveCharacters(updatedCharacters);
       saveCharacter(updatedCharacter);
-      return { success: true, message: 'Success: Character edited.' };
+      return { success: true, message: 'Success: Character updated.' };
     } catch (e) {
-      return { success: false, message: 'Error: Could not save to local storage.' };
+      return { success: false, message: 'Error: Could not save character to local storage.' };
     }
   };
 
@@ -142,7 +142,7 @@ const useCharacterManager = () => {
     } catch {
       return { success: false, message: 'Error: Could not load characters.' };
     }
-  }, []);
+  }, [getStorage, saveCharacter, setCharacter, setCharacters]);
 
   const deleteCharacter = () => {
     const storedCharacters = getStorage('characters');
@@ -177,12 +177,36 @@ const useCharacterManager = () => {
 
   // };
 
-  // const clearEquipment = () => {
+  const clearEquipment = () => {
+    const storedCharacters = getStorage('characters');
+    const { equipment } = character;
+    const updatedCharacter = {
+      ...character,
+      equipment: Object
+        .keys(equipment)
+        .reduce((list, slot) => ({
+          ...list,
+          [slot]: {
+            ...equipment[slot],
+            item: null,
+          },
+        }), {}),
+    };
+    const remainingCharacters = storedCharacters
+      .filter(storedCharacter => storedCharacter?.id !== updatedCharacter.id);
+    const updatedCharacters = [...remainingCharacters, updatedCharacter];
 
-  // };
+    try {
+      saveCharacters(updatedCharacters);
+      saveCharacter(updatedCharacter);
+      return { success: true, message: 'Success: Character equipment cleared.' };
+    } catch {
+      return { success: false, message: 'Error: Could not save character to local storage.' };
+    }
+  };
 
   return {
-    // clear: clearEquipment,
+    clear: clearEquipment,
     character,
     characters,
     clone: cloneCharacter,
