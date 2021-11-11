@@ -489,3 +489,4 @@ export const tabKeys = {
 };
 
 export const NO_VALID_ALIGN = 'XXX';
+export const HISTORY_LENGTH = 10;

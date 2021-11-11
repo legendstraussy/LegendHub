@@ -23,7 +23,7 @@ const useStyles = makeStyles({
       backgroundColor: '#DE2E2E',
     },
     '&.Mui-disabled': {
-      backgroundColor: '#171318',
+      backgroundColor: '#171318 !important',
       color: '#6a6464bd',
       fontStyle: 'italic',
     },

@@ -4,10 +4,19 @@ import {
   characterState, charactersState, selectedItemState, selectedTabState,
 } from 'data/characterState';
 import { v4 as uuidv4 } from 'uuid';
-import { character as characterDefault, tabKeys } from 'data/constants';
+import { character as characterDefault, tabKeys, HISTORY_LENGTH } from 'data/constants';
 import { isDuplicateCharacter } from 'utils/utilFns';
 import useLocalStorage from './useLocalStorage';
 
+const getAdjustedHistory = history => {
+  if (history.length === HISTORY_LENGTH) {
+    const [first, ...rest] = history;
+    return rest;
+  }
+  return history;
+};
+
+// TODO: clean up functions. Should be a few that can do everything
 const useCharacterManager = () => {
   const { getStorage, setStorage } = useLocalStorage();
   const [characters, setCharacters] = useRecoilState(charactersState);
@@ -173,15 +182,40 @@ const useCharacterManager = () => {
 
   // };
 
-  // const undoLastChange = () => {
+  const undoLastChange = () => {
+    const storedCharacters = getStorage('characters');
+    const { history } = character;
+    if (!history.length) return { success: false, message: 'Error: No character history found.' };
+    const updatedCharacter = {
+      ...character,
+      history: [
+        ...history.slice(0, history.length - 1),
+      ],
+      equipment: history[history.length - 1],
+    };
+    const remainingCharacters = storedCharacters
+      .filter(storedCharacter => storedCharacter?.id !== updatedCharacter.id);
+    const updatedCharacters = [...remainingCharacters, updatedCharacter];
 
-  // };
+    try {
+      saveCharacters(updatedCharacters);
+      saveCharacter(updatedCharacter);
+      return { success: true, message: 'Success: Character equipment cleared.' };
+    } catch {
+      return { success: false, message: 'Error: Could not save character to local storage.' };
+    }
+  };
 
   const clearEquipment = () => {
     const storedCharacters = getStorage('characters');
-    const { equipment } = character;
+    const { equipment, history } = character;
+    const adjustedHistory = getAdjustedHistory(history);
     const updatedCharacter = {
       ...character,
+      history: [
+        ...adjustedHistory,
+        equipment,
+      ],
       equipment: Object
         .keys(equipment)
         .reduce((list, slot) => ({
@@ -207,9 +241,14 @@ const useCharacterManager = () => {
 
   const removeItem = item => {
     const storedCharacters = getStorage('characters');
-    const { equipment } = character;
+    const { equipment, history } = character;
+    const adjustedHistory = getAdjustedHistory(history);
     const updatedCharacter = {
       ...character,
+      history: [
+        ...adjustedHistory,
+        equipment,
+      ],
       equipment: {
         ...equipment,
         [item.slot]: {
@@ -244,7 +283,7 @@ const useCharacterManager = () => {
     removeItem,
     saveCharacter,
     update: updateCharacter,
-    // undo: undoLastChange,
+    undo: undoLastChange,
   };
 };
 
