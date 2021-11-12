@@ -54,7 +54,7 @@ const Toolbar = () => {
       <section className={classes.buttons}>
         <HubButton label="new" type="primary" onClick={() => handleModalClick('new')} />
         <HubButton disabled={!character} label="edit" type="default" onClick={() => handleModalClick('edit')} />
-        <HubButton disabled={character?.history.length === 0} label="undo" type="default" onClick={undo} />
+        <HubButton disabled={!character || character?.history.length === 0} label="undo" type="default" onClick={undo} />
         <HubButton disabled label="import" type="default" onClick={() => handleModalClick('import')} />
         <HubButton disabled label="export" type="default" onClick={() => handleModalClick('export')} />
         <HubButton disabled={!character} label="clear" type="default" onClick={() => handleModalClick('clear')} />

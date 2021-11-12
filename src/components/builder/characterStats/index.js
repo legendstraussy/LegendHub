@@ -1,35 +1,42 @@
-import { useState } from 'react';
-import StatsEdit from 'components/builder/statEdit';
-import QuestModifiers from 'components/builder/questModifiers';
-import ElectiveModifiers from 'components/builder/electiveModifiers';
-import CharacterFinal from 'components/builder/characterFinal';
+import { PropTypes } from 'prop-types';
 import { makeStyles } from '@material-ui/styles';
+import HubIconButton from 'components/common/hubIconButton';
+import StatsGrid from 'components/builder/statsGrid';
+import DetailHeader from 'components/common/detail/detailHeader';
 
 const useStyles = makeStyles({
   root: {
     display: 'flex',
-    flex: 1,
     flexDirection: 'column',
+    '& section': {
+      marginBottom: '1em',
+    },
+    '& header': {
+      justifyContent: 'space-between',
+      alignItems: 'center',
+    },
   },
-}, { name: 'Mui_Styles_CharacterDetails' });
+}, { name: 'Mui_Styles_CharacterStats' });
 
-const CharacterDetails = () => {
-  const [showFinal, setShowFinal] = useState(false);
+const CharacterStats = props => {
+  const { onFinalClick } = props;
   const classes = useStyles();
 
   return (
     <div className={classes.root}>
-      {!showFinal ? (
-        <>
-          <StatsEdit onFinalClick={() => setShowFinal(true)} />
-          <QuestModifiers />
-          <ElectiveModifiers />
-        </>
-      ) : (
-        <CharacterFinal onStatsClick={() => setShowFinal(false)} />
-      )}
+      <section>
+        <DetailHeader title="test">
+          <HubIconButton iconPath="/scroll-quill.png" />
+          <HubIconButton onClick={onFinalClick} iconPath="/tied-scroll.png" />
+        </DetailHeader>
+      </section>
+      <StatsGrid />
     </div>
   );
 };
 
-export default CharacterDetails;
+CharacterStats.propTypes = {
+  onFinalClick: PropTypes.func,
+};
+
+export default CharacterStats;

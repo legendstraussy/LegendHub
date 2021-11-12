@@ -1,7 +1,6 @@
 import { useRecoilValue } from 'recoil';
 import { genericStatsState } from 'data/characterState';
 import { makeStyles } from '@material-ui/styles';
-import { NO_VALID_ALIGN } from 'data/constants';
 
 const useStyles = makeStyles({
   root: {
@@ -31,12 +30,12 @@ const GenericStats = () => {
   const { ac, align, rent } = useRecoilValue(genericStatsState);
   const classes = useStyles();
 
+  // TODO: redo this
   return (
     <div className={classes.root}>
       <span className={`${classes.stat} ${classes.ac}`}>{ac}</span>
       <span
         className={`${classes.stat} ${classes.align}`}
-        style={{ color: align === NO_VALID_ALIGN ? 'red' : 'inherit' }}
       >
         {align}
       </span>

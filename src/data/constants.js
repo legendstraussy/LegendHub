@@ -488,5 +488,5 @@ export const tabKeys = {
   CHARACTER: 'character',
 };
 
-export const NO_VALID_ALIGN = 'XXX';
+export const NO_VALID_ALIGN = '---';
 export const HISTORY_LENGTH = 10;

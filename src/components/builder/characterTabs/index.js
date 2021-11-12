@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import CharacterStats from 'components/builder/characterStats';
+import CharacterDetails from 'components/builder/characterDetails';
 import ItemDetails from 'components/items/itemDetails';
 import HubTabs from 'components/common/hubTabs/hubTabs';
 import HubTab from 'components/common/hubTabs/hubTab';
@@ -16,7 +16,6 @@ const CharacterTabs = () => {
     setActiveTab(tabKeys.CHARACTER);
   }, [setActiveTab]);
 
-  // TODO: make it HubTabs etc.
   return (
     <div style={{ display: 'flex', flexDirection: 'column', flex: 1 }}>
       <HubTabs>
@@ -35,7 +34,7 @@ const CharacterTabs = () => {
       </HubTabs>
       <HubTabDetails>
         <HubTabDetail isActive={activeTab === tabKeys.CHARACTER}>
-          <CharacterStats />
+          <CharacterDetails />
         </HubTabDetail>
         <HubTabDetail isActive={activeTab === tabKeys.ITEM}>
           <ItemDetails />
