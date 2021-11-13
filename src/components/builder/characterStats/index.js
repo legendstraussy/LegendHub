@@ -8,12 +8,12 @@ const useStyles = makeStyles({
   root: {
     display: 'flex',
     flexDirection: 'column',
-    '& section': {
-      marginBottom: '1em',
-    },
+  },
+  section: {
+    marginBottom: '1em',
     '& header': {
-      justifyContent: 'space-between',
       alignItems: 'center',
+      justifyContent: 'space-between',
     },
   },
 }, { name: 'Mui_Styles_CharacterStats' });
@@ -24,7 +24,7 @@ const CharacterStats = props => {
 
   return (
     <div className={classes.root}>
-      <section>
+      <section className={classes.section}>
         <DetailHeader title="test">
           <HubIconButton iconPath="/scroll-quill.png" />
           <HubIconButton onClick={onFinalClick} iconPath="/tied-scroll.png" />

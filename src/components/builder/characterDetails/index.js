@@ -17,17 +17,13 @@ const CharacterDetails = () => {
   const [showFinal, setShowFinal] = useState(false);
   const classes = useStyles();
 
+  if (showFinal) return <CharacterFinal onStatsClick={() => setShowFinal(false)} />;
+
   return (
     <div className={classes.root}>
-      {!showFinal ? (
-        <>
-          <CharacterStats onFinalClick={() => setShowFinal(true)} />
-          {/* <QuestModifiers />
-          <ElectiveModifiers /> */}
-        </>
-      ) : (
-        <CharacterFinal onStatsClick={() => setShowFinal(false)} />
-      )}
+      <CharacterStats onFinalClick={() => setShowFinal(true)} />
+      {/* <QuestModifiers />
+      <ElectiveModifiers /> */}
     </div>
   );
 };

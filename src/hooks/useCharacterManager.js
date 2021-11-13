@@ -216,15 +216,100 @@ const useCharacterManager = () => {
         ...adjustedHistory,
         equipment,
       ],
-      equipment: Object
-        .keys(equipment)
-        .reduce((list, slot) => ({
-          ...list,
-          [slot]: {
-            ...equipment[slot],
-            item: null,
-          },
-        }), {}),
+      equipment: {
+        light: {
+          slot: 'light',
+          item: null,
+        },
+        finger1: {
+          slot: 'finger',
+          item: null,
+        },
+        finger2: {
+          slot: 'finger',
+          item: null,
+        },
+        neck1: {
+          slot: 'neck',
+          item: null,
+        },
+        neck2: {
+          slot: 'neck',
+          item: null,
+        },
+        body: {
+          slot: 'body',
+          item: null,
+        },
+        head: {
+          slot: 'head',
+          item: null,
+        },
+        face: {
+          slot: 'face',
+          item: null,
+        },
+        legs: {
+          slot: 'legs',
+          item: null,
+        },
+        feet: {
+          slot: 'feet',
+          item: null,
+        },
+        hands: {
+          slot: 'hands',
+          item: null,
+        },
+        arms: {
+          slot: 'arms',
+          item: null,
+        },
+        waist: {
+          slot: 'waist',
+          item: null,
+        },
+        wrist1: {
+          slot: 'wrist',
+          item: null,
+        },
+        wrist2: {
+          slot: 'wrist',
+          item: null,
+        },
+        weapon: {
+          slot: 'weapon',
+          item: null,
+        },
+        held1: {
+          slot: 'held',
+          item: null,
+        },
+        held2: {
+          slot: 'held',
+          item: null,
+        },
+        ear1: {
+          slot: 'ear',
+          item: null,
+        },
+        ear2: {
+          slot: 'ear',
+          item: null,
+        },
+        arm: {
+          slot: 'arm',
+          item: null,
+        },
+        amulet: {
+          slot: 'amulet',
+          item: null,
+        },
+        aux: {
+          slot: 'aux',
+          item: null,
+        },
+      },
     };
     const remainingCharacters = storedCharacters
       .filter(storedCharacter => storedCharacter?.id !== updatedCharacter.id);
@@ -270,6 +355,29 @@ const useCharacterManager = () => {
     }
   };
 
+  const updateStat = (stat, value) => {
+    const storedCharacters = getStorage('characters');
+    if (!character) return null;
+    const updatedCharacter = {
+      ...character,
+      baseStats: {
+        ...character.baseStats,
+        [stat]: value,
+      },
+    };
+    const remainingCharacters = storedCharacters
+      .filter(storedCharacter => storedCharacter?.id !== updatedCharacter.id);
+    const updatedCharacters = [...remainingCharacters, updatedCharacter];
+
+    try {
+      saveCharacters(updatedCharacters);
+      saveCharacter(updatedCharacter);
+      return { success: true, message: 'Success: Character stat modified.' };
+    } catch {
+      return { success: false, message: 'Error: Could not save character to local storage.' };
+    }
+  };
+
   return {
     clear: clearEquipment,
     character,
@@ -283,6 +391,7 @@ const useCharacterManager = () => {
     removeItem,
     saveCharacter,
     update: updateCharacter,
+    updateStat,
     undo: undoLastChange,
   };
 };

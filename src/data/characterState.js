@@ -1,5 +1,6 @@
 import { atom, selector } from 'recoil';
 import { configureCalcAlign } from 'utils/utilFns';
+import { character } from './constants';
 
 export const charactersState = atom({
   key: 'charactersState',
@@ -128,9 +129,18 @@ export const mainStatsState = selector({
       const {
         str, min, dex, con, per, spi,
       } = selectedCharacter?.baseStats;
+      const {
+        str: strSwap, min: minSwap, dex: dexSwap, con: conSwap, per: perSwap, spi: spiSwap,
+      } = selectedCharacter?.swap;
       return get(equipmentState)
         .reduce((stats, item) => ({
           ...stats,
+          test: {
+            raw: str,
+            uneq: stats.str + strSwap,
+            swap: strSwap,
+            final: (item.str) ? stats.str + item.str : stats.str,
+          },
           str: (item.str) ? stats.str + item.str : stats.str,
           min: (item.min) ? stats.min + item.min : stats.min,
           dex: (item.dex) ? stats.dex + item.dex : stats.dex,
@@ -142,8 +152,22 @@ export const mainStatsState = selector({
         });
     }
     return {
-      str: 0, min: 0, dex: 0, con: 0, per: 0, spi: 0,
+      test: {}, str: 0, min: 0, dex: 0, con: 0, per: 0, spi: 0,
     };
+  },
+  set: ({ get, set }, newStat) => {
+    const character = get(characterState);
+    let stat = parseInt(newStat, 10);
+    if (!stat) {
+      stat = 0;
+    }
+    set(characterState, {
+      ...character,
+      baseStats: {
+        ...character.baseStats,
+        str: stat,
+      },
+    });
   },
 });
 

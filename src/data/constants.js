@@ -249,6 +249,14 @@ export const character = {
     ten: 0,
     fiveThree: 0,
   },
+  swap: {
+    str: 0,
+    min: 0,
+    dex: 0,
+    con: 0,
+    per: 0,
+    spi: 0,
+  },
   affects: [
   ],
   abilities: [
