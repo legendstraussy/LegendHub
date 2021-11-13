@@ -10,6 +10,12 @@ const useStyles = makeStyles({
     gridTemplateColumns: '1fr 1fr 1fr 1fr 1fr',
     justifyItems: 'center',
   },
+  name: {
+    display: 'flex',
+    alignItems: 'center',
+    fontSize: 12,
+    textTransform: 'uppercase',
+  },
 }, { name: 'Mui_Styles_StatsGridRow' });
 
 const StatsGridRow = ({ name, stat }) => {
@@ -22,12 +28,12 @@ const StatsGridRow = ({ name, stat }) => {
 
   return (
     <main className={classes.root}>
-      <div>{name}</div>
-      <StatInput updateStat={handleUpdateStat} stat={stat.raw} />
-      {/* <StatInput fn={handleUpdateStat} stat={stat.swap} /> */}
-      <div>{stat.swap}</div>
-      <div>{stat.uneq}</div>
-      <div>{stat.final}</div>
+      <div className={classes.name}>{name}</div>
+      <StatInput updateStat={handleUpdateStat} stat={stat?.raw} />
+      {/* <StatInput updateStat={handleUpdateStat} stat={stat?.swap} /> */}
+      <div>{stat?.swap}</div>
+      <div>{stat?.uneq}</div>
+      <div>{stat?.final}</div>
     </main>
   );
 };

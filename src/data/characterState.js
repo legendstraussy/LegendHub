@@ -134,25 +134,71 @@ export const mainStatsState = selector({
       } = selectedCharacter?.swap;
       return get(equipmentState)
         .reduce((stats, item) => ({
-          ...stats,
-          test: {
-            raw: str,
-            uneq: stats.str + strSwap,
-            swap: strSwap,
-            final: (item.str) ? stats.str + item.str : stats.str,
+          str: {
+            ...stats.str,
+            final: item?.str ? stats.str.final + item.str : stats.str.final,
           },
-          str: (item.str) ? stats.str + item.str : stats.str,
-          min: (item.min) ? stats.min + item.min : stats.min,
-          dex: (item.dex) ? stats.dex + item.dex : stats.dex,
-          con: (item.con) ? stats.con + item.con : stats.con,
-          per: (item.per) ? stats.per + item.per : stats.per,
-          spi: (item.spi) ? stats.spi + item.spi : stats.spi,
+          min: {
+            ...stats.min,
+            final: item?.min ? stats.min.final + item.min : stats.min.final,
+          },
+          dex: {
+            ...stats.dex,
+            final: item?.dex ? stats.dex.final + item.dex : stats.dex.final,
+          },
+          con: {
+            ...stats.con,
+            final: item?.con ? stats.con.final + item.con : stats.con.final,
+          },
+          per: {
+            ...stats.per,
+            final: item?.per ? stats.per.final + item.per : stats.per.final,
+          },
+          spi: {
+            ...stats.spi,
+            final: item?.spi ? stats.spi.final + item.spi : stats.spi.final,
+          },
         }), {
-          str, min, dex, con, per, spi,
+          str: {
+            raw: str,
+            swap: strSwap,
+            uneq: str + strSwap,
+            final: str + strSwap,
+          },
+          min: {
+            raw: min,
+            swap: minSwap,
+            uneq: min + minSwap,
+            final: min + minSwap,
+          },
+          dex: {
+            raw: dex,
+            swap: dexSwap,
+            uneq: dex + dexSwap,
+            final: dex + dexSwap,
+          },
+          con: {
+            raw: con,
+            swap: conSwap,
+            uneq: con + conSwap,
+            final: con + conSwap,
+          },
+          per: {
+            raw: per,
+            swap: perSwap,
+            uneq: per + perSwap,
+            final: per + perSwap,
+          },
+          spi: {
+            raw: spi,
+            swap: spiSwap,
+            uneq: spi + spiSwap,
+            final: spi + spiSwap,
+          },
         });
     }
     return {
-      test: {}, str: 0, min: 0, dex: 0, con: 0, per: 0, spi: 0,
+      str: {}, min: {}, dex: {}, con: {}, per: {}, spi: {},
     };
   },
   set: ({ get, set }, newStat) => {

@@ -43,12 +43,12 @@ const BaseStats = () => {
 
   return (
     <div className={classes.root}>
-      <span className={`${classes.stat} ${classes.str}`}>{str}</span>
-      <span className={`${classes.stat} ${classes.min}`}>{min}</span>
-      <span className={`${classes.stat} ${classes.dex}`}>{dex}</span>
-      <span className={`${classes.stat} ${classes.con}`}>{con}</span>
-      <span className={`${classes.stat} ${classes.per}`}>{per}</span>
-      <span className={`${classes.stat} ${classes.spi}`}>{spi}</span>
+      <span className={`${classes.stat} ${classes.str}`}>{str?.final}</span>
+      <span className={`${classes.stat} ${classes.min}`}>{min?.final}</span>
+      <span className={`${classes.stat} ${classes.dex}`}>{dex?.final}</span>
+      <span className={`${classes.stat} ${classes.con}`}>{con?.final}</span>
+      <span className={`${classes.stat} ${classes.per}`}>{per?.final}</span>
+      <span className={`${classes.stat} ${classes.spi}`}>{spi?.final}</span>
     </div>
   );
 };

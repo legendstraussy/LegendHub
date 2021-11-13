@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { PropTypes } from 'prop-types';
 import { makeStyles } from '@material-ui/styles';
 
@@ -20,7 +20,7 @@ const useStyles = makeStyles({
 
 const StatInput = props => {
   const { updateStat, stat } = props;
-  const [value, setValue] = useState(stat);
+  const [value, setValue] = useState(stat || 0);
   const classes = useStyles();
 
   useEffect(() => {
@@ -28,14 +28,13 @@ const StatInput = props => {
       if (value === stat) return;
       if (value === '') return;
       if (value >= 0) {
-        console.log('updateStat', value);
         updateStat(value);
       }
-    }, 750);
+    }, 200);
     return () => {
       clearTimeout(timer);
     };
-  }, [updateStat, stat, value]);
+  }, [stat, updateStat, value]);
 
   const handleOnChange = event => {
     let value = parseInt(event.target.value, 10);

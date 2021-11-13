@@ -7,33 +7,28 @@ import { useRecoilValue } from 'recoil';
 
 const useStyles = makeStyles({
   root: {
-    flex: 1,
-  },
-  grid: {
-    display: 'flex',
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    margin: '0 0 .5em 0',
-    fontSize: '12px',
-    textTransform: 'uppercase',
-  },
-  label: {
-    display: 'flex',
-    justifyContent: 'center',
+    display: 'grid',
+    gridRowGap: '.5em',
   },
 }, { name: 'Mui_Styles_StatsGrid' });
 
 const StatsGrid = () => {
   const [headers] = useState(['raw', 'swap', 'uneq', 'final']);
-  const stats = useRecoilValue(mainStatsState);
+  const {
+    str, min, dex, con, per, spi,
+  } = useRecoilValue(mainStatsState);
   const classes = useStyles();
 
   return (
-    <main className={classes.root}>
+    <main>
       <StatsGridHeaders headers={headers} offset />
-      <section>
-        <StatsGridRow name="str" stat={stats.test} />
+      <section className={classes.root}>
+        <StatsGridRow name="str" stat={str} />
+        <StatsGridRow name="min" stat={min} />
+        <StatsGridRow name="dex" stat={dex} />
+        <StatsGridRow name="con" stat={con} />
+        <StatsGridRow name="per" stat={per} />
+        <StatsGridRow name="spi" stat={spi} />
       </section>
 
       {/* <Grid container className={classes.grid}>

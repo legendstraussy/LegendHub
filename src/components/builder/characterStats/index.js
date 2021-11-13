@@ -25,12 +25,14 @@ const CharacterStats = props => {
   return (
     <div className={classes.root}>
       <section className={classes.section}>
-        <DetailHeader title="test">
+        <DetailHeader title="stats">
           <HubIconButton iconPath="/scroll-quill.png" />
           <HubIconButton onClick={onFinalClick} iconPath="/tied-scroll.png" />
         </DetailHeader>
       </section>
-      <StatsGrid />
+      <section className={classes.section}>
+        <StatsGrid />
+      </section>
     </div>
   );
 };
