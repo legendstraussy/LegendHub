@@ -201,20 +201,6 @@ export const mainStatsState = selector({
       str: {}, min: {}, dex: {}, con: {}, per: {}, spi: {},
     };
   },
-  set: ({ get, set }, newStat) => {
-    const character = get(characterState);
-    let stat = parseInt(newStat, 10);
-    if (!stat) {
-      stat = 0;
-    }
-    set(characterState, {
-      ...character,
-      baseStats: {
-        ...character.baseStats,
-        str: stat,
-      },
-    });
-  },
 });
 
 export const genericStatsState = selector({

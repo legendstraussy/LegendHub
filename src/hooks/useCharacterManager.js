@@ -68,11 +68,10 @@ const useCharacterManager = () => {
     const newCharacter = {
       ...characterModel, id: uuidv4(), name: capitalize(name), version,
     };
-    let updatedCharacters = [newCharacter];
-    if (characters?.find(c => c.name.toLowerCase() === name && c.version === version)) {
-      return { success: false, message: 'Error: Character name and/or version already exists.' };
-    }
-    updatedCharacters = [...characters, newCharacter];
+    const updatedCharacters = [
+      ...characters,
+      newCharacter,
+    ];
     try {
       save(newCharacter, updatedCharacters);
       setActiveTab(tabKeys.CHARACTER);
@@ -119,48 +118,27 @@ const useCharacterManager = () => {
       setCharacters([storedCharacter]);
     }
   };
-  // **********************************************************************
-  // **********************************************************************
-  // TODO: clean up functions BELOW. Should be a few that can do everything
-
-
-
-
-
-  // const export = () => {
-
-  // };
-
-  // const import = () => {
-
-  // };
 
   const undo = () => {
-    const storedCharacters = getStorage('characters');
     const { history } = character;
-    if (!history.length) return { success: false, message: 'Error: No character history found.' };
-    const updatedCharacter = {
-      ...character,
-      history: [
-        ...history.slice(0, history.length - 1),
-      ],
-      equipment: history[history.length - 1],
-    };
-    const remainingCharacters = storedCharacters
-      .filter(storedCharacter => storedCharacter?.id !== updatedCharacter.id);
-    const updatedCharacters = [...remainingCharacters, updatedCharacter];
-
     try {
-      saveCharacters(updatedCharacters);
-      saveCharacter(updatedCharacter);
-      return { success: true, message: 'Success: Character equipment cleared.' };
-    } catch {
-      return { success: false, message: 'Error: Could not save character to local storage.' };
+      if (update({
+        ...character,
+        history: [
+          ...history.slice(0, history.length - 1),
+        ],
+        equipment: history[history.length - 1],
+      })) {
+        return { success: true, message: 'Success: Character history traveled.' };
+      }
+      throw Error;
+    } catch (e) {
+      if (e) return { success: false, message: `Error: ${e.message}` };
+      return { success: false, message: 'Error: Could not undo character history.' };
     }
   };
 
   const clear = () => {
-    const storedCharacters = getStorage('characters');
     const { equipment, history } = character;
     const adjustedHistory = getAdjustedHistory(history);
     const updatedCharacter = {
@@ -171,114 +149,112 @@ const useCharacterManager = () => {
       ],
       equipment: {
         light: {
-          slot: 'light',
+          ...equipment.light,
           item: null,
         },
         finger1: {
-          slot: 'finger',
+          ...equipment.finger1,
           item: null,
         },
         finger2: {
-          slot: 'finger',
+          ...equipment.finger2,
           item: null,
         },
         neck1: {
-          slot: 'neck',
+          ...equipment.neck1,
           item: null,
         },
         neck2: {
-          slot: 'neck',
+          ...equipment.neck2,
           item: null,
         },
         body: {
-          slot: 'body',
+          ...equipment.body,
           item: null,
         },
         head: {
-          slot: 'head',
+          ...equipment.head,
           item: null,
         },
         face: {
-          slot: 'face',
+          ...equipment.face,
           item: null,
         },
         legs: {
-          slot: 'legs',
+          ...equipment.legs,
           item: null,
         },
         feet: {
-          slot: 'feet',
+          ...equipment.feet,
           item: null,
         },
         hands: {
-          slot: 'hands',
+          ...equipment.hands,
           item: null,
         },
         arms: {
-          slot: 'arms',
+          ...equipment.arms,
           item: null,
         },
         waist: {
-          slot: 'waist',
+          ...equipment.waist,
           item: null,
         },
         wrist1: {
-          slot: 'wrist',
+          ...equipment.wrist1,
           item: null,
         },
         wrist2: {
-          slot: 'wrist',
+          ...equipment.wrist2,
           item: null,
         },
         weapon: {
-          slot: 'weapon',
+          ...equipment.weapon,
           item: null,
         },
         held1: {
-          slot: 'held',
+          ...equipment.held1,
           item: null,
         },
         held2: {
-          slot: 'held',
+          ...equipment.held2,
           item: null,
         },
         ear1: {
-          slot: 'ear',
+          ...equipment.ear1,
           item: null,
         },
         ear2: {
-          slot: 'ear',
+          ...equipment.ear2,
           item: null,
         },
         arm: {
-          slot: 'arm',
+          ...equipment.arm,
           item: null,
         },
         amulet: {
-          slot: 'amulet',
+          ...equipment.amulet,
           item: null,
         },
         aux: {
-          slot: 'aux',
+          ...equipment.aux,
           item: null,
         },
       },
     };
-    const remainingCharacters = storedCharacters
-      .filter(storedCharacter => storedCharacter?.id !== updatedCharacter.id);
-    const updatedCharacters = [...remainingCharacters, updatedCharacter];
 
     try {
-      saveCharacters(updatedCharacters);
-      saveCharacter(updatedCharacter);
-      return { success: true, message: 'Success: Character equipment cleared.' };
-    } catch {
-      return { success: false, message: 'Error: Could not save character to local storage.' };
+      if (update(updatedCharacter)) {
+        return { success: true, message: 'Success: Character equipment cleared.' };
+      }
+      throw Error;
+    } catch (e) {
+      if (e) return { success: false, message: `Error: ${e.message}` };
+      return { success: false, message: 'Error: Could not clear character equipment.' };
     }
   };
 
   const unequip = item => {
-    const storedCharacters = getStorage('characters');
     const { equipment, history } = character;
     const adjustedHistory = getAdjustedHistory(history);
     const updatedCharacter = {
@@ -295,41 +271,43 @@ const useCharacterManager = () => {
         },
       },
     };
-    const remainingCharacters = storedCharacters
-      .filter(storedCharacter => storedCharacter?.id !== updatedCharacter.id);
-    const updatedCharacters = [...remainingCharacters, updatedCharacter];
 
     try {
-      saveCharacters(updatedCharacters);
-      saveCharacter(updatedCharacter);
-      return { success: true, message: 'Success: Character equipment cleared.' };
-    } catch {
-      return { success: false, message: 'Error: Could not save character to local storage.' };
+      if (update(updatedCharacter)) {
+        return { success: true, message: 'Success: Character equipment updated.' };
+      }
+      throw Error;
+    } catch (e) {
+      if (e) return { success: false, message: `Error: ${e.message}` };
+      return { success: false, message: 'Error: Could not update character equipment.' };
     }
   };
 
   const updateStat = (stat, value) => {
-    const storedCharacters = getStorage('characters');
-    if (!character) return null;
-    const updatedCharacter = {
-      ...character,
-      baseStats: {
-        ...character.baseStats,
-        [stat]: value,
-      },
-    };
-    const remainingCharacters = storedCharacters
-      .filter(storedCharacter => storedCharacter?.id !== updatedCharacter.id);
-    const updatedCharacters = [...remainingCharacters, updatedCharacter];
-
     try {
-      saveCharacters(updatedCharacters);
-      saveCharacter(updatedCharacter);
-      return { success: true, message: 'Success: Character stat modified.' };
-    } catch {
-      return { success: false, message: 'Error: Could not save character to local storage.' };
+      if (update({
+        ...character,
+        baseStats: {
+          ...character.baseStats,
+          [stat]: value,
+        },
+      })) {
+        return { success: true, message: 'Success: Character stats updated.' };
+      }
+      throw Error;
+    } catch (e) {
+      if (e) return { success: false, message: `Error: ${e.message}` };
+      return { success: false, message: 'Error: Could not update character stats.' };
     }
   };
+
+  // const export = () => {
+
+  // };
+
+  // const import = () => {
+
+  // };
 
   return {
     clear,
@@ -339,11 +317,10 @@ const useCharacterManager = () => {
     // export,
     // import,
     read,
+    undo,
     unequip,
-    saveCharacter,
     update,
     updateStat,
-    undo,
   };
 };
 
