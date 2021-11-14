@@ -1,22 +1,16 @@
 import { useCallback } from 'react';
 import { useRecoilState, useSetRecoilState } from 'recoil';
 import {
-  characterState, charactersState, selectedItemState, selectedTabState,
+  characterState,
+  charactersState,
+  selectedItemState,
+  selectedTabState,
 } from 'data/characterState';
 import { v4 as uuidv4 } from 'uuid';
-import { character as characterDefault, tabKeys, HISTORY_LENGTH } from 'data/constants';
-import { isDuplicateCharacter } from 'utils/utilFns';
+import { character as characterModel, tabKeys } from 'data/constants';
+import { capitalize, getAdjustedHistory } from 'utils/utilFns';
 import useLocalStorage from './useLocalStorage';
 
-const getAdjustedHistory = history => {
-  if (history.length === HISTORY_LENGTH) {
-    const [first, ...rest] = history;
-    return rest;
-  }
-  return history;
-};
-
-// TODO: clean up functions. Should be a few that can do everything
 const useCharacterManager = () => {
   const { getStorage, setStorage } = useLocalStorage();
   const [characters, setCharacters] = useRecoilState(charactersState);
@@ -25,164 +19,123 @@ const useCharacterManager = () => {
   const setActiveTab = useSetRecoilState(selectedTabState);
 
   const saveCharacter = useCallback(newCharacter => {
-    try {
-      setStorage('character', newCharacter || null);
-      setCharacter(newCharacter);
-    } catch {
-      throw new Error();
+    if (newCharacter) {
+      if (characters.find(c => c.name.toLowerCase() === newCharacter.name.toLowerCase()
+        && c.version === newCharacter.version
+        && c.id !== newCharacter.id)) throw Error('Character name and/or version already exists.');
+      if (!newCharacter.name) throw Error('Please provide a character name.');
+      if (!newCharacter.version) throw Error('Please provide a character version (ex. \'60 dex con fighter\')');
+      if (newCharacter?.name?.length > 13) throw Error('Error: Character name contains too many characters.');
+      setStorage('character', newCharacter);
+    } else {
+      setStorage('character', null);
     }
-  }, [setCharacter, setStorage]);
+    setCharacter(newCharacter);
+  }, [characters, setCharacter, setStorage]);
 
-  const saveCharacters = newCharacters => {
+  const saveCharacters = useCallback(newCharacters => {
     try {
       setStorage('characters', newCharacters?.length ? newCharacters : null);
       setCharacters(newCharacters);
+      return true;
     } catch {
-      throw new Error();
+      throw Error('Could not save characters to local storage.');
+    }
+  }, [setCharacters, setStorage]);
+
+  const save = (character, characters) => {
+    try {
+      saveCharacter(character);
+      saveCharacters(characters);
+    } catch (e) {
+      throw Error(e.message);
     }
   };
 
-  const createCharacter = ({ name, version }) => {
-    const formattedName = name.charAt(0).toUpperCase() + name.slice(1);
-    const newCharacter = {
-      ...characterDefault, name: formattedName, version, id: uuidv4(),
-    };
-    const storedCharacters = getStorage('characters');
-    if (!newCharacter.name) {
-      return { success: false, message: 'Please provide a character name.' };
-    }
-    if (!newCharacter.version) {
-      return { success: false, message: 'Please provide a character version (ex. \'60 dex con fighter\').' };
-    }
-    if (newCharacter?.name?.length > 13) {
-      return { success: false, message: 'Error: Character name contains too many characters.' };
-    }
-    let updatedCharacters = [newCharacter];
-    if (storedCharacters) {
-      const duplicateCharacter = storedCharacters
-        ?.some(character => isDuplicateCharacter(character, newCharacter));
-      if (duplicateCharacter) {
-        return { success: false, message: 'Error: Character name and/or version already exists.' };
-      }
-      updatedCharacters = [...storedCharacters, newCharacter];
-    }
+  const discard = () => {
     try {
-      saveCharacters(updatedCharacters);
-      saveCharacter(newCharacter);
+      const remainingCharacters = characters.filter(c => c.id !== character.id);
+      save(null, remainingCharacters);
+      setCharacter(remainingCharacters[0]);
+      return { success: true, message: 'Success: Character deleted.' };
+    } catch (e) {
+      if (e) return { success: false, message: `Error: ${e.message}` };
+      return { success: false, message: 'Error: Could not delete character.' };
+    }
+  };
+
+  const create = (name, version) => {
+    const newCharacter = {
+      ...characterModel, id: uuidv4(), name: capitalize(name), version,
+    };
+    let updatedCharacters = [newCharacter];
+    if (characters?.find(c => c.name.toLowerCase() === name && c.version === version)) {
+      return { success: false, message: 'Error: Character name and/or version already exists.' };
+    }
+    updatedCharacters = [...characters, newCharacter];
+    try {
+      save(newCharacter, updatedCharacters);
       setActiveTab(tabKeys.CHARACTER);
       return { success: true, message: 'Success: Character created.' };
     } catch (e) {
-      return { success: false, message: 'Error: Could not save to local storage.' };
+      if (e) return { success: false, message: `Error: ${e.message}` };
+      return { success: false, message: 'Error: Could not create character.' };
     }
   };
 
-  const updateCharacter = character => {
-    const storedCharacters = getStorage('characters');
-    const storedCharacter = getStorage('character');
-    const updatedCharacter = { ...storedCharacter, ...character };
-    if (!storedCharacters) {
-      return { success: false, message: 'Error: Could not find characters in local storage.' };
-    }
-    if (!character.name) {
-      return { success: false, message: 'Please provide a character name.' };
-    }
-    if (!character.version) {
-      return { success: false, message: 'Please provide a character version (ex. \'60 dex con fighter\').' };
-    }
-    const duplicateCharacter = storedCharacters
-      ?.some(c => isDuplicateCharacter(c, updatedCharacter));
-    if (duplicateCharacter) {
-      return { success: false, message: 'Error: Character name and/or version already exists.' };
-    }
-    const remainingCharacters = storedCharacters.filter(storedCharacter => storedCharacter?.id !== updatedCharacter.id);
-    const updatedCharacters = [...remainingCharacters, updatedCharacter];
-
+  const update = newCharacter => {
     try {
-      saveCharacters(updatedCharacters);
-      saveCharacter(updatedCharacter);
-      return { success: true, message: 'Success: Character updated.' };
+      const updatedCharacter = { ...character, ...newCharacter };
+      const remainingCharacters = characters.filter(storedCharacter => storedCharacter?.id !== updatedCharacter.id);
+      const updatedCharacters = [...remainingCharacters, updatedCharacter];
+      save(updatedCharacter, updatedCharacters);
+      return { success: true, message: 'Success: Character has been updated.' };
     } catch (e) {
-      return { success: false, message: 'Error: Could not save character to local storage.' };
+      if (e) return { success: false, message: `Error: ${e.message}` };
+      return { success: false, message: 'Error: Could not update character.' };
     }
   };
 
-  const cloneCharacter = ({ name, version }) => {
-    const storedCharacters = getStorage('characters');
-    const storedCharacter = getStorage('character');
-    const formattedName = name.charAt(0).toUpperCase() + name.slice(1);
-    const clonedCharacter = {
-      ...characterDefault, equipment: storedCharacter?.equipment, name: formattedName, version, id: uuidv4(),
-    };
-    if (!storedCharacters) {
-      return { success: false, message: 'Error: Could not find characters in local storage.' };
-    }
-    if (!name) {
-      return { success: false, message: 'Please provide a character name.' };
-    }
-    if (!version) {
-      return { success: false, message: 'Please provide a character version (ex. \'60 dex con fighter\').' };
-    }
-
-    const updatedCharacters = [...storedCharacters, clonedCharacter];
-
+  const clone = ({ name, version }) => {
     try {
-      saveCharacters(updatedCharacters);
-      saveCharacter(clonedCharacter);
+      const clonedCharacter = {
+        ...characterModel, equipment: character?.equipment, id: uuidv4(), name: capitalize(name), version,
+      };
+      const updatedCharacters = [...characters, clonedCharacter];
+      save(clonedCharacter, updatedCharacters);
       return { success: true, message: 'Success: Character cloned.' };
     } catch (e) {
-      return { success: false, message: 'Error: Could not save to local storage.' };
+      if (e) return { success: false, message: `Error: ${e.message}` };
+      return { success: false, message: 'Error: Could not clone character.' };
     }
   };
 
-  const readCharacters = useCallback(() => {
+  const read = () => {
     const storedCharacters = getStorage('characters');
     const storedCharacter = getStorage('character');
-    if (!storedCharacters) {
-      return { success: false, message: 'Error: No characters found in local storage.' };
+    if (!storedCharacter && !storedCharacters) return;
+    if (storedCharacter || !storedCharacters) {
+      setCharacter(storedCharacter);
+      setCharacters([storedCharacter]);
     }
-    try {
-      setCharacters(storedCharacters);
-      if (!storedCharacter) {
-        saveCharacter(storedCharacters[0]);
-      } else {
-        setCharacter(storedCharacter);
-      }
-      return { success: true, message: 'Success: Characters loaded.' };
-    } catch {
-      return { success: false, message: 'Error: Could not load characters.' };
-    }
-  }, [getStorage, saveCharacter, setCharacter, setCharacters]);
-
-  const deleteCharacter = () => {
-    const storedCharacters = getStorage('characters');
-    const storedCharacter = getStorage('character');
-    if (!storedCharacter) {
-      return { success: false, message: 'Error: Character does not exist in local storage.' };
-    }
-    if (storedCharacters) {
-      try {
-        const remainingCharacters = storedCharacters
-          .filter(char => char.id !== storedCharacter.id);
-        saveCharacter(remainingCharacters[0]);
-        saveCharacters(remainingCharacters);
-        setSelectedItem(null);
-        return { success: true, message: 'Success: Character deleted.' };
-      } catch {
-        return { success: false, message: 'Error: Could not delete character.' };
-      }
-    }
-    return { success: false, message: 'Error: No characters found in local storage.' };
   };
+  // **********************************************************************
+  // **********************************************************************
+  // TODO: clean up functions BELOW. Should be a few that can do everything
 
-  // const exportCharacter = () => {
+
+
+
+
+  // const export = () => {
 
   // };
 
-  // const importCharacter = () => {
+  // const import = () => {
 
   // };
 
-  const undoLastChange = () => {
+  const undo = () => {
     const storedCharacters = getStorage('characters');
     const { history } = character;
     if (!history.length) return { success: false, message: 'Error: No character history found.' };
@@ -206,7 +159,7 @@ const useCharacterManager = () => {
     }
   };
 
-  const clearEquipment = () => {
+  const clear = () => {
     const storedCharacters = getStorage('characters');
     const { equipment, history } = character;
     const adjustedHistory = getAdjustedHistory(history);
@@ -324,7 +277,7 @@ const useCharacterManager = () => {
     }
   };
 
-  const removeItem = item => {
+  const unequip = item => {
     const storedCharacters = getStorage('characters');
     const { equipment, history } = character;
     const adjustedHistory = getAdjustedHistory(history);
@@ -379,20 +332,18 @@ const useCharacterManager = () => {
   };
 
   return {
-    clear: clearEquipment,
-    character,
-    characters,
-    clone: cloneCharacter,
-    create: createCharacter,
-    // export: exportCharacter,
-    // import: importCharacter,
-    read: readCharacters,
-    remove: deleteCharacter,
-    removeItem,
+    clear,
+    clone,
+    create,
+    discard,
+    // export,
+    // import,
+    read,
+    unequip,
     saveCharacter,
-    update: updateCharacter,
+    update,
     updateStat,
-    undo: undoLastChange,
+    undo,
   };
 };
 

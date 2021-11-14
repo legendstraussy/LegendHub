@@ -3,7 +3,10 @@ import HubSelect from 'components/common/hubSelect';
 import { makeStyles } from '@material-ui/styles';
 import useCharacterManager from 'hooks/useCharacterManager';
 import { getKeyArrayFromObject } from 'utils/utilFns';
+import { useRecoilValue } from 'recoil';
+import { charactersState, characterState } from 'data/characterState';
 
+// TODO: UGH. Redo this
 const useStyles = makeStyles({
   empty: {
     color: 'rgba(136, 130, 130, 0.75)',
@@ -27,8 +30,10 @@ const useStyles = makeStyles({
 }, { name: 'Mui_Styles_Select' });
 
 const CharacterSelect = () => {
+  const characters = useRecoilValue(charactersState);
+  const character = useRecoilValue(characterState);
   const {
-    character = {}, characters = [], read, saveCharacter,
+    read, update,
   } = useCharacterManager();
   const classes = useStyles();
 
@@ -41,7 +46,7 @@ const CharacterSelect = () => {
   const handleCharacterSelect = characterId => {
     const selectedCharacter = characters.find(c => c.id === characterId);
     if (selectedCharacter) {
-      saveCharacter(selectedCharacter);
+      update(selectedCharacter);
     }
   };
 
@@ -64,8 +69,8 @@ const CharacterSelect = () => {
           <HubSelect
             onChange={handleCharacterSelect}
             options={characterOptions}
-            value={character.id}
-            name={character.name}
+            value={character?.id}
+            name={character?.name}
             width="135px"
           />
         )

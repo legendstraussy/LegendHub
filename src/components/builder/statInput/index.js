@@ -24,6 +24,13 @@ const StatInput = props => {
   const classes = useStyles();
 
   useEffect(() => {
+    if (!stat) setValue(0);
+    if (stat >= 0) {
+      setValue(stat);
+    }
+  }, [stat]);
+
+  useEffect(() => {
     const timer = setTimeout(() => {
       if (value === stat) return;
       if (value === '') return;

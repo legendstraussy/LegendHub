@@ -27,7 +27,7 @@ const useStyles = makeStyles(({
 const DeleteCharacterForm = props => {
   const { handleClickClose } = props;
   const character = useRecoilValue(characterState);
-  const { remove } = useCharacterManager();
+  const { discard } = useCharacterManager();
   const [{ name, version }] = useState(character);
   const [status, setStatus] = useState(null);
   const classes = useStyles();
@@ -35,7 +35,7 @@ const DeleteCharacterForm = props => {
   const handleSubmit = event => {
     event.preventDefault();
 
-    const submit = remove(character);
+    const submit = discard(character);
     if (submit.success) {
       handleClickClose();
     } else {

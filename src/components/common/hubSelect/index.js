@@ -69,7 +69,7 @@ const HubSelect = props => {
 HubSelect.propTypes = {
   defaultText: PropTypes.string,
   name: PropTypes.string,
-  onChange: PropTypes.func.isRequired,
+  onChange: PropTypes.func,
   options: PropTypes.arrayOf(
     PropTypes.shape({
       label: PropTypes.shape({}),
@@ -77,7 +77,7 @@ HubSelect.propTypes = {
       value: PropTypes.string,
     }),
   ).isRequired,
-  value: PropTypes.string.isRequired,
+  value: PropTypes.string,
 };
 
 export default HubSelect;

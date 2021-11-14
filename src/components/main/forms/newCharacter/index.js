@@ -39,12 +39,7 @@ const NewCharacterForm = props => {
   const handleSubmit = event => {
     event.preventDefault();
 
-    const char = {
-      name,
-      version,
-    };
-
-    const submit = create(char);
+    const submit = create(name, version);
     if (submit.success) {
       handleClickClose();
     } else {

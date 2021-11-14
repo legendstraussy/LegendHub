@@ -52,14 +52,14 @@ const CharacterEquipment = () => {
   const equipment = useRecoilValue(equipmentState);
   const selectItem = useSetRecoilState(selectedItemState);
   const setTab = useSetRecoilState(selectedTabState);
-  const { removeItem } = useCharacterManager();
+  const { unequip } = useCharacterManager();
 
   const handleItemDetailClick = useCallback(item => {
     selectItem(item);
     setTab(tabKeys.ITEM);
   }, [selectItem, setTab]);
 
-  const handleItemRemoveClick = useCallback(item => removeItem(item), [removeItem]);
+  const handleItemRemoveClick = useCallback(item => unequip(item), [unequip]);
 
   const headers = [
     {
