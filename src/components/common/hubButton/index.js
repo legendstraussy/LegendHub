@@ -33,7 +33,12 @@ const useStyles = makeStyles({
 const HubButton = props => {
   const classes = useStyles();
   const {
-    autoFocus = false, disabled = false, label, onClick, submit, type = 'default',
+    autoFocus = false,
+    disabled = false,
+    label,
+    onClick,
+    submit,
+    type = 'default',
   } = props;
 
   return (

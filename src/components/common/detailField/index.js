@@ -1,7 +1,7 @@
 import { PropTypes } from 'prop-types';
 import { makeStyles } from '@material-ui/styles';
-import DetailFieldLabel from 'components/common/detail/detailField/detailFieldLabel';
-import DetailFieldValue from 'components/common/detail/detailField/detailFieldValue';
+import DetailFieldLabel from 'components/common/detailField/detailFieldLabel';
+import DetailFieldValue from 'components/common/detailField/detailFieldValue';
 
 const useStyles = makeStyles({
   root: {
@@ -14,9 +14,7 @@ const useStyles = makeStyles({
 }, { name: 'Mui_Styles_DetailField' });
 
 const DetailField = props => {
-  const {
-    hideColon, label, value, labelFlex, valueFlex,
-  } = props;
+  const { hideColon, label, value, labelFlex, valueFlex } = props;
   const classes = useStyles(props);
 
   return (

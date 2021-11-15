@@ -15,9 +15,7 @@ const sort = (array, order, orderBy) => {
 const baseFilters = filters => item => Object.keys(filters).every(key => item[key] === filters[key]);
 
 export default function handler(req, res) {
-  const {
-    page, limit, order, orderBy,
-  } = req.query;
+  const { page, limit, order, orderBy } = req.query;
   const parsedPage = parseInt(page, 10);
   const parsedLimit = parseInt(limit, 10);
   const filters = req.body;

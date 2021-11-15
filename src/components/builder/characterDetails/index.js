@@ -1,26 +1,17 @@
-import { useState } from 'react';
+import { useRecoilValue } from 'recoil';
+import { characterDetailState } from 'data/characterState';
 import CharacterStats from 'components/builder/characterStats';
 import CharacterFinal from 'components/builder/characterFinal';
-import { makeStyles } from '@material-ui/styles';
-
-const useStyles = makeStyles({
-  root: {
-    display: 'flex',
-    flex: 1,
-    flexDirection: 'column',
-  },
-}, { name: 'Mui_Styles_CharacterDetails' });
+import { CHAR_DETAIL_KEYS } from 'data/constants';
 
 const CharacterDetails = () => {
-  const [showFinal, setShowFinal] = useState(false);
-  const classes = useStyles();
+  const detail = useRecoilValue(characterDetailState);
 
-  if (showFinal) return <CharacterFinal onStatsClick={() => setShowFinal(false)} />;
+  if (detail === CHAR_DETAIL_KEYS.FINAL) return <CharacterFinal />;
+  if (detail === CHAR_DETAIL_KEYS.STATS) return <CharacterStats />;
 
   return (
-    <div className={classes.root}>
-      <CharacterStats onFinalClick={() => setShowFinal(true)} />
-    </div>
+    <div>No character details.</div>
   );
 };
 

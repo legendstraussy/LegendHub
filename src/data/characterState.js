@@ -1,6 +1,6 @@
 import { atom, selector } from 'recoil';
 import { configureCalcAlign } from 'utils/utilFns';
-import { character } from './constants';
+import { CHAR_DETAIL_KEYS } from 'data/constants';
 
 export const charactersState = atom({
   key: 'charactersState',
@@ -10,6 +10,11 @@ export const charactersState = atom({
 export const characterState = atom({
   key: 'characterState',
   default: null,
+});
+
+export const characterDetailState = atom({
+  key: 'characterDetailState',
+  default: CHAR_DETAIL_KEYS.STATS,
 });
 
 export const selectedItemState = atom({
@@ -126,12 +131,8 @@ export const mainStatsState = selector({
   get: ({ get }) => {
     const selectedCharacter = get(characterState);
     if (selectedCharacter) {
-      const {
-        str, min, dex, con, per, spi,
-      } = selectedCharacter?.baseStats;
-      const {
-        str: strSwap, min: minSwap, dex: dexSwap, con: conSwap, per: perSwap, spi: spiSwap,
-      } = selectedCharacter?.swapStats;
+      const { str, min, dex, con, per, spi } = selectedCharacter?.baseStats;
+      const { str: strSwap, min: minSwap, dex: dexSwap, con: conSwap, per: perSwap, spi: spiSwap } = selectedCharacter?.swapStats;
       return get(equipmentState)
         .reduce((stats, item) => ({
           str: {
@@ -228,9 +229,7 @@ export const meleeStatsState = selector({
   get: ({ get }) => {
     const selectedCharacter = get(characterState);
     if (selectedCharacter) {
-      const {
-        hitroll, damroll, mitigation, parry,
-      } = selectedCharacter?.meleeStats;
+      const { hitroll, damroll, mitigation, parry } = selectedCharacter?.meleeStats;
       return get(equipmentState)
         .reduce((stats, item) => ({
           ...stats,
@@ -253,9 +252,7 @@ export const spellStatsState = selector({
   get: ({ get }) => {
     const selectedCharacter = get(characterState);
     if (selectedCharacter) {
-      const {
-        spellDam, spellCrit, spellRedux, concentration,
-      } = selectedCharacter?.spellStats;
+      const { spellDam, spellCrit, spellRedux, concentration } = selectedCharacter?.spellStats;
       return get(equipmentState)
         .reduce((stats, item) => ({
           ...stats,

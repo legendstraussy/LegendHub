@@ -49,9 +49,7 @@ const useStyles = makeStyles({
 }, { name: 'Mui_Styles_IconHeader' });
 
 const IconHeader = props => {
-  const {
-    iconPath, isSorting, label, order,
-  } = props;
+  const { iconPath, isSorting, label, order } = props;
   const classes = useStyles(props);
 
   return (

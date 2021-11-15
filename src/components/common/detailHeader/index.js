@@ -5,6 +5,9 @@ const useStyles = makeStyles({
   root: {
     display: 'flex',
     flex: 1,
+    // alignItems: 'center',
+    justifyContent: 'space-between',
+    marginBottom: '1em',
   },
   label: {
     color: '#FFD874',

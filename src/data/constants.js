@@ -497,5 +497,10 @@ export const tabKeys = {
   CHARACTER: 'character',
 };
 
+export const CHAR_DETAIL_KEYS = {
+  FINAL: 'final',
+  STATS: 'stat',
+};
+
 export const NO_VALID_ALIGN = '---';
 export const HISTORY_LENGTH = 10;

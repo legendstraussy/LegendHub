@@ -19,9 +19,7 @@ const useStyles = makeStyles({
 }, { name: 'Mui_Styles_StatInput' });
 
 const StatInput = props => {
-  const {
-    max, min, stat, updateStat,
-  } = props;
+  const { max, min, stat, updateStat } = props;
   const [value, setValue] = useState(stat || 0);
   const classes = useStyles();
 

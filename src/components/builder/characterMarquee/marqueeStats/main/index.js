@@ -37,9 +37,7 @@ const useStyles = makeStyles({
 
 const BaseStats = () => {
   const classes = useStyles();
-  const {
-    str, min, dex, con, per, spi,
-  } = useRecoilValue(mainStatsState);
+  const { str, min, dex, con, per, spi } = useRecoilValue(mainStatsState);
 
   return (
     <div className={classes.root}>

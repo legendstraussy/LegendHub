@@ -19,9 +19,7 @@ const useStyles = makeStyles({
 }, { name: 'Mui_Styles_SpellStats' });
 
 const SpellStats = () => {
-  const {
-    spellDam, spellCrit, spellRedux, concentration,
-  } = useRecoilValue(spellStatsState);
+  const { spellDam, spellCrit, spellRedux, concentration } = useRecoilValue(spellStatsState);
   const classes = useStyles();
 
   return (

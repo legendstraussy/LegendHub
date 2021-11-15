@@ -9,8 +9,10 @@ const useStyles = makeStyles({
   root: {
     display: 'grid',
     gridTemplateColumns: '1fr 1fr 1fr 1fr 1fr',
+    gridRowGap: '.5em',
     justifyItems: 'center',
     alignItems: 'center',
+    marginBottom: '.5em',
     fontSize: 12,
   },
   name: {
@@ -41,11 +43,11 @@ const StatsGridRow = props => {
 
   return (
     <main className={classes.root}>
-      <div className={classes.name}>{name}</div>
+      <section className={classes.name}>{name}</section>
       <StatInput updateStat={handleUpdateStat} stat={stat?.raw} min={0} max={50} />
-      <div>{stat?.uneq}</div>
+      <section>{stat?.uneq}</section>
       <StatInput updateStat={handleUpdateSwap} stat={stat?.swap} min={-3} max={3} />
-      <div className={classes.final}>{stat?.final}</div>
+      <section className={classes.final}>{stat?.final}</section>
     </main>
   );
 };

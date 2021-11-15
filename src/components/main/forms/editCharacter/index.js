@@ -4,7 +4,7 @@ import { makeStyles } from '@material-ui/core';
 import HubInput from 'components/common/hubInput';
 import HubButton from 'components/common/hubButton';
 import HubCheckbox from 'components/common/hubCheckbox';
-import DetailField from 'components/common/detail/detailField';
+import DetailField from 'components/common/detailField';
 import useCharacterManager from 'hooks/useCharacterManager';
 import { useRecoilValue } from 'recoil';
 import { characterState } from 'data/characterState';
