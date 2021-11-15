@@ -283,21 +283,21 @@ const useCharacterManager = () => {
     }
   };
 
-  const updateStat = (stat, value) => {
+  const updateStat = type => (stat, value) => {
     try {
       if (update({
         ...character,
-        baseStats: {
-          ...character.baseStats,
+        [type]: {
+          ...character[type],
           [stat]: value,
         },
       })) {
-        return { success: true, message: 'Success: Character stats updated.' };
+        return { success: true, message: `Success: Character ${type} stats updated.` };
       }
       throw Error;
     } catch (e) {
       if (e) return { success: false, message: `Error: ${e.message}` };
-      return { success: false, message: 'Error: Could not update character stats.' };
+      return { success: false, message: `Error: Could not update character ${type} stats.` };
     }
   };
 
@@ -320,7 +320,8 @@ const useCharacterManager = () => {
     undo,
     unequip,
     update,
-    updateStat,
+    modifyBaseStat: updateStat('baseStats'),
+    modifyBaseSwap: updateStat('swapStats'),
   };
 };
 

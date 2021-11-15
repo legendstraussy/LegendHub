@@ -131,7 +131,7 @@ export const mainStatsState = selector({
       } = selectedCharacter?.baseStats;
       const {
         str: strSwap, min: minSwap, dex: dexSwap, con: conSwap, per: perSwap, spi: spiSwap,
-      } = selectedCharacter?.swap;
+      } = selectedCharacter?.swapStats;
       return get(equipmentState)
         .reduce((stats, item) => ({
           str: {

@@ -1,7 +1,5 @@
 import { useState } from 'react';
 import CharacterStats from 'components/builder/characterStats';
-import QuestModifiers from 'components/builder/questModifiers';
-import ElectiveModifiers from 'components/builder/electiveModifiers';
 import CharacterFinal from 'components/builder/characterFinal';
 import { makeStyles } from '@material-ui/styles';
 
@@ -22,8 +20,6 @@ const CharacterDetails = () => {
   return (
     <div className={classes.root}>
       <CharacterStats onFinalClick={() => setShowFinal(true)} />
-      {/* <QuestModifiers />
-      <ElectiveModifiers /> */}
     </div>
   );
 };

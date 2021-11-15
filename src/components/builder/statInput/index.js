@@ -19,35 +19,37 @@ const useStyles = makeStyles({
 }, { name: 'Mui_Styles_StatInput' });
 
 const StatInput = props => {
-  const { updateStat, stat } = props;
+  const {
+    max, min, stat, updateStat,
+  } = props;
   const [value, setValue] = useState(stat || 0);
   const classes = useStyles();
 
   useEffect(() => {
     if (!stat) setValue(0);
-    if (stat >= 0) {
+    if (stat >= min) {
       setValue(stat);
     }
-  }, [stat]);
+  }, [min, stat]);
 
   useEffect(() => {
+    const statValue = parseInt(value, 10);
     const timer = setTimeout(() => {
-      if (value === stat) return;
-      if (value === '') return;
-      if (value >= 0) {
-        updateStat(value);
+      if (statValue === stat) return;
+      if (statValue >= min) {
+        updateStat(statValue);
       }
     }, 200);
     return () => {
       clearTimeout(timer);
     };
-  }, [stat, updateStat, value]);
+  }, [min, stat, updateStat, value]);
 
   const handleOnChange = event => {
     let value = parseInt(event.target.value, 10);
-    if (value >= 0) {
-      if (value > 50) {
-        value = 50;
+    if (value >= min) {
+      if (value > max) {
+        value = max;
       }
       setValue(value);
     } else {
@@ -58,8 +60,8 @@ const StatInput = props => {
   return (
     <input
       type="number"
-      min="0"
-      max="50"
+      min={min}
+      max={max}
       value={value}
       onChange={handleOnChange}
       className={classes.root}
@@ -68,6 +70,8 @@ const StatInput = props => {
 };
 
 StatInput.propTypes = {
+  max: PropTypes.number,
+  min: PropTypes.number,
   stat: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.number,

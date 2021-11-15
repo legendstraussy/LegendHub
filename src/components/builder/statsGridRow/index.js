@@ -19,19 +19,22 @@ const useStyles = makeStyles({
 }, { name: 'Mui_Styles_StatsGridRow' });
 
 const StatsGridRow = ({ name, stat }) => {
-  const { updateStat } = useCharacterManager();
+  const { modifyBaseStat, modifyBaseSwap } = useCharacterManager();
   const classes = useStyles();
 
   const handleUpdateStat = useCallback(stat => {
-    updateStat(name, stat);
-  }, [updateStat, name]);
+    modifyBaseStat(name, stat);
+  }, [modifyBaseStat, name]);
+
+  const handleUpdateSwap = useCallback(stat => {
+    modifyBaseSwap(name, stat);
+  }, [modifyBaseSwap, name]);
 
   return (
     <main className={classes.root}>
       <div className={classes.name}>{name}</div>
-      <StatInput updateStat={handleUpdateStat} stat={stat?.raw} />
-      {/* <StatInput updateStat={handleUpdateStat} stat={stat?.swap} /> */}
-      <div>{stat?.swap}</div>
+      <StatInput updateStat={handleUpdateStat} stat={stat?.raw} min="0" max="50" />
+      <StatInput updateStat={handleUpdateSwap} stat={stat?.swap} min="-3" max="3" />
       <div>{stat?.uneq}</div>
       <div>{stat?.final}</div>
     </main>

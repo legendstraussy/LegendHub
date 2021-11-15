@@ -1,5 +1,7 @@
 import { PropTypes } from 'prop-types';
 import { makeStyles } from '@material-ui/styles';
+import QuestModifiers from 'components/builder/questModifiers';
+import ElectiveModifiers from 'components/builder/electiveModifiers';
 import HubIconButton from 'components/common/hubIconButton';
 import StatsGrid from 'components/builder/statsGrid';
 import DetailHeader from 'components/common/detail/detailHeader';
@@ -32,6 +34,12 @@ const CharacterStats = props => {
       </section>
       <section className={classes.section}>
         <StatsGrid />
+      </section>
+      <section className={classes.section}>
+        <QuestModifiers />
+      </section>
+      <section className={classes.section}>
+        <ElectiveModifiers />
       </section>
     </div>
   );
