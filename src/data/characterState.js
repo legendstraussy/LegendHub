@@ -307,13 +307,14 @@ export const regenStatsState = selector({
   },
 });
 
-export const characterNamesState = selector({
-  key: 'characterNamesState',
+export const slotState = selector({
+  key: 'slotState',
   get: ({ get }) => {
-    const characters = get(charactersState);
-    return characters.map(({ name }) => ({
-      name,
-    }));
+    const { equipment } = get(equipmentState);
+    return {
+      used: 0,
+      total: 1,
+    };
   },
 });
 

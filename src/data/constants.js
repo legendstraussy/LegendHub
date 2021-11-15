@@ -251,12 +251,12 @@ export const character = {
     threeAll: false,
   },
   swapStats: {
-    str: 3,
-    min: 4,
-    dex: 5,
-    con: 6,
-    per: 7,
-    spi: 8,
+    str: 0,
+    min: 0,
+    dex: 0,
+    con: 0,
+    per: 0,
+    spi: 0,
   },
   affects: [
   ],

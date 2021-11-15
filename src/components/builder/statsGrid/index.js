@@ -13,10 +13,8 @@ const useStyles = makeStyles({
 }, { name: 'Mui_Styles_StatsGrid' });
 
 const StatsGrid = () => {
-  const [headers] = useState(['raw', 'swap', 'uneq', 'final']);
-  const {
-    str, min, dex, con, per, spi,
-  } = useRecoilValue(mainStatsState);
+  const { str, min, dex, con, per, spi } = useRecoilValue(mainStatsState);
+  const [headers] = useState(['raw', 'uneq', 'swap', 'final']);
   const classes = useStyles();
 
   return (
@@ -30,39 +28,6 @@ const StatsGrid = () => {
         <StatsGridRow name="per" stat={per} />
         <StatsGridRow name="spi" stat={spi} />
       </section>
-
-      {/* <Grid container className={classes.grid}>
-        <Grid item xs={2} className={classes.label}>&nbsp;</Grid>
-        <Grid item xs={2} className={classes.label}>raw</Grid>
-        <Grid item xs={2} className={classes.label}>uneq.</Grid>
-        <Grid item xs={2} className={classes.label}>swap</Grid>
-        <Grid item xs={2} className={classes.label}>final</Grid>
-      </Grid> */}
-      {/* <StatRow stat={} /> */}
-      {/* {[].map(stat => (
-        <Grid key={stat.name} container className={classes.grid}>
-          <Grid item xs={2} className={classes.label}>{stat.name}</Grid>
-          <Grid item xs={2} className={classes.label}>
-            <StatInput stat={stat.raw} />
-          </Grid>
-          <Grid item xs={2} className={classes.label}>{stat.uneq}</Grid>
-          <Grid item xs={2} className={classes.label}>
-            <StatInput stat={stat.swap} />
-          </Grid>
-          <Grid
-            item
-            xs={2}
-            className={classes.label}
-            style={{
-              // color: theme.palette.main[statsConstants[stat.name]],
-              fontSize: '14px',
-              fontWeight: '700',
-            }}
-          >
-            {stat.final}
-          </Grid>
-        </Grid>
-      ))} */}
     </main>
   );
 };

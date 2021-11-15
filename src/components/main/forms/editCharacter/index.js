@@ -81,7 +81,7 @@ const EditCharacterForm = props => {
         )
         : (
           <>
-            <section>Please enter the name of your new character.</section>
+            <section>You may change your character version below. To change a character's name, please select the cloning option.</section>
             <DetailField
               label="name"
               value={<span style={{ display: 'flex', height: '35px', alignItems: 'center' }}>{name}</span>}

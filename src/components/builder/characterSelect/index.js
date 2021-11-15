@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import HubSelect from 'components/common/hubSelect';
 import { makeStyles } from '@material-ui/styles';
 import useCharacterManager from 'hooks/useCharacterManager';
@@ -32,16 +32,14 @@ const useStyles = makeStyles({
 const CharacterSelect = () => {
   const characters = useRecoilValue(charactersState);
   const character = useRecoilValue(characterState);
-  const {
-    read, update,
-  } = useCharacterManager();
+  const { read, update } = useCharacterManager();
   const classes = useStyles();
 
   useEffect(() => {
-    if (characters && !character) {
+    if (!character) {
       read();
     }
-  }, [character, characters, read]);
+  }, [character, read]);
 
   const handleCharacterSelect = characterId => {
     const selectedCharacter = characters.find(c => c.id === characterId);
@@ -62,20 +60,16 @@ const CharacterSelect = () => {
       value: c.id,
     }));
 
+  if (!characters?.length) return <div className={classes.empty}>No characters</div>;
+
   return (
-    <>
-      {characters?.length > 0
-        ? (
-          <HubSelect
-            onChange={handleCharacterSelect}
-            options={characterOptions}
-            value={character?.id}
-            name={character?.name}
-            width="135px"
-          />
-        )
-        : <div className={classes.empty}>No characters</div>}
-    </>
+    <HubSelect
+      onChange={handleCharacterSelect}
+      options={characterOptions}
+      value={character?.id}
+      name={character?.name}
+      width="135px"
+    />
   );
 };
 

@@ -10,6 +10,8 @@ const useStyles = makeStyles({
     display: 'grid',
     gridTemplateColumns: '1fr 1fr 1fr 1fr 1fr',
     justifyItems: 'center',
+    alignItems: 'center',
+    fontSize: 12,
   },
   name: {
     display: 'flex',
@@ -19,6 +21,8 @@ const useStyles = makeStyles({
   },
   final: {
     color: props => props.name ? stats[props.name].color : '#fff',
+    fontSize: 14,
+    fontWeight: 700,
   },
 }, { name: 'Mui_Styles_StatsGridRow' });
 
@@ -38,9 +42,9 @@ const StatsGridRow = props => {
   return (
     <main className={classes.root}>
       <div className={classes.name}>{name}</div>
-      <StatInput updateStat={handleUpdateStat} stat={stat?.raw} min="0" max="50" />
-      <StatInput updateStat={handleUpdateSwap} stat={stat?.swap} min="-3" max="3" />
+      <StatInput updateStat={handleUpdateStat} stat={stat?.raw} min={0} max={50} />
       <div>{stat?.uneq}</div>
+      <StatInput updateStat={handleUpdateSwap} stat={stat?.swap} min={-3} max={3} />
       <div className={classes.final}>{stat?.final}</div>
     </main>
   );

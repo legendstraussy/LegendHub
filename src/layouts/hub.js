@@ -5,7 +5,6 @@ import Toolbar from 'components/main/toolbar';
 
 const Hub = props => {
   const { children } = props;
-
   return (
     <div style={{
       display: 'flex', flexDirection: 'column', flex: 1, overflow: 'hidden',

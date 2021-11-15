@@ -1,4 +1,6 @@
 import { makeStyles } from '@material-ui/styles';
+import { slotState } from 'data/characterState';
+import { useRecoilValue } from 'recoil';
 
 const useStyles = makeStyles({
   root: {
@@ -12,8 +14,8 @@ const useStyles = makeStyles({
 }, { name: 'Mui_Styles_HubFooter' });
 
 const HubFooter = () => {
+  // const slots = useRecoilValue(slotState);
   const classes = useStyles();
-
   return (
     <div className={classes.root}>
       16/22 slots filled
