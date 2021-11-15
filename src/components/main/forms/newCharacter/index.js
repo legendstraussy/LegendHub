@@ -3,7 +3,7 @@ import { PropTypes } from 'prop-types';
 import { makeStyles } from '@material-ui/core';
 import HubInput from 'components/common/hubInput';
 import HubButton from 'components/common/hubButton';
-import DetailField from 'components/common/detail/detailField/';
+import DetailField from 'components/common/detailField/';
 import useCharacterManager from 'hooks/useCharacterManager';
 
 const useStyles = makeStyles(({
@@ -39,12 +39,7 @@ const NewCharacterForm = props => {
   const handleSubmit = event => {
     event.preventDefault();
 
-    const char = {
-      name,
-      version,
-    };
-
-    const submit = create(char);
+    const submit = create(name, version);
     if (submit.success) {
       handleClickClose();
     } else {

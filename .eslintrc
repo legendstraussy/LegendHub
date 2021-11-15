@@ -9,6 +9,10 @@
     }
   },
   "rules": {
+    "object-curly-newline": ["error", {
+      // "ObjectExpression": "always",
+      "ObjectPattern": {"multiline": true}
+    }],
     "no-unused-vars": [0, { "ignoreRestSiblings": true }],
     "no-shadow": "off",
     "no-nested-ternary": "off",

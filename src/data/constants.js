@@ -209,11 +209,11 @@ export const character = {
   },
   baseStats: {
     str: 0,
-    min: 0,
-    dex: 0,
-    con: 0,
-    per: 0,
-    spi: 0,
+    min: 1,
+    dex: 2,
+    con: 3,
+    per: 4,
+    spi: 5,
   },
   capStats: {
     strCap: 0,
@@ -248,6 +248,15 @@ export const character = {
   quests: {
     ten: 0,
     fiveThree: 0,
+    threeAll: false,
+  },
+  swapStats: {
+    str: 0,
+    min: 0,
+    dex: 0,
+    con: 0,
+    per: 0,
+    spi: 0,
   },
   affects: [
   ],
@@ -380,64 +389,64 @@ export const fiveThreeQuests = [
   {
     name: 'bear',
     modifers: [
-      { stat: stats.spi, delta: 5 },
-      { stat: stats.min, delta: 3 },
+      { stat: 'spi', value: 5 },
+      { stat: 'min', value: 3 },
     ],
   },
   {
     name: 'beaver',
     modifers: [
-      { stat: stats.min, delta: 5 },
-      { stat: stats.dex, delta: 3 },
+      { stat: 'min', value: 5 },
+      { stat: 'dex', value: 3 },
     ],
   },
   {
     name: 'eagle',
     modifers: [
-      { stat: stats.per, delta: 5 },
-      { stat: stats.str, delta: 3 },
+      { stat: 'per', value: 5 },
+      { stat: 'str', value: 3 },
     ],
   },
   {
     name: 'moose',
     modifers: [
-      { stat: stats.str, delta: 5 },
-      { stat: stats.con, delta: 3 },
+      { stat: 'str', value: 5 },
+      { stat: 'con', value: 3 },
     ],
   },
   {
     name: 'snake',
     modifers: [
-      { stat: stats.dex, delta: 5 },
-      { stat: stats.per, delta: 3 },
+      { stat: 'dex', value: 5 },
+      { stat: 'per', value: 3 },
     ],
   },
   {
     name: 'turtle',
     modifers: [
-      { stat: stats.con, delta: 5 },
-      { stat: stats.spi, delta: 3 },
+      { stat: 'con', value: 5 },
+      { stat: 'spi', value: 3 },
     ],
   },
   {
     name: 'dragon',
     modifers: [
-      { stat: stats.dex, delta: 5 },
-      { stat: stats.con, delta: 3 },
+      { stat: 'dex', value: 5 },
+      { stat: 'con', value: 3 },
     ],
   },
   {
     name: 'hydra',
     modifers: [
-      { stat: stats.per, delta: 5 },
-      { stat: stats.dex, delta: 3 },
+      { stat: 'per', value: 5 },
+      { stat: 'dex', value: 3 },
     ],
   },
   {
     name: 'wyvern',
     modifers: [
-      { stat: stats.min, delta: 5 },
-      { stat: stats.spi, delta: 3 },
+      { stat: 'min', value: 5 },
+      { stat: 'spi', value: 3 },
     ],
   },
 ];
@@ -488,5 +497,10 @@ export const tabKeys = {
   CHARACTER: 'character',
 };
 
-export const NO_VALID_ALIGN = 'XXX';
+export const CHAR_DETAIL_KEYS = {
+  FINAL: 'final',
+  STATS: 'stat',
+};
+
+export const NO_VALID_ALIGN = '---';
 export const HISTORY_LENGTH = 10;

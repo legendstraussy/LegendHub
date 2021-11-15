@@ -1,5 +1,6 @@
 import { atom, selector } from 'recoil';
 import { configureCalcAlign } from 'utils/utilFns';
+import { CHAR_DETAIL_KEYS } from 'data/constants';
 
 export const charactersState = atom({
   key: 'charactersState',
@@ -9,6 +10,11 @@ export const charactersState = atom({
 export const characterState = atom({
   key: 'characterState',
   default: null,
+});
+
+export const characterDetailState = atom({
+  key: 'characterDetailState',
+  default: CHAR_DETAIL_KEYS.STATS,
 });
 
 export const selectedItemState = atom({
@@ -125,24 +131,75 @@ export const mainStatsState = selector({
   get: ({ get }) => {
     const selectedCharacter = get(characterState);
     if (selectedCharacter) {
-      const {
-        str, min, dex, con, per, spi,
-      } = selectedCharacter?.baseStats;
+      const { str, min, dex, con, per, spi } = selectedCharacter?.baseStats;
+      const { str: strSwap, min: minSwap, dex: dexSwap, con: conSwap, per: perSwap, spi: spiSwap } = selectedCharacter?.swapStats;
       return get(equipmentState)
         .reduce((stats, item) => ({
-          ...stats,
-          str: (item.str) ? stats.str + item.str : stats.str,
-          min: (item.min) ? stats.min + item.min : stats.min,
-          dex: (item.dex) ? stats.dex + item.dex : stats.dex,
-          con: (item.con) ? stats.con + item.con : stats.con,
-          per: (item.per) ? stats.per + item.per : stats.per,
-          spi: (item.spi) ? stats.spi + item.spi : stats.spi,
+          str: {
+            ...stats.str,
+            final: item?.str ? stats.str.final + item.str : stats.str.final,
+          },
+          min: {
+            ...stats.min,
+            final: item?.min ? stats.min.final + item.min : stats.min.final,
+          },
+          dex: {
+            ...stats.dex,
+            final: item?.dex ? stats.dex.final + item.dex : stats.dex.final,
+          },
+          con: {
+            ...stats.con,
+            final: item?.con ? stats.con.final + item.con : stats.con.final,
+          },
+          per: {
+            ...stats.per,
+            final: item?.per ? stats.per.final + item.per : stats.per.final,
+          },
+          spi: {
+            ...stats.spi,
+            final: item?.spi ? stats.spi.final + item.spi : stats.spi.final,
+          },
         }), {
-          str, min, dex, con, per, spi,
+          str: {
+            raw: str,
+            swap: strSwap,
+            uneq: str + strSwap,
+            final: str + strSwap,
+          },
+          min: {
+            raw: min,
+            swap: minSwap,
+            uneq: min + minSwap,
+            final: min + minSwap,
+          },
+          dex: {
+            raw: dex,
+            swap: dexSwap,
+            uneq: dex + dexSwap,
+            final: dex + dexSwap,
+          },
+          con: {
+            raw: con,
+            swap: conSwap,
+            uneq: con + conSwap,
+            final: con + conSwap,
+          },
+          per: {
+            raw: per,
+            swap: perSwap,
+            uneq: per + perSwap,
+            final: per + perSwap,
+          },
+          spi: {
+            raw: spi,
+            swap: spiSwap,
+            uneq: spi + spiSwap,
+            final: spi + spiSwap,
+          },
         });
     }
     return {
-      str: 0, min: 0, dex: 0, con: 0, per: 0, spi: 0,
+      str: {}, min: {}, dex: {}, con: {}, per: {}, spi: {},
     };
   },
 });
@@ -172,9 +229,7 @@ export const meleeStatsState = selector({
   get: ({ get }) => {
     const selectedCharacter = get(characterState);
     if (selectedCharacter) {
-      const {
-        hitroll, damroll, mitigation, parry,
-      } = selectedCharacter?.meleeStats;
+      const { hitroll, damroll, mitigation, parry } = selectedCharacter?.meleeStats;
       return get(equipmentState)
         .reduce((stats, item) => ({
           ...stats,
@@ -197,9 +252,7 @@ export const spellStatsState = selector({
   get: ({ get }) => {
     const selectedCharacter = get(characterState);
     if (selectedCharacter) {
-      const {
-        spellDam, spellCrit, spellRedux, concentration,
-      } = selectedCharacter?.spellStats;
+      const { spellDam, spellCrit, spellRedux, concentration } = selectedCharacter?.spellStats;
       return get(equipmentState)
         .reduce((stats, item) => ({
           ...stats,
@@ -251,13 +304,14 @@ export const regenStatsState = selector({
   },
 });
 
-export const characterNamesState = selector({
-  key: 'characterNamesState',
+export const slotState = selector({
+  key: 'slotState',
   get: ({ get }) => {
-    const characters = get(charactersState);
-    return characters.map(({ name }) => ({
-      name,
-    }));
+    const { equipment } = get(equipmentState);
+    return {
+      used: 0,
+      total: 1,
+    };
   },
 });
 

@@ -34,9 +34,7 @@ const useStyles = makeStyles((theme) => ({
 }), { name: 'Mui_Styles_hubTooledCell' });
 
 const HubTooledCell = props => {
-  const {
-    item, label, text, tools,
-  } = props;
+  const { item, label, text, tools } = props;
   const classes = useStyles();
 
   if (!item?.id) return null;

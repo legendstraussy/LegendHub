@@ -1,35 +1,25 @@
-import { useState } from 'react';
-import StatsEdit from 'components/builder/statEdit';
+import { makeStyles } from '@material-ui/styles';
 import QuestModifiers from 'components/builder/questModifiers';
 import ElectiveModifiers from 'components/builder/electiveModifiers';
-import CharacterFinal from 'components/builder/characterFinal';
-import { makeStyles } from '@material-ui/styles';
+import StatsGrid from 'components/builder/statsGrid';
 
 const useStyles = makeStyles({
   root: {
     display: 'flex',
-    flex: 1,
     flexDirection: 'column',
   },
-}, { name: 'Mui_Styles_CharacterDetails' });
+}, { name: 'Mui_Styles_CharacterStats' });
 
-const CharacterDetails = () => {
-  const [showFinal, setShowFinal] = useState(false);
+const CharacterStats = () => {
   const classes = useStyles();
 
   return (
-    <div className={classes.root}>
-      {!showFinal ? (
-        <>
-          <StatsEdit onFinalClick={() => setShowFinal(true)} />
-          <QuestModifiers />
-          <ElectiveModifiers />
-        </>
-      ) : (
-        <CharacterFinal onStatsClick={() => setShowFinal(false)} />
-      )}
-    </div>
+    <main className={classes.root}>
+      <StatsGrid />
+      <QuestModifiers />
+      <ElectiveModifiers />
+    </main>
   );
 };
 
-export default CharacterDetails;
+export default CharacterStats;

@@ -1,12 +1,12 @@
 import { PropTypes } from 'prop-types';
 import HubChip from 'components/common/hubChip';
 import HubIconButton from 'components/common/hubIconButton';
-import DetailField from 'components/common/detail/detailField/';
-import DetailHeader from 'components/common/detail/detailHeader/';
+import DetailField from 'components/common/detailField/';
+import DetailHeader from 'components/common/detailHeader/';
 import { makeStyles } from '@material-ui/styles';
-import { modifierColors } from 'data/constants';
-import { useRecoilValue } from 'recoil';
-import { characterState } from 'data/characterState';
+import { CHAR_DETAIL_KEYS, modifierColors } from 'data/constants';
+import { useRecoilValue, useSetRecoilState } from 'recoil';
+import { characterDetailState, characterState } from 'data/characterState';
 
 const useStyles = makeStyles({
   root: {
@@ -53,20 +53,17 @@ const susceptibilities = [
   { name: 'bludgeon', type: 'susceptibility', readOnly: true },
 ];
 
-const CharacterFinal = props => {
-  const { onStatsClick } = props;
+const CharacterFinal = () => {
+  const setPage = useSetRecoilState(characterDetailState);
   const character = useRecoilValue(characterState);
-  const {
-    name,
-    version,
-  } = character;
+  const { name, version } = character;
   const classes = useStyles();
 
   return (
     <div className={classes.root}>
       <section>
         <DetailHeader title="characer overview">
-          <HubIconButton onClick={onStatsClick} iconPath="/totem-head.png" />
+          <HubIconButton onClick={() => setPage(CHAR_DETAIL_KEYS.STATS)} iconPath="/totem-head.png" />
         </DetailHeader>
       </section>
       <section>
@@ -232,10 +229,6 @@ const CharacterFinal = props => {
       </section>
     </div>
   );
-};
-
-CharacterFinal.propTypes = {
-  onStatsClick: PropTypes.func.isRequired,
 };
 
 export default CharacterFinal;

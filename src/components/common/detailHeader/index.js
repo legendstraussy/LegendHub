@@ -5,6 +5,9 @@ const useStyles = makeStyles({
   root: {
     display: 'flex',
     flex: 1,
+    // alignItems: 'center',
+    justifyContent: 'space-between',
+    marginBottom: '1em',
   },
   label: {
     color: '#FFD874',
@@ -13,10 +16,9 @@ const useStyles = makeStyles({
     textTransform: 'uppercase',
   },
   toolbar: {
-    display: 'flex',
-  },
-  tool: {
-    margin: '0 .5em',
+    display: 'grid',
+    gridTemplateColumns: '1fr 1fr',
+    gridColumnGap: 15,
   },
 }, { name: 'Mui_Styles_DetailHeader' });
 
@@ -28,16 +30,13 @@ const DetailHeader = props => {
     <header className={classes.root}>
       <div className={classes.label}>
         {title}
-        {isRequired ? ' *' : ''}
+        {isRequired ? ' *' : null}
       </div>
-      {children
-        && (
+      {children && (
         <div className={classes.toolbar}>
-          <div className={classes.tool}>
-            {children}
-          </div>
+          {children}
         </div>
-        )}
+      )}
     </header>
   );
 };

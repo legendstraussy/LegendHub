@@ -12,5 +12,4 @@ const Builder = () => (
     </BuilderLayout>
   </HubLayout>
 );
-
 export default Builder;

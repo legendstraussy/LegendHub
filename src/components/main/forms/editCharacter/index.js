@@ -4,7 +4,7 @@ import { makeStyles } from '@material-ui/core';
 import HubInput from 'components/common/hubInput';
 import HubButton from 'components/common/hubButton';
 import HubCheckbox from 'components/common/hubCheckbox';
-import DetailField from 'components/common/detail/detailField';
+import DetailField from 'components/common/detailField';
 import useCharacterManager from 'hooks/useCharacterManager';
 import { useRecoilValue } from 'recoil';
 import { characterState } from 'data/characterState';
@@ -81,7 +81,7 @@ const EditCharacterForm = props => {
         )
         : (
           <>
-            <section>Please enter the name of your new character.</section>
+            <section>You may change your character version below. To change a character's name, please select the cloning option.</section>
             <DetailField
               label="name"
               value={<span style={{ display: 'flex', height: '35px', alignItems: 'center' }}>{name}</span>}

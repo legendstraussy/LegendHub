@@ -12,8 +12,6 @@ const character = {
   align: 'GNE',
   rent: 0,
   equipment: {
-<<<<<<< HEAD
-=======
     light: { slot: 'light', item: {} },
     finger1: { slot: 'finger', item: {} },
     finger2: { slot: 'finger', item: {} },
@@ -38,9 +36,8 @@ const character = {
     arm: { slot: 'arm', item: {} },
     amulet: { slot: 'amulet', item: {} },
     aux: { slot: 'aux', item: {} },
->>>>>>> 7c9885a2546f3028b29b00d6c2954d49f91479b1
   },
-  baseStats: {
+  stats: {
     str: 0,
     min: 0,
     dex: 0,

@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { PropTypes } from 'prop-types';
 import { makeStyles } from '@material-ui/core';
 import HubButton from 'components/common/hubButton';
-import DetailField from 'components/common/detail/detailField/';
+import DetailField from 'components/common/detailField/';
 import useCharacterManager from 'hooks/useCharacterManager';
 import { useRecoilValue } from 'recoil';
 import { characterState } from 'data/characterState';
@@ -27,7 +27,7 @@ const useStyles = makeStyles(({
 const DeleteCharacterForm = props => {
   const { handleClickClose } = props;
   const character = useRecoilValue(characterState);
-  const { remove } = useCharacterManager();
+  const { discard } = useCharacterManager();
   const [{ name, version }] = useState(character);
   const [status, setStatus] = useState(null);
   const classes = useStyles();
@@ -35,7 +35,7 @@ const DeleteCharacterForm = props => {
   const handleSubmit = event => {
     event.preventDefault();
 
-    const submit = remove(character);
+    const submit = discard(character);
     if (submit.success) {
       handleClickClose();
     } else {

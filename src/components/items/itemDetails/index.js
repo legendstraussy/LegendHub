@@ -1,5 +1,5 @@
-import DetailField from 'components/common/detail/detailField';
-import DetailHeader from 'components/common/detail/detailHeader';
+import DetailField from 'components/common/detailField';
+import DetailHeader from 'components/common/detailHeader';
 import HubChip from 'components/common/hubChip';
 import { makeStyles } from '@material-ui/styles';
 import theme from 'utils/theme';

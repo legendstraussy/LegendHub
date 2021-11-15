@@ -18,7 +18,7 @@ const useStyles = makeStyles({
     fontWeight: '600',
   },
   value: {
-    color: '#00FF00',
+    color: '#71DE71',
     fontSize: '14px',
   },
 }, { name: 'Mui_Styles_HealthStat' });
