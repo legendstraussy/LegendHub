@@ -1,9 +1,12 @@
-import { useState } from 'react';
 import HubSelect from 'components/common/hubSelect';
-import HubCheckbox from 'components/common/hubCheckbox';
 import { makeStyles } from '@material-ui/styles';
-import { stats, fiveThreeQuests } from 'data/constants';
-import { getKeyArrayFromObject } from 'utils/utilFns';
+import DetailHeader from 'components/common/detailHeader';
+import DetailBody from 'components/common/detailBody';
+import DetailField from 'components/common/detailField';
+import QuestSelect from 'components/builder/questSelect';
+import { useRecoilValue } from 'recoil';
+import { questModiferOptionsState, questModifiersState } from 'data/characterState';
+import useCharacterManager from 'hooks/useCharacterManager';
 
 const useStyles = makeStyles({
   root: {
@@ -33,70 +36,33 @@ const useStyles = makeStyles({
     fontSize: '14px',
     fontWeight: '100',
   },
-}, { name: 'Mui_Styles_CharQuestModifiers' });
+}, { name: 'Mui_Styles_QuestModifiers' });
 
-const CharQuestModifiers = () => {
-  const [tenModifer, setTenModifier] = useState(stats.str.name);
-  const [fiveThreeModifier, setFiveThreeModifier] = useState(fiveThreeQuests[2].name);
-  const [threeAllModifier, setThreeAllModifier] = useState(true);
+const QuestModifiers = () => {
+  const options = useRecoilValue(questModiferOptionsState);
+  const quests = useRecoilValue(questModifiersState);
+  const { modifyTen, modifyFiveThree } = useCharacterManager();
   const classes = useStyles();
-  const statOptions = getKeyArrayFromObject(stats)
-    .map(stat => ({ name: stat?.name, value: stat?.name }));
-  const fiveThreeOptions = fiveThreeQuests
-    .map(quest => ({ name: quest.name, value: quest.name }));
 
   return (
-    <div className={classes.root}>
-      <section>
-        <header>
-          <div className={classes.label}>quest modifiers</div>
-        </header>
-      </section>
-      <section>
-        <div className={classes.field}>
-          <div className={classes.fieldLabel}>+10 mod.</div>
-          <div className={classes.fieldValue}>
-            <HubSelect
-              background="#222"
-              border="1px solid rgba(105, 85, 85, .75)"
-              borderRadius="5px"
-              defaultText="Select a stat"
-              onChange={setTenModifier}
-              options={statOptions}
-              value={tenModifer}
-            />
-          </div>
-        </div>
-      </section>
-      <section>
-        <div className={classes.field}>
-          <div className={classes.fieldLabel}>+5/3 mod.</div>
-          <div className={classes.fieldValue}>
-            <HubSelect
-              background="#222"
-              border="1px solid rgba(105, 85, 85, .75)"
-              borderRadius="5px"
-              defaultText="Select stats"
-              onChange={setFiveThreeModifier}
-              options={fiveThreeOptions}
-              value={fiveThreeModifier}
-            />
-          </div>
-        </div>
-      </section>
-      <section>
-        <div className={classes.field}>
-          <div className={classes.fieldLabel}>+3/all mod.</div>
-          <div className={classes.fieldValue}>
-            <HubCheckbox
-              onChange={setThreeAllModifier}
-              value={threeAllModifier}
-            />
-          </div>
-        </div>
-      </section>
-    </div>
+    <main className={classes.root}>
+      <DetailHeader title="quest modifiers" />
+      <DetailBody>
+        <QuestSelect
+          label="+10 stat"
+          onChange={modifyTen}
+          options={options.ten}
+          value={quests.ten}
+        />
+        <QuestSelect
+          label="+10/3 stats"
+          onChange={modifyFiveThree}
+          options={options.fiveThree}
+          value={quests.fiveThree}
+        />
+      </DetailBody>
+    </main>
   );
 };
 
-export default CharQuestModifiers;
+export default QuestModifiers;

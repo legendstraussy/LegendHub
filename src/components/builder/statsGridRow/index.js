@@ -3,7 +3,6 @@ import { PropTypes } from 'prop-types';
 import { makeStyles } from '@material-ui/styles';
 import StatInput from 'components/builder/statInput';
 import useCharacterManager from 'hooks/useCharacterManager';
-import { stats } from 'data/constants';
 
 const useStyles = makeStyles({
   root: {
@@ -22,7 +21,7 @@ const useStyles = makeStyles({
     textTransform: 'uppercase',
   },
   final: {
-    color: props => props.name ? stats[props.name].color : '#fff',
+    color: props => props.color ?? '#fff',
     fontSize: 14,
     fontWeight: 700,
   },
@@ -34,11 +33,11 @@ const StatsGridRow = props => {
   const classes = useStyles(props);
 
   const handleUpdateStat = useCallback(stat => {
-    modifyBaseStat(name, stat);
+    modifyBaseStat(name, parseInt(stat, 10));
   }, [modifyBaseStat, name]);
 
   const handleUpdateSwap = useCallback(stat => {
-    modifyBaseSwap(name, stat);
+    modifyBaseSwap(name, parseInt(stat, 10));
   }, [modifyBaseSwap, name]);
 
   return (

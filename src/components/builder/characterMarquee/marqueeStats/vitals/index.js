@@ -1,6 +1,7 @@
 import { makeStyles } from '@material-ui/styles';
 import { useRecoilValue } from 'recoil';
-import { healthStatsState } from 'data/characterState';
+import { equipmentStatsState } from 'data/characterState';
+import { STATS_SCHEMA } from 'data/constants';
 
 const useStyles = makeStyles({
   root: {
@@ -10,33 +11,22 @@ const useStyles = makeStyles({
     fontWeight: 'bold',
   },
   stat: {
+    width: 40,
     display: 'flex',
     justifyContent: 'center',
     fontSize: 14,
   },
-  hp: {
-    color: '#FFD874',
-    width: 40,
-  },
-  mv: {
-    color: '#2E94FA',
-    width: 40,
-  },
-  ma: {
-    color: '#A57BF1',
-    width: 40,
-  },
 }, { name: 'Mui_Styles_VitalStats' });
 
 const VitalStats = () => {
-  const { hpRaw, mvRaw, maRaw } = useRecoilValue(healthStatsState);
+  const { hp, mv, ma } = useRecoilValue(equipmentStatsState);
   const classes = useStyles();
 
   return (
     <div className={classes.root}>
-      <span className={`${classes.stat} ${classes.hp}`}>{hpRaw}</span>
-      <span className={`${classes.stat} ${classes.mv}`}>{mvRaw}</span>
-      <span className={`${classes.stat} ${classes.ma}`}>{maRaw}</span>
+      <span className={classes.stat} style={{ color: STATS_SCHEMA.CON.color }}>{hp}</span>
+      <span className={classes.stat} style={{ color: STATS_SCHEMA.DEX.color }}>{mv}</span>
+      <span className={classes.stat} style={{ color: STATS_SCHEMA.MIN.color }}>{ma}</span>
     </div>
   );
 };
