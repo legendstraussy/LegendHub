@@ -8,8 +8,7 @@ const useStyles = makeStyles({
     display: 'flex',
     flex: 1,
     justifyContent: props => props.justifyContent ?? 'unset',
-    alignItems: props => props.alignItems ?? 'center',
-    marginBottom: '1em',
+    alignItems: props => props.alignItems ?? 'baseline',
     padding: props => props?.padding ?? 'unset',
   },
 }, { name: 'Mui_Styles_DetailField' });

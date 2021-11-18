@@ -1,6 +1,6 @@
 import { atom, selector } from 'recoil';
 import { configureCalcAlign } from 'utils/utilFns';
-import { CHAR_DETAIL_KEYS, defaultStats, tenQuest, fiveThreeQuest, hpQuest, maQuest, threeAllQuest } from 'data/constants';
+import { CHAR_DETAIL_KEYS, defaultStats, tenQuest, fiveThreeQuest, hpQuest, maQuest, threeAllQuest, spiritQuest } from 'data/constants';
 
 export const charactersState = atom({
   key: 'charactersState',
@@ -157,7 +157,8 @@ export const questStatsState = selector({
           + (quests.threeAll ? threeAllQuest?.per : 0),
         spi: (tenQuest[quests?.ten]?.spi ?? 0)
           + (fiveThreeQuest[quests?.fiveThree]?.spi ?? 0)
-          + (quests.threeAll ? threeAllQuest?.spi : 0),
+          + (quests.threeAll ? threeAllQuest?.spi : 0)
+          + (quests.spirit ? spiritQuest.spi : 0),
         hp: quests.hp ? hpQuest.hp : 0,
         ma: quests.mv ? maQuest.ma : 0,
       };

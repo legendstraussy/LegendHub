@@ -7,6 +7,10 @@ import DetailField from 'components/common/detailField/';
 import useCharacterManager from 'hooks/useCharacterManager';
 
 const useStyles = makeStyles(({
+  root: {
+    display: 'grid',
+    gridRowGap: '1em',
+  },
   title: {
     marginBottom: 10,
   },

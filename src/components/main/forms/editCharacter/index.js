@@ -11,6 +11,10 @@ import { characterState } from 'data/characterState';
 import theme from 'utils/theme';
 
 const useStyles = makeStyles(({
+  root: {
+    display: 'grid',
+    gridRowGap: '1em',
+  },
   title: {
     marginBottom: 10,
   },

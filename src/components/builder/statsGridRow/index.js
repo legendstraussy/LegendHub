@@ -3,6 +3,7 @@ import { PropTypes } from 'prop-types';
 import { makeStyles } from '@material-ui/styles';
 import StatInput from 'components/builder/statInput';
 import useCharacterManager from 'hooks/useCharacterManager';
+import { STAT_TYPES } from 'data/constants';
 
 const useStyles = makeStyles({
   root: {
@@ -29,16 +30,11 @@ const useStyles = makeStyles({
 
 const StatsGridRow = props => {
   const { name, stat } = props;
-  const { modifyBaseStat, modifyBaseSwap } = useCharacterManager();
+  const { updateStat } = useCharacterManager();
   const classes = useStyles(props);
 
-  const handleUpdateStat = useCallback(stat => {
-    modifyBaseStat(name, parseInt(stat, 10));
-  }, [modifyBaseStat, name]);
-
-  const handleUpdateSwap = useCallback(stat => {
-    modifyBaseSwap(name, parseInt(stat, 10));
-  }, [modifyBaseSwap, name]);
+  const handleUpdateStat = useCallback(stat => updateStat(STAT_TYPES.BASE_STATS)(name, stat), [name, updateStat]);
+  const handleUpdateSwap = useCallback(stat => updateStat(STAT_TYPES.SWAP_STATS)(name, stat), [name, updateStat]);
 
   return (
     <main className={classes.root}>

@@ -11,7 +11,7 @@ import IconHeader from 'components/common/iconHeader';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 import { equipmentState, selectedItemState, selectedTabState } from 'data/characterState';
 import { makeStyles } from '@material-ui/styles';
-import { tabKeys } from 'data/constants';
+import { TAB_KEYS } from 'data/constants';
 import useCharacterManager from 'hooks/useCharacterManager';
 
 const useStyles = makeStyles((theme) => ({
@@ -56,7 +56,7 @@ const CharacterEquipment = () => {
 
   const handleItemDetailClick = useCallback(item => {
     selectItem(item);
-    setTab(tabKeys.ITEM);
+    setTab(TAB_KEYS.ITEM);
   }, [selectItem, setTab]);
 
   const handleItemRemoveClick = useCallback(item => unequip(item), [unequip]);

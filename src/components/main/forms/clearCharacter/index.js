@@ -8,6 +8,10 @@ import { useRecoilValue } from 'recoil';
 import { characterState } from 'data/characterState';
 
 const useStyles = makeStyles(({
+  root: {
+    display: 'grid',
+    gridRowGap: '1em',
+  },
   title: {
     marginBottom: 10,
   },

@@ -51,8 +51,20 @@ export const STATS_SCHEMA = {
     color: theme.palette.main.green,
   },
 };
+export const QUESTS_TYPES = {
+  FIVE_THREE: 'fiveThree',
+  HP: 'hp',
+  MANA: 'mana',
+  SPIRIT: 'spirit',
+  TEN: 'ten',
+  THREE_ALL: 'threeAll',
+};
+export const STAT_TYPES = {
+  BASE_STATS: 'baseStats',
+  SWAP_STATS: 'swapStats',
+};
 
-export const tabKeys = {
+export const TAB_KEYS = {
   ITEM: 'item',
   CHARACTER: 'character',
 };
@@ -306,9 +318,9 @@ export const character = {
     ten: null,
     fiveThree: null,
     threeAll: true,
-    hp: false,
-    mana: false,
-    spirit: false,
+    hp: true,
+    mana: true,
+    spirit: true,
   },
   swapStats: {
     str: 0,
