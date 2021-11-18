@@ -278,11 +278,11 @@ export const character = {
   },
   baseStats: {
     str: 0,
-    min: 1,
-    dex: 2,
-    con: 3,
-    per: 4,
-    spi: 5,
+    min: 0,
+    dex: 0,
+    con: 0,
+    per: 0,
+    spi: 0,
   },
   capStats: {
     strCap: 0,
