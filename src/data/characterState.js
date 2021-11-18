@@ -1,6 +1,6 @@
 import { atom, selector } from 'recoil';
 import { configureCalcAlign } from 'utils/utilFns';
-import { CHAR_DETAIL_KEYS } from 'data/constants';
+import { CHAR_DETAIL_KEYS, defaultStats, tenQuest, fiveThreeQuest, hpQuest, maQuest, threeAllQuest, spiritQuest } from 'data/constants';
 
 export const charactersState = atom({
   key: 'charactersState',
@@ -87,9 +87,9 @@ export const equipmentState = selector({
   key: 'equipmentState',
   default: null,
   get: ({ get }) => {
-    const character = get(characterState);
-    if (character) {
-      const { equipment } = character;
+    const selectedCharacter = get(characterState);
+    if (selectedCharacter) {
+      const { equipment } = selectedCharacter;
       if (equipment) {
         return Object
           .keys(equipment)
@@ -103,124 +103,179 @@ export const equipmentState = selector({
   },
 });
 
-export const healthStatsState = selector({
-  key: 'healthStatsState',
+export const rawStatsState = selector({
+  key: 'rawStatsState',
   get: ({ get }) => {
     const selectedCharacter = get(characterState);
     if (selectedCharacter) {
-      const { hp, mv, ma } = selectedCharacter;
-      return get(equipmentState)
-        .reduce((stats, item) => ({
-          ...stats,
-          hp: (item.hp) ? stats.hp + item.hp : stats.hp,
-          mv: (item.mv) ? stats.mv + item.mv : stats.mv,
-          ma: (item.ma) ? stats.ma + item.ma : stats.ma,
-          hpRaw: (item.hp) ? stats.hpRaw + item.hp : stats.hpRaw,
-          mvRaw: (item.mv) ? stats.mvRaw + item.mv : stats.mvRaw,
-          maRaw: (item.ma) ? stats.maRaw + item.ma : stats.maRaw,
-        }), {
-          hp, mv, ma, hpRaw: 0, mvRaw: 0, maRaw: 0,
-        });
+      return {
+        ...selectedCharacter.baseStats,
+        hp: selectedCharacter.hp,
+        mv: selectedCharacter.mv,
+        ma: selectedCharacter.ma,
+        ac: selectedCharacter.ac,
+        align: selectedCharacter.align,
+        rent: selectedCharacter.rent,
+      };
     }
-    return { hp: 231, mv: 346, ma: 296 };
+    return defaultStats;
   },
 });
 
-export const mainStatsState = selector({
-  key: 'mainStatsState',
+export const swapStatsState = selector({
+  key: 'swapStatsState',
   get: ({ get }) => {
     const selectedCharacter = get(characterState);
     if (selectedCharacter) {
-      const { str, min, dex, con, per, spi } = selectedCharacter?.baseStats;
-      const { str: strSwap, min: minSwap, dex: dexSwap, con: conSwap, per: perSwap, spi: spiSwap } = selectedCharacter?.swapStats;
-      return get(equipmentState)
-        .reduce((stats, item) => ({
-          str: {
-            ...stats.str,
-            final: item?.str ? stats.str.final + item.str : stats.str.final,
-          },
-          min: {
-            ...stats.min,
-            final: item?.min ? stats.min.final + item.min : stats.min.final,
-          },
-          dex: {
-            ...stats.dex,
-            final: item?.dex ? stats.dex.final + item.dex : stats.dex.final,
-          },
-          con: {
-            ...stats.con,
-            final: item?.con ? stats.con.final + item.con : stats.con.final,
-          },
-          per: {
-            ...stats.per,
-            final: item?.per ? stats.per.final + item.per : stats.per.final,
-          },
-          spi: {
-            ...stats.spi,
-            final: item?.spi ? stats.spi.final + item.spi : stats.spi.final,
-          },
-        }), {
-          str: {
-            raw: str,
-            swap: strSwap,
-            uneq: str + strSwap,
-            final: str + strSwap,
-          },
-          min: {
-            raw: min,
-            swap: minSwap,
-            uneq: min + minSwap,
-            final: min + minSwap,
-          },
-          dex: {
-            raw: dex,
-            swap: dexSwap,
-            uneq: dex + dexSwap,
-            final: dex + dexSwap,
-          },
-          con: {
-            raw: con,
-            swap: conSwap,
-            uneq: con + conSwap,
-            final: con + conSwap,
-          },
-          per: {
-            raw: per,
-            swap: perSwap,
-            uneq: per + perSwap,
-            final: per + perSwap,
-          },
-          spi: {
-            raw: spi,
-            swap: spiSwap,
-            uneq: spi + spiSwap,
-            final: spi + spiSwap,
-          },
-        });
+      return selectedCharacter.swapStats;
     }
+    return { str: 0, min: 0, dex: 0, con: 0, per: 0, spi: 0 };
+  },
+});
+
+export const questStatsState = selector({
+  key: 'questStatsState',
+  get: ({ get }) => {
+    const selectedCharacter = get(characterState);
+    if (selectedCharacter) {
+      const { quests } = selectedCharacter;
+      return {
+        str: (tenQuest[quests?.ten]?.str ?? 0)
+          + (fiveThreeQuest[quests?.fiveThree]?.str ?? 0)
+          + (quests.threeAll ? threeAllQuest?.str : 0),
+        min: (tenQuest[quests?.ten]?.min ?? 0)
+          + (fiveThreeQuest[quests?.fiveThree]?.min ?? 0)
+          + (quests.threeAll ? threeAllQuest?.min : 0),
+        dex: (tenQuest[quests?.ten]?.dex ?? 0)
+          + (fiveThreeQuest[quests?.fiveThree]?.dex ?? 0)
+          + (quests.threeAll ? threeAllQuest?.dex : 0),
+        con: (tenQuest[quests?.ten]?.con ?? 0)
+          + (fiveThreeQuest[quests?.fiveThree]?.con ?? 0)
+          + (quests.threeAll ? threeAllQuest?.con : 0),
+        per: (tenQuest[quests?.ten]?.per ?? 0)
+          + (fiveThreeQuest[quests?.fiveThree]?.per ?? 0)
+          + (quests.threeAll ? threeAllQuest?.per : 0),
+        spi: (tenQuest[quests?.ten]?.spi ?? 0)
+          + (fiveThreeQuest[quests?.fiveThree]?.spi ?? 0)
+          + (quests.threeAll ? threeAllQuest?.spi : 0)
+          + (quests.spirit ? spiritQuest.spi : 0),
+        hp: quests.hp ? hpQuest.hp : 0,
+        ma: quests.mv ? maQuest.ma : 0,
+      };
+    }
+    return defaultStats;
+  },
+});
+
+export const uneqStatsState = selector({
+  key: 'uneqStatsState',
+  get: ({ get }) => {
+    const rawStats = get(rawStatsState);
+    const swapStats = get(swapStatsState);
+    const questStats = get(questStatsState);
     return {
-      str: {}, min: {}, dex: {}, con: {}, per: {}, spi: {},
+      str: rawStats.str + swapStats.str + questStats.str,
+      min: rawStats.min + swapStats.min + questStats.min,
+      dex: rawStats.dex + swapStats.dex + questStats.dex,
+      con: rawStats.con + swapStats.con + questStats.con,
+      per: rawStats.per + swapStats.per + questStats.per,
+      spi: rawStats.spi + swapStats.spi + questStats.spi,
+      hp: rawStats.hp + questStats.hp,
+      mv: rawStats.mv,
+      ma: rawStats.ma + questStats.ma,
+      ac: rawStats.ac,
+      align: rawStats.align,
+      rent: rawStats.rent,
     };
   },
 });
 
-export const genericStatsState = selector({
-  key: 'genericStatsState',
+export const finalStatsState = selector({
+  key: 'finalStatsState',
   get: ({ get }) => {
-    const selectedCharacter = get(characterState);
-    if (selectedCharacter) {
-      const { ac, align, rent } = selectedCharacter;
-      const calcAlign = configureCalcAlign(align);
+    const uneqStats = get(uneqStatsState);
+    const calcAlign = configureCalcAlign(uneqStats.align);
+    return get(equipmentState)
+      .reduce((stats, equipment) => ({
+        str: stats.str + (equipment?.str || 0),
+        min: stats.min + (equipment?.min || 0),
+        dex: stats.dex + (equipment?.dex || 0),
+        con: stats.con + (equipment?.con || 0),
+        per: stats.per + (equipment?.per || 0),
+        spi: stats.spi + (equipment?.spi || 0),
+        hp: stats.hp + (equipment?.hp || 0),
+        mv: stats.mv + (equipment?.mv || 0),
+        ma: stats.ma + (equipment?.ma || 0),
+        ac: stats.ac + (equipment?.ac || 0),
+        align: (equipment.align) ? calcAlign(equipment.align) : stats.align,
+        rent: stats.rent + (equipment?.rent || 0),
+      }), uneqStats);
+  },
+});
 
-      return get(equipmentState)
-        .reduce((stats, item) => ({
-          ...stats,
-          ac: (item.ac) ? stats.ac + item.ac : stats.ac,
-          align: (item.align) ? calcAlign(item.align) : stats.align,
-          rent: (item.rent) ? stats.rent + item.rent : stats.rent,
-        }), { ac, align, rent });
-    }
-    return { ac: 0, align: 'GNE', rent: 0 };
+export const equipmentStatsState = selector({
+  key: 'equipmentStatsState',
+  get: ({ get }) => get(equipmentState)
+    .reduce((stats, equipment) => ({
+      str: stats.min + (equipment?.str || 0),
+      min: stats.min + (equipment?.min || 0),
+      dex: stats.dex + (equipment?.dex || 0),
+      con: stats.con + (equipment?.con || 0),
+      per: stats.per + (equipment?.per || 0),
+      spi: stats.spi + (equipment?.spi || 0),
+      hp: stats.hp + (equipment?.hp || 0),
+      mv: stats.mv + (equipment?.mv || 0),
+      ma: stats.ma + (equipment?.ma || 0),
+      ac: stats.ac + (equipment?.ac || 0),
+      rent: stats.rent + (equipment?.rent || 0),
+    }), defaultStats),
+});
+
+export const statsState = selector({
+  key: 'statsState',
+  get: ({ get }) => {
+    const rawStats = get(rawStatsState);
+    const swapStats = get(swapStatsState);
+    const uneqStats = get(uneqStatsState);
+    const finalStats = get(finalStatsState);
+    return {
+      str: {
+        raw: rawStats.str,
+        swap: swapStats.str,
+        uneq: uneqStats.str,
+        final: finalStats.str,
+      },
+      min: {
+        raw: rawStats.min,
+        swap: swapStats.min,
+        uneq: uneqStats.min,
+        final: finalStats.min,
+      },
+      dex: {
+        raw: rawStats.dex,
+        swap: swapStats.dex,
+        uneq: uneqStats.dex,
+        final: finalStats.dex,
+      },
+      con: {
+        raw: rawStats.con,
+        swap: swapStats.con,
+        uneq: uneqStats.con,
+        final: finalStats.con,
+      },
+      per: {
+        raw: rawStats.per,
+        swap: swapStats.per,
+        uneq: uneqStats.per,
+        final: finalStats.per,
+      },
+      spi: {
+        raw: rawStats.spi,
+        swap: swapStats.spi,
+        uneq: uneqStats.spi,
+        final: finalStats.spi,
+      },
+    };
   },
 });
 
@@ -313,6 +368,23 @@ export const slotState = selector({
       total: 1,
     };
   },
+});
+
+export const questModifiersState = selector({
+  key: 'questModifiersState',
+  get: ({ get }) => {
+    const character = get(characterState);
+    if (character) return character.quests;
+    return { };
+  },
+});
+
+export const questModiferOptionsState = selector({
+  key: 'questModiferOptionsState',
+  get: () => ({
+    ten: Object.keys(tenQuest).map(name => ({ name, value: name })),
+    fiveThree: Object.keys(fiveThreeQuest).map(name => ({ name, value: name })),
+  }),
 });
 
 export const selectedTabState = atom({

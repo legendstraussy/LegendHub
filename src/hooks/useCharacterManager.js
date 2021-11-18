@@ -7,7 +7,7 @@ import {
   selectedTabState,
 } from 'data/characterState';
 import { v4 as uuidv4 } from 'uuid';
-import { character as characterModel, tabKeys } from 'data/constants';
+import { character as characterModel, TAB_KEYS } from 'data/constants';
 import { capitalize, getAdjustedHistory } from 'utils/utilFns';
 import useLocalStorage from './useLocalStorage';
 
@@ -74,7 +74,7 @@ const useCharacterManager = () => {
     ];
     try {
       save(newCharacter, updatedCharacters);
-      setActiveTab(tabKeys.CHARACTER);
+      setActiveTab(TAB_KEYS.CHARACTER);
       return { success: true, message: 'Success: Character created.' };
     } catch (e) {
       if (e) return { success: false, message: `Error: ${e.message}` };
@@ -301,6 +301,24 @@ const useCharacterManager = () => {
     }
   };
 
+  const updateQuest = type => quest => {
+    try {
+      if (update({
+        ...character,
+        quests: {
+          ...character.quests,
+          [type]: quest,
+        },
+      })) {
+        return { success: true, message: `Success: Character ${type} quest updated.` };
+      }
+      throw Error;
+    } catch (e) {
+      if (e) return { success: false, message: `Error: ${e.message}` };
+      return { success: false, message: `Error: Could not update character ${type} quest.` };
+    }
+  };
+
   // const export = () => {
 
   // };
@@ -320,8 +338,8 @@ const useCharacterManager = () => {
     undo,
     unequip,
     update,
-    modifyBaseStat: updateStat('baseStats'),
-    modifyBaseSwap: updateStat('swapStats'),
+    updateStat,
+    updateQuest,
   };
 };
 

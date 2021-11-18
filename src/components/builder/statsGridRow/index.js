@@ -3,7 +3,7 @@ import { PropTypes } from 'prop-types';
 import { makeStyles } from '@material-ui/styles';
 import StatInput from 'components/builder/statInput';
 import useCharacterManager from 'hooks/useCharacterManager';
-import { stats } from 'data/constants';
+import { STAT_TYPES } from 'data/constants';
 
 const useStyles = makeStyles({
   root: {
@@ -12,7 +12,7 @@ const useStyles = makeStyles({
     gridRowGap: '.5em',
     justifyItems: 'center',
     alignItems: 'center',
-    marginBottom: '.5em',
+    marginBottom: 5,
     fontSize: 12,
   },
   name: {
@@ -22,7 +22,7 @@ const useStyles = makeStyles({
     textTransform: 'uppercase',
   },
   final: {
-    color: props => props.name ? stats[props.name].color : '#fff',
+    color: props => props.color ?? '#fff',
     fontSize: 14,
     fontWeight: 700,
   },
@@ -30,16 +30,11 @@ const useStyles = makeStyles({
 
 const StatsGridRow = props => {
   const { name, stat } = props;
-  const { modifyBaseStat, modifyBaseSwap } = useCharacterManager();
+  const { updateStat } = useCharacterManager();
   const classes = useStyles(props);
 
-  const handleUpdateStat = useCallback(stat => {
-    modifyBaseStat(name, stat);
-  }, [modifyBaseStat, name]);
-
-  const handleUpdateSwap = useCallback(stat => {
-    modifyBaseSwap(name, stat);
-  }, [modifyBaseSwap, name]);
+  const handleUpdateStat = useCallback(stat => updateStat(STAT_TYPES.BASE_STATS)(name, stat), [name, updateStat]);
+  const handleUpdateSwap = useCallback(stat => updateStat(STAT_TYPES.SWAP_STATS)(name, stat), [name, updateStat]);
 
   return (
     <main className={classes.root}>

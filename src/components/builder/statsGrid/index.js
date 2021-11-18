@@ -3,11 +3,10 @@ import { makeStyles } from '@material-ui/styles';
 import StatsGridRow from 'components/builder/statsGridRow';
 import StatsGridHeaders from 'components/builder/statsGridHeaders';
 import DetailHeader from 'components/common/detailHeader';
-import DetailBody from 'components/common/detailBody';
 import HubIconButton from 'components/common/hubIconButton';
-import { characterDetailState, mainStatsState } from 'data/characterState';
+import { characterDetailState, statsState } from 'data/characterState';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
-import { CHAR_DETAIL_KEYS } from 'data/constants';
+import { CHAR_DETAIL_KEYS, STATS_SCHEMA } from 'data/constants';
 
 const useStyles = makeStyles({
   root: {
@@ -16,8 +15,7 @@ const useStyles = makeStyles({
 }, { name: 'Mui_Styles_StatsGrid' });
 
 const StatsGrid = () => {
-  const { str, min, dex, con, per, spi } = useRecoilValue(mainStatsState);
-  const [headers] = useState(['raw', 'uneq', 'swap', 'final']);
+  const { str, min, dex, con, per, spi } = useRecoilValue(statsState);
   const setPage = useSetRecoilState(characterDetailState);
   const classes = useStyles();
 
@@ -27,15 +25,13 @@ const StatsGrid = () => {
         <HubIconButton iconPath="/scroll-quill.png" />
         <HubIconButton onClick={() => setPage(CHAR_DETAIL_KEYS.FINAL)} iconPath="/tied-scroll.png" />
       </DetailHeader>
-      <DetailBody>
-        <StatsGridHeaders headers={headers} offset />
-        <StatsGridRow name="str" stat={str} />
-        <StatsGridRow name="min" stat={min} />
-        <StatsGridRow name="dex" stat={dex} />
-        <StatsGridRow name="con" stat={con} />
-        <StatsGridRow name="per" stat={per} />
-        <StatsGridRow name="spi" stat={spi} />
-      </DetailBody>
+      <StatsGridHeaders rawLabel="raw" uneqLabel="uneq" swapLabel="swap" finalLabel="final" />
+      <StatsGridRow name="str" stat={str} color={STATS_SCHEMA.STR.color} />
+      <StatsGridRow name="min" stat={min} color={STATS_SCHEMA.MIN.color} />
+      <StatsGridRow name="dex" stat={dex} color={STATS_SCHEMA.DEX.color} />
+      <StatsGridRow name="con" stat={con} color={STATS_SCHEMA.CON.color} />
+      <StatsGridRow name="per" stat={per} color={STATS_SCHEMA.PER.color} />
+      <StatsGridRow name="spi" stat={spi} color={STATS_SCHEMA.SPI.color} />
     </main>
   );
 };

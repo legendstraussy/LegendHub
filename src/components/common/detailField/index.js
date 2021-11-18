@@ -9,7 +9,7 @@ const useStyles = makeStyles({
     flex: 1,
     justifyContent: props => props.justifyContent ?? 'unset',
     alignItems: props => props.alignItems ?? 'baseline',
-    padding: props => props?.padding ?? '0 4px',
+    padding: props => props?.padding ?? 'unset',
   },
 }, { name: 'Mui_Styles_DetailField' });
 

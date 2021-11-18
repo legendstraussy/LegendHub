@@ -64,6 +64,9 @@ const CharacterSelect = () => {
 
   return (
     <HubSelect
+      background="unset"
+      border="unset"
+      borderRadius="unset"
       onChange={handleCharacterSelect}
       options={characterOptions}
       value={character?.id}

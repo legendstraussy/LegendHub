@@ -5,14 +5,14 @@ import { makeStyles } from '@material-ui/styles';
 const useStyles = makeStyles({
   root: {
     color: '#fff',
-    width: props => props.width ?? '100%',
+    width: props => props.width ?? 'unset',
     paddingLeft: '10px',
     maxWidth: '200px',
     fontFamily: 'inherit',
     fontSize: '14px',
-    background: props => props?.background ?? 'unset',
-    border: props => props?.border ?? 'unset',
-    borderRadius: props => props?.borderRadius ?? 'unset',
+    background: props => props?.background ?? '#222',
+    border: props => props?.border ?? '1px solid rgba(105, 85, 85, .75)',
+    borderRadius: props => props?.borderRadius ?? 5,
     '& .MuiSelect-select': {
       cursor: 'default',
     },
@@ -40,7 +40,7 @@ const HubSelect = props => {
     <Select
       className={classes.root}
       style={{ cursor: 'default' }}
-      value={value}
+      value={value || defaultText}
       renderValue={value => name ?? value}
       name={name}
       onChange={event => onChange(event.target.value)}
@@ -76,7 +76,7 @@ HubSelect.propTypes = {
       name: PropTypes.string,
       value: PropTypes.string,
     }),
-  ).isRequired,
+  ),
   value: PropTypes.string,
 };
 

@@ -1,7 +1,7 @@
 import { Divider } from '@material-ui/core';
 import CharacterSelect from 'components/builder/characterSelect';
 import HeathStats from 'components/builder/characterMarquee/marqueeStats/health';
-import BaseStats from 'components/builder/characterMarquee/marqueeStats/main';
+import FinalStats from 'components/builder/characterMarquee/marqueeStats/final';
 import GenericStats from 'components/builder/characterMarquee/marqueeStats/general';
 import MeleeStats from 'components/builder/characterMarquee/marqueeStats/melee';
 import ParryStat from 'components/builder/characterMarquee/marqueeStats/parry';
@@ -38,7 +38,7 @@ const CharacterMarquee = () => {
       <CharacterSelect />
       <Divider orientation="vertical" className={classes.divider} />
       <HeathStats />
-      <BaseStats />
+      <FinalStats />
       <GenericStats />
       <MeleeStats />
       <ParryStat />

@@ -1,5 +1,74 @@
 import theme from 'utils/theme';
 
+export const NO_VALID_ALIGN = '---';
+export const HISTORY_LENGTH = 10;
+export const CHAR_DETAIL_KEYS = {
+  FINAL: 'final',
+  STATS: 'stat',
+};
+export const TEN_QUEST_MODIFIERS = {
+  STRENGTH: 'strength',
+  MIND: 'mind',
+  DEXTERITY: 'dexterity',
+  CONSTITUTION: 'constitution',
+  PERCEPTION: 'perception',
+  SPIRIT: 'spirit',
+};
+export const FIVE_THREE_QUEST_MODIFIERS = {
+  BEAR: 'bear',
+  BEAVER: 'beaver',
+  EAGLE: 'eagle',
+  MOOSE: 'moose',
+  SNAKE: 'snake',
+  TURTLE: 'turtle',
+  DRAGON: 'dragon',
+  HYDRA: 'hydra',
+  WYVERN: 'wyvern',
+};
+export const STATS_SCHEMA = {
+  STR: {
+    name: 'strength',
+    color: theme.palette.main.red,
+  },
+  MIN: {
+    name: 'mind',
+    color: theme.palette.main.purple,
+  },
+  DEX: {
+    name: 'dexterity',
+    color: theme.palette.main.blue,
+  },
+  CON: {
+    name: 'constitution',
+    color: theme.palette.main.yellow,
+  },
+  PER: {
+    name: 'perception',
+    color: theme.palette.main.cyan,
+  },
+  SPI: {
+    name: 'spirit',
+    color: theme.palette.main.green,
+  },
+};
+export const QUESTS_TYPES = {
+  FIVE_THREE: 'fiveThree',
+  HP: 'hp',
+  MANA: 'mana',
+  SPIRIT: 'spirit',
+  TEN: 'ten',
+  THREE_ALL: 'threeAll',
+};
+export const STAT_TYPES = {
+  BASE_STATS: 'baseStats',
+  SWAP_STATS: 'swapStats',
+};
+
+export const TAB_KEYS = {
+  ITEM: 'item',
+  CHARACTER: 'character',
+};
+
 export const character = {
   id: null,
   name: '',
@@ -246,9 +315,12 @@ export const character = {
     accuracy: 0,
   },
   quests: {
-    ten: 0,
-    fiveThree: 0,
-    threeAll: false,
+    ten: null,
+    fiveThree: null,
+    threeAll: true,
+    hp: true,
+    mana: true,
+    spirit: true,
   },
   swapStats: {
     str: 0,
@@ -327,33 +399,6 @@ export const item = {
   weight: 0,
 };
 
-export const stats = {
-  str: {
-    name: 'strength',
-    color: theme.palette.main.red,
-  },
-  min: {
-    name: 'mind',
-    color: theme.palette.main.purple,
-  },
-  dex: {
-    name: 'dexterity',
-    color: theme.palette.main.blue,
-  },
-  con: {
-    name: 'constitution',
-    color: theme.palette.main.yellow,
-  },
-  per: {
-    name: 'perception',
-    color: theme.palette.main.cyan,
-  },
-  spi: {
-    name: 'spirit',
-    color: theme.palette.main.green,
-  },
-};
-
 export const modifierColors = {
   potion: {
     bgColor: theme.palette.main.green,
@@ -384,72 +429,6 @@ export const modifierColors = {
     color: theme.palette.contrastText.red,
   },
 };
-
-export const fiveThreeQuests = [
-  {
-    name: 'bear',
-    modifers: [
-      { stat: 'spi', value: 5 },
-      { stat: 'min', value: 3 },
-    ],
-  },
-  {
-    name: 'beaver',
-    modifers: [
-      { stat: 'min', value: 5 },
-      { stat: 'dex', value: 3 },
-    ],
-  },
-  {
-    name: 'eagle',
-    modifers: [
-      { stat: 'per', value: 5 },
-      { stat: 'str', value: 3 },
-    ],
-  },
-  {
-    name: 'moose',
-    modifers: [
-      { stat: 'str', value: 5 },
-      { stat: 'con', value: 3 },
-    ],
-  },
-  {
-    name: 'snake',
-    modifers: [
-      { stat: 'dex', value: 5 },
-      { stat: 'per', value: 3 },
-    ],
-  },
-  {
-    name: 'turtle',
-    modifers: [
-      { stat: 'con', value: 5 },
-      { stat: 'spi', value: 3 },
-    ],
-  },
-  {
-    name: 'dragon',
-    modifers: [
-      { stat: 'dex', value: 5 },
-      { stat: 'con', value: 3 },
-    ],
-  },
-  {
-    name: 'hydra',
-    modifers: [
-      { stat: 'per', value: 5 },
-      { stat: 'dex', value: 3 },
-    ],
-  },
-  {
-    name: 'wyvern',
-    modifers: [
-      { stat: 'min', value: 5 },
-      { stat: 'spi', value: 3 },
-    ],
-  },
-];
 
 export const itemFilters = [
   { name: 'heroic' },
@@ -492,15 +471,98 @@ export const weaponStats = [
   { name: 'con' },
 ];
 
-export const tabKeys = {
-  ITEM: 'item',
-  CHARACTER: 'character',
+export const defaultStats = {
+  ac: 0,
+  align: '',
+  rent: 0,
+  str: 0,
+  min: 0,
+  dex: 0,
+  con: 0,
+  per: 0,
+  spi: 0,
+  hp: 0,
+  mv: 0,
+  ma: 0,
 };
 
-export const CHAR_DETAIL_KEYS = {
-  FINAL: 'final',
-  STATS: 'stat',
+export const tenQuest = {
+  [TEN_QUEST_MODIFIERS.STRENGTH]: {
+    str: 10,
+  },
+  [TEN_QUEST_MODIFIERS.MIND]: {
+    min: 10,
+  },
+  [TEN_QUEST_MODIFIERS.DEXTERITY]: {
+    dex: 10,
+  },
+  [TEN_QUEST_MODIFIERS.CONSTITUTION]: {
+    con: 10,
+  },
+  [TEN_QUEST_MODIFIERS.PERCEPTION]: {
+    per: 10,
+  },
+  [TEN_QUEST_MODIFIERS.SPIRIT]: {
+    spi: 10,
+  },
 };
 
-export const NO_VALID_ALIGN = '---';
-export const HISTORY_LENGTH = 10;
+export const fiveThreeQuest = {
+  [FIVE_THREE_QUEST_MODIFIERS.BEAR]: {
+    spi: 5,
+    min: 3,
+  },
+  [FIVE_THREE_QUEST_MODIFIERS.BEAVER]: {
+    min: 5,
+    dex: 3,
+  },
+  [FIVE_THREE_QUEST_MODIFIERS.EAGLE]: {
+    per: 5,
+    str: 3,
+  },
+  [FIVE_THREE_QUEST_MODIFIERS.MOOSE]: {
+    str: 5,
+    con: 3,
+  },
+  [FIVE_THREE_QUEST_MODIFIERS.SNAKE]: {
+    dex: 5,
+    per: 3,
+  },
+  [FIVE_THREE_QUEST_MODIFIERS.TURTLE]: {
+    con: 5,
+    spi: 3,
+  },
+  [FIVE_THREE_QUEST_MODIFIERS.DRAGON]: {
+    dex: 5,
+    con: 3,
+  },
+  [FIVE_THREE_QUEST_MODIFIERS.HYDRA]: {
+    per: 5,
+    dex: 3,
+  },
+  [FIVE_THREE_QUEST_MODIFIERS.WYVERN]: {
+    min: 5,
+    spi: 3,
+  },
+};
+
+export const hpQuest = {
+  hp: 15,
+};
+
+export const maQuest = {
+  ma: 15,
+};
+
+export const spiritQuest = {
+  spi: 10,
+};
+
+export const threeAllQuest = {
+  str: 3,
+  min: 3,
+  dex: 3,
+  con: 3,
+  per: 3,
+  spi: 3,
+};

@@ -5,7 +5,7 @@ import HubTabs from 'components/common/hubTabs/hubTabs';
 import HubTab from 'components/common/hubTabs/hubTab';
 import HubTabDetails from 'components/common/hubTabs/hubTabDetails';
 import HubTabDetail from 'components/common/hubTabs/hubTabDetail';
-import { tabKeys } from 'data/constants';
+import { TAB_KEYS } from 'data/constants';
 import { useRecoilState } from 'recoil';
 import { selectedTabState } from 'data/characterState';
 
@@ -13,30 +13,30 @@ const CharacterTabs = () => {
   const [activeTab, setActiveTab] = useRecoilState(selectedTabState);
 
   useEffect(() => {
-    setActiveTab(tabKeys.CHARACTER);
+    setActiveTab(TAB_KEYS.CHARACTER);
   }, [setActiveTab]);
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', flex: 1 }}>
       <HubTabs>
         <HubTab
-          isActive={activeTab === tabKeys.CHARACTER}
+          isActive={activeTab === TAB_KEYS.CHARACTER}
           onTabClick={setActiveTab}
           label="character"
           iconPath="/totem-head.png"
         />
         <HubTab
-          isActive={activeTab === tabKeys.ITEM}
+          isActive={activeTab === TAB_KEYS.ITEM}
           onTabClick={setActiveTab}
           label="item"
           iconPath="/swords-emblem.png"
         />
       </HubTabs>
       <HubTabDetails>
-        <HubTabDetail isActive={activeTab === tabKeys.CHARACTER}>
+        <HubTabDetail isActive={activeTab === TAB_KEYS.CHARACTER}>
           <CharacterDetails />
         </HubTabDetail>
-        <HubTabDetail isActive={activeTab === tabKeys.ITEM}>
+        <HubTabDetail isActive={activeTab === TAB_KEYS.ITEM}>
           <ItemDetails />
         </HubTabDetail>
       </HubTabDetails>

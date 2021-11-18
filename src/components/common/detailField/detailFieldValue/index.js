@@ -4,7 +4,7 @@ import { makeStyles } from '@material-ui/styles';
 const useStyles = makeStyles({
   root: {
     display: 'flex',
-    flex: props => props?.flex ?? 'inherit',
+    flex: props => props?.flex ?? 'unset',
     justifyContent: 'inherit',
     fontSize: 14,
     fontWeight: 500,

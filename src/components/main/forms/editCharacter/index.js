@@ -12,14 +12,16 @@ import theme from 'utils/theme';
 
 const useStyles = makeStyles(({
   root: {
-    '& section': {
-      paddingBottom: 5,
-    },
+    display: 'grid',
+    gridRowGap: '1em',
+  },
+  title: {
+    marginBottom: 10,
   },
   actions: {
     display: 'flex',
     justifyContent: 'flex-end',
-    padding: '8px 0 !important',
+    paddingBottom: 1,
     alignItems: 'flex-end',
     '& button': {
       margin: '0 0 0 10px',
@@ -69,25 +71,24 @@ const EditCharacterForm = props => {
       {isCloning
         ? (
           <>
-            <section>Create a new character below to inherit the existing build.</section>
+            <section className={classes.title}>Create a new character below to inherit the existing build.</section>
             <DetailField
               label="name"
               value={<HubInput ref={nameRef} value={name} onChange={setName} />}
               labelFlex="1"
               valueFlex="4"
-              padding="8px"
             />
           </>
         )
         : (
           <>
-            <section>You may change your character version below. To change a character's name, please select the cloning option.</section>
+            <section className={classes.title}>You may change your character version below. To change a character's name, please select the cloning option.</section>
             <DetailField
               label="name"
               value={<span style={{ display: 'flex', height: '35px', alignItems: 'center' }}>{name}</span>}
               labelFlex="1"
               valueFlex="4"
-              padding="8px"
+              alignItems="baseline"
             />
           </>
         )}
@@ -96,16 +97,13 @@ const EditCharacterForm = props => {
         value={<HubInput ref={versionRef} value={version} onChange={setVersion} />}
         labelFlex="1"
         valueFlex="4"
-        padding="8px"
       />
       <DetailField
-        alignItems="center"
         label={<span style={{ color: theme.palette.main.yellow }}>is a clone?</span>}
         hideColon
         value={<HubCheckbox onChange={setIsCloning} value={isCloning} />}
         labelFlex="1"
         valueFlex="4"
-        padding="8px"
       />
       <section className={classes.actions}>
         <HubButton

@@ -42,7 +42,7 @@ const useStyles = makeStyles({
 const HubCheckbox = props => {
   const {
     onChange,
-    value,
+    value = false,
   } = props;
   const classes = useStyles();
 
@@ -59,8 +59,8 @@ const HubCheckbox = props => {
 };
 
 HubCheckbox.propTypes = {
-  onChange: PropTypes.func.isRequired,
-  value: PropTypes.bool.isRequired,
+  onChange: PropTypes.func,
+  value: PropTypes.bool,
 };
 
 export default HubCheckbox;

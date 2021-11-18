@@ -1,7 +1,7 @@
 import { PropTypes } from 'prop-types';
 import Image from 'next/image';
 import { makeStyles } from '@material-ui/styles';
-import { stats } from 'data/constants';
+import { STATS_SCHEMA } from 'data/constants';
 
 const useStyles = makeStyles({
   root: {
@@ -40,7 +40,7 @@ const useStyles = makeStyles({
     display: 'flex',
     flex: 1,
     alignItems: 'flex-end',
-    color: props => stats[props?.label]?.color || '#fff',
+    color: props => STATS_SCHEMA[props?.label]?.color || '#fff',
     position: 'relative',
     top: 5,
     fontSize: '10px',
