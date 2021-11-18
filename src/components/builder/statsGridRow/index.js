@@ -11,7 +11,7 @@ const useStyles = makeStyles({
     gridRowGap: '.5em',
     justifyItems: 'center',
     alignItems: 'center',
-    marginBottom: '.5em',
+    marginBottom: 5,
     fontSize: 12,
   },
   name: {

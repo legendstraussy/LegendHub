@@ -8,21 +8,19 @@ import { useRecoilValue } from 'recoil';
 import { characterState } from 'data/characterState';
 
 const useStyles = makeStyles(({
-  root: {
-    '& section': {
-      paddingBottom: 5,
-    },
+  title: {
+    marginBottom: 10,
   },
   actions: {
     display: 'flex',
     justifyContent: 'flex-end',
-    padding: '8px 0 !important',
+    paddingBottom: 1,
     alignItems: 'flex-end',
     '& button': {
       margin: '0 0 0 10px',
     },
   },
-}), { name: 'Mui_Styles_ClearCharacterModal' });
+}), { name: 'Mui_Styles_ClearCharacterForm' });
 
 const ClearCharacterForm = props => {
   const { handleClickClose } = props;
@@ -46,18 +44,20 @@ const ClearCharacterForm = props => {
   return (
     <form className={classes.root} onSubmit={handleSubmit}>
       {status && <section>{status}</section>}
-      <section>Are you sure you want to clear the gear from this character?</section>
+      <section className={classes.title}>Are you sure you want to clear the gear from this character?</section>
       <DetailField
         label="name"
         value={name}
         labelFlex="1"
         valueFlex="4"
+        alignItems="baseline"
       />
       <DetailField
         label="version"
         value={version}
         labelFlex="1"
         valueFlex="4"
+        alignItems="baseline"
       />
       <section className={classes.actions}>
         <HubButton

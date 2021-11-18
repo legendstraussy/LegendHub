@@ -1,9 +1,8 @@
-import HubSelect from 'components/common/hubSelect';
 import { makeStyles } from '@material-ui/styles';
 import DetailHeader from 'components/common/detailHeader';
 import DetailBody from 'components/common/detailBody';
-import DetailField from 'components/common/detailField';
-import QuestSelect from 'components/builder/questSelect';
+import DetailCheck from 'components/common/detailCheck';
+import DetailSelect from 'components/common/detailSelect';
 import { useRecoilValue } from 'recoil';
 import { questModiferOptionsState, questModifiersState } from 'data/characterState';
 import useCharacterManager from 'hooks/useCharacterManager';
@@ -41,26 +40,31 @@ const useStyles = makeStyles({
 const QuestModifiers = () => {
   const options = useRecoilValue(questModiferOptionsState);
   const quests = useRecoilValue(questModifiersState);
-  const { modifyTen, modifyFiveThree } = useCharacterManager();
+  const { modifyTen, modifyFiveThree, modifyThreeAll } = useCharacterManager();
   const classes = useStyles();
 
   return (
     <main className={classes.root}>
       <DetailHeader title="quest modifiers" />
-      <DetailBody>
-        <QuestSelect
-          label="+10 stat"
-          onChange={modifyTen}
-          options={options.ten}
-          value={quests.ten}
-        />
-        <QuestSelect
-          label="+10/3 stats"
-          onChange={modifyFiveThree}
-          options={options.fiveThree}
-          value={quests.fiveThree}
-        />
-      </DetailBody>
+      <DetailSelect
+        defaultText="Select a stat"
+        label="+10 stat"
+        onChange={modifyTen}
+        options={options.ten}
+        value={quests.ten}
+      />
+      <DetailSelect
+        defaultText="Select a quest"
+        label="+10/3 stats"
+        onChange={modifyFiveThree}
+        options={options.fiveThree}
+        value={quests.fiveThree}
+      />
+      <DetailCheck
+        label="+3 stats"
+        onChange={modifyThreeAll}
+        value={quests.threeAll}
+      />
     </main>
   );
 };

@@ -7,21 +7,19 @@ import DetailField from 'components/common/detailField/';
 import useCharacterManager from 'hooks/useCharacterManager';
 
 const useStyles = makeStyles(({
-  root: {
-    '& section': {
-      paddingBottom: 5,
-    },
+  title: {
+    marginBottom: 10,
   },
   actions: {
     display: 'flex',
     justifyContent: 'flex-end',
-    padding: '8px 0 !important',
+    paddingBottom: 1,
     alignItems: 'flex-end',
     '& button': {
       margin: '0 0 0 10px',
     },
   },
-}), { name: 'Mui_Styles_NewCharacterModal' });
+}), { name: 'Mui_Styles_NewCharacterForm' });
 
 const NewCharacterForm = props => {
   const { handleClickClose } = props;
@@ -50,20 +48,18 @@ const NewCharacterForm = props => {
   return (
     <form className={classes.root} onSubmit={handleSubmit}>
       {status && <section>{status}</section>}
-      <section>Please enter the name and version of your new character.</section>
+      <section className={classes.title}>Please enter the name and version of your new character.</section>
       <DetailField
         label="name"
         value={<HubInput ref={nameRef} value={name} onChange={setName} />}
         labelFlex="1"
         valueFlex="4"
-        padding="8px"
       />
       <DetailField
         label="version"
         value={<HubInput value={version} onChange={setVersion} />}
         labelFlex="1"
         valueFlex="4"
-        padding="8px"
       />
       <section className={classes.actions}>
         <HubButton

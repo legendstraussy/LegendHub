@@ -1,6 +1,6 @@
 import { atom, selector } from 'recoil';
 import { configureCalcAlign } from 'utils/utilFns';
-import { CHAR_DETAIL_KEYS, defaultStats, tenQuest, fiveThreeQuest, hpQuest, maQuest } from 'data/constants';
+import { CHAR_DETAIL_KEYS, defaultStats, tenQuest, fiveThreeQuest, hpQuest, maQuest, threeAllQuest } from 'data/constants';
 
 export const charactersState = atom({
   key: 'charactersState',
@@ -140,12 +140,24 @@ export const questStatsState = selector({
     if (selectedCharacter) {
       const { quests } = selectedCharacter;
       return {
-        str: (tenQuest[quests?.ten]?.str ?? 0) + (fiveThreeQuest[quests?.fiveThree]?.str ?? 0),
-        min: (tenQuest[quests?.ten]?.min ?? 0) + (fiveThreeQuest[quests?.fiveThree]?.min ?? 0),
-        dex: (tenQuest[quests?.ten]?.dex ?? 0) + (fiveThreeQuest[quests?.fiveThree]?.dex ?? 0),
-        con: (tenQuest[quests?.ten]?.con ?? 0) + (fiveThreeQuest[quests?.fiveThree]?.con ?? 0),
-        per: (tenQuest[quests?.ten]?.per ?? 0) + (fiveThreeQuest[quests?.fiveThree]?.per ?? 0),
-        spi: (tenQuest[quests?.ten]?.spi ?? 0) + (fiveThreeQuest[quests?.fiveThree]?.spi ?? 0),
+        str: (tenQuest[quests?.ten]?.str ?? 0)
+          + (fiveThreeQuest[quests?.fiveThree]?.str ?? 0)
+          + (quests.threeAll ? threeAllQuest?.str : 0),
+        min: (tenQuest[quests?.ten]?.min ?? 0)
+          + (fiveThreeQuest[quests?.fiveThree]?.min ?? 0)
+          + (quests.threeAll ? threeAllQuest?.min : 0),
+        dex: (tenQuest[quests?.ten]?.dex ?? 0)
+          + (fiveThreeQuest[quests?.fiveThree]?.dex ?? 0)
+          + (quests.threeAll ? threeAllQuest?.dex : 0),
+        con: (tenQuest[quests?.ten]?.con ?? 0)
+          + (fiveThreeQuest[quests?.fiveThree]?.con ?? 0)
+          + (quests.threeAll ? threeAllQuest?.con : 0),
+        per: (tenQuest[quests?.ten]?.per ?? 0)
+          + (fiveThreeQuest[quests?.fiveThree]?.per ?? 0)
+          + (quests.threeAll ? threeAllQuest?.per : 0),
+        spi: (tenQuest[quests?.ten]?.spi ?? 0)
+          + (fiveThreeQuest[quests?.fiveThree]?.spi ?? 0)
+          + (quests.threeAll ? threeAllQuest?.spi : 0),
         hp: quests.hp ? hpQuest.hp : 0,
         ma: quests.mv ? maQuest.ma : 0,
       };

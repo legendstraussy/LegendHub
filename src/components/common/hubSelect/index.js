@@ -40,7 +40,7 @@ const HubSelect = props => {
     <Select
       className={classes.root}
       style={{ cursor: 'default' }}
-      value={value}
+      value={value || defaultText}
       renderValue={value => name ?? value}
       name={name}
       onChange={event => onChange(event.target.value)}

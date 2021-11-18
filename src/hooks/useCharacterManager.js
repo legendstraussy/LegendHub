@@ -342,6 +342,7 @@ const useCharacterManager = () => {
     modifyBaseSwap: updateStat('swapStats'),
     modifyTen: updateQuest('ten'),
     modifyFiveThree: updateQuest('fiveThree'),
+    modifyThreeAll: updateQuest('threeAll'),
   };
 };
 
