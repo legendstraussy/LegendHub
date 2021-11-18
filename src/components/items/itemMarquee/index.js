@@ -1,6 +1,6 @@
 import { PropTypes } from 'prop-types';
 import { makeStyles } from '@material-ui/styles';
-import { stats } from 'data/constants';
+import { STATS_SCHEMA } from 'data/constants';
 
 const useStyles = makeStyles({
   root: {
@@ -79,12 +79,12 @@ const ItemMarquee = props => {
     <div className={classes.root}>
       <div className={classes.equipped}>equipped</div>
       <div className={classes.item}>{eqItem.name}</div>
-      <div className={classes.iconStat} style={{ color: stats.str.color }}>{eqItem.str || <HubStud />}</div>
-      <div className={classes.iconStat} style={{ color: stats.min.color }}>{eqItem.min || <HubStud />}</div>
-      <div className={classes.iconStat} style={{ color: stats.dex.color }}>{eqItem.dex || <HubStud />}</div>
-      <div className={classes.iconStat} style={{ color: stats.con.color }}>{eqItem.con || <HubStud />}</div>
-      <div className={classes.iconStat} style={{ color: stats.per.color }}>{eqItem.per || <HubStud />}</div>
-      <div className={classes.iconStat} style={{ color: stats.spi.color }}>{eqItem.spi || <HubStud />}</div>
+      <div className={classes.iconStat} style={{ color: STATS_SCHEMA.str.color }}>{eqItem.str || <HubStud />}</div>
+      <div className={classes.iconStat} style={{ color: STATS_SCHEMA.min.color }}>{eqItem.min || <HubStud />}</div>
+      <div className={classes.iconStat} style={{ color: STATS_SCHEMA.dex.color }}>{eqItem.dex || <HubStud />}</div>
+      <div className={classes.iconStat} style={{ color: STATS_SCHEMA.con.color }}>{eqItem.con || <HubStud />}</div>
+      <div className={classes.iconStat} style={{ color: STATS_SCHEMA.per.color }}>{eqItem.per || <HubStud />}</div>
+      <div className={classes.iconStat} style={{ color: STATS_SCHEMA.spi.color }}>{eqItem.spi || <HubStud />}</div>
       <div className={classes.ac}>{eqItem.ac || <HubStud />}</div>
       <div className={classes.align}>{eqItem.align || <HubStud />}</div>
       <div className={classes.rent}>{eqItem.rent || <HubStud />}</div>
