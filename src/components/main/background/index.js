@@ -7,7 +7,7 @@ const useStyles = makeStyles({
     bottom: 0,
     left: 0,
     right: 0,
-    backgroundImage: 'url(\'/background.png\')',
+    backgroundImage: 'url(\'/background.webp\')',
     backgroundSize: 'cover',
     backgroundPosition: 'center',
   },
