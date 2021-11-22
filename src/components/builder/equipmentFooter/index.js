@@ -1,6 +1,7 @@
-import { makeStyles } from '@material-ui/styles';
-import { slotState } from 'data/characterState';
 import { useRecoilValue } from 'recoil';
+import { makeStyles } from '@material-ui/styles';
+import { slotsState } from 'data/characterState';
+import { SLOTS_TOTAL } from 'data/constants';
 
 const useStyles = makeStyles({
   root: {
@@ -11,16 +12,17 @@ const useStyles = makeStyles({
     fontSize: 14,
     textTransform: 'uppercase',
   },
-}, { name: 'Mui_Styles_HubFooter' });
+}, { name: 'Mui_Styles_EquipmentFooter' });
 
-const HubFooter = () => {
-  // const slots = useRecoilValue(slotState);
+const EquipmentFooter = () => {
+  const slots = useRecoilValue(slotsState);
   const classes = useStyles();
+
   return (
     <div className={classes.root}>
-      16/22 slots filled
+      {slots}/{SLOTS_TOTAL} equipment slots filled
     </div>
   );
 };
 
-export default HubFooter;
+export default EquipmentFooter;

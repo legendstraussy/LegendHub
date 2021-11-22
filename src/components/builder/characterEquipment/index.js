@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef } from 'react';
 import HubTable from 'components/common/hubTable';
-import HubFooter from 'components/common/HubFooter';
+import EquipmentFooter from 'components/builder/equipmentFooter';
 import DeleteOutlineIcon from '@material-ui/icons/DeleteOutline';
 import Fullscreen from '@material-ui/icons/Fullscreen';
 import CharacterMarquee from 'components/builder/characterMarquee';
@@ -319,7 +319,7 @@ const CharacterEquipment = () => {
           footer={false}
           scrollRef={scrollRef}
         />
-        <HubFooter />
+        <EquipmentFooter />
       </div>
     </MarqueeTable>
   );

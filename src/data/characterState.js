@@ -22,6 +22,22 @@ export const selectedItemState = atom({
   default: null,
 });
 
+export const slotsState = selector({
+  key: 'slotsState',
+  default: 0,
+  get: ({ get }) => {
+    const selectedCharacter = get(characterState);
+    if (selectedCharacter) {
+      const { equipment } = selectedCharacter;
+      return Object
+        .keys(equipment)
+        .filter(slot => equipment[slot].item)
+        .length;
+    }
+    return 0;
+  },
+});
+
 export const itemDetailState = selector({
   key: 'itemDetailState',
   default: null,

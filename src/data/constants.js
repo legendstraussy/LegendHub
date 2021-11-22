@@ -1,5 +1,6 @@
 import theme from 'utils/theme';
 
+export const SLOTS_TOTAL = 23;
 export const NO_VALID_ALIGN = '---';
 export const HISTORY_LENGTH = 10;
 export const CHAR_DETAIL_KEYS = {
