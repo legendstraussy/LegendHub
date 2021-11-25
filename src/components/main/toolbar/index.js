@@ -21,7 +21,7 @@ const useStyles = makeStyles({
   },
   buttons: {
     '& button': {
-      margin: '0 .4em',
+      margin: '0 0 0 1.5em',
     },
   },
 }, { name: 'Mui_Styles_Toolbar' });
@@ -52,7 +52,7 @@ const Toolbar = () => {
   return (
     <div className={classes.root}>
       <section className={classes.buttons}>
-        <HubButton label="new" type="primary" onClick={() => handleModalClick('new')} />
+        <HubButton label="new" type="default" onClick={() => handleModalClick('new')} />
         <HubButton disabled={!character} label="edit" type="default" onClick={() => handleModalClick('edit')} />
         <HubButton disabled={!character || character?.history?.length === 0} label="undo" type="default" onClick={undo} />
         <HubButton disabled label="import" type="default" onClick={() => handleModalClick('import')} />

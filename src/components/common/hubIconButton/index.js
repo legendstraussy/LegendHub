@@ -4,8 +4,9 @@ import { makeStyles } from '@material-ui/styles';
 
 const useStyles = makeStyles({
   root: {
+    width: props => props.width ?? 'unset',
+    height: props => props.height ?? 'unset',
     display: 'flex',
-    flex: 1,
     background: '#222222',
     border: '1px solid rgba(105, 85, 85, .75)',
     borderRadius: '5px',
@@ -18,7 +19,7 @@ const useStyles = makeStyles({
 
 const HubIconButton = props => {
   const { iconPath, onClick } = props;
-  const classes = useStyles();
+  const classes = useStyles(props);
 
   return (
     <div role="button" tabIndex={0} className={classes.root} onClick={onClick}>

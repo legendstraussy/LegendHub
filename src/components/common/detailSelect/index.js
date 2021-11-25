@@ -3,7 +3,7 @@ import HubSelect from 'components/common/hubSelect';
 import DetailField from 'components/common/detailField';
 
 const DetailSelect = props => {
-  const { defaultText, label, onChange, options, value } = props;
+  const { defaultText, label = '', onChange, options, value } = props;
 
   return (
     <DetailField

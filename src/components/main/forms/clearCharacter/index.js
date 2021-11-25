@@ -21,7 +21,7 @@ const useStyles = makeStyles(({
     paddingBottom: 1,
     alignItems: 'flex-end',
     '& button': {
-      margin: '0 0 0 10px',
+      margin: '0 0 0 1.5em',
     },
   },
 }), { name: 'Mui_Styles_ClearCharacterForm' });
